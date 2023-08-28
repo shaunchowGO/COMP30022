@@ -1,0 +1,29 @@
+#navbar {
+  height: 15%;
+  display: flex;
+  align-items: center;
+}
+#navbar ul {
+  display: flex;
+}
+#navbar .nav-left {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 50%;
+}
+#navbar .nav-left ul {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#navbar .nav-right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+#navbar .nav-right a {
+  margin-left: 3rem;
+}/*# sourceMappingURL=Navbar.css.map */

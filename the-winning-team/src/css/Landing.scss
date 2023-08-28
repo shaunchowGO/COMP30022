@@ -1,0 +1,18 @@
+#landing {
+    height: 50vh;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .landing-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .landing-main-left {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+    }
+}
