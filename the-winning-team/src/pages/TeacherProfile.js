@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 function TeacherProfile() {
-  const teacherData = {
-    name: 'John Smith',
+  const teacherData1 = {
+    name: 'Eduardo Riveria',
     teacherID: 901,
     groupDetails: {
       name: 'assignment_group_1',
       students: ['John Smith', 'Sarah Jane', 'Kevin Ngoh'],
       assignments: ['Sample Assignment 1', 'Sample Assignment 2'],
     },
-    displayPicture: 'john_smith.jpeg',
   };
+
+  const [teacherData, setTeacherData] = useState(null);
+
+  useEffect(() => {
+    getTeacherProfile(1)
+    .then((response) => setTeacherData(response.data))
+    .catch((error) => console.error('Error fetching teacher data: ', error));
+  }, []);
 
   return (
     <div>
@@ -19,19 +26,19 @@ function TeacherProfile() {
         <strong>Name:</strong> {teacherData.name}
       </div>
       <div>
-        <strong>Teacher Number:</strong> {teacherData.teacherNumber}
+        <strong>Teacher ID:</strong> {teacherData.teacherID}
       </div>
       <div>
-        <strong>Display Picture:</strong> <img src={teacherData.profileImage} alt="Profile" />
-      </div>
-      <div>
-        <strong>Assignment Name:</strong> {teacherData.assignmentDetails.name}
-      </div>
-      <div>
-        <strong>Assignment Group:</strong> {teacherData.assignmentDetails.group}
-      </div>
-      <div>
-        <strong>Similarity Score:</strong> {teacherData.assignmentDetails.simScore}%
+        <h3>Group Details</h3>
+        <div>
+          <strong>Name:</strong> {teacherData.groupDetails.name}
+        </div>
+        <div>
+          <strong>Students:</strong> {teacherData.groupDetails.students.join(', ')}
+        </div>
+        <div>
+          <strong>Assignments:</strong> {teacherData.groupDetails.assignments.join(', ')}
+        </div>
       </div>
     </div>
   );

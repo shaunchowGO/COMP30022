@@ -1,7 +1,7 @@
 import React from 'react';
 
 function StudentProfile() {
-  const studentData = {
+  const studentData1 = {
     name: 'John Smith',
     studentNumber: 129312,
     assignmentDetails: {
@@ -11,6 +11,15 @@ function StudentProfile() {
     },
     displayPicture: 'john_smith.jpeg',
   };
+
+
+  const [studentData, setStudentData] = useState(null);
+
+  useEffect(() => {
+    getStudentProfile(1)
+    .then((response) => setStudentData(response.data))
+    .catch((error) => console.error('Error fetching student data: ', error));
+  }, []);
 
   return (
     <div>
