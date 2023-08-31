@@ -1,0 +1,40 @@
+CREATE TABLE Student(
+    ID int,
+    StudentName varchar(255),
+    Email varchar(255),
+);
+
+CREATE TABLE Classroom (
+    StudentID varchar(255),
+    SubjectID varchar(255),
+);
+
+CREATE TABLE Subject (
+    ID int,
+    SubjectName varchar(255),
+);
+
+CREATE TABLE Assignment (
+    AssignmentID varchar(255),
+    SubjectID varchar(255),
+    DueDate DATE,
+    AssignmentLength int,
+);
+
+CREATE TABLE Submissions (
+    AssignmentID varchar(255),
+    StudentID varchar(255),
+    Submission int,
+);
+
+CREATE TABLE Academic (
+    Id varchar(255),
+    AcademicName varchar(255),
+);
+
+CREATE TABLE  Lecturers (
+    SubjectID varchar(255),
+    TeacherID varchar(255),
+);
+
+Code used to generate all the tables and according fields that will be used in our SQL database
