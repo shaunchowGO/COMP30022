@@ -1,7 +1,7 @@
 import React from 'react';
 
 function StudentProfile() {
-  const studentData1 = {
+  const studentData = {
     name: 'John Smith',
     studentNumber: 129312,
     assignmentDetails: {
@@ -13,13 +13,13 @@ function StudentProfile() {
   };
 
 
-  const [studentData, setStudentData] = useState(null);
+  // const [studentData, setStudentData] = React.useState(null);
 
-  useEffect(() => {
-    getStudentProfile(1)
-    .then((response) => setStudentData(response.data))
-    .catch((error) => console.error('Error fetching student data: ', error));
-  }, []);
+  // React.useEffect(() => {
+  //   getStudentProfile(1)
+  //   .then((response) => setStudentData(response.data))
+  //   .catch((error) => console.error('Error fetching student data: ', error));
+  // }, []);
 
   return (
     <div>

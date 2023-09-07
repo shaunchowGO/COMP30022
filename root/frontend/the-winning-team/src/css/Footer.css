@@ -1,0 +1,14 @@
+#footer {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #f9f9f9;
+}
+#footer .footer-links {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}/*# sourceMappingURL=Footer.css.map */
