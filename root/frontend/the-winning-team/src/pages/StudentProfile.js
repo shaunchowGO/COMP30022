@@ -1,4 +1,5 @@
 import React from 'react';
+import FileUploadModal from '../components/FileUploadModal';
 
 function StudentProfile() {
   const studentData = {
@@ -10,6 +11,16 @@ function StudentProfile() {
       simScore: 92,
     },
     displayPicture: 'john_smith.jpeg',
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
 
@@ -24,6 +35,7 @@ function StudentProfile() {
   return (
     <div>
       <h2>Student Profile</h2>
+      <button id="fileUplaodBtn" onClick={openModal}>Upload File</button>
       <div>
         <strong>Name:</strong> {studentData.name}
       </div>
