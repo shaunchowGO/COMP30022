@@ -9,3 +9,7 @@ venv/
 # Ignore IDE specific files and directories
 .vscode/
 .idea/*
+
+# node
+node_modules/
+
