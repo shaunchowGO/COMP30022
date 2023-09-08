@@ -1,8 +1,8 @@
 import React from 'react';
-import FileUploadModal from '../components/FileUploadModal';
+import { getStudentProfile } from '../utils/api.js';
 
 function StudentProfile() {
-  const studentData = {
+  const studentData1 = {
     name: 'John Smith',
     studentNumber: 129312,
     assignmentDetails: {
@@ -13,31 +13,19 @@ function StudentProfile() {
     displayPicture: 'john_smith.jpeg',
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [studentData, setStudentData] = React.useState(studentData1);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-
-  // const [studentData, setStudentData] = React.useState(null);
-
-  // React.useEffect(() => {
-  //   getStudentProfile(1)
-  //   .then((response) => setStudentData(response.data))
-  //   .catch((error) => console.error('Error fetching student data: ', error));
-  // }, []);
+  React.useEffect(() => {
+    getStudentProfile(1)
+    .then((response) => setStudentData(response.data))
+    .catch((error) => console.error('Error fetching student data: ', error));
+  }, []);   
 
   return (
     <div>
       <h2>Student Profile</h2>
-      <button id="fileUplaodBtn" onClick={openModal}>Upload File</button>
       <div>
-        <strong>Name:</strong> {studentData.name}
+        <strong>Name:</strong> {studentData.name == null ? studentData1.name : ""}
       </div>
       <div>
         <strong>Student Number:</strong> {studentData.studentNumber}

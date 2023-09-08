@@ -14,9 +14,9 @@ function FileUploadModal({ isOpen, onRequestClose }) {
 
   const handleUpload = () => {
     console.log('upload file triggered');
-    if (files.length > 0) {
+    if (file.length > 0) {
       const formData = new FormData();
-      files.forEach((file, index) => {
+      file.forEach((file, index) => {
         formData.append(`file${index}`, file);
       });
 
