@@ -1,4 +1,3 @@
-@@ -1,25 +0,0 @@
 import './css/App.css';
 import Navbar from './pages/Navbar.js'
 import Landing from './pages/Landing.js'
