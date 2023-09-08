@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
+@@ -1,25 +0,0 @@
+import './css/App.css';
+import Navbar from './pages/Navbar.js'
+import Landing from './pages/Landing.js'
+import GroupProfile from './pages/GroupProfile.js'
+import StudentProfile from './pages/StudentProfile.js'
+import Footer from './pages/Footer.js'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
-Modal.setAppElement('#root'); // Set the modal's parent element
-
-function FileUploadModal({ isOpen, onRequestClose }) {
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-  };
-
-  const handleUpload = () => {
-    // Handle the file upload here (e.g., send it to the server)
-    // ...
-    onRequestClose(); // Close the modal after the upload is complete
-  };
-
+function App() {
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      contentLabel="File Upload Modal"
-    >
-      <h2>Upload a File</h2>
-      <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
-      <button onClick={onRequestClose}>Close</button>
-    </Modal>
+    <Router>
+      <div className="App">
+        <Navbar/>
+        <Routes>
+          <Route exact path="/" element={<Landing/>}></Route>
+          <Route exact path="/group" element={<GroupProfile/>}></Route>
+          <Route exact path="/student" element={<StudentProfile/>}></Route>
+        </Routes>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 
-export default FileUploadModal;
+export default App;
