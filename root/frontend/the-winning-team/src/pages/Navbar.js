@@ -12,16 +12,18 @@ function Navbar() {
       <Login trigger={LogInTrigger} SetLogInTrigger={() => SetLogInTrigger(!LogInTrigger)}/>
       <SignUp trigger={SignUpTrigger} SetSignUpTrigger={() => SetSignUpTrigger(!SignUpTrigger)}/>
         <div className="nav-left">
-          <h1>LOGO</h1>
+          <h1>TextDNA</h1>
           <ul className="navs">
-              <Link to="/student" className="home-nav">PROFILE</Link>
+              <Link to="/student" className="nav-item">PROFILE</Link>
               <Link to="/group" className="nav-item">GROUP</Link>
               <Link to="/" className="nav-item">HELP</Link>
           </ul>
         </div>
         <div className="nav-right">
-            <button onClick={() => SetLogInTrigger(!LogInTrigger)}>LOGIN</button>
-            <button onClick={() => SetSignUpTrigger(!SignUpTrigger)}>SIGN UP</button>
+          <div className="btn-container">
+              <button className="login-btn" onClick={() => SetLogInTrigger(!LogInTrigger)}>LOGIN</button>
+              <button className="signup-btn" onClick={() => SetSignUpTrigger(!SignUpTrigger)}>CREATE ACCOUNT</button>
+          </div>
         </div>
     </nav>
   );

@@ -16,8 +16,8 @@ function App() {
           <Route exact path="/group" element={<GroupProfile/>}></Route>
           <Route exact path="/student" element={<StudentProfile/>}></Route>
         </Routes>
-        <Footer/>
       </div>
+      <Footer/>
     </Router>
   );
 }

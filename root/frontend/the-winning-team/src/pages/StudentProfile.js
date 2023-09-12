@@ -1,48 +1,61 @@
 import React from 'react';
 import { getStudentProfile } from '../utils/api.js';
+import '../css/Profile.css'
 
 function StudentProfile() {
   const studentData1 = {
-    name: 'John Smith',
+    name: 'Rohit Ambakkat',
     studentNumber: 129312,
-    assignmentDetails: {
+    assignmentDetails: [{
       name: 'document_1.pdf',
       group: 'assignment_group_1',
       simScore: 92,
-    },
+    }],
     displayPicture: 'john_smith.jpeg',
   };
 
   const [studentData, setStudentData] = React.useState(studentData1);
 
-  React.useEffect(() => {
-    getStudentProfile(1)
-    .then((response) => setStudentData(response.data))
-    .catch((error) => console.error('Error fetching student data: ', error));
-  }, []);   
+  // React.useEffect(() => {
+  //   getStudentProfile(1)
+  //   .then((response) => setStudentData(response.data))
+  //   .catch((error) => console.error('Error fetching student data: ', error));
+  // }, []);   
 
   return (
-    <div>
-      <h2>Student Profile</h2>
-      <div>
-        <strong>Name:</strong> {studentData.name == null ? studentData1.name : ""}
+    <section id="profile">
+      <div className="profile-info">
+        <img src={require(`../assets/images/${studentData.displayPicture}`)} alt="Profile" />
+        <div className="profile-info-right">
+          <h1>{studentData.name}</h1>
+          <div>Student Number: {studentData.studentNumber}</div>
+          <div className="stats">
+            <p>STATS: ####</p>
+            <p>STATS: ####</p>
+            <p>STATS: ####</p>
+          </div>
+          <button className="blue-btn">+ Add Document</button>
+        </div>
       </div>
-      <div>
-        <strong>Student Number:</strong> {studentData.studentNumber}
+      <div className="table">
+        <div className="table-header">
+            <p>Assignment Name</p>
+            <p>Type</p>
+            <p>Score</p>
+            <p>Detail</p>
+        </div>
+        <div className="table-content">
+          {studentData.assignmentDetails.map((assignment, index) => (
+            <div className="table-row" key={index}>
+              <div>{assignment.name}</div>
+              <div>{assignment.group}</div>
+              <div>{assignment.simScore}%</div>
+              <div><button>VIEW</button></div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div>
-        <strong>Display Picture:</strong> <img src={studentData.profileImage} alt="Profile" />
-      </div>
-      <div>
-        <strong>Assignment Name:</strong> {studentData.assignmentDetails.name}
-      </div>
-      <div>
-        <strong>Assignment Group:</strong> {studentData.assignmentDetails.group}
-      </div>
-      <div>
-        <strong>Similarity Score:</strong> {studentData.assignmentDetails.simScore}%
-      </div>
-    </div>
+    </section>
   );
 }
 

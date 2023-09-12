@@ -1,0 +1,21 @@
+#profile {
+    height: 60vh;
+    .profile-info {
+        display: flex;
+        .profile-info-right {
+            text-align: left;
+            h1 {
+                margin: 0;
+                font-size: 48px;
+            }
+        }
+        img {
+            width: 10%;
+            margin-right: 3rem;
+        }
+        margin-bottom: 3rem;
+        .blue-btn {
+            margin: 0;
+        }
+    }
+}

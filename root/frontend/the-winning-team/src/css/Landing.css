@@ -1,63 +1,63 @@
 #landing {
   
-  background: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-#landing .landing-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background-color: re;
-}
-
-#landing .landing-main-right{
-  place-items: center;
-}
-
-#landing .landing-main .landing-main-left {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  place-items: center;
-}/*# sourceMappingURL=Landing.css.map */
-
-#landing .instructions1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-}
-
-#landing .instructions2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-}
-
-#landing .FAQ-description {
-  margin: auto;
-  max-width: 400px;
-  
-}
-
-#landing .FAQs {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  
-}
-
-#landing .scrollable {
-  
-  top: 0;
-  left: 0;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  place-items: centre;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
+  #landing .landing-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: re;
+  }
+  
+  #landing .landing-main-right{
+    place-items: center;
+  }
+  
+  #landing .landing-main .landing-main-left {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    place-items: center;
+  }/*# sourceMappingURL=Landing.css.map */
+  
+  #landing .instructions1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+  }
+  
+  #landing .instructions2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+  }
+  
+  #landing .FAQ-description {
+    margin: auto;
+    max-width: 400px;
+    
+  }
+  
+  #landing .FAQs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    
+  }
+  
+  #landing .scrollable {
+    
+    top: 0;
+    left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    place-items: centre;
+    }

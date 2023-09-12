@@ -1,0 +1,28 @@
+#group {
+  height: 60vh;
+}
+#group .group-util {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#group .group-util .group-name {
+  align-items: start;
+  display: flex;
+  flex-direction: column;
+}
+#group .group-util .group-name h1 {
+  font-weight: bold;
+  margin: 0;
+  font-size: 48px;
+}
+#group .group-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#group .group-btn h3 {
+  font-size: 28px;
+  text-decoration: underline;
+}/*# sourceMappingURL=Group.css.map */

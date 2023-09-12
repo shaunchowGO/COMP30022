@@ -1,8 +1,9 @@
 import React from 'react';
+import '../css/Group.css'
 
 function GroupProfile() {
   const groupData = {
-    name: 'assignment_group_1',
+    name: 'COMP30022',
     assignments: [
       {
         name: 'Sample Assignment 1',
@@ -14,35 +15,65 @@ function GroupProfile() {
         status: 40,
         dueDate: '21-08',
       },
+      {
+        name: 'Sample Assignment 2',
+        status: 40,
+        dueDate: '21-08',
+      },
+      {
+        name: 'Sample Assignment 2',
+        status: 40,
+        dueDate: '21-08',
+      },
+      {
+        name: 'Sample Assignment 2',
+        status: 40,
+        dueDate: '21-08',
+      },
+      {
+        name: 'Sample Assignment 2',
+        status: 40,
+        dueDate: '21-08',
+      },
     ],
   };
 
   return (
-    <div>
-      <h2>Group Profile</h2>
-      <div>
-        <strong>Group Name:</strong> {groupData.name}
+    <section id="group">
+      <div className="group-util">
+        <div className="group-name">
+          <h1>
+            {groupData.name}
+          </h1>
+          <p>STATS: ####</p>
+          <p>STATS: ####</p>
+          <p>STATS: ####</p>
+        </div>
+        <div className="group-widget"></div>
       </div>
-      <h3>Assignments</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Assignment Name</th>
-            <th>Status</th>
-            <th>Due Date</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="group-btn">
+        <h3>ASSIGNMENTS</h3>
+        <button className="blue-btn">+ Add Document</button>
+      </div>
+      <div className="table">
+        <div className="table-header">
+            <p>Assignment Name</p>
+            <p>Status</p>
+            <p>Due Date</p>
+            <p>Detail</p>
+        </div>
+        <div className="table-content">
           {groupData.assignments.map((assignment, index) => (
-            <tr key={index}>
-              <td>{assignment.name}</td>
-              <td>{assignment.status}</td>
-              <td>{assignment.dueDate}</td>
-            </tr>
+            <div className="table-row" key={index}>
+              <div>{assignment.name}</div>
+              <div>{assignment.status}%</div>
+              <div>{assignment.dueDate}</div>
+              <div><button>VIEW</button></div>
+            </div>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
