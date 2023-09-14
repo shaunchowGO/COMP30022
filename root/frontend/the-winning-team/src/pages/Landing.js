@@ -5,14 +5,15 @@ function Landing() {
     <section id="landing">
       <div className='scrollable'>
         <div className="landing-main">
-          <div className="landing-main-left">
+          <div className="landing-main-left"> 
+            <h1 className = "main-header"> Lorem ipsum dolor sit </h1>
+            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <button className="get-started-button">GET STARTED</button>
+          </div>
+          <div className="landing-main-right">
                 <img src="" alt="landing-img"></img>
           </div>
-          <div className="landing-main-right"> 
-            <h1>Lorem ipsum dolor sit</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-            <button>Get Started</button>
-          </div>
+          
         
         </div>
         <div className = "instructions1">
@@ -21,24 +22,24 @@ function Landing() {
           </div>
 
           <div className = "right-text">
-            <h1>Lorem ipsum dolor sit</h1>
+          <h1 className = "right-text-header"><span class="bold-word">Lorem ipsum</span> dolor sit</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
         </div>
         
         <div className = "instructions2">
-           <div className = "right-text">
-            <h1>Lorem ipsum dolor sit</h1>
+           <div className = "left-text">
+           <h1 className = "left-text-header"><span class="bold-word">Lorem ipsum</span> dolor sit</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
           
-          <div className = "instruction-left"> 
+          <div className = "instruction-right"> 
             <img src="" alt="instruction-image"></img>
           </div>
         </div>
         
         <div className = "FAQ-description"> 
-          <h1> FAQs</h1>
+          <h1 className  = "faq-header"> FAQs</h1>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
 
