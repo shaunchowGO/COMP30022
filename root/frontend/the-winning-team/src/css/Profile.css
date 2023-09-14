@@ -1,21 +1,8 @@
 #profile {
-  height: 60vh;
-}
-#profile .profile-info {
-  display: flex;
-  margin-bottom: 3rem;
-}
-#profile .profile-info .profile-info-right {
-  text-align: left;
-}
-#profile .profile-info .profile-info-right h1 {
-  margin: 0;
-  font-size: 48px;
-}
-#profile .profile-info img {
-  width: 10%;
-  margin-right: 3rem;
-}
-#profile .profile-info .blue-btn {
-  margin: 0;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10%;
+  background-image: url("../assets/images/profile_background.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }/*# sourceMappingURL=Profile.css.map */

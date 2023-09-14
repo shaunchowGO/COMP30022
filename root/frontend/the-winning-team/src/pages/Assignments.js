@@ -1,46 +1,15 @@
 import React from 'react';
 import '../css/Group.css'
 import Footer from './Footer.js'
-import {Link} from 'react-router-dom';
 
 function GroupProfile() {
   const groupData = {
-    name: 'COMP30022',
+    filename: 'COMP30022_Assignment_1',
     subjectName: 'IT Project',
     assignments: [
       {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
+        name: 'Rohit Ambakkat',
+        status: 'Late',
         score: 45,
         date: 'Aug 10, 2022',
       },
@@ -53,8 +22,8 @@ function GroupProfile() {
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
-                <h1>{groupData.name}</h1>
-                <p>Subject Name: {groupData.subjectName}</p>
+                <h1>{groupData.filename}</h1>
+                <p>Assignment for: {groupData.subjectName}</p>
                 <button className="blue-btn">+ Add Document</button>
               </div>
             </div>
@@ -64,29 +33,22 @@ function GroupProfile() {
                 <input type="text" id="search" placeholder="Search Documents"/>
               </div>
               <div className="table-header">
-                  <p>Assignment Name</p>
+                  <p>Student Name</p>
+                  <p>Status</p>
                   <p>Score</p>
                   <p>Submission Date</p>
-                  <p>Detail</p>
               </div>
               <div className="table-content">
                 {groupData.assignments.map((assignment, index) => (
                   <div className="table-row" key={index}>
                     <div className="file-name">{assignment.name}</div>
+                    <div>{assignment.status}</div>
                     <div>{assignment.score}%</div>
                     <div>{assignment.date}</div>
-                    <div className="row-detail">
-                      <img src={require(`../assets/images/download_icon.png`)}></img>
-                    <Link to="/assignment">
-                      <img src={require(`../assets/images/view_icon.png`)}></img>
-                    </Link>
-                    </div>
                   </div>
                 ))}
               </div>
-  
             </div>
-  
           </div>
   
           <div className="profile-dashboard">

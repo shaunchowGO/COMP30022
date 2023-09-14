@@ -1,21 +1,19 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 nav {
   padding-left: 10rem;
   padding-right: 10rem;
 }
+
 section {
   padding: 5rem 10rem 5rem 10rem;
 }
@@ -33,36 +31,117 @@ section {
 }
 
 .blue-btn:hover {
-    background: #0b4ed5;
+  background: #0b4ed5;
 }
 
-.table {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid #000;
-    border-radius: 15px;
-    height: 25vh;
-    overflow-y: scroll;
+.profile-container {
+  border-radius: 15px;
+  padding: 3rem;
+  box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.37);
+  background: #fff;
 }
-
-.table-header, .table-row  {
+.profile-container .profile-info {
+  display: flex;
+  margin-bottom: 3rem;
+}
+.profile-container .profile-info .profile-info-right {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.profile-container .profile-info .profile-info-right h1 {
+  margin: 0;
+  line-height: 48px;
+  font-size: 48px;
+}
+.profile-container .profile-info img {
+  width: 150px;
+  height: 150px;
+  margin-right: 3rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 15px;
+}
+.profile-container .profile-info .blue-btn {
+  margin: 0;
+}
+.profile-container .table .search-container input {
+  width: 100%;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid #d9d9d9;
+}
+.profile-container .table .table-header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.table-header {
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #d9d9d9;
+  color: #0057FF;
   font-weight: bold;
 }
-
-.table-row {
-  padding: 1rem;
-  border-top: 1px solid #D9D9D9;
+.profile-container .table .table-content {
+  max-height: 45vh;
+  overflow-y: scroll;
 }
-
-.table button {
-  position: relative;
-  border: none;
-  background: none;
-  text-decoration: underline;
+.profile-container .table .table-content::-webkit-scrollbar {
+  width: 0.25vw;
+}
+.profile-container .table .table-content::-webkit-scrollbar-thumb {
+  background: #0057FF;
+  border-radius: 50px;
+}
+.profile-container .table .table-content::-webkit-scrollbar-track {
+  background: #d9d9d9;
+}
+.profile-container .table .table-content .table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  padding: 2rem 0;
+  place-items: center;
+}
+.profile-container .table .table-content .table-row .file-name {
+  font-weight: bold;
+}
+.profile-container .table .table-content .table-row:nth-child(even) {
+  background: #EDF3FF;
+}
+.profile-container .table .table-content .table-row:nth-child(odd) {
+  background: #fff;
+}
+.profile-container .table .table-content .table-row .row-detail {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.profile-container .table .table-content .table-row .row-detail img {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
+
+.profile-dashboard {
+  box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.37);
+  background: #fff;
+  border-radius: 15px;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.profile-dashboard .dashboard-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #D9D9D9;
+  grid-gap: 1rem;
+  padding: 3rem 0 3rem 0;
+}
+.profile-dashboard .dashboard-info h1 {
+  margin: 0;
+  margin-top: 1rem;
+}
+.profile-dashboard .dashboard-info p {
+  font-size: 12px;
+  margin: 0;
+}/*# sourceMappingURL=index.css.map */
