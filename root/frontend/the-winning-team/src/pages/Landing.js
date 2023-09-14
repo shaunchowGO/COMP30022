@@ -1,9 +1,12 @@
 import React from 'react';
 import '../css/Landing.css'
+import Footer from './Footer'
+
 function Landing() {
   return (
-    <section id="landing">
-      <div className='scrollable'>
+    <div>
+
+      <section id="landing">
         <div className="landing-main">
           <div className="landing-main-left"> 
             <h1 className = "main-header"> Lorem ipsum dolor sit </h1>
@@ -13,23 +16,22 @@ function Landing() {
           <div className="landing-main-right">
                 <img src="" alt="landing-img"></img>
           </div>
-          
-        
+  
         </div>
-        <div className = "instructions1">
+        <div className = "instructions">
           <div className = "instruction-left"> 
             <img src="" alt="instruction-image"></img>
           </div>
-
-          <div className = "right-text">
-          <h1 className = "right-text-header"><span class="bold-word">Lorem ipsum</span> dolor sit</h1>
+  
+          <div className = "text">
+          <h1 className = "text-header"><span class="bold-word">Lorem ipsum</span> dolor sit</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
         </div>
         
-        <div className = "instructions2">
-           <div className = "left-text">
-           <h1 className = "left-text-header"><span class="bold-word">Lorem ipsum</span> dolor sit</h1>
+        <div className = "instructions">
+            <div className = "text">
+            <h1 className = "text-header"><span class="bold-word">Lorem ipsum</span> dolor sit</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
           
@@ -42,29 +44,37 @@ function Landing() {
           <h1 className  = "faq-header"> FAQs</h1>
           <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         </div>
-
+  
         <div className = "FAQs"> 
-          <div className = "FAQ1"> 
+          <div className = "FAQ"> 
             <h1>FAQ 1</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p>Lorem ipsum dolor sit amet, consectetur </p>
+            <p>Lorem ipsum dolor sit amet, consectetur </p>
+            <p>Lorem ipsum dolor sit amet, consectetur </p>
+            <p>Read more...</p>
             </div>
             
-            <div className = "FAQ2">
+            <div className = "FAQ">
               <h1>FAQ 2</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+              <p>Lorem ipsum dolor sit amet, consectetur </p>
+              <p>Lorem ipsum dolor sit amet, consectetur </p>
+              <p>Lorem ipsum dolor sit amet, consectetur </p>
+              <p>Read more...</p>
             </div>
             
-            <div className = "FAQ3"> 
+            <div className = "FAQ"> 
               <h1>FAQ 3</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+              <p>Lorem ipsum dolor sit amet, consectetur </p>
+              <p>Lorem ipsum dolor sit amet, consectetur </p>
+              <p>Lorem ipsum dolor sit amet, consectetur </p>
+              <p>Read more...</p>
             </div>
-
         </div>
-      </div>
-       
-        
-        
-    </section>
+          
+          
+      </section>
+      <Footer/>
+    </div>
   );
 }
 
