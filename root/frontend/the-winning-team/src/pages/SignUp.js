@@ -1,18 +1,21 @@
 import React from 'react';
-import '../css/Login.css';
+import '../css/SignUp.css';
 
 function Login(props) {
   return (props.trigger) ? (
-        <div id="login">
+        <div id="sign-up">
             <div className="login-container">
-                <button className="close-btn" onClick={props.SetSignUpTrigger}>CLOSE</button>
-                <h1>LOGO</h1>
-                <p>Sign Up</p>
+                <button className="close-btn" 
+                    onClick={props.SetSignUpTrigger}>
+                    <img className="close-icon" src={require(`../assets/images/close_icon.jpeg`)} />
+                </button>
+                <h1 className='logo'>TextDNA</h1>
+                <p>SIGN UP</p>
                 <form className="login-form">
                     <div className="name-container">
                         <div className="names-input">
-                            <label htmlFor="firstName">First Name:</label>
-                            <input
+                            <label htmlFor="firstName">First Name<span className="red">*</span></label>
+                            <input 
                                 type="text"
                                 id="firstName"
                                 name="firstName"
@@ -20,7 +23,7 @@ function Login(props) {
                             />
                         </div>
                         <div className="names-input">
-                            <label htmlFor="lastName">Last Name:</label>
+                            <label htmlFor="lastName">Last Name<span className="red">*</span></label>
                             <input
                                 type="text"
                                 id="lastName"
@@ -29,7 +32,7 @@ function Login(props) {
                             />
                         </div>
                     </div>
-                    <label htmlFor="id">ID:</label>
+                    <label htmlFor="id">ID<span className="red">*</span></label>
                     <input
                         type="text"
                         id="id"
@@ -37,7 +40,7 @@ function Login(props) {
                         placeholder="Enter your ID"
                     />
 
-                    <label htmlFor="email">Email Address:</label>
+                    <label htmlFor="email">Email Address<span className="red">*</span></label>
                     <input
                         type="text"
                         id="email"
@@ -45,7 +48,7 @@ function Login(props) {
                         placeholder="Enter your email"
                     />
 
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">Password<span className="red">*</span></label>
                     <input
                         type="password"
                         id="password"
@@ -53,7 +56,7 @@ function Login(props) {
                         placeholder="Enter your password"
                     />
 
-                    <label htmlFor="password">Confirm Password:</label>
+                    <label htmlFor="password">Confirm Password<span className="red">*</span></label>
                     <input
                         type="password"
                         id="password"
@@ -61,7 +64,11 @@ function Login(props) {
                         placeholder="Confirm your password"
                     />
 
-                    <button type="submit">Sign Up</button>
+                    <p className='already-user-txt'>Already a user? <a className="last-word-button">LOGIN</a>.</p>
+
+                    
+                    
+                    <button className = "submit-btn" type="submit">SIGN UP</button>
                 </form>
             </div>
         </div>

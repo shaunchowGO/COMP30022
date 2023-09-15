@@ -12,8 +12,37 @@
 }
 #login .login-container {
   position: relative;
-  background: #fff;
   padding: 5rem;
+  background-color: white;
+  border-radius: 15px;
+  height: 500px;
+}
+
+#login .or {
+  text-align: center;
+}
+
+
+
+#login .new-user-text {
+  text-align: left;
+  font-size: 13px;
+}
+
+#login .google-sso-button {
+  background-color:white;
+  color: black;
+  border: 1px solid blue;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-right: 10px; /* Add margin between buttons */
+  width: 150px;
+}
+
+#login .login-to-continue {
+  text-align: center;
 }
 #login .login-container .close-btn {
   position: absolute;
@@ -23,6 +52,79 @@
   border: none;
   cursor: pointer;
 }
+
+#login .logo {
+  color: #0057FF;
+  text-align: center;
+}
+
+
+
+#login .button-container {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+#login .login-container {
+  text-align: left;
+  padding: 20px;
+}
+
+#login .forgot-password {
+  display: block;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+
+#login .underline-text {
+  text-decoration: underline;
+}
+
+#login .sign-in-btn {
+  display: block;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 310px;
+}
+
+#login .close-icon {
+  width: 25px;
+  height: 25px;
+}
+
+#login .below-or {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#login .google-img {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-top: -4px;
+}
+
+#login .SSO-img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-top: -4px;
+}
+
+
 #login .login-container .login-form {
   width: 100%;
   display: flex;
@@ -40,4 +142,9 @@
 }
 #login .login-container input {
   margin-bottom: 1rem;
+  border-radius: 5px;
+  height: 30px;
+  width: 305px;
+  border: 1px solid black;
 }/*# sourceMappingURL=Login.css.map */
+
