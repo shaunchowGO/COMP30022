@@ -12,6 +12,9 @@
   justify-content: start;
   width: 50%;
 }
+#navbar .nav-left .nav-logo {
+  text-decoration: none;
+}
 #navbar .nav-left h1 {
   font-weight: 800;
   color: #0057FF;

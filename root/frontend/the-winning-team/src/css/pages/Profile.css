@@ -1,0 +1,26 @@
+#profile {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/backgrounds/dark_blue_background.png") !important;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#profile .blue-btn {
+  background: #4B3BFF;
+}
+#profile .table-header, #profile h1 {
+  color: #4B3BFF;
+}
+#profile .table-row:nth-child(even) {
+  background: #EFF0FF;
+}
+#profile .table-content::-webkit-scrollbar-thumb {
+  background: #4B3BFF;
+  border-radius: 50px;
+}/*# sourceMappingURL=Profile.css.map */

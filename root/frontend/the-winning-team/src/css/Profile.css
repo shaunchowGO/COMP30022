@@ -1,8 +1,0 @@
-#profile {
-  display: grid;
-  grid-template-columns: 4fr 1fr;
-  grid-gap: 10%;
-  background-image: url("../assets/images/profile_background.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-}/*# sourceMappingURL=Profile.css.map */

@@ -1,7 +1,8 @@
 import React from 'react';
 import { getStudentProfile } from '../utils/api.js';
 import Footer from './Footer.js'
-import '../css/Profile.css'
+import Import from './Import.js'
+import '../css/pages/Profile.css'
 
 function StudentProfile() {
   const studentData1 = {
@@ -9,63 +10,36 @@ function StudentProfile() {
     studentNumber: 129312,
     assignmentDetails: [
       {
-      name: 'document_1.pdf',
-      group: 'assignment_group_1',
+      name: 'COMP3022_Assignment1_129312',
+      group: 'COMP30022',
       date: 'Sep 9, 2023',
       simScore: 92,
       },  
-      {
-      name: 'document_1.pdf',
-      group: 'assignment_group_1',
-      date: 'Sep 9, 2023',
-      simScore: 92,
-      }, 
-      {
-      name: 'document_1.pdf',
-      group: 'assignment_group_1',
-      date: 'Sep 9, 2023',
-      simScore: 92,
-      }, 
-      {
-      name: 'document_1.pdf',
-      group: 'assignment_group_1',
-      date: 'Sep 9, 2023',
-      simScore: 92,
-      }, 
-      {
-      name: 'document_1.pdf',
-      group: 'assignment_group_1',
-      date: 'Sep 9, 2023',
-      simScore: 92,
-      }, 
-      {
-      name: 'document_1.pdf',
-      group: 'assignment_group_1',
-      date: 'Sep 9, 2023',
-      simScore: 92,
-      }
   ],
     displayPicture: 'profile_img.jpg',
   };
 
-  const [studentData, setStudentData] = React.useState(null);
+  const [studentData, setStudentData] = React.useState(studentData1);
 
-  React.useEffect(() => {
-    getStudentProfile(1)
-    .then((response) => setStudentData(response.data))
-    .catch((error) => console.error('Error fetching student data: ', error));
-  }, []);   
+  // React.useEffect(() => {
+  //   getStudentProfile(1)
+  //   .then((response) => setStudentData(response.data))
+  //   .catch((error) => console.error('Error fetching student data: ', error));
+  // }, []);   
+
+  const [importTrigger, SetImportTrigger] = React.useState(false);
 
   return (
     <div >
       <section id="profile">
+        <Import trigger={importTrigger} SetImportTrigger={() => SetImportTrigger(!importTrigger)}/>
         <div className="profile-container">
           <div className="profile-info">
             <img src={require(`../assets/images/${studentData.displayPicture}`)} alt="Profile" />
             <div className="profile-info-right">
               <h1>{studentData.name}</h1>
               <p>Student Number: {studentData.studentNumber}</p>
-              <button className="blue-btn">+ Add Document</button>
+              <button className="blue-btn" onClick={() => SetImportTrigger(!importTrigger)}>+ Add Document</button>
             </div>
           </div>
 
@@ -88,8 +62,8 @@ function StudentProfile() {
                   <div>{assignment.simScore}%</div>
                   <div>{assignment.date}</div>
                   <div className="row-detail">
-                    <img src={require(`../assets/images/download_icon.png`)}></img>
-                    <img src={require(`../assets/images/view_icon.png`)}></img>
+                    <img src={require(`../assets/images/icons/download_icon.png`)}></img>
+                    <img src={require(`../assets/images/icons/view_icon.png`)}></img>
                   </div>
                 </div>
               ))}

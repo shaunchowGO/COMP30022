@@ -1,0 +1,29 @@
+#group {
+    background-image: url("../../assets/images/backgrounds/light_blue_background.png") !important;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    .blue-btn {
+        background: #3BA1FF;
+        &:hover {
+            background: #2772b8;
+        }
+    }
+    .table-header {
+        color: #3BA1FF;
+    }
+    .table-row {
+        &:nth-child(even) {
+            background: #EDF3FF;
+        }
+    }
+    .table-content {
+        &::-webkit-scrollbar-thumb {
+            background: #3BA1FF;
+            border-radius: 50px;
+        }
+    }
+    
+}

@@ -1,7 +1,8 @@
 import React from 'react';
-import '../css/Group.css'
+import '../css/pages/Group.css'
 import Footer from './Footer.js'
 import {Link} from 'react-router-dom';
+import AddItem from './AddItem.js'
 
 function GroupProfile() {
   const groupData = {
@@ -10,52 +11,37 @@ function GroupProfile() {
     assignments: [
       {
         name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
+        startDate: 'Aug 9, 2023',
+        dueDate: 'Sep 9, 2023',
         date: 'Aug 10, 2022',
       },
       {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
+        name: 'Sample Assignment 2',
+        startDate: 'Aug 9, 2023',
+        dueDate: 'Sep 9, 2023',
         date: 'Aug 10, 2022',
       },
       {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
-        date: 'Aug 10, 2022',
-      },
-      {
-        name: 'Sample Assignment 1',
-        status: 80,
-        score: 45,
+        name: 'Sample Assignment 3',
+        startDate: 'Aug 9, 2023',
+        dueDate: 'Sep 9, 2023',
         date: 'Aug 10, 2022',
       },
     ],
   };
 
+  const [trigger, SetTrigger] = React.useState(false);
+
   return (
     <div>
-      <section id="profile">
+      <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Assignment"}}/>
+      <section id="group">
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
                 <h1>{groupData.name}</h1>
                 <p>Subject Name: {groupData.subjectName}</p>
-                <button className="blue-btn">+ Add Document</button>
+                <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Assignments</button>
               </div>
             </div>
   
@@ -65,20 +51,19 @@ function GroupProfile() {
               </div>
               <div className="table-header">
                   <p>Assignment Name</p>
-                  <p>Score</p>
-                  <p>Submission Date</p>
+                  <p>Start Date</p>
+                  <p>Due Date</p>
                   <p>Detail</p>
               </div>
               <div className="table-content">
                 {groupData.assignments.map((assignment, index) => (
                   <div className="table-row" key={index}>
                     <div className="file-name">{assignment.name}</div>
-                    <div>{assignment.score}%</div>
-                    <div>{assignment.date}</div>
+                    <div>{assignment.startDate}</div>
+                    <div>{assignment.dueDate}</div>
                     <div className="row-detail">
-                      <img src={require(`../assets/images/download_icon.png`)}></img>
                     <Link to="/assignment">
-                      <img src={require(`../assets/images/view_icon.png`)}></img>
+                      <img src={require(`../assets/images/icons/view_icon.png`)}></img>
                     </Link>
                     </div>
                   </div>

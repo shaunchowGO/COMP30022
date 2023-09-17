@@ -10,8 +10,12 @@
     justify-content: center;
     flex-direction: column;
     z-index: 999;
-  }
-  #sign-up .login-container {
+    .blue-btn {
+        margin: 0;
+    }
+}
+
+#sign-up .login-container {
     position: relative;
     background: #fff;
     padding: 5rem;
@@ -19,8 +23,8 @@
   }
   #sign-up .login-container .close-btn {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 2.5%;
+    right: 5%;
     background: none;
     border: none;
     cursor: pointer;
@@ -45,13 +49,18 @@
   #sign-up .login-container input {
     margin-bottom: 1rem;
     height: 35px;
-    border-radius: 5px;
-    border: 1px solid black;
-  }/*# sourceMappingURL=Login.css.map */
+    border: none;
+    border-bottom: 2px solid #5991ff;
+    &:focus {
+        outline: none;
+    }
+  }
 
   #sign-up .logo {
     color: #0057FF;
     font-weight: 800;
+    font-size: 48px;
+    margin: 0;
   }
 
   #sign-up .submit-btn {
@@ -73,6 +82,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 #sign-up .already-user-txt {
@@ -83,8 +93,6 @@
 #sign-up .red{
     color: red;
 }
-
-
 
 #sign-up .close-btn {
     background-color: white;

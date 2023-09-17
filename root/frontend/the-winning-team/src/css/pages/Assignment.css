@@ -1,0 +1,24 @@
+#assignment {
+  background-image: url("../../assets/images/backgrounds/purple_background.png") !important;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 10%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#assignment .blue-btn {
+  background: #7A3BFF;
+}
+#assignment .blue-btn:hover {
+  background-color: #5e2bca;
+}
+#assignment .table-header {
+  color: #7A3BFF;
+}
+#assignment .table-row:nth-child(even) {
+  background: #E9E3FF;
+}
+#assignment .table-content::-webkit-scrollbar-thumb {
+  background: #7A3BFF;
+  border-radius: 50px;
+}/*# sourceMappingURL=Assignment.css.map */
