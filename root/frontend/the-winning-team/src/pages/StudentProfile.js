@@ -19,13 +19,13 @@ function StudentProfile() {
     displayPicture: 'profile_img.jpg',
   };
 
-  const [studentData, setStudentData] = React.useState(studentData1);
+  const [studentData, setStudentData] = React.useState(null);
 
-  // React.useEffect(() => {
-  //   getStudentProfile(1)
-  //   .then((response) => setStudentData(response.data))
-  //   .catch((error) => console.error('Error fetching student data: ', error));
-  // }, []);   
+  React.useEffect(() => {
+    getStudentProfile(1)
+    .then((response) => setStudentData(response.data))
+    .catch((error) => console.error('Error fetching student data: ', error));
+  }, []);   
 
   const [importTrigger, SetImportTrigger] = React.useState(false);
 

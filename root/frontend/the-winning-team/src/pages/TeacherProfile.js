@@ -16,13 +16,13 @@ function TeacherProfile() {
   ],
     displayPicture: 'eduardo.jpeg',
   };
-  const [teacherData, setTeacherData] = useState(teacherData1);
+  const [teacherData, setTeacherData] = useState(null);
 
-  // useEffect(() => {
-  //   getTeacherProfile(1)
-  //   .then((response) => setTeacherData(response.data))
-  //   .catch((error) => console.error('Error fetching teacher data: ', error));
-  // }, []);
+  useEffect(() => {
+    getTeacherProfile(1)
+    .then((response) => setTeacherData(response.data))
+    .catch((error) => console.error('Error fetching teacher data: ', error));
+  }, []);
 
   const [trigger, SetTrigger] = React.useState(false);
   return (
