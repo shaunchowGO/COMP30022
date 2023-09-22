@@ -1,0 +1,30 @@
+#profile {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../../assets/images/backgrounds/dark_blue_background.png") !important;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    .blue-btn {
+        background: #4B3BFF;
+    }
+    .table-header, h1 {
+        color: #4B3BFF;
+    }
+    .table-row {
+        &:nth-child(even) {
+            background: #EFF0FF;
+        }
+    }
+    .table-content {
+        &::-webkit-scrollbar-thumb {
+            background: #4B3BFF;
+            border-radius: 50px;
+        }
+    }
+}

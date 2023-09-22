@@ -1,16 +1,16 @@
 import React from 'react';
-import '../css/SignUp.css';
+import '../css/popups/SignUp.css';
 
-function Login(props) {
+function SignUp(props) {
   return (props.trigger) ? (
         <div id="sign-up">
             <div className="login-container">
                 <button className="close-btn" 
                     onClick={props.SetSignUpTrigger}>
-                    <img className="close-icon" src={require(`../assets/images/close_icon.jpeg`)} />
+                    <img className="close-icon" src={require(`../assets/images/icons/close_icon.jpeg`)} />
                 </button>
                 <h1 className='logo'>TextDNA</h1>
-                <p>SIGN UP</p>
+                <p>Create Your Profile</p>
                 <form className="login-form">
                     <div className="name-container">
                         <div className="names-input">
@@ -32,7 +32,7 @@ function Login(props) {
                             />
                         </div>
                     </div>
-                    <label htmlFor="id">ID<span className="red">*</span></label>
+                    <label htmlFor="id">Academin ID<span className="red">*</span></label>
                     <input
                         type="text"
                         id="id"
@@ -65,14 +65,11 @@ function Login(props) {
                     />
 
                     <p className='already-user-txt'>Already a user? <a className="last-word-button">LOGIN</a>.</p>
-
-                    
-                    
-                    <button className = "submit-btn" type="submit">SIGN UP</button>
+                    <button className = "blue-btn" type="submit">SIGN UP</button>
                 </form>
             </div>
         </div>
     ) : "";
 }
 
-export default Login;
+export default SignUp;

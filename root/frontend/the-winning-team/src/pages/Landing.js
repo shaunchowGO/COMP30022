@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Landing.css'
+import '../css/pages/Landing.css'
 import Footer from './Footer'
 
 function Landing() {

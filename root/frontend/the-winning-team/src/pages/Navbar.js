@@ -12,9 +12,9 @@ function Navbar() {
       <Login trigger={LogInTrigger} SetLogInTrigger={() => SetLogInTrigger(!LogInTrigger)}/>
       <SignUp trigger={SignUpTrigger} SetSignUpTrigger={() => SetSignUpTrigger(!SignUpTrigger)}/>
         <div className="nav-left">
-          <h1>TextDNA</h1>
+          <Link to="/" className="nav-logo"><h1>TextDNA</h1></Link>
           <ul className="navs">
-              <Link to="/student" className="nav-item">PROFILE</Link>
+              <Link to="/teacher" className="nav-item">PROFILE</Link>
               <Link to="/group" className="nav-item">GROUP</Link>
               <Link to="/" className="nav-item">HELP</Link>
           </ul>

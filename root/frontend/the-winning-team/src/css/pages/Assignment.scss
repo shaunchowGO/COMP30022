@@ -1,0 +1,29 @@
+#assignment {
+    background-image: url("../../assets/images/backgrounds/purple_background.png") !important;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    .blue-btn {
+        background: #7A3BFF;
+        &:hover {
+            background-color: #5e2bca;
+        }
+    }
+    .table-header {
+        color: #7A3BFF;
+    }
+    .table-row {
+        &:nth-child(even) {
+            background: #E9E3FF;
+        }
+    }
+    .table-content {
+        &::-webkit-scrollbar-thumb {
+            background: #7A3BFF;
+            border-radius: 50px;
+        }
+    }
+    
+}
