@@ -16,6 +16,7 @@
   background-color: white;
   border-radius: 15px;
   height: 500px;
+  z-index: 999;
 }
 
 #login .or {
