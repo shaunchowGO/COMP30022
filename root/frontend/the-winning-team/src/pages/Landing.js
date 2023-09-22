@@ -9,7 +9,7 @@ function Landing() {
         <div className="landing-main">
           <div className="landing-main-left"> 
             <h1 className = "main-header"> A <span class="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
-            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.. </p>
             <button className="get-started-button">GET STARTED</button>
           </div>
           <div className="landing-main-right">
@@ -43,14 +43,14 @@ function Landing() {
             <img src={require(`../assets/images/landing1.png`)} alt="instruction-image"></img>
           </div>
   
-          <div className = "text">
+          <div className = "text-right text">
           <h1 className = "text-header"><span class="bold-word">Create</span> your profile!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
         </div>
         
         <div className = "instructions">
-            <div className = "text">
+            <div className = "text-left text">
             <h1 className = "text-header"><span class="bold-word">Upload</span> student profiles!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
@@ -65,7 +65,7 @@ function Landing() {
             <img src={require(`../assets/images/landing3.png`)} id="instruction-image"></img>
           </div>
   
-          <div className = "text">
+          <div className = "text-right text">
           <h1 className = "text-header"><span class="bold-word">Get</span> a score back!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>

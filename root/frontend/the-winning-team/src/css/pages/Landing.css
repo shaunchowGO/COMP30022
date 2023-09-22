@@ -16,7 +16,7 @@
 }
 
 #landing .main-header{
-  font-size: 1px;
+  font-size: 10px;
 }
 
 #landing .landing-main .landing-main-left  {
@@ -82,10 +82,11 @@
 }
 
 #landing .instructions {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr;
   place-items: center;
   padding: 5rem 10rem;
+  
 }
 
 #landing .instructions .text {
@@ -101,21 +102,20 @@
   font-size: 32px;
 }
 
-/* bold and highlight first word in header */
 #landing  .bold-word{
   color: #0057FF;
   font-weight: bold;
 }
 
 .instruction-left img{
-  height: 275px; /* Set your desired height here */
+  height: 275px; 
 }
 .instruction-right img{
-  height: 275px; /* Set your desired height here */
+  height: 275px; 
 }
 
 .instruction-left1 img{
-  height: 315px; /* Set your desired height here */
+  height: 315px; 
 }
 
 .banner-bold-black {
@@ -148,6 +148,13 @@
   z-index: 0;
 }
 
+.text-right {
+  margin-left: 10rem;
+}
+
+.text-left {
+  margin-right: 10rem;
+}
 
 
 
