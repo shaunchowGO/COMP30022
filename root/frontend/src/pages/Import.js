@@ -70,7 +70,7 @@ function Import(props) {
 
             <div className="import-btn">
               <button className="discard-btn blue-btn" onClick={() => setFiles(null)}>Discard</button>
-              <button className="blue-btn" onClick={() => handleImport()}>Import</button>
+              <button className="blue-btn" onClick={() => handleImport(event)}>Import</button>
             </div>
           </div>
         </div>

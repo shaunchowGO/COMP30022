@@ -4,10 +4,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-if __name__ == "__main__":
-    app.run(debug=True)  
-
-
 @app.route('/api/test', methods=['GET'])
 def test_endpoint():
     return 'Hello from the local backend!'
@@ -24,7 +20,11 @@ def upload_file():
 
     if file:
         # call script here
+        filename = file.filename
 
-        return "File uploaded successfully", 200
+        return f"File uploaded successfully: {filename}", 200
 
     return "Something went wrong", 500
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)  
