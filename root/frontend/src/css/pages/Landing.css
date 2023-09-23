@@ -23,7 +23,7 @@
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   padding: 0 10rem;
   height: 100%;

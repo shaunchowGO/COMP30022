@@ -16,6 +16,8 @@ function Import(props) {
     console.log(files);
   }
 
+  /* eslint-disable no-restricted-globals */
+
   const handleImport = async (event) => {
     event.preventDefault();
 

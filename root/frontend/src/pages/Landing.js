@@ -8,7 +8,7 @@ function Landing() {
       <section id="landing">
         <div className="landing-main">
           <div className="landing-main-left"> 
-            <h1 className = "main-header"> A <span class="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
+            <h1 className = "main-header"> A <span className="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
             <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             <button className="get-started-button">GET STARTED</button>
           </div>
@@ -18,23 +18,23 @@ function Landing() {
             
         </div>
 
-        <div class="image-container">
+        <div className="image-container">
           <img src={require(`../assets/images/right-banner.png`)} alt="right-banner" className='right-banner'/>
           <img src={require(`../assets/images/left-banner.png`)} alt="left-banner" className='left-banner'/>
-          <div class="image-box">
-            <img src={require(`../assets/images/used-by.png`)} alt="Image-1" class="image"/>
-            <p class="image-text"><span class="banner-bold-white">Used by</span> <span class="banner-bold-black">100+ </span> 
-            <span class="banner-bold-white">institutes</span></p>
+          <div className="image-box">
+            <img src={require(`../assets/images/used-by.png`)} alt="Image-1" className="image"/>
+            <p className="image-text"><span className="banner-bold-white">Used by</span> <span className="banner-bold-black">100+ </span> 
+            <span className="banner-bold-white">institutes</span></p>
           </div>
-          <div class="image-box">
-            <img src={require(`../assets/images/registered.png`)} alt="Image 2" class="image"/>
-            <p class="image-text"><span class="banner-bold-black">2000+ </span> 
-            <span class="banner-bold-white">registered profiles</span></p>
+          <div className="image-box">
+            <img src={require(`../assets/images/registered.png`)} alt="Image 2" className="image"/>
+            <p className="image-text"><span className="banner-bold-black">2000+ </span> 
+            <span className="banner-bold-white">registered profiles</span></p>
           </div>
-          <div class="image-box">
-            <img src={require(`../assets/images/attributions.png`)} alt="Image 3" class="image"/>
-            <p class="image-text"><span class="banner-bold-white">Get</span> <span class="banner-bold-black">fast</span> <span class="banner-bold-white">and</span> 
-            <span class="banner-bold-black"> reliable</span> <span class="banner-bold-white">attribution</span></p>
+          <div className="image-box">
+            <img src={require(`../assets/images/attributions.png`)} alt="Image 3" className="image"/>
+            <p className="image-text"><span className="banner-bold-white">Get</span> <span className="banner-bold-black">fast</span> <span className="banner-bold-white">and</span> 
+            <span className="banner-bold-black"> reliable</span> <span className="banner-bold-white">attribution</span></p>
           </div>
         </div>
 
@@ -44,14 +44,14 @@ function Landing() {
           </div>
   
           <div className = "text">
-          <h1 className = "text-header"><span class="bold-word">Create</span> your profile!</h1>
+          <h1 className = "text-header"><span className="bold-word">Create</span> your profile!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
         </div>
         
         <div className = "instructions">
             <div className = "text">
-            <h1 className = "text-header"><span class="bold-word">Upload</span> student profiles!</h1>
+            <h1 className = "text-header"><span className="bold-word">Upload</span> student profiles!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
           
@@ -66,7 +66,7 @@ function Landing() {
           </div>
   
           <div className = "text">
-          <h1 className = "text-header"><span class="bold-word">Get</span> a score back!</h1>
+          <h1 className = "text-header"><span className="bold-word">Get</span> a score back!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
           </div>
         </div>
