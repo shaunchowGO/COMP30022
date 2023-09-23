@@ -5,7 +5,7 @@ import Import from './Import.js'
 import '../css/pages/Profile.css'
 
 function StudentProfile() {
-  const studentData1 = {
+  const studentData = {
     name: 'Rohit Ambakkat',
     studentNumber: 129312,
     assignmentDetails: [
@@ -19,13 +19,6 @@ function StudentProfile() {
     displayPicture: 'profile_img.jpg',
   };
 
-  const [studentData, setStudentData] = React.useState(null);
-
-  React.useEffect(() => {
-    getStudentProfile(1)
-    .then((response) => setStudentData(response.data))
-    .catch((error) => console.error('Error fetching student data: ', error));
-  }, []);   
 
   const [importTrigger, SetImportTrigger] = React.useState(false);
 

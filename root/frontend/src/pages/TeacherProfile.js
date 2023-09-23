@@ -4,7 +4,7 @@ import Footer from './Footer.js'
 import AddItem from './AddItem.js'
 
 function TeacherProfile() {
-  const teacherData1 = {
+  const teacherData = {
     name: 'Eduardo Riveria',
     id: 129312,
     classroomDetails: [
@@ -16,13 +16,7 @@ function TeacherProfile() {
   ],
     displayPicture: 'eduardo.jpeg',
   };
-  const [teacherData, setTeacherData] = useState(null);
 
-  useEffect(() => {
-    getTeacherProfile(1)
-    .then((response) => setTeacherData(response.data))
-    .catch((error) => console.error('Error fetching teacher data: ', error));
-  }, []);
 
   const [trigger, SetTrigger] = React.useState(false);
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { uploadFile } from '../utils/api';
 import '../css/popups/Import.css';
 
 function Import(props) {
@@ -15,8 +16,21 @@ function Import(props) {
     console.log(files);
   }
 
-  const handleImport = (event) => {
-    
+  const handleImport = async (event) => {
+    event.preventDefault();
+
+    if (files) {
+      try {
+        const response = await uploadFile(files[0]);
+
+        console.log('Upload success:', response);
+
+        setFiles(null);
+      } catch (error) {
+
+        console.error('Upload failed:', error);
+      }
+    }
   }
 
   return (props.trigger) ? (
