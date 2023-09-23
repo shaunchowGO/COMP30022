@@ -7,12 +7,18 @@
   padding: 0;
 }
 #landing .landing-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  background-color:white;
-  height: 50vh;
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+#landing .main-image {
+  width: 100%;
+}
+
+#landing .main-header{
+  font-size: 2vw !important;
 }
 
 #landing .main-header{
@@ -138,14 +144,6 @@
   position: absolute;
   left: 0; 
   top: 40px;
-}
-
-.main-image {
-  height: 350px;
-  right: 175px;
-  bottom: 300px;
-  position: absolute;
-  z-index: 0;
 }
 
 .text-right {
