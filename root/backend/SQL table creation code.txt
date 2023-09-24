@@ -1,40 +1,48 @@
-CREATE TABLE Student(
+CREATE TABLE [dbo].[Student](
     ID int,
     StudentName varchar(255),
-    Email varchar(255),
+    Email varchar(255)
 );
 
-CREATE TABLE Classroom (
+CREATE TABLE [dbo].[Classroom] (
     StudentID varchar(255),
-    SubjectID varchar(255),
+    SubjectID varchar(255)
 );
 
-CREATE TABLE Subject (
+CREATE TABLE [dbo].[Subject] (
     ID int,
-    SubjectName varchar(255),
+    SubjectName varchar(255)
 );
 
-CREATE TABLE Assignment (
+CREATE TABLE [dbo].[Assignment] (
     AssignmentID varchar(255),
     SubjectID varchar(255),
     DueDate DATE,
-    AssignmentLength int,
+    AssignmentLength int
 );
 
-CREATE TABLE Submissions (
+CREATE TABLE [dbo].[Submissions] (
     AssignmentID varchar(255),
     StudentID varchar(255),
-    Submission int,
+    Submission int
 );
 
-CREATE TABLE Academic (
+CREATE TABLE [dbo].[Academic] (
     Id varchar(255),
-    AcademicName varchar(255),
+    AcademicName varchar(255)
 );
 
-CREATE TABLE  Lecturers (
+CREATE TABLE  [dbo].[Lecturers] (
     SubjectID varchar(255),
-    TeacherID varchar(255),
+    TeacherID varchar(255)
 );
 
-Code used to generate all the tables and according fields that will be used in our SQL database
+CREATE TABLE  [dbo].[Lecturers] (
+    SubjectID varchar(255),
+    TeacherID varchar(255)
+);
+
+CREATE TABLE  [dbo].[logins] (
+    [Username] varchar(255),
+    [Password] varchar(255)
+);
