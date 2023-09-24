@@ -1,0 +1,3 @@
+# Run Windows PowerShell ISE as administrator, copy-paste this line, and choose "Yes-to-all"
+
+Set-ExecutionPolicy RemoteSigned
