@@ -1,3 +1,8 @@
+# Note that path needs to have double "\"
+
+powershell_filepath = "C:\\Users\\youni\\Desktop\\CapStoneProject\\PowerShell\\Query_SQL_SPrincipal.ps1"
+query = "SELECT * FROM [dbo].[submission]"
+
 def run_ps_script(filepath, query= "SELECT * FROM [dbo].[submission]"):
     
     # Note filepath has to "\\" or "/" but not "\"
@@ -30,5 +35,5 @@ def clean_output(queryResult):
             
     return columndict
 
-r = run_ps_script("C:\\Users\\youni\\Desktop\\CapStoneProject\\PowerShell\\Query_SQL_SPrincipal.ps1")
+r = run_ps_script(powershell_filepath, query)
 print(clean_output(r))
