@@ -14,14 +14,21 @@
 #sign-up .blue-btn {
   margin: 0;
 }
-
 #sign-up .login-container {
   position: relative;
   background: #fff;
   padding: 5rem;
   border-radius: 15px;
 }
-
+#sign-up .login-container .logo {
+  color: #0057FF;
+  font-weight: 800;
+  font-size: 48px;
+  margin-bottom: 1rem;
+}
+#sign-up .login-container p {
+  margin-bottom: 1rem;
+}
 #sign-up .login-container .close-btn {
   position: absolute;
   top: 2.5%;
@@ -30,84 +37,49 @@
   border: none;
   cursor: pointer;
 }
-
+#sign-up .login-container .close-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}
 #sign-up .login-container .login-form {
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-
+#sign-up .login-container .login-form label {
+  text-align: left;
+}
+#sign-up .login-container .login-form label .required-field {
+  color: red;
+}
 #sign-up .login-container .login-form .name-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 }
-
 #sign-up .login-container .login-form .name-container .names-input {
   display: flex;
   flex-direction: column;
 }
-
-#sign-up .login-container label {
-  text-align: left;
-}
-
-#sign-up .login-container input {
+#sign-up .login-container .login-form .name-container .names-input input {
   margin-bottom: 1rem;
   height: 35px;
   border: none;
   border-bottom: 2px solid #5991ff;
 }
-#sign-up .login-container input:focus {
+#sign-up .login-container .login-form .name-container .names-input input:focus {
   outline: none;
 }
-
-#sign-up .logo {
-  color: #0057FF;
-  font-weight: 800;
-  font-size: 48px;
-  margin: 0;
+#sign-up .already-user-txt {
+  text-align: left;
+  font-size: 12px !important;
+  margin-top: 1rem;
 }
-
-#sign-up .submit-btn {
-  height: 30px;
-  background-color: #0057FF;
-  border: #0057FF;
-  border-radius: 5px;
-  color: white;
-}
-
-#sign-up .already-user-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}
-
-#sign-up .last-word-button {
+#sign-up .already-user-txt .last-word-button {
   color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: underline;
-}
-
-#sign-up .already-user-txt {
-  text-align: left;
-  font-size: smaller;
-}
-
-#sign-up .red {
-  color: red;
-}
-
-#sign-up .close-btn {
-  background-color: white;
-  margin: 0;
-  padding: 0;
-}
-
-#sign-up .close-icon {
-  width: 25px;
-  height: 25px;
-  border-radius: 15px;
 }/*# sourceMappingURL=SignUp.css.map */

@@ -10,7 +10,7 @@ function Login(props) {
                     <img className="close-icon" src={require(`../assets/images/icons/close_icon.jpeg`)} /> 
                 </button>
                 <h1 className='logo'>TextDNA</h1>
-                <p className='login-to-continue'>Login To Continue</p>
+                <p>Login To Continue</p>
                 <form className="login-form">
                     <label htmlFor="email">Email Address</label>
                     <input

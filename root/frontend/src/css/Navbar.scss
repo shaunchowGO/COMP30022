@@ -54,6 +54,9 @@
         align-items: center;
         justify-content: flex-end;
         .btn-container {
+            p {
+                font-size: 0.7vw !important;
+            }
             button {
                 background: none;
                 border: none;

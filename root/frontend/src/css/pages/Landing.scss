@@ -1,90 +1,104 @@
+$section-padding: 5rem 20vw; 
+
 #landing {
-    background: #f5f5f5;
+  background: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  .landing-main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-  }
-  #landing .landing-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-    background-color:#0057FF;
-    height: 50vh;
-  }
-  
-  #landing .landing-main .landing-main-left  {
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    padding: 0 10rem;
-    height: 100%;
-  }
-  
-  #landing .main-text {
-    color: white;
-  }
-  
-  #landing .landing-main .landing-main-left .main-header{
-    color: white;
-    font-size: 48px;
-    margin: 0;
-  }
-  
-  #landing .landing-main .get-started-button {
-    background-color: black;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    padding: 1rem;
-    
-  }
-  
-  #landing .instructions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items: center;
-    padding: 5rem 10rem;
-  }
-  
-  #landing .instructions .text {
-    text-align: left;
-  }
-  
-  #landing .instructions:nth-child(odd) {
-    background: #0057FF;
-    color: #fff;
-  }
-  
-  #landing .instructions .text-header {
-    font-size: 32px;
-  }
-  
-  /* bold and highlight first word in header */
-  #landing .instructions:nth-child(even) .bold-word{
-    color: #0057FF;
-    font-weight: bold;
-  }
-  
-  #landing .FAQ-description {
-    margin-top: 5rem;
-    max-width: 400px;
-  }
-  
-  #landing .FAQ-description .faq-header {
-    color:#0057FF;
-    font-size: 32px;
-    margin: 0;
-  }
-  
-  
-  #landing .FAQs {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 5rem 10rem;
+    align-items: center;
+    background-color: #fff;
+    padding: $section-padding;
+    .landing-main-left  {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      .main-header{
+        font-size: 2vw !important;
+        margin: 0;
+        .bold-word {
+          color: #0057FF;
+        }
+      }
+      .main-text {
+        font-size: 0.9vw !important;
+        margin: 2rem 0;
+      }
+      .get-started-button {
+        background: #000;
+        color: #fff;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+    .landing-main-right {
+      .main-image {
+        width: 30vw;
+      }
+    }
   }
+  .landing-stats {
+    background-image: url("../../assets/images/backgrounds/stats_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 0;
+    .landing-stats-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .image-box {
+        font-weight: bold;
+        color: #fff;
+        width: 20%;
+        font-size: 18px;
+        .image {
+          width: 100%;
+        }
+        &:nth-child(2) {
+          padding-top: 30px;
+        }
+        span {
+          color: #000;
+        }
+      }
+    }
+  }
+  .instructions-container {
+    padding: $section-padding;
+    background: #fff;
+    .instructions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1rem 0;
+      .text {
+        text-align: left;
+        width: 50%;
+        span {
+          color: #0057FF;
+          font-weight: bold;
+        }
+        h1 {
+          font-weight: 500;
+        }
+      }
+      img {
+        position: relative;
+        width: 40%;
+      }
+    }
+  }
+}

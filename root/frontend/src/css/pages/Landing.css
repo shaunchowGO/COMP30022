@@ -7,150 +7,94 @@
   padding: 0;
 }
 #landing .landing-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  background-color:white;
-  height: 50vh;
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 5rem 20vw;
 }
-
-#landing .main-header{
-  font-size: 1px;
-}
-
-#landing .landing-main .landing-main-left  {
+#landing .landing-main .landing-main-left {
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: start;
   justify-content: center;
-  padding: 0 10rem;
-  height: 100%;
 }
-
-#landing .main-text {
-  color: black;
-}
-
-#landing .landing-main .landing-main-left .main-header{
-  color: black;
-  font-size: 35px;
+#landing .landing-main .landing-main-left .main-header {
+  font-size: 2vw !important;
   margin: 0;
 }
-
-#landing .landing-main .get-started-button {
-  background-color: black;
-  color: white;
-  font-weight: bold;
+#landing .landing-main .landing-main-left .main-header .bold-word {
+  color: #0057FF;
+}
+#landing .landing-main .landing-main-left .main-text {
+  font-size: 0.9vw !important;
+  margin: 2rem 0;
+}
+#landing .landing-main .landing-main-left .get-started-button {
+  background: #000;
+  color: #fff;
+  padding: 0.5rem;
   border: none;
   border-radius: 5px;
-  padding: 1rem;
-  
+  font-weight: bold;
+  cursor: pointer;
 }
-
-.image-container {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
+#landing .landing-main .landing-main-right .main-image {
+  width: 30vw;
+}
+#landing .landing-stats {
+  background-image: url("../../assets/images/backgrounds/stats_background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   width: 100%;
-  background-color: #0057FF;
-  height: 250px;
-  position: relative;
-  z-index: 0;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 0;
 }
-
-.image-box {
-  text-align: center; 
-  margin: 0 55px; 
+#landing .landing-stats .landing-stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-#landing instructions .instruction-left .instruction-image { 
-  width: 10px;
+#landing .landing-stats .landing-stats-container .image-box {
+  font-weight: bold;
+  color: #fff;
+  width: 20%;
+  font-size: 18px;
 }
-
-
-.image {
-  width: 90px; 
-  height: 90px;  
+#landing .landing-stats .landing-stats-container .image-box .image {
+  width: 100%;
 }
-
-.image-text {
-  margin-top: 10px; 
-  width: 80%;
-  margin: 0 auto;
+#landing .landing-stats .landing-stats-container .image-box:nth-child(2) {
+  padding-top: 30px;
 }
-
-#landing .instructions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  padding: 5rem 10rem;
+#landing .landing-stats .landing-stats-container .image-box span {
+  color: #000;
 }
-
-#landing .instructions .text {
+#landing .instructions-container {
+  padding: 5rem 20vw;
+  background: #fff;
+}
+#landing .instructions-container .instructions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+#landing .instructions-container .instructions .text {
   text-align: left;
+  width: 50%;
 }
-
-#landing .instructions:nth-child(odd) {
-  background: white;
-  color: black;
-}
-
-#landing .instructions .text-header {
-  font-size: 32px;
-}
-
-/* bold and highlight first word in header */
-#landing  .bold-word{
+#landing .instructions-container .instructions .text span {
   color: #0057FF;
   font-weight: bold;
 }
-
-.instruction-left img{
-  height: 275px; /* Set your desired height here */
+#landing .instructions-container .instructions .text h1 {
+  font-weight: 500;
 }
-.instruction-right img{
-  height: 275px; /* Set your desired height here */
-}
-
-.instruction-left1 img{
-  height: 315px; /* Set your desired height here */
-}
-
-.banner-bold-black {
-  color: black;
-  font-weight: bold;
-}
-
-.banner-bold-white {
-  color: white;
-  font-weight: bold;
-}
-
-.right-banner {
-  position: absolute;
-  right: 0; 
-  bottom: 40px;
-}
-
-.left-banner {
-  position: absolute;
-  left: 0; 
-  top: 40px;
-}
-
-.main-image {
-  height: 350px;
-  right: 175px;
-  bottom: 300px;
-  position: absolute;
-  z-index: 0;
-}
-
-
-
-
-  
-
-
+#landing .instructions-container .instructions img {
+  position: relative;
+  width: 40%;
+}/*# sourceMappingURL=Landing.css.map */

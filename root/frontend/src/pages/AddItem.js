@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import '../css/popups/AddItem.css';
 
 function AddItem(props) {
-    useEffect(() => {
-        const backendUrl = 'http://localhost:5000/api/test';
-    
-        axios.get(backendUrl)
-          .then(response => {
-            console.log('Backend Response:', response.data);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-      }, []);
+    // useEffect(() => {
+    //     const backendUrl = 'http://localhost:5000/api/test';
+
+    //     axios.get(backendUrl)
+    //       .then(response => {
+    //         console.log('Backend Response:', response.data);
+    //       })
+    //       .catch(error => {
+    //         console.error('Error:', error);
+    //       });
+    //   }, []);
 
 
 

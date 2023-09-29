@@ -54,6 +54,7 @@ function TeacherProfile() {
                   <div className="row-detail">
                     {/* <img src={require(`../assets/images/icons/download_icon.png`)}></img> */}
                     <img src={require(`../assets/images/icons/view_icon.png`)}></img>
+                    <img src={require(`../assets/images/icons/bin_icon.png`)}></img>
                   </div>
                 </div>
               ))}
@@ -62,26 +63,26 @@ function TeacherProfile() {
         </div>
 
         <div className="profile-dashboard">
-          <h1>Average Score</h1>
-            <img src={require(`../assets/images/graph.png`)}></img>
-            <div className="dashboard-info">
-              <div className="stats">
-                <h1>6</h1>
-                <p>Total Documents</p>
-              </div>
-              <div className="stats">
-                <h1>4</h1>
-                <p>High Similarities</p>
-              </div>
-              <div className="stats">
-                <h1>3</h1>
-                <p>Late Submissions</p>
-              </div>
-              <div className="stats">
-                <h1>0</h1>
-                <p>Original Texts</p>
-              </div>
+          <h2>Dashboard</h2>
+          <img src={require(`../assets/images/graph.png`)}></img>
+          <div className="dashboard-info">
+            <div className="stats">
+              <h1>6</h1>
+              <p>Total Documents</p>
             </div>
+            <div className="stats">
+              <h1>4</h1>
+              <p>High Similarities</p>
+            </div>
+            <div className="stats">
+              <h1>3</h1>
+              <p>Late Submissions</p>
+            </div>
+            <div className="stats">
+              <h1>0</h1>
+              <p>Original Texts</p>
+            </div>
+          </div>
         </div>
       </section>
       <Footer/>

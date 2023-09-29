@@ -5,16 +5,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-
 nav {
-  padding: 0 10rem;
+  padding: 1.5rem 10rem;
 }
 
 section {
   padding: 5rem 10rem;
+}
+
+h1 {
+  font-size: 2vw !important;
+  margin: 0;
+}
+
+p {
+  font-size: 0.9vw !important;
+  margin: 0;
 }
 
 .blue-btn {
@@ -28,7 +34,6 @@ section {
   transition: all 0.2s ease-in;
   margin-left: 1.5rem;
 }
-
 .blue-btn:hover {
   background: #0b4ed5;
 }
@@ -80,8 +85,8 @@ input:focus {
   margin: 0;
 }
 .profile-container .table .search-container input {
-  width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 0rem 0.25rem 1rem;
+  width: 98%;
   border-radius: 50px;
   border: 1px solid #d9d9d9;
 }
@@ -148,13 +153,9 @@ input:focus {
   grid-template-columns: 1fr 1fr;
   border-top: 1px solid #D9D9D9;
   grid-gap: 1rem;
-  padding: 3rem 0 3rem 0;
-}
-.profile-dashboard .dashboard-info h1 {
-  margin: 0;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 .profile-dashboard .dashboard-info p {
-  font-size: 12px;
+  font-size: 0.7vw !important;
   margin: 0;
 }/*# sourceMappingURL=index.css.map */

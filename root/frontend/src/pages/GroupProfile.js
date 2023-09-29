@@ -65,6 +65,7 @@ function GroupProfile() {
                     <Link to="/assignment">
                       <img src={require(`../assets/images/icons/view_icon.png`)}></img>
                     </Link>
+                    <img src={require(`../assets/images/icons/bin_icon.png`)}></img>
                     </div>
                   </div>
                 ))}

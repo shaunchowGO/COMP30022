@@ -14,7 +14,7 @@ function SignUp(props) {
                 <form className="login-form">
                     <div className="name-container">
                         <div className="names-input">
-                            <label htmlFor="firstName">First Name<span className="red">*</span></label>
+                            <label htmlFor="firstName">First Name<span className="required-field">*</span></label>
                             <input 
                                 type="text"
                                 id="firstName"
@@ -23,7 +23,7 @@ function SignUp(props) {
                             />
                         </div>
                         <div className="names-input">
-                            <label htmlFor="lastName">Last Name<span className="red">*</span></label>
+                            <label htmlFor="lastName">Last Name<span className="required-field">*</span></label>
                             <input
                                 type="text"
                                 id="lastName"
@@ -32,7 +32,7 @@ function SignUp(props) {
                             />
                         </div>
                     </div>
-                    <label htmlFor="id">Academin ID<span className="red">*</span></label>
+                    <label htmlFor="id">Academin ID<span className="required-field">*</span></label>
                     <input
                         type="text"
                         id="id"
@@ -40,7 +40,7 @@ function SignUp(props) {
                         placeholder="Enter your ID"
                     />
 
-                    <label htmlFor="email">Email Address<span className="red">*</span></label>
+                    <label htmlFor="email">Email Address<span className="required-field">*</span></label>
                     <input
                         type="text"
                         id="email"
@@ -48,7 +48,7 @@ function SignUp(props) {
                         placeholder="Enter your email"
                     />
 
-                    <label htmlFor="password">Password<span className="red">*</span></label>
+                    <label htmlFor="password">Password<span className="required-field">*</span></label>
                     <input
                         type="password"
                         id="password"
@@ -56,7 +56,7 @@ function SignUp(props) {
                         placeholder="Enter your password"
                     />
 
-                    <label htmlFor="password">Confirm Password<span className="red">*</span></label>
+                    <label htmlFor="password">Confirm Password<span className="required-field">*</span></label>
                     <input
                         type="password"
                         id="password"
