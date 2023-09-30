@@ -45,7 +45,7 @@ function StudentProfile() {
                 <p>Subject</p>
                 <p>Score</p>
                 <p>Submission Date</p>
-                <p>Detail</p>
+                <p>Details</p>
             </div>
             <div className="table-content">
               {studentData.assignmentDetails.map((assignment, index) => (

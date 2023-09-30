@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../css/pages/Teacher.css'
 import Footer from './Footer.js'
 import AddItem from './AddItem.js'
+import { getTeacherProfile } from '../utils/api';
 
 function TeacherProfile() {
   const teacherData = {
@@ -16,6 +17,16 @@ function TeacherProfile() {
   ],
     displayPicture: 'eduardo.jpeg',
   };
+
+  const [teacherData1, setTeacherData] = useState(null);
+  useEffect(() => {
+    async function retrieveTeacherInfo(){
+      const data = await getTeacherProfile();
+      setTeacherData(data);
+      
+    }
+    retrieveTeacherInfo();
+  }, []);
 
 
   const [trigger, SetTrigger] = React.useState(false);
