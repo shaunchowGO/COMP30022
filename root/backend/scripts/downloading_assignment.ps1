@@ -3,12 +3,11 @@ param (
     $sourceResourceGroup = "rg-capstone-project" ,
     $sourceAccountName = "storage1itproject",
     $sourceFileSystem = "test",
-    $sourceFilePath = ""
-)
-
-# Local directories
-$downloadDirectory = "C:\Users\youni\Desktop\CapStoneProject\PowerShell\downloads\"  # Where Excel files are downloaded to
-$trimLocalDirectory = "C:\Users\youni\Desktop\CapStoneProject\PowerShell\downloads\fixed\"  # Where CSV files are uploaded from
+    $subjectName = "Arts",
+	$studentID = "11111",
+	$assignmentID = "200",
+	$downloadfilePath = ""
+	)
 
 # Log-in to the cloud
 $appID = "44faa1af-7b88-4ba9-a672-20b8081a0692"
@@ -24,5 +23,7 @@ Connect-AzAccount -ServicePrincipal -TenantId $tenantID -Credential $Credential 
 select-azsubscription -subscriptionid $sourceSubscriptionID | out-null
 Set-AzCurrentStorageAccount -ResourceGroupName $sourceResourceGroup -AccountName $sourceAccountName | out-null
 
-new-azdatalakegen2item -FileSystem $sourceFileSystem -path $sourceFilePath -Directory | out-null
+$sourceFilePath = $subjectName + "/" + $studentID  + "/" + $assignmentID + ".txt"
+
+get-azdatalakegen2itemcontent -FileSystem $sourceFileSystem -path $sourceFilePath -destination $downloadfilePath -Force
 
