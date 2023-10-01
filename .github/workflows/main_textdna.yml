@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'textDNA'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D4F543704EB24E5AAF006516E6BEAA4B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_796550E611E148789AE0B808EAC5BBDA }}
