@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/pages/Group.css'
 import Footer from './Footer.js'
 import {Link} from 'react-router-dom';
 import AddItem from './AddItem.js'
+import {getAssignmentInfo} from '../utils/api'
 
 function GroupProfile() {
   const groupData = {
@@ -29,6 +30,20 @@ function GroupProfile() {
       },
     ],
   };
+
+  const [groupData1, setGroupData] = useState(null);
+ 
+  useEffect(() => {
+    async function retrieveGroupInfo(){
+      const data = await getAssignmentInfo();
+      console.log('Retrieving Group Data...')
+      setGroupData(data);
+      
+    }
+    retrieveGroupInfo();
+  }, []);
+  console.log('Group data:' ,groupData1)
+
 
   const [trigger, SetTrigger] = React.useState(false);
 

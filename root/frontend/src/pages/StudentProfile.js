@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { getStudentProfile } from '../utils/api.js';
 import Footer from './Footer.js'
 import Import from './Import.js'
@@ -19,8 +19,22 @@ function StudentProfile() {
     displayPicture: 'profile_img.jpg',
   };
 
+  const [studentData1, setStudentData] = useState(null);
+ 
+  useEffect(() => {
+    async function retrieveStudentInfo(){
+      const data = await getStudentProfile();
+      console.log('Retrieving Student Data...')
+      setStudentData(data);
+      
+    }
+    retrieveStudentInfo();
+  }, []);
+  console.log('Student data:' ,studentData1)
+
 
   const [importTrigger, SetImportTrigger] = React.useState(false);
+
 
   return (
     <div >

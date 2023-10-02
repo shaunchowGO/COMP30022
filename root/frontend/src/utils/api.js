@@ -64,3 +64,18 @@ export const getAssignmentInfo = async() => {
     throw error;
   }
 };
+
+export const createStudentProfile = async(studentData) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/student`, studentData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log('Error creating student profile: ', error)
+    throw error;
+  }
+};

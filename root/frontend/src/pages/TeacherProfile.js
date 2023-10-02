@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
 import '../css/pages/Teacher.css'
 import Footer from './Footer.js'
 import AddItem from './AddItem.js'
@@ -22,11 +23,13 @@ function TeacherProfile() {
   useEffect(() => {
     async function retrieveTeacherInfo(){
       const data = await getTeacherProfile();
+      console.log('Retrieving Teacher Data...')
       setTeacherData(data);
       
     }
     retrieveTeacherInfo();
   }, []);
+  console.log('Teacher data:' ,teacherData1)
 
 
   const [trigger, SetTrigger] = React.useState(false);
@@ -64,7 +67,9 @@ function TeacherProfile() {
                   <div>{classroom.studentNo}</div>
                   <div className="row-detail">
                     {/* <img src={require(`../assets/images/icons/download_icon.png`)}></img> */}
-                    <img src={require(`../assets/images/icons/view_icon.png`)}></img>
+                    <Link to="/group">
+                      <img src={require(`../assets/images/icons/view_icon.png`)}></img>
+                    </Link>
                     <img src={require(`../assets/images/icons/bin_icon.png`)}></img>
                   </div>
                 </div>
