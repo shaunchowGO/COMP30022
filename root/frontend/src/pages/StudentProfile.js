@@ -70,7 +70,6 @@ function StudentProfile() {
                   <div>{assignment.simScore}%</div>
                   <div>{assignment.date}</div>
                   <div className="row-detail">
-                    <FontAwesomeIcon className="icon" icon={faEye}/>
                     <FontAwesomeIcon className="icon" icon={faDownload} />
                     <FontAwesomeIcon className="icon" icon={faTrash} />
                   </div>
@@ -83,7 +82,7 @@ function StudentProfile() {
         </div>
 
         <div className="profile-dashboard">
-          <h2>Average Score</h2>
+          <h2>Dashboard</h2>
           <img src={require(`../assets/images/graph.png`)}></img>
           <div className="breaker"></div>
           <div className="dashboard-info">
@@ -93,15 +92,7 @@ function StudentProfile() {
             </div>
             <div className="stats">
               <h1>4</h1>
-              <p>High Similarities</p>
-            </div>
-            <div className="stats">
-              <h1>3</h1>
-              <p>Late Submissions</p>
-            </div>
-            <div className="stats">
-              <h1>0</h1>
-              <p>Original Texts</p>
+              <p>Subjects</p>
             </div>
           </div>
         </div>

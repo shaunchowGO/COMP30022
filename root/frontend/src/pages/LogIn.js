@@ -38,6 +38,7 @@ function Login(props) {
                         id="email"
                         name="email"
                         placeholder="Enter your email"
+                        required
                     />
 
                     <label htmlFor="password">Password</label>
@@ -46,6 +47,7 @@ function Login(props) {
                         id="password"
                         name="password"
                         placeholder="Enter your password"
+                        required
                     />
 
                     <div className='button-container'>

@@ -2,28 +2,27 @@ import React from 'react';
 import '../css/Dropdown.css'; 
 
 function Dropdown(props) {
-    const [selectedStudent, setSelectedStudent] = React.useState("");
+    const [selectedItem, setSelectedItem] = React.useState("");
     const [toggleDrop, setToggleDrop] = React.useState(false);
 
-    const displayStudent = () => {
-        if (selectedStudent === "") {
+    const displayItem = () => {
+        if (selectedItem === "") {
           return "-Select-";
         }
         else {
-          return selectedStudent;
+          return selectedItem;
         }
       }
     
     return (
         <div className="drop-down">
-            <p>Select Student to Compare</p>
             <div className="select-option">
-            <div className="selected" onClick={() => setToggleDrop(!toggleDrop)}>{displayStudent()}</div>
+            <div className="selected" onClick={() => setToggleDrop(!toggleDrop)}>{displayItem()}</div>
             {
                 toggleDrop &&
                 <ul className="options">
-                    {props.data.map((student) => (
-                        <li className="file-name" onClick={() => {setSelectedStudent(student.name); setToggleDrop(!toggleDrop)}}>{student.name}</li>
+                    {props.data.map((item) => (
+                        <li className="file-name" onClick={() => {setSelectedItem(item.name); setToggleDrop(!toggleDrop)}}>{item.name}</li>
                     ))}
                 </ul>
             }

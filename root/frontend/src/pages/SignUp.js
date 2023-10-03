@@ -22,6 +22,7 @@ function SignUp(props) {
                                 id="firstName"
                                 name="firstName"
                                 placeholder="Enter your first name"
+                                required
                             />
                         </div>
                         <div className="names-input">
@@ -31,6 +32,7 @@ function SignUp(props) {
                                 id="lastName"
                                 name="lastName"
                                 placeholder="Enter your last name"
+                                required
                             />
                         </div>
                     </div>
@@ -41,6 +43,7 @@ function SignUp(props) {
                         id="id"
                         name="id"
                         placeholder="Enter your ID"
+                        required
                     />
 
                     <label htmlFor="email">Email Address<span className="required-field">*</span></label>
@@ -49,6 +52,7 @@ function SignUp(props) {
                         id="email"
                         name="email"
                         placeholder="Enter your email"
+                        required
                     />
 
                     <label htmlFor="password">Password<span className="required-field">*</span></label>
@@ -57,6 +61,7 @@ function SignUp(props) {
                         id="password"
                         name="password"
                         placeholder="Enter your password"
+                        required
                     />
 
                     <label htmlFor="password">Confirm Password<span className="required-field">*</span></label>
@@ -65,6 +70,7 @@ function SignUp(props) {
                         id="password"
                         name="password"
                         placeholder="Confirm your password"
+                        required
                     />
 
                     <button className = "blue-btn" type="submit">SIGN UP</button>

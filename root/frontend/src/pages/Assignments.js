@@ -86,25 +86,17 @@ function GroupProfile() {
           </div>
   
           <div className="profile-dashboard">
-            <h2>Average Score</h2>
+            <h2>Dashboard</h2>
               <img src={require(`../assets/images/graph.png`)}></img>
               <div className="breaker"></div>
               <div className="dashboard-info">
                 <div className="stats">
                   <h1>6</h1>
-                  <p>Total Documents</p>
+                  <p>Total Comparisons</p>
                 </div>
                 <div className="stats">
                   <h1>4</h1>
                   <p>High Similarities</p>
-                </div>
-                <div className="stats">
-                  <h1>3</h1>
-                  <p>Late Submissions</p>
-                </div>
-                <div className="stats">
-                  <h1>0</h1>
-                  <p>Original Texts</p>
                 </div>
               </div>
           </div>

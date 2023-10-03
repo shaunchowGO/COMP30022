@@ -9,13 +9,13 @@ function AddItem(props) {
         const backendUrl = 'http://localhost:5000/api/test';
 
         axios.get(backendUrl)
-          .then(response => {
+            .then(response => {
             console.log('Backend Response:', response.data);
-          })
-          .catch(error => {
+            })
+            .catch(error => {
             console.error('Error:', error);
-          });
-      }, []);
+            });
+        }, []);
 
     if (props.trigger) {
         document.body.style.overflowY = 'hidden';
@@ -24,7 +24,7 @@ function AddItem(props) {
         document.body.style.overflowY = 'auto';
     }
 
-  return (props.trigger) ? (
+    return (props.trigger) ? (
         <div id="additem">
             <div className="additem-container">
                 <button className="close-btn" 
@@ -37,7 +37,8 @@ function AddItem(props) {
                 <form>
                     <div className="additem-input">
                         {props.hasID && <label for="name">{props.info.name} ID:</label>}
-                        {props.hasID && <input type="text" id="name" name="name" required/>}
+                        {props.hasID && <input type="number" id="numberInput" name="numberInput" pattern="[0-9]*" inputMode="numeric" required/>}
+                        
                         <label for="name">{props.info.name} Name:</label>
                         <input type="text" id="name" name="name" required/>
                     </div>

@@ -71,7 +71,9 @@ function TeacherProfile() {
                   <div>{classroom.assignmentNo}</div>
                   <div>{classroom.studentNo}</div>
                   <div className="row-detail">
-                    <FontAwesomeIcon className="icon" icon={faEye}/>
+                      <Link to="/group">
+                        <FontAwesomeIcon className="icon" icon={faEye}/>
+                      </Link>
                     <FontAwesomeIcon className="icon" icon={faTrash} />
                   </div>
                 </div>
@@ -96,10 +98,6 @@ function TeacherProfile() {
             <div className="stats">
               <h1>18</h1>
               <p>Total Assignments</p>
-            </div>
-            <div className="stats">
-              <h1>0</h1>
-              <p>Original Texts</p>
             </div>
           </div>
         </div>

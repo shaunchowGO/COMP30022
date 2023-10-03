@@ -18,6 +18,20 @@ function Import(props) {
     setFiles(event.dataTransfer.files);
     console.log(files);
   }
+  
+  const handleFileType = (event) => {
+    const allowedTypes = ['application/pdf'];
+    const validFiles = Array.from(event.target.files).filter((file) => {
+      return allowedTypes.includes(file.type);
+    });
+  
+    if (validFiles.length === 0) {
+      alert('Please select one or more PDF files.');
+    } 
+    else {
+      setFiles(validFiles);
+    }
+  };
 
   /* eslint-disable no-restricted-globals */
 
@@ -65,7 +79,7 @@ function Import(props) {
                 <input
                   type='file'
                   multiple
-                  onChange={(event) => setFiles(event.target.files)}
+                  onChange={(event) => handleFileType(event)}
                   hidden
                   ref={inputRef}
                 ></input>
