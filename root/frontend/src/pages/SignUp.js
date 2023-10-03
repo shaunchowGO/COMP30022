@@ -1,5 +1,7 @@
 import React from 'react';
 import '../css/popups/SignUp.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from '@fortawesome/free-solid-svg-icons';
 
 function SignUp(props) {
   return (props.trigger) ? (
@@ -7,7 +9,7 @@ function SignUp(props) {
             <div className="login-container">
                 <button className="close-btn" 
                     onClick={props.SetSignUpTrigger}>
-                    <img className="close-icon" src={require(`../assets/images/icons/close_icon.jpeg`)} />
+                    <FontAwesomeIcon className="close-icon" icon={faXmark} />
                 </button>
                 <h1 className='logo'>TextDNA</h1>
                 <p>Create Your Profile</p>
@@ -32,6 +34,7 @@ function SignUp(props) {
                             />
                         </div>
                     </div>
+                    
                     <label htmlFor="id">Academin ID<span className="required-field">*</span></label>
                     <input
                         type="text"
@@ -64,8 +67,8 @@ function SignUp(props) {
                         placeholder="Confirm your password"
                     />
 
-                    <p className='already-user-txt'>Already a user? <a className="last-word-button">LOGIN</a>.</p>
                     <button className = "blue-btn" type="submit">SIGN UP</button>
+                    <p className='user-text'>Already a user? <a className="underline-text" onClick={() => {props.SetLogInTrigger();props.SetSignUpTrigger();}}>LOGIN</a>.</p>
                 </form>
             </div>
         </div>

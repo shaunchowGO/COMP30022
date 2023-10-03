@@ -1,7 +1,8 @@
 #navbar {    
-    height: 15%;
+    width: 100vw !important;
     display: flex;
     align-items: center;
+    background: #fff;
     ul {
         display: flex;
     }
@@ -25,13 +26,9 @@
             justify-content: space-evenly;
             .nav-item {
                 position: relative;
-                width: 10%;
                 text-decoration: none;
                 color: black;
                 transition: all 0.1s ease-in;
-                &:hover {
-                    font-weight: bold;
-                }
                 &::before {
                     position: absolute;
                     bottom: -10%;

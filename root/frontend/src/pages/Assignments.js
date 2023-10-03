@@ -2,13 +2,15 @@ import React from 'react';
 import '../css/pages/Assignment.css'
 import Footer from './Footer.js'
 import {Link} from 'react-router-dom';
-import AddItem from './AddItem.js'
+import Import from './Import.js'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
+
 
 function GroupProfile() {
   const groupData = {
     filename: 'COMP30022_Assignment_1',
     subjectName: 'IT Project',
-    dueDate: 'Aug 12, 2023',
     assignments: [
       {
         name: 'Rohit Ambakkat',
@@ -19,18 +21,39 @@ function GroupProfile() {
     ],
   };
 
-  const [trigger, SetTrigger] = React.useState(false);
+  const studentData = {
+    details: [
+      {
+        id: 1234566,
+        name: "John Doe",
+      },
+      {
+        id: 1122388,
+        name: "Jane Doe",
+      },
+      {
+        id: 1167144,
+        name: "Thaya Chevaphatrakul",
+      },
+      {
+        id: 1152451,
+        name: "Rohit Sandeep",
+      },
+    ],
+  }
+
+  const [importTrigger, SetImportTrigger] = React.useState(false);
+
   return (
     <div>
       <section id="assignment">
-        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Student"}}/>
+      <Import trigger={importTrigger} SetImportTrigger={() => SetImportTrigger(!importTrigger)} isCompare={true} studentData={studentData}/>
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
                 <h1>{groupData.filename}</h1>
                 <p>Assignment for: {groupData.subjectName}</p>
-                <p>Due Date: {groupData.dueDate}</p>
-                <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Student</button>
+                <button className="blue-btn" onClick={() => SetImportTrigger(!importTrigger)}>+ Add Comparison</button>
               </div>
             </div>
   
@@ -40,23 +63,21 @@ function GroupProfile() {
               </div>
               <div className="table-header">
                   <p>Student Name</p>
-                  <p>File Name</p>
-                  <p>Score</p>
-                  <p>Submission Date</p>
+                  <p>Similarity Score</p>
+                  <p>Date Added</p>
                   <p>Details</p>
               </div>
               <div className="table-content">
                 {groupData.assignments.map((assignment, index) => (
                   <div className="table-row" key={index}>
                     <div className="file-name">{assignment.name}</div>
-                    <div>{assignment.filename}</div>
                     <div>{assignment.score}%</div>
                     <div>{assignment.date}</div>
                     <div className="row-detail">
-                      <img src={require(`../assets/images/icons/download_icon.png`)}></img>
                     <Link to="/student">
-                      <img src={require(`../assets/images/icons/view_icon.png`)}></img>
+                      <FontAwesomeIcon className="icon" icon={faEye}/>
                     </Link>
+                      <FontAwesomeIcon className="icon" icon={faTrash} />
                     </div>
                   </div>
                 ))}
@@ -65,8 +86,9 @@ function GroupProfile() {
           </div>
   
           <div className="profile-dashboard">
-            <h1>Average Score</h1>
+            <h2>Average Score</h2>
               <img src={require(`../assets/images/graph.png`)}></img>
+              <div className="breaker"></div>
               <div className="dashboard-info">
                 <div className="stats">
                   <h1>6</h1>

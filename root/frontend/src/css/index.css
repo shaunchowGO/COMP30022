@@ -3,14 +3,24 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 nav {
-  padding: 1.5rem 10rem;
+  padding: 1.5rem 15rem;
+  box-sizing: border-box;
 }
 
-section {
+section, footer {
   padding: 5rem 10rem;
+  box-sizing: border-box;
+  width: 100vw;
+}
+
+.icon:focus {
+  outline: none;
+  box-shadow: none;
+  color: #000;
 }
 
 h1 {
@@ -53,10 +63,12 @@ input:focus {
 }
 
 .profile-container {
+  box-sizing: border-box;
   border-radius: 15px;
   padding: 3rem;
   box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.37);
   background: #fff;
+  height: 80vh;
 }
 .profile-container .profile-info {
   display: flex;
@@ -74,6 +86,10 @@ input:focus {
   line-height: 48px;
   font-size: 48px;
 }
+.profile-container .profile-info .profile-info-right p {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
 .profile-container .profile-info img {
   width: 150px;
   height: 150px;
@@ -83,6 +99,9 @@ input:focus {
 }
 .profile-container .profile-info .blue-btn {
   margin: 0;
+}
+.profile-container .table .search-container {
+  margin-bottom: 1rem;
 }
 .profile-container .table .search-container input {
   padding: 0.25rem 0rem 0.25rem 1rem;
@@ -96,6 +115,8 @@ input:focus {
   border-bottom: 1px solid #d9d9d9;
   color: #0057FF;
   font-weight: bold;
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 .profile-container .table .table-content {
   max-height: 45vh;
@@ -132,9 +153,7 @@ input:focus {
   align-items: center;
   justify-content: space-around;
 }
-.profile-container .table .table-content .table-row .row-detail img {
-  width: 20px;
-  height: 20px;
+.profile-container .table .table-content .table-row .row-detail .icon {
   cursor: pointer;
 }
 
@@ -147,15 +166,28 @@ input:focus {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  padding: 0 1rem;
+}
+.profile-dashboard h2 {
+  margin: 0;
+}
+.profile-dashboard .breaker {
+  background: #D9D9D9;
+  width: 100%;
+  height: 1px;
+}
+.profile-dashboard img {
+  width: 70%;
 }
 .profile-dashboard .dashboard-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-top: 1px solid #D9D9D9;
   grid-gap: 1rem;
-  margin: 1rem 0;
+}
+.profile-dashboard .dashboard-info h1 {
+  font-size: 24px !important;
 }
 .profile-dashboard .dashboard-info p {
   font-size: 0.7vw !important;
-  margin: 0;
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=index.css.map */

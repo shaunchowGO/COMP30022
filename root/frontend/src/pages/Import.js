@@ -1,6 +1,9 @@
 import React from 'react';
 import { uploadFile } from '../utils/api';
 import '../css/popups/Import.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from '@fortawesome/free-solid-svg-icons';
+import Dropdown from './Dropdown.js';
 
 function Import(props) {
   const [files, setFiles] = React.useState(null);
@@ -35,16 +38,22 @@ function Import(props) {
     }
   }
 
+  if (props.trigger) {
+    document.body.style.overflowY = 'hidden';
+  }
+  else {
+      document.body.style.overflowY = 'auto';
+  }
+
   return (props.trigger) ? (
         <div id="import">
           <div className="import-container">
-
             <div className="import-header">
               <div className="import-title">
                 <h1>Import Document</h1>
                 <button className="close-btn" 
                     onClick={props.SetImportTrigger}>
-                    <img className="close-icon" src={require(`../assets/images/icons/close_icon.jpeg`)} /> 
+                    <FontAwesomeIcon className="close-icon" icon={faXmark} /> 
                 </button>
               </div>
               <p>Select a students assignment to be added to their profile</p>
@@ -70,8 +79,12 @@ function Import(props) {
               </div>
             }
 
+            {props.isCompare && 
+              <Dropdown data={props.studentData.details}/>
+            }
+
             <div className="import-btn">
-              <button className="discard-btn blue-btn" onClick={() => setFiles(null)}>Discard</button>
+              <button className="discard-btn blue-btn" onClick={() => {setFiles(null)}}>Discard</button>
               <button className="blue-btn" onClick={() => handleImport(event)}>Import</button>
             </div>
           </div>

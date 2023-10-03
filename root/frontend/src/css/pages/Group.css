@@ -1,10 +1,28 @@
 #group {
+  height: 100%;
   background-image: url("../../assets/images/backgrounds/light_blue_background.png") !important;
   display: grid;
   grid-template-columns: 4fr 1fr;
   grid-gap: 10%;
   background-size: contain;
   background-repeat: no-repeat;
+}
+#group .profile-info-right {
+  width: 100%;
+}
+#group .profile-info-right .btn-containers {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+#group .profile-info-right .btn-containers .view-btn {
+  color: #ADADAD;
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 #group .blue-btn {
   background: #3BA1FF;

@@ -1,10 +1,11 @@
 #assignment {
-    background-image: url("../../assets/images/backgrounds/purple_background.png") !important;
+    height: 100%;
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-gap: 10%;
     background-size: contain;
     background-repeat: no-repeat;
+    background-image: url("../../assets/images/backgrounds/purple_background.png") !important;
     .blue-btn {
         background: #7A3BFF;
         &:hover {
@@ -19,11 +20,10 @@
             background: #E9E3FF;
         }
     }
-    .table-content {
+    .table-content, .options {
         &::-webkit-scrollbar-thumb {
             background: #7A3BFF;
             border-radius: 50px;
         }
-    }
-    
+    }   
 }

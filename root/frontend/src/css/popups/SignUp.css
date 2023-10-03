@@ -2,7 +2,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: rgba(51, 51, 51, 0.5);
   display: flex;
@@ -71,15 +71,12 @@
 #sign-up .login-container .login-form .name-container .names-input input:focus {
   outline: none;
 }
-#sign-up .already-user-txt {
+#sign-up .user-text {
   text-align: left;
-  font-size: 12px !important;
+  font-size: 14px !important;
   margin-top: 1rem;
 }
-#sign-up .already-user-txt .last-word-button {
-  color: black;
-  border: none;
-  border-radius: 5px;
+#sign-up .user-text .underline-text {
   cursor: pointer;
   text-decoration: underline;
 }/*# sourceMappingURL=SignUp.css.map */

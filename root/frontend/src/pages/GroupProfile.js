@@ -4,6 +4,8 @@ import Footer from './Footer.js'
 import {Link} from 'react-router-dom';
 import AddItem from './AddItem.js'
 import {getAssignmentInfo} from '../utils/api'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 function GroupProfile() {
   const groupData = {
@@ -30,6 +32,18 @@ function GroupProfile() {
       },
     ],
   };
+  const studentData = {
+    details: [
+      {
+        id: 1167144,
+        name: "Thaya Chevaphatrakul",
+      },
+      {
+        id: 1152451,
+        name: "Rohit Sandeep",
+      },
+    ],
+  };
 
   const [groupData1, setGroupData] = useState(null);
  
@@ -44,19 +58,30 @@ function GroupProfile() {
   }, []);
   console.log('Group data:' ,groupData1)
 
-
+  const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
   return (
     <div>
+      {viewingAssignments ? 
       <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Assignment"}}/>
+      :
+      <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} info={{name: "Students"}}/>
+    }
       <section id="group">
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
                 <h1>{groupData.name}</h1>
                 <p>Subject Name: {groupData.subjectName}</p>
-                <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Assignments</button>
+                <div className="btn-containers">
+                  {viewingAssignments ? <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Assignments</button> : <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Students</button>}
+                  {viewingAssignments ?
+                  <button className="view-btn" onClick={() => SetViewingAssignments(!viewingAssignments)}>View Students</button>
+                  :
+                  <button className="view-btn" onClick={() => SetViewingAssignments(!viewingAssignments)}>View Assignments</button>
+                  }
+                </div>
               </div>
             </div>
   
@@ -64,53 +89,76 @@ function GroupProfile() {
               <div className="search-container">
                 <input type="text" id="search" placeholder="Search Documents"/>
               </div>
-              <div className="table-header">
+              {viewingAssignments ? 
+                <div className="table-header">
                   <p>Assignment Name</p>
-                  <p>Start Date</p>
-                  <p>Due Date</p>
                   <p>Detail</p>
-              </div>
-              <div className="table-content">
-                {groupData.assignments.map((assignment, index) => (
-                  <div className="table-row" key={index}>
-                    <div className="file-name">{assignment.name}</div>
-                    <div>{assignment.startDate}</div>
-                    <div>{assignment.dueDate}</div>
-                    <div className="row-detail">
-                    <Link to="/assignment">
-                      <img src={require(`../assets/images/icons/view_icon.png`)}></img>
-                    </Link>
-                    <img src={require(`../assets/images/icons/bin_icon.png`)}></img>
+                </div>
+                :
+                <div className="table-header">
+                  <p>Student ID</p>
+                  <p>Student Name</p>
+                  <p>Detail</p>
+                </div>
+              }
+
+              {viewingAssignments ? 
+                <div className="table-content">
+                  {groupData.assignments.map((assignment, index) => (
+                    <div className="table-row" key={index}>
+                      <div className="file-name">{assignment.name}</div>
+                      <div className="row-detail">
+                      <Link to="/assignment">
+                        <FontAwesomeIcon className="icon" icon={faEye}/>
+                      </Link>
+                        <FontAwesomeIcon className="icon" icon={faTrash} />
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              :  
+              <div className="table-content">
+                  {studentData.details.map((student, index) => (
+                    <div className="table-row" key={index}>
+                      <div className="file-name">{student.id}</div>
+                      <div className="file-name">{student.name}</div>
+                      <div className="row-detail">
+                      <Link to="/assignment">
+                        <FontAwesomeIcon className="icon" icon={faEye}/>
+                      </Link>
+                        <FontAwesomeIcon className="icon" icon={faTrash} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              }
   
             </div>
   
           </div>
   
           <div className="profile-dashboard">
-            <h1>Average Score</h1>
-              <img src={require(`../assets/images/graph.png`)}></img>
-              <div className="dashboard-info">
-                <div className="stats">
-                  <h1>6</h1>
-                  <p>Total Documents</p>
-                </div>
-                <div className="stats">
-                  <h1>4</h1>
-                  <p>High Similarities</p>
-                </div>
-                <div className="stats">
-                  <h1>3</h1>
-                  <p>Late Submissions</p>
-                </div>
-                <div className="stats">
-                  <h1>0</h1>
-                  <p>Original Texts</p>
-                </div>
+            <h2>Average Score</h2>
+            <img src={require(`../assets/images/graph.png`)}></img>
+            <div className="breaker"></div>
+            <div className="dashboard-info">
+              <div className="stats">
+                <h1>6</h1>
+                <p>Total Documents</p>
               </div>
+              <div className="stats">
+                <h1>4</h1>
+                <p>High Similarities</p>
+              </div>
+              <div className="stats">
+                <h1>3</h1>
+                <p>Late Submissions</p>
+              </div>
+              <div className="stats">
+                <h1>0</h1>
+                <p>Original Texts</p>
+              </div>
+            </div>
           </div>
         </section>
         <Footer/>

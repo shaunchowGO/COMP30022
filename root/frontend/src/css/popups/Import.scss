@@ -1,5 +1,5 @@
 #import {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -20,6 +20,7 @@
         }
     }
     .import-container {
+        position: relative;
         background: #fff;
         padding: 2rem;
         border-radius: 15px;
@@ -34,6 +35,9 @@
                 }
             }
             .close-btn {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
                 background: none;
                 border: none;
                 cursor: pointer;
@@ -53,6 +57,9 @@
             flex-direction: column;
             padding: 5rem 2.5rem;
             margin: 1rem 0;
+            button {
+                margin-top: 1rem;
+            }
         }
         .uploads {
             display: grid;
@@ -60,6 +67,7 @@
             margin: 1rem 0;
         }
         .import-btn {
+            margin-top: 1rem;
             display: flex;
             align-items: center;
             justify-content: flex-end;

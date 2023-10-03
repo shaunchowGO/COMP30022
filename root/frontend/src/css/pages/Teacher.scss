@@ -1,14 +1,9 @@
 #teacher {
+    height: 100%;
     display: grid;
     grid-template-columns: 4fr 1fr;
     grid-gap: 10%;
     background-size: contain;
     background-repeat: no-repeat;
     background-image: url("../../assets/images/backgrounds/blue_background.png");
-    .btn-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-    }
-    
 }

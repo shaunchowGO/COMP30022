@@ -4,6 +4,8 @@ import '../css/pages/Teacher.css'
 import Footer from './Footer.js'
 import AddItem from './AddItem.js'
 import { getTeacherProfile } from '../utils/api';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
 
 function TeacherProfile() {
   const teacherData = {
@@ -11,14 +13,15 @@ function TeacherProfile() {
     id: 129312,
     classroomDetails: [
       {
-        name: 'COMP30022',
+        name: 'IT Project',
+        id: 'COMP30022',
         assignmentNo: 3,
         studentNo: '28',
       },  
   ],
     displayPicture: 'eduardo.jpeg',
   };
-
+  
   const [teacherData1, setTeacherData] = useState(null);
   useEffect(() => {
     async function retrieveTeacherInfo(){
@@ -36,13 +39,13 @@ function TeacherProfile() {
   return (
     <div >
       <section id="teacher">
-        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Classroom"}}/>
+        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Classroom"}} hasID={true}/>
         <div className="profile-container">
           <div className="profile-info">
             <img src={require(`../assets/images/${teacherData.displayPicture}`)} alt="Profile" />
             <div className="profile-info-right">
               <h1>{teacherData.name}</h1>
-              <p>Instructor ID: {teacherData.id}</p>
+              <p>Academic ID: {teacherData.id}</p>
               <div className="btn-container">
                 <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Classroom</button>
               </div>
@@ -54,7 +57,8 @@ function TeacherProfile() {
               <input type="text" id="search" placeholder="Search Documents"/>
             </div>
             <div className="table-header">
-                <p>Classroom</p>
+                <p>Subject</p>
+                <p>ID</p>
                 <p>No. of Assignments</p>
                 <p>No. of Students</p>
                 <p>Detail</p>
@@ -63,14 +67,12 @@ function TeacherProfile() {
               {teacherData.classroomDetails.map((classroom, index) => (
                 <div className="table-row" key={index}>
                   <div className="file-name">{classroom.name}</div>
+                  <div className="file-name">{classroom.id}</div>
                   <div>{classroom.assignmentNo}</div>
                   <div>{classroom.studentNo}</div>
                   <div className="row-detail">
-                    {/* <img src={require(`../assets/images/icons/download_icon.png`)}></img> */}
-                    <Link to="/group">
-                      <img src={require(`../assets/images/icons/view_icon.png`)}></img>
-                    </Link>
-                    <img src={require(`../assets/images/icons/bin_icon.png`)}></img>
+                    <FontAwesomeIcon className="icon" icon={faEye}/>
+                    <FontAwesomeIcon className="icon" icon={faTrash} />
                   </div>
                 </div>
               ))}
@@ -81,18 +83,19 @@ function TeacherProfile() {
         <div className="profile-dashboard">
           <h2>Dashboard</h2>
           <img src={require(`../assets/images/graph.png`)}></img>
+          <div className="breaker"></div>
           <div className="dashboard-info">
             <div className="stats">
               <h1>6</h1>
-              <p>Total Documents</p>
+              <p>Classrooms</p>
             </div>
             <div className="stats">
-              <h1>4</h1>
-              <p>High Similarities</p>
+              <h1>238</h1>
+              <p>Student Profiles</p>
             </div>
             <div className="stats">
-              <h1>3</h1>
-              <p>Late Submissions</p>
+              <h1>18</h1>
+              <p>Total Assignments</p>
             </div>
             <div className="stats">
               <h1>0</h1>

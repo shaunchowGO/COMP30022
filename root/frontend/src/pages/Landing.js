@@ -9,7 +9,7 @@ function Landing() {
         <div className="landing-main">
           <div className="landing-main-left"> 
             <h1 className = "main-header"> A <span className="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
-            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             <button className="get-started-button"><p>Get Started</p></button>
           </div>
           <div className="landing-main-right">
@@ -26,7 +26,7 @@ function Landing() {
 
             <div className="image-box">
               <img src={require(`../assets/images/registered.png`)} alt="Image 2" className="image"/>
-              <p className="stats-text">Over <span>2000</span> registered profiles</p>
+              <p className="stats-text">Over <span>2000+</span> registered profiles</p>
             </div>
 
             <div className="image-box">

@@ -3,6 +3,8 @@ import { getStudentProfile } from '../utils/api.js';
 import Footer from './Footer.js'
 import Import from './Import.js'
 import '../css/pages/Profile.css'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faTrash, faDownload} from '@fortawesome/free-solid-svg-icons';
 
 function StudentProfile() {
   const studentData = {
@@ -10,7 +12,7 @@ function StudentProfile() {
     studentNumber: 129312,
     assignmentDetails: [
       {
-      name: 'COMP3022_Assignment1_129312',
+      name: 'COMP30022_Assignment1',
       group: 'COMP30022',
       date: 'Sep 9, 2023',
       simScore: 92,
@@ -18,6 +20,7 @@ function StudentProfile() {
   ],
     displayPicture: 'profile_img.jpg',
   };
+
 
   const [studentData1, setStudentData] = useState(null);
  
@@ -32,9 +35,7 @@ function StudentProfile() {
   }, []);
   console.log('Student data:' ,studentData1)
 
-
   const [importTrigger, SetImportTrigger] = React.useState(false);
-
 
   return (
     <div >
@@ -45,7 +46,7 @@ function StudentProfile() {
             <img src={require(`../assets/images/${studentData.displayPicture}`)} alt="Profile" />
             <div className="profile-info-right">
               <h1>{studentData.name}</h1>
-              <p>Student Number: {studentData.studentNumber}</p>
+              <p>Student ID: {studentData.studentNumber}</p>
               <button className="blue-btn" onClick={() => SetImportTrigger(!importTrigger)}>+ Add Document</button>
             </div>
           </div>
@@ -57,9 +58,9 @@ function StudentProfile() {
             <div className="table-header">
                 <p>Assignment Name</p>
                 <p>Subject</p>
-                <p>Score</p>
-                <p>Submission Date</p>
-                <p>Details</p>
+                <p>Similarity Score</p>
+                <p>Date Added</p>
+                <p>Detail</p>
             </div>
             <div className="table-content">
               {studentData.assignmentDetails.map((assignment, index) => (
@@ -69,8 +70,9 @@ function StudentProfile() {
                   <div>{assignment.simScore}%</div>
                   <div>{assignment.date}</div>
                   <div className="row-detail">
-                    <img src={require(`../assets/images/icons/download_icon.png`)}></img>
-                    <img src={require(`../assets/images/icons/view_icon.png`)}></img>
+                    <FontAwesomeIcon className="icon" icon={faEye}/>
+                    <FontAwesomeIcon className="icon" icon={faDownload} />
+                    <FontAwesomeIcon className="icon" icon={faTrash} />
                   </div>
                 </div>
               ))}
@@ -81,26 +83,27 @@ function StudentProfile() {
         </div>
 
         <div className="profile-dashboard">
-          <h1>Average Score</h1>
-            <img src={require(`../assets/images/graph.png`)}></img>
-            <div className="dashboard-info">
-              <div className="stats">
-                <h1>6</h1>
-                <p>Total Documents</p>
-              </div>
-              <div className="stats">
-                <h1>4</h1>
-                <p>High Similarities</p>
-              </div>
-              <div className="stats">
-                <h1>3</h1>
-                <p>Late Submissions</p>
-              </div>
-              <div className="stats">
-                <h1>0</h1>
-                <p>Original Texts</p>
-              </div>
+          <h2>Average Score</h2>
+          <img src={require(`../assets/images/graph.png`)}></img>
+          <div className="breaker"></div>
+          <div className="dashboard-info">
+            <div className="stats">
+              <h1>6</h1>
+              <p>Total Documents</p>
             </div>
+            <div className="stats">
+              <h1>4</h1>
+              <p>High Similarities</p>
+            </div>
+            <div className="stats">
+              <h1>3</h1>
+              <p>Late Submissions</p>
+            </div>
+            <div className="stats">
+              <h1>0</h1>
+              <p>Original Texts</p>
+            </div>
+          </div>
         </div>
       </section>
       <Footer/>

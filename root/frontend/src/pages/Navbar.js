@@ -17,14 +17,14 @@ function Navbar() {
 
   return (
     <nav id="navbar">
-      <Login trigger={LogInTrigger} SetLogInTrigger={() => SetLogInTrigger(!LogInTrigger)}/>
-      <SignUp trigger={SignUpTrigger} SetSignUpTrigger={() => SetSignUpTrigger(!SignUpTrigger)}/>
+      <Login trigger={LogInTrigger} SetLogInTrigger={() => SetLogInTrigger(!LogInTrigger)} SetSignUpTrigger={() => SetSignUpTrigger(!SignUpTrigger)}/>
+      <SignUp trigger={SignUpTrigger} SetSignUpTrigger={() => SetSignUpTrigger(!SignUpTrigger)} SetLogInTrigger={() => SetLogInTrigger(!LogInTrigger)}/>
         <div className="nav-left">
           <Link to="/" className="nav-logo"><h1>TextDNA</h1></Link>
           <ul className="navs">
               <Link to="/teacher" className="nav-item"><p>PROFILE</p></Link>
-              <Link to="/group" className="nav-item"><p>GROUP</p></Link>
-              <Link to="/" className="nav-item"><p>HELP</p></Link>
+              <Link to="/group" className="nav-item"><p>SUBJECTS</p></Link>
+              <Link to="/" className="nav-item"><p>SUPPORT</p></Link>
           </ul>
         </div>
         <div className="nav-right">
