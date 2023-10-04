@@ -5,18 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from '@fortawesome/free-solid-svg-icons';
 
 function AddItem(props) {
-    useEffect(() => {
-        const backendUrl = 'http://localhost:5000/api/test';
-
-        axios.get(backendUrl)
-            .then(response => {
-            console.log('Backend Response:', response.data);
-            })
-            .catch(error => {
-            console.error('Error:', error);
-            });
-        }, []);
-
+   
     if (props.trigger) {
         document.body.style.overflowY = 'hidden';
     }

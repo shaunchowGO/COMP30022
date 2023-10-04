@@ -36,4 +36,4 @@ def run_sql_query(query):
         print(f"Error: {str(e)}")
 
 
-run_sql_query('SELECT * FROM [dbo].[assignment]')
+run_sql_query('SELECT * FROM [dbo].[AcademicsCohort]')

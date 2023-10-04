@@ -10,10 +10,6 @@ QUERY_SCRIPT = "scripts/Query_SQL_SPrincipal.ps1"
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/api/test', methods=['GET'])
-def test_endpoint():
-    return 'Hello from the local backend!'
-
 #get student info
 @app.route('/student', methods=['GET'])
 def get_student():
@@ -23,7 +19,7 @@ def get_student():
     formatted_rows = []
     for row in res:
         formatted_row = {
-            'ID': row.ID,
+            'Id': row.Id,
             'Name': row.Name
         }
         formatted_rows.append(formatted_row)
@@ -37,14 +33,13 @@ def get_assignment():
     formatted_rows = []
     for row in res:
         formatted_row = {
-            'ID': row.ID,
-            'SubjectID': row.SubjectID,
+            'Id': row.Id,
+            'SubjectId': row.SubjectId,
+            'StartDate': row.StartDate,
             'DueDate': row.DueDate
         }
         formatted_rows.append(formatted_row)
     return formatted_rows
-
-['ID', 'SubjectID', 'DueDate']
 
 #get teacher info 
 @app.route('/teacher', methods=['GET'])

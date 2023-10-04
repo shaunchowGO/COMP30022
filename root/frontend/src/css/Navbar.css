@@ -10,7 +10,7 @@
 #navbar .nav-left {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   width: 50%;
 }
 #navbar .nav-left .nav-logo {

@@ -50,6 +50,7 @@ export const getTeacherProfile = async() => {
 };
 
 
+
 export const getAssignmentInfo = async() => {
   try {
     const response = await axios.get(`${API_BASE_URL}/assignment`, {
@@ -67,7 +68,7 @@ export const getAssignmentInfo = async() => {
 
 export const createStudentProfile = async(studentData) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/student`, studentData, {
+    const response = await axios.post(`${API_BASE_URL}/student`, studentData, {
       headers: {
         "Content-Type": "application/json",
       },
