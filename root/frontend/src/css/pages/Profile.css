@@ -10,6 +10,9 @@
 #profile .blue-btn {
   background: #4B3BFF;
 }
+#profile .active {
+  background: #4B3BFF !important;
+}
 #profile .table-header {
   color: #4B3BFF;
 }

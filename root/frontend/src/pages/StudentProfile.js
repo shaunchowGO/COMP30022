@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getStudentProfile } from '../utils/api.js';
-import Footer from './Footer.js'
-import Import from './Import.js'
-import '../css/pages/Profile.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash, faDownload} from '@fortawesome/free-solid-svg-icons';
+import Footer from './Footer.js'
+import Import from './Import.js'
+import Filter from './Filter.js'
+import '../css/pages/Profile.css'
 
 function StudentProfile() {
   const studentData = {
@@ -55,6 +56,7 @@ function StudentProfile() {
             <div className="search-container">
               <input type="text" id="search" placeholder="Search Documents"/>
             </div>
+            
             <div className="table-header">
                 <p>Assignment Name</p>
                 <p>Subject</p>
@@ -62,6 +64,7 @@ function StudentProfile() {
                 <p>Date Added</p>
                 <p>Detail</p>
             </div>
+
             <div className="table-content">
               {studentData.assignmentDetails.map((assignment, index) => (
                 <div className="table-row" key={index}>
@@ -78,24 +81,8 @@ function StudentProfile() {
             </div>
 
           </div>
-
         </div>
-
-        <div className="profile-dashboard">
-          <h2>Dashboard</h2>
-          <img src={require(`../assets/images/graph.png`)}></img>
-          <div className="breaker"></div>
-          <div className="dashboard-info">
-            <div className="stats">
-              <h1>6</h1>
-              <p>Total Documents</p>
-            </div>
-            <div className="stats">
-              <h1>4</h1>
-              <p>Subjects</p>
-            </div>
-          </div>
-        </div>
+        <Filter buttonLabels={["Assignment Name", "Subject Name", "Similarity Score", "Date Added"]} hasScore={true}/>
       </section>
       <Footer/>
     </div>

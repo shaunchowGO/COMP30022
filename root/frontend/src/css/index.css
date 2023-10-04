@@ -155,39 +155,4 @@ input:focus {
 }
 .profile-container .table .table-content .table-row .row-detail .icon {
   cursor: pointer;
-}
-
-.profile-dashboard {
-  box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.37);
-  background: #fff;
-  border-radius: 15px;
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 0 1rem;
-}
-.profile-dashboard h2 {
-  margin: 0;
-}
-.profile-dashboard .breaker {
-  background: #D9D9D9;
-  width: 100%;
-  height: 1px;
-}
-.profile-dashboard img {
-  width: 70%;
-}
-.profile-dashboard .dashboard-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
-.profile-dashboard .dashboard-info h1 {
-  font-size: 24px !important;
-}
-.profile-dashboard .dashboard-info p {
-  font-size: 0.7vw !important;
-  margin-bottom: 1rem;
 }/*# sourceMappingURL=index.css.map */

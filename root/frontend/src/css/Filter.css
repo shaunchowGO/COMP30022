@@ -1,0 +1,103 @@
+.profile-filter .profile-filter-container {
+  padding: 1.5rem;
+  box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.37);
+  border-radius: 15px;
+  background: #fff;
+  text-align: left;
+}
+.profile-filter .profile-filter-container .similarity-range {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-filter .profile-filter-container .similarity-range input {
+  width: 100%;
+}
+.profile-filter .profile-filter-container .similarity-range p {
+  margin: 0 0.5rem;
+  padding: 0;
+}
+.profile-filter .profile-filter-container h4 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.profile-filter .profile-filter-container .filter-section {
+  margin-bottom: 1rem;
+}
+.profile-filter .profile-filter-container input {
+  box-sizing: border-box;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px;
+  padding: 0 1rem;
+  width: 100%;
+  margin: 0;
+}
+.profile-filter .profile-filter-container .sort-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+.profile-filter .profile-filter-container .active {
+  background: #0057FF !important;
+  color: #fff;
+}
+.profile-filter .profile-filter-container .sort-btn {
+  font-size: 12px;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 1px solid #D9D9D9;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+}
+.profile-filter .profile-filter-container .sort-btn:hover {
+  background: #f5f5f5;
+}
+.profile-filter .profile-filter-container .sort-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.profile-filter .profile-filter-container .confirm-container {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.profile-filter .profile-filter-container .confirm-container .blue-btn {
+  margin: 0;
+  width: 70px;
+}
+.profile-filter .profile-filter-container .confirm-container .discard-btn {
+  background: #fff !important;
+  color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+.profile-filter .profile-filter-container .confirm-container .discard-btn:hover {
+  background: #f5f5f5 !important;
+}
+.profile-filter h2 {
+  margin: 0;
+}
+.profile-filter .breaker {
+  background: #D9D9D9;
+  width: 100%;
+  height: 1px;
+}
+.profile-filter img {
+  width: 70%;
+}
+.profile-filter .filter-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.profile-filter .filter-info h1 {
+  font-size: 24px !important;
+}
+.profile-filter .filter-info p {
+  font-size: 0.7vw !important;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=Filter.css.map */

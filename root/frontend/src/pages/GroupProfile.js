@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import '../css/pages/Group.css'
-import Footer from './Footer.js'
 import {Link} from 'react-router-dom';
-import AddItem from './AddItem.js'
 import {getAssignmentInfo} from '../utils/api'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
+import Footer from './Footer.js'
+import AddItem from './AddItem.js'
+import Filter from './Filter.js'
+import '../css/pages/Group.css'
 
 function GroupProfile() {
   const groupData = {
@@ -134,22 +135,11 @@ function GroupProfile() {
               }
             </div>
           </div>
-  
-          <div className="profile-dashboard">
-            <h2>Dashboard</h2>
-            <img src={require(`../assets/images/graph.png`)}></img>
-            <div className="breaker"></div>
-            <div className="dashboard-info">
-              <div className="stats">
-                <h1>3</h1>
-                <p>Total Assignments</p>
-              </div>
-              <div className="stats">
-                <h1>56</h1>
-                <p>Total Students</p>
-              </div>
-            </div>
-          </div>
+          {viewingAssignments ?
+            <Filter buttonLabels={["Assignment Name"]}/>
+            :
+            <Filter buttonLabels={["ID", "Student Name"]}/>
+          }
         </section>
         <Footer/>
     </div>

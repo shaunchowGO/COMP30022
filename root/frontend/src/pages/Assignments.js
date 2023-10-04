@@ -1,10 +1,11 @@
 import React from 'react';
-import '../css/pages/Assignment.css'
-import Footer from './Footer.js'
 import {Link} from 'react-router-dom';
-import Import from './Import.js'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
+import Import from './Import.js'
+import Footer from './Footer.js'
+import Filter from './Filter.js'
+import '../css/pages/Assignment.css'
 
 
 function GroupProfile() {
@@ -84,22 +85,7 @@ function GroupProfile() {
               </div>
             </div>
           </div>
-  
-          <div className="profile-dashboard">
-            <h2>Dashboard</h2>
-              <img src={require(`../assets/images/graph.png`)}></img>
-              <div className="breaker"></div>
-              <div className="dashboard-info">
-                <div className="stats">
-                  <h1>6</h1>
-                  <p>Total Comparisons</p>
-                </div>
-                <div className="stats">
-                  <h1>4</h1>
-                  <p>High Similarities</p>
-                </div>
-              </div>
-          </div>
+          <Filter buttonLabels={["Student Name", "Similarity Score", "Date Added"]} hasScore={true}/>
         </section>
         <Footer/>
     </div>

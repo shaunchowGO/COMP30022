@@ -24,6 +24,9 @@
   text-decoration: underline;
   cursor: pointer;
 }
+#group .active {
+  background: #3BA1FF !important;
+}
 #group .blue-btn {
   background: #3BA1FF;
 }

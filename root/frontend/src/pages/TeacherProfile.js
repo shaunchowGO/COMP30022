@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import '../css/pages/Teacher.css'
-import Footer from './Footer.js'
-import AddItem from './AddItem.js'
 import { getTeacherProfile } from '../utils/api';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
+import Footer from './Footer.js'
+import Filter from './Filter.js'
+import AddItem from './AddItem.js'
+import '../css/pages/Teacher.css'
 
 function TeacherProfile() {
   const teacherData = {
@@ -53,9 +54,6 @@ function TeacherProfile() {
           </div>
 
           <div className="table">
-            <div className="search-container">
-              <input type="text" id="search" placeholder="Search Documents"/>
-            </div>
             <div className="table-header">
                 <p>Subject</p>
                 <p>ID</p>
@@ -81,26 +79,7 @@ function TeacherProfile() {
             </div>
           </div>
         </div>
-
-        <div className="profile-dashboard">
-          <h2>Dashboard</h2>
-          <img src={require(`../assets/images/graph.png`)}></img>
-          <div className="breaker"></div>
-          <div className="dashboard-info">
-            <div className="stats">
-              <h1>6</h1>
-              <p>Classrooms</p>
-            </div>
-            <div className="stats">
-              <h1>238</h1>
-              <p>Student Profiles</p>
-            </div>
-            <div className="stats">
-              <h1>18</h1>
-              <p>Total Assignments</p>
-            </div>
-          </div>
-        </div>
+        <Filter buttonLabels={["Subject", "ID", "No. Assignments", "No. Students"]}/>
       </section>
       <Footer/>
     </div>
