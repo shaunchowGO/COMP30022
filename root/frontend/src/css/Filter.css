@@ -58,6 +58,9 @@
   align-items: center;
   justify-content: space-around;
 }
+.profile-filter .profile-filter-container .sort-order .sort-btn {
+  margin-left: 0.5rem;
+}
 .profile-filter .profile-filter-container .confirm-container {
   margin-top: 1rem;
   display: flex;
