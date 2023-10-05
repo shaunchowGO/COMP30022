@@ -80,3 +80,32 @@ export const createStudentProfile = async(studentData) => {
     throw error;
   }
 };
+export const createAssignmentProfile = async(assignmentData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/assignment`, assignmentData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log('Error creating assignment profile: ', error)
+    throw error;
+  }
+};
+
+export const createClassroomProfile = async(classroomData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/classroom`, classroomData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log('Error creating classroom profile: ', error)
+    throw error;
+  }
+};

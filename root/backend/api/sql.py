@@ -2,7 +2,7 @@ import pyodbc
 
 # call this function to run a query to the database
 # data returned still needs to be formatted to according to SQL column names
-def run_sql_query(query):
+def run_sql_query(query, params=None):
                 
     # Azure SQL Database connection details
     server = "sql-server-capstone-project.database.windows.net"
@@ -20,20 +20,39 @@ def run_sql_query(query):
 
         cursor = conn.cursor()
 
-        cursor.execute(query)
-        rows = cursor.fetchall()
-        column_names = [column[0] for column in cursor.description]
+        if params is not None:
+            cursor.execute(query, params)
+            conn.commit()
+        else:
+            cursor.execute(query)
+            
+            rows = cursor.fetchall()
+            column_names = [column[0] for column in cursor.description]
 
+            cursor.close()
+            conn.close()
+    
+            # print("Column Names: ", column_names)
+            # for row in rows:
+            #     print(row)
+            return rows
 
         cursor.close()
-        conn.close()
-        # print("Column Names: ", column_names)
-        # for row in rows:
-        #     print(row)
-        return rows
+        conn.close()   
 
+        
+
+      
+
+       
     except Exception as e:
         print(f"Error: {str(e)}")
 
+        
+ 
+   
 
-run_sql_query('SELECT * FROM [dbo].[AcademicsCohort]')
+  
+
+
+run_sql_query('SELECT * FROM [dbo].[Assignment]')

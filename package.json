@@ -5,5 +5,11 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.5.0",
     "react-modal": "^3.16.1"
+  },
+  
+  "scripts": {
+    "install-deps": "npm install"
   }
+  
+
 }

@@ -65,7 +65,7 @@ function GroupProfile() {
   return (
     <div>
       {viewingAssignments ? 
-      <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Assignment"}}/>
+      <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} hasDate={true} info={{name: "Assignment"}}/>
       :
       <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} info={{name: "Students"}}/>
     }

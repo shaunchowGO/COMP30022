@@ -76,12 +76,59 @@ def upload_file():
 
     return "Something went wrong", 500
 
+# Routes for SQL Insertion 
+
+# Receives student_data from the frontend and Inserts that into the DB 
 @app.route('/student', methods=['POST'])
 def create_student():
     student_data = request.get_json()
     #call create student folder script
 
     #call create student entry query 
+    query = "INSERT INTO [dbo].[student] (Name, Id) VALUES (?, ?)"
+    params = (student_data['name'], student_data['id'])
+    run_sql_query(query, params)
+
+    response = {
+        "message": "Student Profile created successfully:",
+        "student_data": student_data
+    }
+
+    return jsonify(response), 201
+
+# Receives assignment_data from the frontend and Inserts that into the DB 
+@app.route('/assignment', methods=['POST'])
+def create_assignment():
+    assignment_data = request.get_json()
+
+    #call create assignment entry query 
+    query = "INSERT INTO [dbo].[Assignment] (Id, SubjectId, DueDate, StartDate) VALUES (?, ?, ?, ?)"
+    params = (assignment_data['id'], assignment_data['name'], assignment_data['dueDate'], assignment_data['startDate'])
+    run_sql_query(query, params)
+
+    response = {
+        "message": "Assignment Profile created successfully:",
+        "assignment_data": assignment_data
+    }
+
+    return jsonify(response), 201
+
+# Receives classroom_data from the frontend and Inserts that into the DB 
+@app.route('/classroom', methods=['POST'])
+def create_classroom():
+    classroom_data = request.get_json()
+
+    #call create classroom entry query 
+    query = "INSERT INTO [dbo].[Subject] (Name, Id) VALUES (?, ?)"
+    params = (classroom_data['name'], classroom_data['id'])
+    run_sql_query(query, params)
+
+    response = {
+        "message": "Classroom Profile created successfully:",
+        "classroom_data": classroom_data
+    }
+
+    return jsonify(response), 201
 
 
 if __name__ == "__main__":
