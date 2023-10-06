@@ -1,4 +1,7 @@
 # Sends a Query and outputs the results using service Prinpical
+param (
+	$Query= "SELECT * FROM [dbo].[Academic] where id = 1111"
+)
 
 $appId = "44faa1af-7b88-4ba9-a672-20b8081a0692"
 $tenantId = "6e845553-113b-458c-87d1-8fd4b350fdf6"
@@ -9,9 +12,7 @@ $SQLServerName = "sql-server-capstone-project"    # Azure SQL logical server nam
 $DatabaseName = "sql-db-capstone-project"     # Azure SQL database name
 $ConnectionString="Data Source=$SQLServerName.database.windows.net; Initial Catalog=$DatabaseName;"
 
-$Query="SELECT * FROM [dbo].[test]"
- 
-Connect-AzAccount -ServicePrincipal -Credential $mycreds -Tenant $tenantId
+Connect-AzAccount -ServicePrincipal -Credential $mycreds -Tenant $tenantId | out-null
     #get token
     $context =Get-AzContext
     $dexResourceUrl='https://database.windows.net/'
@@ -30,6 +31,7 @@ Connect-AzAccount -ServicePrincipal -Credential $mycreds -Tenant $tenantId
         {
             $SqlConnection.AccessToken = $token
         }
+		
         $SqlConnection.Open()
          
         $SqlCmd.Connection = $SqlConnection 
@@ -37,8 +39,12 @@ Connect-AzAccount -ServicePrincipal -Credential $mycreds -Tenant $tenantId
         $SqlCmd.CommandText = $Query
         $SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
         $SqlAdapter.SelectCommand = $SqlCmd
+		
         $DataSet = New-Object System.Data.DataSet
-        $SqlAdapter.Fill($DataSet)
+		
+
+        $SqlAdapter.Fill($DataSet) | out-null
+
         #Outputs query
         $DataSet.Tables
     }
@@ -48,4 +54,4 @@ Connect-AzAccount -ServicePrincipal -Credential $mycreds -Tenant $tenantId
         $SqlCmd.Dispose()
         $SqlConnection.Dispose()
     }
-Disconnect-AzAccount
+Disconnect-AzAccount | out-null
