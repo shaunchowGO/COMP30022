@@ -1,23 +1,48 @@
 #footer {
-  padding: 2.5rem;
+  padding: 0;
+  margin: 0;
+}
+#footer * {
+  margin: 0;
+}
+#footer .footer-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 3rem 10rem;
+}
+#footer .footer-container .logo {
+  width: 15vw;
+}
+#footer .footer-container ul {
+  text-align: left;
+}
+#footer .footer-container ul h3, #footer .footer-container ul li {
+  margin-bottom: 1rem !important;
+}
+#footer .footer-container ul h3 {
+  font-size: 1vw;
+}
+#footer .footer-container ul li {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.9vw;
+}
+#footer .copyright {
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  box-shadow: 0px 4px 11px 7px rgba(0, 0, 0, 0.25);
-  z-index: 9999;
+  align-self: flex-end;
+  justify-content: space-between;
+  background: var(--primary);
+  color: var(--light);
+  padding: 1.5rem 10rem;
 }
-#footer .footer-links {
-  width: 300px;
+#footer .copyright .terms {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
 }
-#footer .footer-links a {
-  text-decoration: none;
-  color: #000;
-  transition: all 0.1s ease-in;
+#footer .copyright .terms .divider {
+  margin: 0 1rem;
+  font-size: 0.9vw;
 }
-#footer .footer-links a:hover {
-  text-decoration: underline;
+#footer .copyright .terms p {
+  cursor: pointer;
 }/*# sourceMappingURL=Footer.css.map */

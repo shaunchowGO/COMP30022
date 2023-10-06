@@ -22,7 +22,7 @@ function Dropdown(props) {
                 toggleDrop &&
                 <ul className="options">
                     {props.data.map((item) => (
-                        <li className="file-name" onClick={() => {setSelectedItem(item.name); setToggleDrop(!toggleDrop)}}>{item.name}</li>
+                        <li className="file-name" onClick={() => {setSelectedItem(item.Name); setToggleDrop(!toggleDrop)}}>{item.Name}</li>
                     ))}
                 </ul>
             }

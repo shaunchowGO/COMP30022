@@ -6,12 +6,12 @@ import {faXmark} from '@fortawesome/free-solid-svg-icons';
 function SignUp(props) {
   return (props.trigger) ? (
         <div id="sign-up">
-            <div className="login-container">
+            <div id="top" className="login-container">
                 <button className="close-btn" 
                     onClick={props.SetSignUpTrigger}>
                     <FontAwesomeIcon className="close-icon" icon={faXmark} />
                 </button>
-                <h1 className='logo'>TextDNA</h1>
+                <img className="logo" src={require("../assets/images/logo.png")}></img>
                 <p>Create Your Profile</p>
                 <form className="login-form">
                     <div className="name-container">

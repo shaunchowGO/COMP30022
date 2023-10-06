@@ -40,7 +40,7 @@ function TeacherProfile() {
   return (
     <div >
       <section id="teacher">
-        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Classroom"}} hasID={true}/>
+        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Subject"}} hasID={true}/>
         <div className="profile-container">
           <div className="profile-info">
             <img src={require(`../assets/images/${teacherData.displayPicture}`)} alt="Profile" />

@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: 4fr 1fr;
   grid-gap: 10%;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../../assets/images/backgrounds/blue_background.png");
+  background-image: url("../../assets/images/backgrounds/blue.svg");
 }/*# sourceMappingURL=Teacher.css.map */

@@ -1,18 +1,37 @@
+:root {
+  --light: #fff;
+  --dark: #31303E;
+  --primary: #7179e7;
+  --secondary: #8692cd;
+  --primary-hover: #8692cd;
+  --secondary-hover: #4f688d;
+  --light-hover: #d9d9d9;
+  --gray-1: #d9d9d9;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(../assets/fonts/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+* {
+  font-family: "OpenSans", sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  color: var(--dark);
 }
 
 nav {
-  padding: 1.5rem 15rem;
+  padding: 2rem 15vw;
   box-sizing: border-box;
 }
 
 section, footer {
-  padding: 5rem 10rem;
+  padding: 5rem 15vw;
   box-sizing: border-box;
   width: 100vw;
 }
@@ -20,7 +39,7 @@ section, footer {
 .icon:focus {
   outline: none;
   box-shadow: none;
-  color: #000;
+  color: var(--dark);
 }
 
 h1 {
@@ -37,7 +56,7 @@ p {
   background: none;
   border: none;
   cursor: pointer;
-  background: #0057FF;
+  background: var(--primary);
   padding: 0.5rem;
   border-radius: 5px;
   color: #fff;
@@ -45,7 +64,7 @@ p {
   margin-left: 1.5rem;
 }
 .blue-btn:hover {
-  background: #0b4ed5;
+  background: var(--primary-hover);
 }
 
 #teacher, #profile, #assignment, #group {
@@ -56,7 +75,7 @@ input {
   margin-bottom: 1rem;
   height: 35px;
   border: none;
-  border-bottom: 2px solid #5991ff;
+  border-bottom: 2px solid var(--secondary);
 }
 input:focus {
   outline: none;
@@ -94,7 +113,7 @@ input:focus {
   width: 150px;
   height: 150px;
   margin-right: 3rem;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--gray-1);
   border-radius: 15px;
 }
 .profile-container .profile-info .blue-btn {
@@ -107,13 +126,13 @@ input:focus {
   padding: 0.25rem 0rem 0.25rem 1rem;
   width: 98%;
   border-radius: 50px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--gray-1);
 }
 .profile-container .table .table-header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  border-bottom: 1px solid #d9d9d9;
-  color: #0057FF;
+  border-bottom: 1px solid var(--gray-1);
+  color: var(--primary);
   font-weight: bold;
   padding-bottom: 1rem;
   margin-bottom: 0.5rem;
@@ -126,11 +145,11 @@ input:focus {
   width: 0.25vw;
 }
 .profile-container .table .table-content::-webkit-scrollbar-thumb {
-  background: #0057FF;
+  background: var(--primary);
   border-radius: 50px;
 }
 .profile-container .table .table-content::-webkit-scrollbar-track {
-  background: #d9d9d9;
+  background: var(--gray-1);
 }
 .profile-container .table .table-content .table-row {
   display: grid;
@@ -142,10 +161,10 @@ input:focus {
   font-weight: bold;
 }
 .profile-container .table .table-content .table-row:nth-child(even) {
-  background: #EDF3FF;
+  background: var(--gray-1);
 }
 .profile-container .table .table-content .table-row:nth-child(odd) {
-  background: #fff;
+  background: var(--light);
 }
 .profile-container .table .table-content .table-row .row-detail {
   width: 50%;
@@ -155,4 +174,17 @@ input:focus {
 }
 .profile-container .table .table-content .table-row .row-detail .icon {
   cursor: pointer;
+}
+
+.reveal {
+  position: relative !important;
+  transform: translateX(-150px);
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
 }/*# sourceMappingURL=index.css.map */

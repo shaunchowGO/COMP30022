@@ -2,32 +2,35 @@
     width: 100vw !important;
     display: flex;
     align-items: center;
-    background: #fff;
-    ul {
-        display: flex;
+    background: var(--light);
+    p {
+        font-size: 0.9vw !important;
+        font-weight: 500;
     }
     .nav-left {
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         width: 50%;
         .nav-logo {
-            text-decoration: none;
+            img {
+                width: 10vw;
+            }
         }
         h1 {
             font-weight: 800;
-            color: #0057FF;
+            color: var(--primary);
             font-size: 32px;
         }
         ul {
-            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-evenly;
+            justify-content: space-around;
+            width: 100%;
             .nav-item {
                 position: relative;
                 text-decoration: none;
-                color: black;
+                color: var(--dark);
                 transition: all 0.1s ease-in;
                 &::before {
                     position: absolute;
@@ -38,7 +41,7 @@
                     height: 2px;
                 }
                 &:hover::before {
-                    background: #0057FF;
+                    background: var(--primary);
                     transition: all 0.1s ease-in;
                 }
             }
@@ -51,26 +54,23 @@
         align-items: center;
         justify-content: flex-end;
         .btn-container {
-            p {
-                font-size: 0.7vw !important;
-            }
             button {
                 background: none;
                 border: none;
                 cursor: pointer;
             }
             .login-btn {
-                border-bottom: 2px solid #0057FF;
+                border-bottom: 2px solid var(--primary);
             }
             .signup-btn {
-                background: #0057FF;
-                padding: 0.5rem;
-                border-radius: 5px;
+                background: var(--primary);
+                padding: 0.5rem 1rem;
+                border-radius: 50px;
                 color: #fff;
                 transition: all 0.2s ease-in;
                 margin-left: 1.5rem;
                 &:hover {
-                    background: #0b4ed5;
+                    background: var(--primary-hover);
                 }
             }
         }

@@ -9,10 +9,16 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    z-index: 999;
+    .drop-down {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
     .login-container {
         position: relative;
         padding: 5rem;
-        background-color: #fff;
+        background-color: var(--light);
         border-radius: 15px;
         height: 500px;
         width: 15%;
@@ -29,9 +35,12 @@
                 border-radius: 15px;
             }
         }
+        .logo {
+            width: 10vw;
+        }
         h1 {
             font-size: 48px;
-            color: #0057FF;
+            color: var(--primary);
             margin: 1rem 0;
         }
         p {
@@ -47,7 +56,7 @@
                 margin-bottom: 1rem;
                 height: 35px;
                 border: none;
-                border-bottom: 2px solid #5991ff;
+                border-bottom: 2px solid var(--primary);
                 &:focus {
                     outline: none;
                 }
@@ -75,7 +84,7 @@
             .breaker {
                 height: 1px;
                 width: 40%;
-                background: #000;
+                background: var(--dark);
             }
         }
         .below-or {
@@ -84,7 +93,7 @@
             grid-gap: 1rem;
             .google-sso-button {
                 background: none;
-                border: 1px solid #0057FF;
+                border: 1px solid var(--primary);
                 border-radius: 5px;
                 padding: 0.5rem 1rem;
                 display: flex;

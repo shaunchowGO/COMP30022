@@ -1,5 +1,5 @@
 #landing {
-  background: #fff;
+  background: var(--light);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +11,7 @@
   grid-template-columns: 1fr 1fr;
   padding: 5rem 15vw;
   padding-top: 2rem;
+  height: 80vh;
 }
 #landing .landing-main .landing-main-left {
   justify-self: left;
@@ -21,89 +22,156 @@
   justify-content: center;
 }
 #landing .landing-main .landing-main-left .main-header {
-  font-size: 3vw !important;
+  font-size: 2.5vw !important;
   margin: 0;
 }
 #landing .landing-main .landing-main-left .main-header .bold-word {
-  color: #0057FF;
+  color: var(--primary);
 }
 #landing .landing-main .landing-main-left .main-text {
   font-size: 1vw !important;
   margin: 2rem 0;
 }
 #landing .landing-main .landing-main-left .get-started-button {
-  background: #000;
-  color: #fff;
+  background: var(--primary);
+  color: var(--light);
   padding: 1rem 1.5rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+#landing .landing-main .landing-main-left .get-started-button:hover {
+  background: var(--primary-hover);
 }
 #landing .landing-main .landing-main-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   justify-self: end;
 }
 #landing .landing-main .landing-main-right .main-image {
-  width: 30vw;
+  width: 35vw;
+  position: relative;
+  top: -26px;
 }
-#landing .landing-stats {
-  background-image: url("../../assets/images/backgrounds/stats_background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-#landing .landing-stats .landing-stats-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 60%;
-  padding: 2.5rem 0;
-  padding-bottom: 3.5rem;
-}
-#landing .landing-stats .landing-stats-container .image-box {
-  font-weight: bold;
-  color: #fff;
+#landing .landing-info {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-#landing .landing-stats .landing-stats-container .image-box .stats-text {
-  font-size: 1.3vw !important;
-  width: 70%;
+#landing .landing-info .landing-info-header {
+  width: 30%;
 }
-#landing .landing-stats .landing-stats-container .image-box img {
-  width: 7vw;
+#landing .landing-info .landing-info-header h1 {
+  margin-bottom: 2rem;
+  color: var(--primary);
 }
-#landing .landing-stats .landing-stats-container .image-box span {
-  color: #000;
+#landing .landing-info .landing-info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 3rem 10rem;
 }
-#landing .instructions-container {
-  padding: 5rem 15vw;
-}
-#landing .instructions-container .instructions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem 0;
-}
-#landing .instructions-container .instructions .text {
+#landing .landing-info .landing-info-container .landing-info-item {
+  position: relative;
+  padding: 3rem;
   text-align: left;
-  width: 50%;
-}
-#landing .instructions-container .instructions .text span {
-  color: #0057FF;
-  font-weight: bold;
-}
-#landing .instructions-container .instructions .text h1 {
-  font-weight: 500;
-  font-size: 2.5vw !important;
-  margin-bottom: 1.5rem;
-}
-#landing .instructions-container .instructions img {
-  border: 1px solid #d9d9d9;
   border-radius: 15px;
-  width: 40%;
+  color: var(--light);
+  transition: all 0.2s ease-in;
+}
+#landing .landing-info .landing-info-container .landing-info-item * {
+  padding: 0;
+  margin: 0;
+}
+#landing .landing-info .landing-info-container .landing-info-item h2 {
+  font-size: 1.5vw;
+  margin-bottom: 1rem;
+}
+#landing .landing-info .landing-info-container .landing-info-item img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.2;
+  width: 25%;
+}
+#landing .landing-info .landing-info-container .landing-info-item:first-child {
+  background: #8692cd;
+}
+#landing .landing-info .landing-info-container .landing-info-item:first-child:hover {
+  background: #6c77af;
+}
+#landing .landing-info .landing-info-container .landing-info-item:nth-child(2) {
+  background: #78d5dd;
+}
+#landing .landing-info .landing-info-container .landing-info-item:nth-child(2):hover {
+  background: #5eb1b9;
+}
+#landing .landing-info .landing-info-container .landing-info-item:last-child {
+  background: #f27d9f;
+}
+#landing .landing-info .landing-info-container .landing-info-item:last-child:hover {
+  background: #d36383;
+}
+#landing .landing-tutorial {
+  margin: 5rem 0;
+  padding: 0 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#landing .landing-tutorial * {
+  padding: 0;
+  margin: 0;
+}
+#landing .landing-tutorial .landing-tutorial-header {
+  width: 30vw;
+  margin-bottom: 3rem;
+}
+#landing .landing-tutorial .landing-tutorial-header h1 {
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+#landing .landing-tutorial .landing-tutorial-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  text-align: left;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item {
+  border: 1px solid var(--gray-1);
+  border-radius: 15px;
+  padding: 3rem;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(1) .item-number {
+  background: #f27d9f;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(2) .item-number {
+  background: #78d5dd;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(3) .item-number {
+  background: #8692cd;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(4) .item-number {
+  background: #fdd796;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item .item-number {
+  border-radius: 5px;
+  width: 2.5vw;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: var(--light);
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item h3 {
+  font-size: 1.2vw;
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=Landing.css.map */

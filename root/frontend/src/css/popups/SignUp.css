@@ -21,10 +21,7 @@
   border-radius: 15px;
 }
 #sign-up .login-container .logo {
-  color: #0057FF;
-  font-weight: 800;
-  font-size: 48px;
-  margin-bottom: 1rem;
+  width: 10vw;
 }
 #sign-up .login-container p {
   margin-bottom: 1rem;
