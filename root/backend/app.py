@@ -4,13 +4,10 @@ from flask_cors import CORS
 #from scripts.run_ps_script import run_query
 from api.sql import run_sql_query
 
-
-QUERY_SCRIPT = "scripts/Query_SQL_SPrincipal.ps1"
-
 app = Flask(__name__)
 CORS(app)
 
-#get student info
+#get student info from DB 
 @app.route('/student', methods=['GET'])
 def get_student():
     query = "SELECT * FROM [dbo].[student]"
@@ -25,6 +22,7 @@ def get_student():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
+#get Assignment Info from DB 
 @app.route('/assignment', methods=['GET'])
 def get_assignment():
     query = "SELECT * FROM [dbo].[assignment]"
@@ -41,7 +39,7 @@ def get_assignment():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-#get teacher info 
+#get teacher info from DB 
 @app.route('/teacher', methods=['GET'])
 def get_teacher():
     query = "SELECT * FROM [dbo].[academic]"
@@ -56,25 +54,6 @@ def get_teacher():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return "No file part", 400
-
-    file = request.files['file']
-
-    if file.filename == '':
-        return "No selected file", 400
-
-    if file:
-        # call script here
-        f = open(file)
-        filename = file.filename
-        
-
-        return f"File uploaded successfully: {f}", 200
-
-    return "Something went wrong", 500
 
 # Routes for SQL Insertion 
 
@@ -129,6 +108,29 @@ def create_classroom():
     }
 
     return jsonify(response), 201
+
+#Routes to connect to the File Storage 
+
+#Uploads a file to the File Storage 
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return "No file part", 400
+
+    file = request.files['file']
+
+    if file.filename == '':
+        return "No selected file", 400
+
+    if file:
+        # call script here
+        f = open(file)
+        filename = file.filename
+        
+
+        return f"File uploaded successfully: {f}", 200
+
+    return "Something went wrong", 500
 
 
 if __name__ == "__main__":
