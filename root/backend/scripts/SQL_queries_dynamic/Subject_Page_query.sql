@@ -1,5 +1,4 @@
 SELECT TOP (1000) [Id]
-      ,[SubjectId]
       ,[DueDate]
       ,[StartDate]
   FROM [dbo].[Assignment]
