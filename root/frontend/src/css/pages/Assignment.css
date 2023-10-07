@@ -1,28 +1,26 @@
 #assignment {
   height: 100%;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
   grid-gap: 10%;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("../../assets/images/backgrounds/purple_background.png") !important;
+  background-image: url("../../assets/images/backgrounds/blue.svg") !important;
 }
 #assignment .blue-btn {
-  background: #7A3BFF;
+  background: var(--primary);
 }
 #assignment .blue-btn:hover {
   background-color: #5e2bca;
 }
 #assignment .table-header {
-  color: #7A3BFF;
+  color: var(--primary);
 }
 #assignment .active {
-  background: #7A3BFF !important;
+  background: var(--primary) !important;
 }
 #assignment .table-row:nth-child(even) {
   background: #E9E3FF;
 }
 #assignment .table-content::-webkit-scrollbar-thumb, #assignment .options::-webkit-scrollbar-thumb {
-  background: #7A3BFF;
+  background: var(--primary);
   border-radius: 50px;
 }/*# sourceMappingURL=Assignment.css.map */

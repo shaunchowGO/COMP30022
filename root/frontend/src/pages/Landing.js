@@ -27,7 +27,7 @@ function Landing() {
         <div className="landing-main">
           <div className="landing-main-left"> 
             <h1 className = "main-header"> A <span className="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
-            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             <button className="get-started-button"><p>Get Started</p></button>
           </div>
           <div className="landing-main-right">
@@ -43,7 +43,7 @@ function Landing() {
             <div className="landing-info-item">
               <h2>Quick and Intuitive</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <img src={require("../assets/images/used-by.png")}></img>
+              <img src={require("../assets/images/attributions.png")}></img>
             </div>
             <div className="landing-info-item">
               <h2>Recognized Globally</h2>
@@ -53,7 +53,7 @@ function Landing() {
             <div className="landing-info-item">
               <h2>Reliable Service</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <img src={require("../assets/images/attributions.png")}></img>
+              <img src={require("../assets/images/used-by.png")}></img>
             </div>
           </div>
         </div>

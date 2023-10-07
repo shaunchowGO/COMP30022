@@ -1,19 +1,19 @@
 #profile {
     height: 100%;
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+    // display: grid;
+    // grid-template-columns: 4fr 1fr;
     grid-gap: 10%;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("../../assets/images/backgrounds/dark_blue_background.png") !important;
+    background-image: url("../../assets/images/backgrounds/blue.svg") !important;
     .blue-btn {
-        background: #4B3BFF;
+        background: var(--primary);
     }
     .active {
-        background: #4B3BFF !important;
+        background: var(--primary) !important;
     }
     .table-header {
-        color: #4B3BFF;
+        color: var(--primary);
     }
     .table-row {
         &:nth-child(even) {
@@ -22,7 +22,7 @@
     }
     .table-content {
         &::-webkit-scrollbar-thumb {
-            background: #4B3BFF;
+            background: var(--primary);
             border-radius: 50px;
         }
     }

@@ -22,7 +22,7 @@
   justify-content: center;
 }
 #landing .landing-main .landing-main-left .main-header {
-  font-size: 2.5vw !important;
+  font-size: 2.7vw !important;
   margin: 0;
 }
 #landing .landing-main .landing-main-left .main-header .bold-word {
@@ -99,19 +99,19 @@
   width: 25%;
 }
 #landing .landing-info .landing-info-container .landing-info-item:first-child {
-  background: #8692cd;
+  background: var(--tertiary-1);
 }
 #landing .landing-info .landing-info-container .landing-info-item:first-child:hover {
   background: #6c77af;
 }
 #landing .landing-info .landing-info-container .landing-info-item:nth-child(2) {
-  background: #78d5dd;
+  background: var(--tertiary-2);
 }
 #landing .landing-info .landing-info-container .landing-info-item:nth-child(2):hover {
   background: #5eb1b9;
 }
 #landing .landing-info .landing-info-container .landing-info-item:last-child {
-  background: #f27d9f;
+  background: var(--tertiary-3);
 }
 #landing .landing-info .landing-info-container .landing-info-item:last-child:hover {
   background: #d36383;
@@ -148,16 +148,16 @@
   padding: 3rem;
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(1) .item-number {
-  background: #f27d9f;
+  background: var(--tertiary-1);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(2) .item-number {
-  background: #78d5dd;
+  background: var(--tertiary-2);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(3) .item-number {
-  background: #8692cd;
+  background: var(--tertiary-3);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(4) .item-number {
-  background: #fdd796;
+  background: var(--tertiary-4);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item .item-number {
   border-radius: 5px;

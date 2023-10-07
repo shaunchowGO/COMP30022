@@ -59,9 +59,6 @@ function GroupProfile() {
             </div>
   
             <div className="table">
-              <div className="search-container">
-                <input type="text" id="search" placeholder="Search Documents"/>
-              </div>
               <div className="table-header">
                   <p>Student Name</p>
                   <p>Similarity Score</p>
@@ -85,7 +82,7 @@ function GroupProfile() {
               </div>
             </div>
           </div>
-          <Filter buttonLabels={["Student Name", "Similarity Score", "Date Added"]} hasScore={true}/>
+          {/* <Filter buttonLabels={["Student Name", "Similarity Score", "Date Added"]} hasScore={true}/> */}
         </section>
         <Footer/>
     </div>

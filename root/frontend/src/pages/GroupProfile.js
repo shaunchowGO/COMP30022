@@ -31,6 +31,12 @@ function GroupProfile() {
         dueDate: 'Sep 9, 2023',
         date: 'Aug 10, 2022',
       },
+      {
+        name: 'Sample Assignment 3',
+        startDate: 'Aug 9, 2023',
+        dueDate: 'Sep 9, 2023',
+        date: 'Aug 10, 2022',
+      },
     ],
   };
   const studentData = {
@@ -38,6 +44,22 @@ function GroupProfile() {
       {
         id: 1167144,
         name: "Thaya Chevaphatrakul",
+      },
+      {
+        id: 1152451,
+        name: "Rohit Sandeep",
+      },
+      {
+        id: 1152451,
+        name: "Rohit Sandeep",
+      },
+      {
+        id: 1152451,
+        name: "Rohit Sandeep",
+      },
+      {
+        id: 1152451,
+        name: "Rohit Sandeep",
       },
       {
         id: 1152451,
@@ -87,9 +109,6 @@ function GroupProfile() {
             </div>
   
             <div className="table">
-              <div className="search-container">
-                <input type="text" id="search" placeholder="Search Documents"/>
-              </div>
               {viewingAssignments ? 
                 <div className="table-header">
                   <p>Assignment Name</p>
@@ -97,9 +116,7 @@ function GroupProfile() {
                 </div>
                 :
                 <div className="table-header">
-                  <p>Student ID</p>
-                  <p>Student Name</p>
-                  <p>Detail</p>
+                  <p>Students</p>
                 </div>
               }
 
@@ -109,25 +126,26 @@ function GroupProfile() {
                     <div className="table-row" key={index}>
                       <div className="file-name">{assignment.name}</div>
                       <div className="row-detail">
-                      <Link to="/assignment">
-                        <FontAwesomeIcon className="icon" icon={faEye}/>
-                      </Link>
-                        <FontAwesomeIcon className="icon" icon={faTrash} />
+                        <Link to="/assignment">
+                          <FontAwesomeIcon className="icon" icon={faEye}/>
+                        </Link>
+                          <FontAwesomeIcon className="icon" icon={faTrash} />
                       </div>
                     </div>
                   ))}
                 </div>
               :  
-              <div className="table-content">
+              <div className="card-content">
                   {studentData.details.map((student, index) => (
-                    <div className="table-row" key={index}>
-                      <div className="file-name">{student.id}</div>
-                      <div className="file-name">{student.name}</div>
-                      <div className="row-detail">
-                      <Link to="/assignment">
-                        <FontAwesomeIcon className="icon" icon={faEye}/>
-                      </Link>
-                        <FontAwesomeIcon className="icon" icon={faTrash} />
+                    <div className="card" key={index}>
+                      <img src={require("../assets/images/registered.png")}></img>
+                      <p className="card-id">{student.id}</p>
+                      <h3 className="file-name">{student.name}</h3>
+                      <div className="card-detail">
+                        <div className="card-detail-icon">
+                          <FontAwesomeIcon className="icon" icon={faEye}/>
+                          <FontAwesomeIcon className="icon" icon={faTrash} />
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -135,11 +153,11 @@ function GroupProfile() {
               }
             </div>
           </div>
-          {viewingAssignments ?
+          {/* {viewingAssignments ?
             <Filter buttonLabels={["Assignment Name"]}/>
             :
             <Filter buttonLabels={["ID", "Student Name"]}/>
-          }
+          } */}
         </section>
         <Footer/>
     </div>

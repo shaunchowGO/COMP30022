@@ -20,8 +20,7 @@
         padding: 5rem;
         background-color: var(--light);
         border-radius: 15px;
-        height: 500px;
-        width: 15%;
+        width: 15vw;
         .close-btn {
             position: absolute;
             top: 2.5%;
@@ -34,6 +33,9 @@
                 height: 25px;
                 border-radius: 15px;
             }
+        }
+        .login-header {
+            margin-bottom: 2rem;
         }
         .logo {
             width: 10vw;
@@ -51,10 +53,14 @@
             flex-direction: column;
             label {
                 text-align: left;
+                width: 100%;
+                font-size: 1vw;
             }
             input {
+                font-size: 0.8vw;
                 margin-bottom: 1rem;
                 height: 35px;
+                width: 100%;
                 border: none;
                 border-bottom: 2px solid var(--primary);
                 &:focus {
@@ -66,13 +72,14 @@
                 flex-direction: column;
                 .forgot-password {
                     text-align: left;
-                    font-size: 12px;
+                    font-size: 0.7vw !important;
                     text-decoration: underline;
                     margin-bottom: 0.5rem;
                     cursor: pointer;
                 }
                 .blue-btn {
                     margin: 0;
+                    font-size: 0.9vw !important;
                 }
             }
         }
@@ -81,6 +88,10 @@
             align-items: center;
             justify-content: space-between;
             margin: 1rem 0;
+            p {
+                font-size: 0.7vw !important;
+                margin-top: 0.8rem;
+            }
             .breaker {
                 height: 1px;
                 width: 40%;
@@ -89,6 +100,7 @@
         }
         .below-or {
             display: grid;
+            box-sizing: border-box;
             grid-template-columns: 1fr 1fr;
             grid-gap: 1rem;
             .google-sso-button {
@@ -100,17 +112,18 @@
                 align-items: center;
                 justify-content: center;
                 cursor: pointer;
+                font-size: 0.7vw !important; 
                 transition: all 0.1s ease-in-out;
                 &:hover {
                     border: 1px solid #2b5fc6;
                 }
                 img {
-                    width: 20px;
+                    width: 1vw;
                     margin-right: 0.5rem;
                 }
             }
             .user-text {
-                font-size: 14px !important; 
+                font-size: 0.7vw !important; 
                 text-align: left;
                 margin: 0;
                 .underline-text {

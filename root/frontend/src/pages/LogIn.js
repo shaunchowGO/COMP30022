@@ -47,8 +47,10 @@ function Login(props) {
                     onClick={props.SetLogInTrigger}>
                     <FontAwesomeIcon className="close-icon" icon={faXmark} />
                 </button>
-                <img className="logo" src={require("../assets/images/logo.png")}></img>
-                <p>Login To Continue</p>
+                <div className="login-header">
+                    <img className="logo" src={require("../assets/images/logo.png")}></img>
+                    <p>Login To Continue</p>
+                </div>
                 <form className="login-form">
                     <label htmlFor="email">Email Address</label>
                     <input

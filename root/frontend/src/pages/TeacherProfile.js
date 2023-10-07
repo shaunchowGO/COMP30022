@@ -79,7 +79,7 @@ function TeacherProfile() {
             </div>
           </div>
         </div>
-        <Filter buttonLabels={["Subject", "ID", "No. Assignments", "No. Students"]}/>
+        {/* <Filter buttonLabels={["Subject", "ID", "No. Assignments", "No. Students"]}/> */}
       </section>
       <Footer/>
     </div>

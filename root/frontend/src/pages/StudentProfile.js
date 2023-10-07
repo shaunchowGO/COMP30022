@@ -52,10 +52,6 @@ function StudentProfile() {
             </div>
 
             <div className="table">
-              <div className="search-container">
-                <input type="text" id="search" placeholder="Search Documents"/>
-              </div>
-              
               <div className="table-header">
                   <p>File Name</p>
                   <p>Subject</p>
@@ -81,7 +77,7 @@ function StudentProfile() {
 
             </div>
           </div>
-          <Filter buttonLabels={["Assignment Name", "Subject Name", "Similarity Score", "Date Added"]} hasScore={true}/>
+          {/* <Filter buttonLabels={["Assignment Name", "Subject Name", "Similarity Score", "Date Added"]} hasScore={true}/> */}
         </section>
       <Footer/>
     </div>

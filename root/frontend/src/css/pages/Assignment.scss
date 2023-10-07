@@ -1,22 +1,22 @@
 #assignment {
     height: 100%;
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+    // display: grid;
+    // grid-template-columns: 4fr 1fr;
     grid-gap: 10%;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-image: url("../../assets/images/backgrounds/purple_background.png") !important;
+    background-image: url("../../assets/images/backgrounds/blue.svg") !important;
     .blue-btn {
-        background: #7A3BFF;
+        background: var(--primary);
         &:hover {
             background-color: #5e2bca;
         }
     }
     .table-header {
-        color: #7A3BFF;
+        color: var(--primary);
     }
     .active {
-        background: #7A3BFF !important;
+        background: var(--primary) !important;
     }
     .table-row {
         &:nth-child(even) {
@@ -25,7 +25,7 @@
     }
     .table-content, .options {
         &::-webkit-scrollbar-thumb {
-            background: #7A3BFF;
+            background: var(--primary);
             border-radius: 50px;
         }
     }   

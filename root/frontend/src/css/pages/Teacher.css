@@ -1,7 +1,5 @@
 #teacher {
   height: 100%;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
   grid-gap: 10%;
   background-size: cover;
   background-repeat: no-repeat;

@@ -11,8 +11,10 @@ function SignUp(props) {
                     onClick={props.SetSignUpTrigger}>
                     <FontAwesomeIcon className="close-icon" icon={faXmark} />
                 </button>
-                <img className="logo" src={require("../assets/images/logo.png")}></img>
-                <p>Create Your Profile</p>
+                <div className="signup-header">
+                    <img className="logo" src={require("../assets/images/logo.png")}></img>
+                    <p>Create Your Profile</p>
+                </div>
                 <form className="login-form">
                     <div className="name-container">
                         <div className="names-input">
