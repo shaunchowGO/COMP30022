@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import { getTeacherProfile } from '../utils/api';
+import { getTeacherPage, getTeacherProfile } from '../utils/api';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer.js'
@@ -9,7 +9,7 @@ import AddItem from './AddItem.js'
 import '../css/pages/Teacher.css'
 
 function TeacherProfile() {
-  const teacherData = {
+  const teacherData1 = {
     name: 'Eduardo Riveria',
     id: 129312,
     classroomDetails: [
@@ -20,21 +20,44 @@ function TeacherProfile() {
         studentNo: '28',
       },  
   ],
-    displayPicture: 'eduardo.jpeg',
+    
   };
+  const academicID = 1111;
   
-  const [teacherData1, setTeacherData] = useState(null);
+  const [teacherInfo, setTeacherInfo] = useState(null);
+  const [classroomData, setClassroomData] = useState(null);
+
   useEffect(() => {
     async function retrieveTeacherInfo(){
-      const data = await getTeacherProfile();
+      const data = await getTeacherProfile(academicID);
       console.log('Retrieving Teacher Data...')
-      setTeacherData(data);
+      setTeacherInfo(data);
       
     }
     retrieveTeacherInfo();
   }, []);
-  console.log('Teacher data:' ,teacherData1)
 
+  useEffect(() => {
+    async function retrieveClassroomInfo(){
+      const data = await getTeacherPage(academicID);
+      console.log('Retrieving Classroom Data...')
+      setClassroomData(data);
+      
+    }
+    retrieveClassroomInfo();
+  }, []);
+
+  const teacherData = {
+    name: teacherInfo.Name,
+    id: teacherInfo.Id,
+    classroomDetails: classroomData.map(row => ({
+        name: row.Subject,
+        id: row.SubjectID,
+        assignmentNo: row.Assignments,
+        studentNo: row.Students,
+    }))
+  };
+  console.log('teacherdata: ',teacherData)
 
   const [trigger, SetTrigger] = React.useState(false);
   return (
@@ -43,7 +66,7 @@ function TeacherProfile() {
         <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Subject"}} hasID={true}/>
         <div className="profile-container">
           <div className="profile-info">
-            <img src={require(`../assets/images/${teacherData.displayPicture}`)} alt="Profile" />
+            <img src={require(`../assets/images/${'eduardo.jpeg'}`)} alt="Profile" />
             <div className="profile-info-right">
               <h1>{teacherData.name}</h1>
               <p>Academic ID: {teacherData.id}</p>
@@ -62,7 +85,7 @@ function TeacherProfile() {
                 <p>Detail</p>
             </div>
             <div className="table-content">
-              {teacherData.classroomDetails.map((classroom, index) => (
+              {teacherData && teacherData.classroomDetails.map((classroom, index) => (
                 <div className="table-row" key={index}>
                   <div className="file-name">{classroom.name}</div>
                   <div className="file-name">{classroom.id}</div>

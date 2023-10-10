@@ -55,4 +55,4 @@ def run_sql_query(query, params=None):
   
 
 
-run_sql_query('SELECT * FROM [dbo].[Assignment]')
+run_sql_query('SELECT * FROM [dbo].[academic]')

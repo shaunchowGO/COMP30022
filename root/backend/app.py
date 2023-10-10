@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 #import pyodbc
-#from scripts.run_ps_script import run_query
-from api.sql import run_sql_query
+from scripts.sql import run_sql_query
+from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, subject_page_query, submissions_for_assignment, submissions_for_student , teacher_page_query
 
 app = Flask(__name__)
 CORS(app)
@@ -11,6 +11,8 @@ CORS(app)
 @app.route('/student', methods=['GET'])
 def get_student():
     query = "SELECT * FROM [dbo].[student]"
+    
+    #query = students_in_subject_query
     res =  run_sql_query(query)
     
     formatted_rows = []
@@ -20,6 +22,7 @@ def get_student():
             'Name': row.Name
         }
         formatted_rows.append(formatted_row)
+        formatted_rows.append(students_in_subject_query)
     return formatted_rows
 
 #get Assignment Info from DB 
@@ -42,17 +45,19 @@ def get_assignment():
 #get teacher info from DB 
 @app.route('/teacher', methods=['GET'])
 def get_teacher():
-    query = "SELECT * FROM [dbo].[academic]"
+    teacher_id = request.args.get('teacherID')
+    q = "SELECT * FROM [dbo].[academic] WHERE Id = ?"
+    query = q.replace("?", str(teacher_id))
     res =  run_sql_query(query)
     
-    formatted_rows = []
-    for row in res:
+    formatted_row = []
+    if res:
         formatted_row = {
-            'Id': row.Id,
-            'Name': row.Name
+            'Id': res[0].Id,
+            'Name': res[0].Name
         }
-        formatted_rows.append(formatted_row)
-    return formatted_rows
+        
+    return formatted_row
 
 
 # Routes for SQL Insertion 
@@ -82,6 +87,7 @@ def create_assignment():
 
     #call create assignment entry query 
     query = "INSERT INTO [dbo].[Assignment] (Id, SubjectId, DueDate, StartDate) VALUES (?, ?, ?, ?)"
+    query.replace('?', params)
     params = (assignment_data['id'], assignment_data['name'], assignment_data['dueDate'], assignment_data['startDate'])
     run_sql_query(query, params)
 
@@ -109,6 +115,57 @@ def create_classroom():
 
     return jsonify(response), 201
 
+#Routes for Deleting Entries in SQL
+
+#Delete Student Entry by ID
+@app.route('/student/<int:id>', methods=['DELETE'])
+def delete_student(id):
+
+    query = "DELETE FROM [dbo].[student] WHERE Id = ?"
+    params = (id,)
+    run_sql_query(query, params)
+
+    response = {
+        "message": f"Student with ID {id} deleted successfully"
+    }
+
+    return jsonify(response), 204 
+
+#Delete Assignment Entry by ID
+@app.route('/assignment/<int:id>', methods=['DELETE'])
+def delete_assignment(id):
+
+    query = "DELETE FROM [dbo].[Assignment] WHERE Id = ?"
+    params = (id,)
+    run_sql_query(query, params)
+
+    response = {
+        "message": f"Assignment with ID {id} deleted successfully"
+    }
+
+    return jsonify(response), 204  
+
+#Delete Classroom entry By ID
+@app.route('/classroom/<int:id>', methods=['DELETE'])
+def delete_classroom(id):
+
+    query = "DELETE FROM [dbo].[Subject] WHERE Id = ?"
+    params = (id,)
+    run_sql_query(query, params)
+
+    response = {
+        "message": f"Classroom with ID {id} deleted successfully"
+    }
+
+    return jsonify(response), 204  
+
+
+
+
+
+
+
+
 #Routes to connect to the File Storage 
 
 #Uploads a file to the File Storage 
@@ -131,6 +188,27 @@ def upload_file():
         return f"File uploaded successfully: {f}", 200
 
     return "Something went wrong", 500
+
+
+#get teacher page info based on academicID 
+@app.route('/teacher-info', methods=['GET'])
+def get_teacher_info():
+    academic_id = request.args.get('teacherID')
+    params = (academic_id)
+    query = teacher_page_query.replace("?", str(params))
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Subject': row.Subject,
+            'SubjectID': row.ID,
+            'Assignments': row.AssignmentCount,
+            'Students': row.StudentCount
+        }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
+
 
 
 if __name__ == "__main__":

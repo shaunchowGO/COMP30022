@@ -19,9 +19,10 @@ export const getStudentProfile = async () => {
 };
 
 //Get Teacher profile info from DB
-export const getTeacherProfile = async () => {
+export const getTeacherProfile = async (teacherID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/teacher`, {
+      params: {teacherID},
       headers: {
         "Content-Type": "application/json",
       },
@@ -106,6 +107,47 @@ export const createClassroomProfile = async (classroomData) => {
   }
 };
 
+//Routes to delete entries in the SQL DB 
+export const deleteStudentProfile = async (studentId) => {
+  try {
+    const response = await axios.delete(
+      `${API_BASE_URL}/student/${studentId}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(`Error deleting student profile with ID ${studentId}: `, error);
+    throw error;
+  }
+};
+
+export const deleteAssignmentProfile = async (assignmentId) => {
+  try {
+    const response = await axios.delete(
+      `${API_BASE_URL}/assignment/${assignmentId}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(`Error deleting assignment profile with ID ${assignmentId}: `, error);
+    throw error;
+  }
+};
+
+export const deleteClassroomProfile = async (classroomId) => {
+  try {
+    const response = await axios.delete(
+      `${API_BASE_URL}/classroom/${classroomId}`
+    );
+
+    return response.data;
+  } catch (error) {
+    console.log(`Error deleting classroom profile with ID ${classroomId}: `, error);
+    throw error;
+  }
+};
+
+
 // route to connect to the File Storage
 export const uploadFile = async (file) => {
   const formData = new FormData();
@@ -120,6 +162,23 @@ export const uploadFile = async (file) => {
 
     return response.data;
   } catch (error) {
+    throw error;
+  }
+};
+
+//Get Teacher profile info from DB
+export const getTeacherPage = async (teacherID) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/teacher-info`, {
+      params: { teacherID},
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching teacher profile data: ", error);
     throw error;
   }
 };
