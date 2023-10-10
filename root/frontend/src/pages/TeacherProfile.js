@@ -26,40 +26,42 @@ function TeacherProfile() {
   
   const [teacherInfo, setTeacherInfo] = useState(null);
   const [classroomData, setClassroomData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function retrieveTeacherInfo(){
-      const data = await getTeacherProfile(academicID);
-      console.log('Retrieving Teacher Data...')
-      setTeacherInfo(data);
-      
+    async function fetchData() {
+      setIsLoading(true)
+      try {
+        const teacherData = await getTeacherProfile(academicID);
+        const classroomData = await getTeacherPage(academicID);
+
+        setTeacherInfo(teacherData);
+        setClassroomData(classroomData);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setIsLoading(false);
+      }
     }
-    retrieveTeacherInfo();
-  }, []);
 
-  useEffect(() => {
-    async function retrieveClassroomInfo(){
-      const data = await getTeacherPage(academicID);
-      console.log('Retrieving Classroom Data...')
-      setClassroomData(data);
-      
-    }
-    retrieveClassroomInfo();
-  }, []);
-
-  const teacherData = {
-    name: teacherInfo.Name,
-    id: teacherInfo.Id,
-    classroomDetails: classroomData.map(row => ({
-        name: row.Subject,
-        id: row.SubjectID,
-        assignmentNo: row.Assignments,
-        studentNo: row.Students,
-    }))
-  };
-  console.log('teacherdata: ',teacherData)
-
+    fetchData();
+  }, [academicID]);
   const [trigger, SetTrigger] = React.useState(false);
+
+  if (!isLoading) {
+    const teacherData = {
+      name: teacherInfo.Name,
+      id: teacherInfo.Id,
+      classroomDetails: classroomData.map(row => ({
+          name: row.Subject,
+          id: row.SubjectID,
+          assignmentNo: row.Assignments,
+          studentNo: row.Students,
+      }))
+    };
+    console.log('teacherdata: ',teacherData)
+  
   return (
     <div >
       <section id="teacher">
@@ -107,6 +109,7 @@ function TeacherProfile() {
       <Footer/>
     </div>
   );
+  }
 }
 
 export default TeacherProfile;
