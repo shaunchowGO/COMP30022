@@ -6,6 +6,8 @@ import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer.js'
 import Filter from './Filter.js'
 import AddItem from './AddItem.js'
+import PacmanLoader from "react-spinners/PacmanLoader";
+
 import '../css/pages/Teacher.css'
 
 function TeacherProfile() {
@@ -48,7 +50,10 @@ function TeacherProfile() {
     fetchData();
   }, [academicID]);
   const [trigger, SetTrigger] = React.useState(false);
-
+  if (isLoading){
+    return(<PacmanLoader color="#36d7b7" />)
+  }
+  
   if (!isLoading) {
     const teacherData = {
       name: teacherInfo.Name,
@@ -65,8 +70,9 @@ function TeacherProfile() {
   return (
     <div >
       <section id="teacher">
-        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Subject"}} hasID={true}/>
+        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Classroom"}} hasID={true}/>
         <div className="profile-container">
+        <PacmanLoader color="#36d7b7" />
           <div className="profile-info">
             <img src={require(`../assets/images/${'eduardo.jpeg'}`)} alt="Profile" />
             <div className="profile-info-right">
@@ -108,8 +114,8 @@ function TeacherProfile() {
       </section>
       <Footer/>
     </div>
-  );
-  }
+  );          
+ }
 }
 
 export default TeacherProfile;
