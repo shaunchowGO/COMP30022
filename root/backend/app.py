@@ -10,8 +10,9 @@ CORS(app)
 #get student info from DB 
 @app.route('/student', methods=['GET'])
 def get_student():
-    query = "SELECT * FROM [dbo].[student]"
-    
+    student_id = request.args.get('studentID')
+    q = "SELECT * FROM [dbo].[student] WHERE Id = ?"
+    query = q.replace("?", str(student_id))
     #query = students_in_subject_query
     res =  run_sql_query(query)
     

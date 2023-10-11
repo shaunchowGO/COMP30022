@@ -4,9 +4,8 @@ import { getTeacherPage, getTeacherProfile } from '../utils/api';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer.js'
-import Filter from './Filter.js'
 import AddItem from './AddItem.js'
-import PacmanLoader from "react-spinners/PacmanLoader";
+import RotateLoader from "react-spinners/RotateLoader";
 
 import '../css/pages/Teacher.css'
 
@@ -29,6 +28,7 @@ function TeacherProfile() {
   const [teacherInfo, setTeacherInfo] = useState(null);
   const [classroomData, setClassroomData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [trigger, SetTrigger] = React.useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,9 +49,17 @@ function TeacherProfile() {
 
     fetchData();
   }, [academicID]);
-  const [trigger, SetTrigger] = React.useState(false);
+
   if (isLoading){
-    return(<PacmanLoader color="#36d7b7" />)
+    return(
+      <div>
+        <section id="teacher">
+        <div className="loading-container">
+          <RotateLoader color="#7179e7" />
+        </div>
+      </section>
+      </div>
+    )
   }
   
   if (!isLoading) {
@@ -68,11 +76,10 @@ function TeacherProfile() {
     console.log('teacherdata: ',teacherData)
   
   return (
-    <div >
+    <div>
       <section id="teacher">
         <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Classroom"}} hasID={true}/>
         <div className="profile-container">
-        <PacmanLoader color="#36d7b7" />
           <div className="profile-info">
             <img src={require(`../assets/images/${'eduardo.jpeg'}`)} alt="Profile" />
             <div className="profile-info-right">
@@ -110,7 +117,6 @@ function TeacherProfile() {
             </div>
           </div>
         </div>
-        {/* <Filter buttonLabels={["Subject", "ID", "No. Assignments", "No. Students"]}/> */}
       </section>
       <Footer/>
     </div>

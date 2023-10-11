@@ -3,9 +3,10 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:5000";
 
 //Get Student Profile info from DB
-export const getStudentProfile = async () => {
+export const getStudentProfile = async (studentID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/student`, {
+      params: {studentID},
       headers: {
         "Content-Type": "application/json",
       },
@@ -182,3 +183,4 @@ export const getTeacherPage = async (teacherID) => {
     throw error;
   }
 };
+
