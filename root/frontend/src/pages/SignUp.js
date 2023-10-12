@@ -8,7 +8,7 @@ function SignUp(props) {
         <div id="sign-up">
             <div id="top" className="login-container">
                 <button className="close-btn" 
-                    onClick={props.SetSignUpTrigger}>
+                    onClick={props.setSignUpTrigger}>
                     <FontAwesomeIcon className="close-icon" icon={faXmark} />
                 </button>
                 <div className="signup-header">
@@ -76,7 +76,7 @@ function SignUp(props) {
                     />
 
                     <button className = "blue-btn" type="submit">SIGN UP</button>
-                    <p className='user-text'>Already a user? <a className="underline-text" onClick={() => {props.SetLogInTrigger();props.SetSignUpTrigger();}}>LOGIN</a>.</p>
+                    <p className='user-text'>Already a user? <a className="underline-text" onClick={() => {props.setLogInTrigger();props.setSignUpTrigger();}}>LOGIN</a>.</p>
                 </form>
             </div>
         </div>

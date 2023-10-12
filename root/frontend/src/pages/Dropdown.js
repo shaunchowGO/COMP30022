@@ -4,7 +4,6 @@ import '../css/Dropdown.css';
 function Dropdown(props) {
     const [selectedItem, setSelectedItem] = React.useState("");
     const [toggleDrop, setToggleDrop] = React.useState(false);
-
     const displayItem = () => {
         if (selectedItem === "") {
           return "-Select-";
@@ -22,7 +21,7 @@ function Dropdown(props) {
                 toggleDrop &&
                 <ul className="options">
                     {props.data.map((item) => (
-                        <li className="file-name" onClick={() => {setSelectedItem(item.Name); setToggleDrop(!toggleDrop)}}>{item.Name}</li>
+                        <li className="file-name" onClick={() => {setSelectedItem(item.Name); setToggleDrop(!toggleDrop); props.setAcademicID(item.Id)}}>{item.Name}</li>
                     ))}
                 </ul>
             }

@@ -36,6 +36,23 @@ export const getTeacherProfile = async (teacherID) => {
   }
 };
 
+//Get Teacher profile info from DB
+export const getAllTeacherProfile = async() => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/teacher1`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log('Error fetching teacher profile data: ', error)
+    throw error;
+  }
+};
+
+
 // Get Assignment Info from DB
 export const getAssignmentInfo = async () => {
   try {

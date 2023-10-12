@@ -1,34 +1,16 @@
 import React from 'react';
 import '../css/popups/Login.css';
-import { getTeacherProfile } from '../utils/api';
+import { getAllTeacherProfile } from '../utils/api';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown.js';
 
 
 function Login(props) {
-    const teacherData = {
-        details: [
-          {
-            id: 129312,
-            name: "Eduardo Riveria",
-          },
-          {
-            id: 1122388,
-            name: "Jane Doe",
-          },
-          {
-            id: 1167144,
-            name: "Thaya Chevaphatrakul",
-          },
-        ],
-      }
-
     const [teacherData1, setTeacherData] = React.useState(null);
-
     React.useEffect(() => {
-        async function retrieveTeacherInfo(){
-        const data = await getTeacherProfile();
+        async function retrieveTeacherInfo() {
+        const data = await getAllTeacherProfile();
         console.log('Retrieving Teacher Data...')
         setTeacherData(data);
 
@@ -40,11 +22,11 @@ function Login(props) {
     return (props.trigger) ? (
         <div id="login">
             <div className="dropdown">
-                <Dropdown data={teacherData1 !== null ? teacherData1 : ""}/>
+                <Dropdown setAcademicID={props.setAcademicID}data={teacherData1 !== null ? teacherData1 : ""}/>
             </div>
             <div className="login-container">
                 <button className="close-btn" 
-                    onClick={props.SetLogInTrigger}>
+                    onClick={props.setLogInTrigger}>
                     <FontAwesomeIcon className="close-icon" icon={faXmark} />
                 </button>
                 <div className="login-header">
@@ -91,7 +73,7 @@ function Login(props) {
                         SSO
                         </button>
                     <p className='user-text'> New User? <a className="underline-text" 
-                        onClick={() => {props.SetLogInTrigger();props.SetSignUpTrigger();}}>SIGN UP</a></p>
+                        onClick={() => {props.setLogInTrigger();props.setSignUpTrigger();}}>SIGN UP</a></p>
                 </div>
             </div>
         </div>

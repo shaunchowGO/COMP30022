@@ -60,6 +60,20 @@ def get_teacher():
         
     return formatted_row
 
+#get teacher info 
+@app.route('/teacher1', methods=['GET'])
+def get_teacher_all():
+    query = "SELECT * FROM [dbo].[academic]"
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Name': row.Name
+        }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
 
 # Routes for SQL Insertion 
 

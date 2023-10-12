@@ -9,22 +9,8 @@ import RotateLoader from "react-spinners/RotateLoader";
 
 import '../css/pages/Teacher.css'
 
-function TeacherProfile() {
-  const teacherData1 = {
-    name: 'Eduardo Riveria',
-    id: 129312,
-    classroomDetails: [
-      {
-        name: 'IT Project',
-        id: 'COMP30022',
-        assignmentNo: 3,
-        studentNo: '28',
-      },  
-  ],
-    
-  };
-  const academicID = 1111;
-  
+function TeacherProfile(props) {
+
   const [teacherInfo, setTeacherInfo] = useState(null);
   const [classroomData, setClassroomData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,8 +20,8 @@ function TeacherProfile() {
     async function fetchData() {
       setIsLoading(true)
       try {
-        const teacherData = await getTeacherProfile(academicID);
-        const classroomData = await getTeacherPage(academicID);
+        const teacherData = await getTeacherProfile(props.academicID);
+        const classroomData = await getTeacherPage(props.academicID);
 
         setTeacherInfo(teacherData);
         setClassroomData(classroomData);
@@ -48,7 +34,7 @@ function TeacherProfile() {
     }
 
     fetchData();
-  }, [academicID]);
+  }, [props.academicID]);
 
   if (isLoading){
     return(
