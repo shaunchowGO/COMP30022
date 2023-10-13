@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import {getAssignmentInfo} from '../utils/api'
+import {getAssignmentInfo, getSubjectPage} from '../utils/api'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
 import Footer from './Footer.js'
@@ -68,100 +68,104 @@ function GroupProfile() {
     ],
   };
 
-  const [groupData1, setGroupData] = useState(null);
- 
+  const [groupData1, setGroupData] = useState(null); 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     async function retrieveGroupInfo(){
-      const data = await getAssignmentInfo();
-      console.log('Retrieving Group Data...')
+      setIsLoading(true)
+      const data = await getSubjectPage(8001); 
+      console.log('Retrieving getSubjectPage Data...')
       setGroupData(data);
-      
     }
     retrieveGroupInfo();
+    setIsLoading(false);
   }, []);
-  console.log('Group data:' ,groupData1)
 
   const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
-  return (
-    <div>
-      {viewingAssignments ? 
-      <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} hasDate={true} info={{name: "Assignment"}}/>
-      :
-      <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} info={{name: "Students"}}/>
-    }
-      <section id="group">
-          <div className="profile-container">
-            <div className="profile-info">
-              <div className="profile-info-right">
-                <h1>{groupData.name}</h1>
-                <p>Subject Name: {groupData.subjectName}</p>
-                <div className="btn-containers">
-                  {viewingAssignments ? <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Assignments</button> : <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Students</button>}
-                  {viewingAssignments ?
-                  <button className="view-btn" onClick={() => SetViewingAssignments(!viewingAssignments)}>View Students</button>
-                  :
-                  <button className="view-btn" onClick={() => SetViewingAssignments(!viewingAssignments)}>View Assignments</button>
-                  }
+  if (!isLoading){
+    console.log('Group data:' ,groupData1)
+    return (
+      <div>
+        {viewingAssignments ? 
+        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} hasDate={true} info={{name: "Assignment"}}/>
+        :
+        <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} hasID={true} info={{name: "Students"}}/>
+      }
+        <section id="group">
+            <div className="profile-container">
+              <div className="profile-info">
+                <div className="profile-info-right">
+                  <h1>{groupData.name}</h1>
+                  <p>Subject Name: {groupData.subjectName}</p>
+                  <div className="btn-containers">
+                    {viewingAssignments ? <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Assignments</button> : <button className="blue-btn" onClick={() => SetTrigger(!trigger)}>+ Add Students</button>}
+                    {viewingAssignments ?
+                    <button className="view-btn" onClick={() => SetViewingAssignments(!viewingAssignments)}>View Students</button>
+                    :
+                    <button className="view-btn" onClick={() => SetViewingAssignments(!viewingAssignments)}>View Assignments</button>
+                    }
+                  </div>
                 </div>
               </div>
-            </div>
-  
-            <div className="table">
-              {viewingAssignments ? 
-                <div className="table-header">
-                  <p>Assignment Name</p>
-                  <p>Detail</p>
-                </div>
-                :
-                <div className="table-header">
-                  <p>Students</p>
-                </div>
-              }
+    
+              <div className="table">
+                {viewingAssignments ? 
+                  <div className="table-header">
+                    <p>Assignment Name</p>
+                    <p>Detail</p>
+                  </div>
+                  :
+                  <div className="table-header">
+                    <p>Students</p>
+                  </div>
+                }
 
-              {viewingAssignments ? 
-                <div className="table-content">
-                  {groupData.assignments.map((assignment, index) => (
-                    <div className="table-row" key={index}>
-                      <div className="file-name">{assignment.name}</div>
-                      <div className="row-detail">
-                        <Link to="/assignment">
-                          <FontAwesomeIcon className="icon" icon={faEye}/>
-                        </Link>
-                          <FontAwesomeIcon className="icon" icon={faTrash} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              :  
-              <div className="card-content">
-                  {studentData.details.map((student, index) => (
-                    <div className="card" key={index}>
-                      <img src={require("../assets/images/registered.png")}></img>
-                      <p className="card-id">{student.id}</p>
-                      <h3 className="file-name">{student.name}</h3>
-                      <div className="card-detail">
-                        <div className="card-detail-icon">
-                          <FontAwesomeIcon className="icon" icon={faEye}/>
-                          <FontAwesomeIcon className="icon" icon={faTrash} />
+                {viewingAssignments ? 
+                  <div className="table-content">
+                    {groupData.assignments.map((assignment, index) => (
+                      <div className="table-row" key={index}>
+                        <div className="file-name">{assignment.name}</div>
+                        <div className="row-detail">
+                          <Link to="/assignment">
+                            <FontAwesomeIcon className="icon" icon={faEye}/>
+                          </Link>
+                            <FontAwesomeIcon className="icon" icon={faTrash} />
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              }
+                    ))}
+                  </div>
+                :  
+                <div className="card-content">
+                    {studentData.details.map((student, index) => (
+                      <div className="card" key={index}>
+                        <img src={require("../assets/images/registered.png")}></img>
+                        <p className="card-id">{student.id}</p>
+                        <h3 className="file-name">{student.name}</h3>
+                        <div className="card-detail">
+                          <div className="card-detail-icon">
+                            <FontAwesomeIcon className="icon" icon={faEye}/>
+                            <FontAwesomeIcon className="icon" icon={faTrash} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                }
+              </div>
             </div>
-          </div>
-          {/* {viewingAssignments ?
-            <Filter buttonLabels={["Assignment Name"]}/>
-            :
-            <Filter buttonLabels={["ID", "Student Name"]}/>
-          } */}
-        </section>
-        <Footer/>
-    </div>
-  );
+            {/* {viewingAssignments ?
+              <Filter buttonLabels={["Assignment Name"]}/>
+              :
+              <Filter buttonLabels={["ID", "Student Name"]}/>
+            } */}
+          </section>
+          <Footer/>
+      </div>
+    );
+  }
 }
 
 export default GroupProfile;

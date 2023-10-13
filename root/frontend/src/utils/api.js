@@ -201,3 +201,20 @@ export const getTeacherPage = async (teacherID) => {
   }
 };
 
+
+//Get subject profile info from DB
+export const getSubjectPage = async (subjectID) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/subject-info`, {
+      params: { subjectID},
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching Subject page data: ", error);
+    throw error;
+  }
+};

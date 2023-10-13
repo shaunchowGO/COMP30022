@@ -1,4 +1,12 @@
 import pyodbc
+subject_page_query = """
+SELECT TOP (1000) [Id]
+      ,[DueDate]
+      ,[StartDate]
+  FROM [dbo].[Assignment]
+
+WHERE SubjectId = ?
+"""
 
 # call this function to run a query to the database
 # data returned still needs to be formatted to according to SQL column names
@@ -54,5 +62,6 @@ def run_sql_query(query, params=None):
 
   
 
-
-run_sql_query('SELECT * FROM [dbo].[academic]')
+# q = subject_page_query.replace("?", str(8001))
+run_sql_query('SELECT * FROM [dbo].[academicsCohort]')
+# run_sql_query(q)

@@ -72,7 +72,7 @@ function AddItem(props) {
                         <input type="text" id="name" name="name"  value={formData.name} onChange={handleInputChange} required/>
                         
                         {/* Render Due date & End end date fields if in props */}
-                        {props.hasDate && (
+                        {/* {props.hasDate && (
                         <div>
                             <label htmlFor="dueDate">Due Date:</label>
                             <input
@@ -95,7 +95,7 @@ function AddItem(props) {
                                     onChange={handleInputChange}
                                 />
                             </div>
-                        )}
+                        )} */}
                     
                     </div>
 

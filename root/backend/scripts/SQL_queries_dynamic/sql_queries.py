@@ -7,8 +7,6 @@ WHERE SC.SubjectId = ?
 
 subject_page_query = """
 SELECT TOP (1000) [Id]
-      ,[DueDate]
-      ,[StartDate]
   FROM [dbo].[Assignment]
 
 WHERE SubjectId = ?

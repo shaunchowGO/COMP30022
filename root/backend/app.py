@@ -36,9 +36,7 @@ def get_assignment():
     for row in res:
         formatted_row = {
             'Id': row.Id,
-            'SubjectId': row.SubjectId,
-            'StartDate': row.StartDate,
-            'DueDate': row.DueDate
+            'SubjectId': row.SubjectId
         }
         formatted_rows.append(formatted_row)
     return formatted_rows
@@ -60,6 +58,8 @@ def get_teacher():
         
     return formatted_row
 
+
+# Routes for SQL Insertion 
 #get teacher info 
 @app.route('/teacher1', methods=['GET'])
 def get_teacher_all():
@@ -75,7 +75,6 @@ def get_teacher_all():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-# Routes for SQL Insertion 
 
 # Receives student_data from the frontend and Inserts that into the DB 
 @app.route('/student', methods=['POST'])
@@ -101,9 +100,9 @@ def create_assignment():
     assignment_data = request.get_json()
 
     #call create assignment entry query 
-    query = "INSERT INTO [dbo].[Assignment] (Id, SubjectId, DueDate, StartDate) VALUES (?, ?, ?, ?)"
+    query = "INSERT INTO [dbo].[Assignment] (Id, SubjectId) VALUES (?, ?)"
     query.replace('?', params)
-    params = (assignment_data['id'], assignment_data['name'], assignment_data['dueDate'], assignment_data['startDate'])
+    params = (assignment_data['id'], assignment_data['name'])
     run_sql_query(query, params)
 
     response = {
@@ -175,12 +174,6 @@ def delete_classroom(id):
     return jsonify(response), 204  
 
 
-
-
-
-
-
-
 #Routes to connect to the File Storage 
 
 #Uploads a file to the File Storage 
@@ -224,7 +217,21 @@ def get_teacher_info():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-
+#get teacher page info based on academicID 
+@app.route('/subject-info', methods=['GET'])
+def get_subject_info():
+    academic_id = request.args.get('subjectID')
+    params = (academic_id)
+    query = subject_page_query.replace("?", str(params))
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'ID': row.Id
+            }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  
