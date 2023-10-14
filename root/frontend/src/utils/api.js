@@ -6,7 +6,7 @@ const API_BASE_URL = "http://localhost:5000";
 export const getStudentProfile = async (studentID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/student`, {
-      params: {studentID},
+      params: { studentID },
       headers: {
         "Content-Type": "application/json",
       },
@@ -23,7 +23,7 @@ export const getStudentProfile = async (studentID) => {
 export const getTeacherProfile = async (teacherID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/teacher`, {
-      params: {teacherID},
+      params: { teacherID },
       headers: {
         "Content-Type": "application/json",
       },
@@ -37,7 +37,7 @@ export const getTeacherProfile = async (teacherID) => {
 };
 
 //Get Teacher profile info from DB
-export const getAllTeacherProfile = async() => {
+export const getAllTeacherProfile = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/teacher1`, {
       headers: {
@@ -47,11 +47,10 @@ export const getAllTeacherProfile = async() => {
 
     return response.data;
   } catch (error) {
-    console.log('Error fetching teacher profile data: ', error)
+    console.log("Error fetching teacher profile data: ", error);
     throw error;
   }
 };
-
 
 // Get Assignment Info from DB
 export const getAssignmentInfo = async () => {
@@ -125,12 +124,10 @@ export const createClassroomProfile = async (classroomData) => {
   }
 };
 
-//Routes to delete entries in the SQL DB 
+//Routes to delete entries in the SQL DB
 export const deleteStudentProfile = async (studentId) => {
   try {
-    const response = await axios.delete(
-      `${API_BASE_URL}/student/${studentId}`
-    );
+    const response = await axios.delete(`${API_BASE_URL}/student/${studentId}`);
 
     return response.data;
   } catch (error) {
@@ -147,7 +144,10 @@ export const deleteAssignmentProfile = async (assignmentId) => {
 
     return response.data;
   } catch (error) {
-    console.log(`Error deleting assignment profile with ID ${assignmentId}: `, error);
+    console.log(
+      `Error deleting assignment profile with ID ${assignmentId}: `,
+      error
+    );
     throw error;
   }
 };
@@ -160,11 +160,13 @@ export const deleteClassroomProfile = async (classroomId) => {
 
     return response.data;
   } catch (error) {
-    console.log(`Error deleting classroom profile with ID ${classroomId}: `, error);
+    console.log(
+      `Error deleting classroom profile with ID ${classroomId}: `,
+      error
+    );
     throw error;
   }
 };
-
 
 // route to connect to the File Storage
 export const uploadFile = async (file) => {
@@ -188,7 +190,7 @@ export const uploadFile = async (file) => {
 export const getTeacherPage = async (teacherID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/teacher-info`, {
-      params: { teacherID},
+      params: { teacherID },
       headers: {
         "Content-Type": "application/json",
       },
@@ -201,12 +203,11 @@ export const getTeacherPage = async (teacherID) => {
   }
 };
 
-
 //Get subject profile info from DB
 export const getSubjectPage = async (subjectID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/subject-info`, {
-      params: { subjectID},
+      params: { subjectID },
       headers: {
         "Content-Type": "application/json",
       },
@@ -215,6 +216,23 @@ export const getSubjectPage = async (subjectID) => {
     return response.data;
   } catch (error) {
     console.log("Error fetching Subject page data: ", error);
+    throw error;
+  }
+};
+
+//Get student profile assignment info from DB
+export const getStudentAssignmentInfo = async (studentID) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/assignment-info`, {
+      params: { studentID },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching Student's assignment info: ", error);
     throw error;
   }
 };

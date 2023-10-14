@@ -233,5 +233,24 @@ def get_subject_info():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
+#get teacher page info based on academicID 
+@app.route('/assignment-info', methods=['GET'])
+def get_assignment_info():
+    academic_id = request.args.get('studentID')
+    params = (academic_id)
+    query = submissions_for_student.replace("?", str(params))
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'ID': row.AssignmentId,
+            'subjectName': row.Subject_Name,
+            'similarityScore': row.Similarity_Score,
+            'Date': row.Date
+            }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  

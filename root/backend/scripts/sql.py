@@ -1,11 +1,11 @@
 import pyodbc
-subject_page_query = """
-SELECT TOP (1000) [Id]
-      ,[DueDate]
-      ,[StartDate]
-  FROM [dbo].[Assignment]
-
-WHERE SubjectId = ?
+submissions_for_student = """
+SELECT sub.AssignmentId, s.Name as [Subject Name], sub.Similarity_Score, [Date]  FROM [dbo].Submission as sub
+INNER JOIN [dbo].[Assignment] as  A
+on sub.AssignmentId = A.Id
+INNER JOIN [dbo].[Subject] as s
+on s.Id = A.subjectId
+WHERE sub.studentId = ?
 """
 
 # call this function to run a query to the database
@@ -62,6 +62,6 @@ def run_sql_query(query, params=None):
 
   
 
-# q = subject_page_query.replace("?", str(8001))
+# q = submissions_for_student.replace("?", str(11111))
 run_sql_query('SELECT * FROM [dbo].[academicsCohort]')
 # run_sql_query(q)
