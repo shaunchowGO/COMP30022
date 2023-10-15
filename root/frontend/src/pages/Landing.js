@@ -27,7 +27,7 @@ function Landing() {
         <div className="landing-main">
           <div className="landing-main-left"> 
             <h1 className = "main-header"> A <span className="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
-            <p className = "main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+            <p className = "main-text">Designed with academics in mind, our platform offers a streamlined solution for evaluating document similarity. Academics can effortlessly upload documents, and our algorithm will swiftly determine the extent of their similarity to known profiles. </p>
             <button className="get-started-button"><p>Get Started</p></button>
           </div>
           <div className="landing-main-right">
@@ -37,22 +37,22 @@ function Landing() {
         <div className="landing-info reveal">
           <div className="landing-info-header">
             <h1>Our Service</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p> Explore a new era of document analysis with us today and experience the difference in authorship attribution!</p>
           </div>
           <div className="landing-info-container">
             <div className="landing-info-item">
               <h2>Quick and Intuitive</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Our platform offers a quick and intuitive experience, ensuring that you can effortlessly navigate through our services and achieve your goals without unnecessary complexities.</p>
               <img src={require("../assets/images/attributions.png")}></img>
             </div>
             <div className="landing-info-item">
               <h2>Recognized Globally</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>We providing top-tier solutions that have earned acclaim worldwide for their effectiveness and reliability.</p>
               <img src={require("../assets/images/registered.png")}></img>
             </div>
             <div className="landing-info-item">
               <h2>Reliable Service</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Count on us for a reliable service that you can trust. We prioritize your needs, ensuring that you receive consistent, dependable support for all your requirements.</p>
               <img src={require("../assets/images/used-by.png")}></img>
             </div>
           </div>
@@ -60,28 +60,28 @@ function Landing() {
         <div className="landing-tutorial reveal">
           <div className="landing-tutorial-header">
             <h1>How it works</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>In this section, you'll discover a seamlessly intuitive user experience, making it a breeze to understand and use our service.</p>
           </div>
           <div className="landing-tutorial-container">
             <div className="tutorial-item">
               <div className="item-number">1</div>
               <h3>Login/Sign Up</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p>Start by creating an account if you're new here, or simply log in if you've already got one.</p>
             </div>
             <div className="tutorial-item">
             <div className="item-number">2</div>
               <h3>Create profiles</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p>Take a moment to create various profiles that will serve as your comparison benchmarks.</p>
             </div>
             <div className="tutorial-item">
             <div className="item-number">3</div>
               <h3>Compare files</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p>Now, compare your profiles with documents of unknown authorship.</p>
             </div>
             <div className="tutorial-item">
             <div className="item-number">4</div>
               <h3>Receive Score</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+              <p>Upon completion, you'll be presented with a similarity score, providing you with insights into the document's authorship.</p>
             </div>
           </div>
         </div>
