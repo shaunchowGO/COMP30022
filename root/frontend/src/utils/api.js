@@ -169,9 +169,12 @@ export const deleteClassroomProfile = async (classroomId) => {
 };
 
 // route to connect to the File Storage
-export const uploadFile = async (file) => {
+export const uploadFile = async (file, studentInfo) => {
   const formData = new FormData();
   formData.append("file", file);
+  formData.append("assignmentID", studentInfo.assignmentID);
+  formData.append("subject_name", studentInfo.subject_name);
+  formData.append("studentID", studentInfo.studentID);
 
   try {
     const response = await axios.post(`${API_BASE_URL}/upload`, formData, {
@@ -233,6 +236,23 @@ export const getStudentAssignmentInfo = async (studentID) => {
     return response.data;
   } catch (error) {
     console.log("Error fetching Student's assignment info: ", error);
+    throw error;
+  }
+};
+
+//Get Student Profile info from DB
+export const getStudentsInSubject = async (subjectID) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/students`, {
+      params: { subjectID },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching student profile data: ", error);
     throw error;
   }
 };

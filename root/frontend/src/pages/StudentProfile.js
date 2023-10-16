@@ -80,6 +80,9 @@ function StudentProfile() {
           <Import
             trigger={importTrigger}
             SetImportTrigger={() => SetImportTrigger(!importTrigger)}
+            studentID={academicID}
+            assignmentID={100}
+            subjectName="Arts"
           />
           <div className="profile-container">
             <div className="profile-info">
