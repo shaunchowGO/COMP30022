@@ -1,29 +1,46 @@
 import React from 'react';
 import '../css/popups/Login.css';
 import { getAllTeacherProfile } from '../utils/api';
+import { getLoginData } from '../utils/api';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from '@fortawesome/free-solid-svg-icons';
-import Dropdown from './Dropdown.js';
+import BeatLoader from "react-spinners/BeatLoader";
 
 
 function Login(props) {
-    const [teacherData1, setTeacherData] = React.useState(null);
-    React.useEffect(() => {
-        async function retrieveTeacherInfo() {
-        const data = await getAllTeacherProfile();
-        console.log('Retrieving Teacher Data...')
-        setTeacherData(data);
+    const [formData, setFormData] = React.useState({ email: '', password: '' });
+    const [isLoading, setIsLoading] = React.useState(false);
 
-    }
-        retrieveTeacherInfo();
-    }, []);
-    console.log('Teacher data:' ,teacherData1)
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+        console.log(formData);
+    };
+    
+    const handleSubmit = async (e) => {
+        setIsLoading(true)
+        e.preventDefault();
+        try {
+          const loginInfo = await getLoginData(formData.email, formData.password);
+          console.log('Retrieving Login Data...');
+            if (loginInfo[0] != null) {
+              props.setAcademicID(loginInfo);
+              props.manageAlert('Login Successful', 'success');
+              setIsLoading(false);
+              props.setLogInTrigger();
+            }
+            else {
+                alert("Invalid Login");
+                setIsLoading(false);
+            }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setIsLoading(false);
+        }
+      };
 
     return (props.trigger) ? (
         <div id="login">
-            <div className="dropdown">
-                <Dropdown setAcademicID={props.setAcademicID}data={teacherData1 !== null ? teacherData1 : ""}/>
-            </div>
             <div className="login-container">
                 <button className="close-btn" 
                     onClick={props.setLogInTrigger}>
@@ -33,7 +50,7 @@ function Login(props) {
                     <img className="logo" src={require("../assets/images/logo.png")}></img>
                     <p>Login To Continue</p>
                 </div>
-                <form className="login-form">
+                <form className="login-form" onSubmit={handleSubmit}>
                     <label htmlFor="email">Email Address</label>
                     <input
                         type="text"
@@ -41,6 +58,7 @@ function Login(props) {
                         name="email"
                         placeholder="Enter your email"
                         required
+                        onChange={handleChange}
                     />
 
                     <label htmlFor="password">Password</label>
@@ -50,13 +68,17 @@ function Login(props) {
                         name="password"
                         placeholder="Enter your password"
                         required
+                        onChange={handleChange}
                     />
 
                     <div className='button-container'>
                         <a className="forgot-password">Forgot Password?</a>
-                        <button className="blue-btn" type="submit">SIGN IN</button>
+                        {isLoading ? 
+                            <BeatLoader className="loading-icon" color="#7179e7" />
+                        :
+                            <button className="blue-btn" type="submit">SIGN IN</button>
+                        }
                     </div>
-                    
                 </form>
                 <div className="login-breaker"> 
                     <span className="breaker"></span>

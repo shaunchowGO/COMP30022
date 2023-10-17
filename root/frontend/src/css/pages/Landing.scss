@@ -146,6 +146,10 @@ $section-padding: 5rem 15vw;
         border: 1px solid var(--gray-1);
         border-radius: 15px;
         padding: 3rem;
+        transition: all 0.1s ease-in;
+        &:hover {
+          transform: scale(1.01);
+        }
         &:nth-child(1) {
           .item-number {
             background: var(--tertiary-1);

@@ -7,6 +7,32 @@
         font-size: 0.9vw !important;
         font-weight: 500;
     }
+    .alert {
+        background: var(--light);
+        position: fixed;
+        top: 0;
+        right: 0;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        font-weight: bold;
+        margin: 1.5rem 2rem;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.4s ease-in;
+        z-index: 99999;
+    }
+    .success {
+        color: var(--green);
+        border: 1px solid var(--green);
+    }
+    .fail {
+        color: var(--tertiary-3);
+        border: 1px solid var(--tertiary-3);
+    }
+    .alert-reveal {
+        transform: translateY(0px);
+        opacity: 1;
+    }
     .nav-left {
         display: flex;
         align-items: center;
@@ -32,6 +58,7 @@
                 text-decoration: none;
                 color: var(--dark);
                 transition: all 0.1s ease-in;
+                cursor: pointer;
                 &::before {
                     position: absolute;
                     bottom: -10%;
@@ -53,7 +80,13 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        .btn-container {
+        .nav-right-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .username {
+                margin-right: 3rem;
+            }
             button {
                 background: none;
                 border: none;

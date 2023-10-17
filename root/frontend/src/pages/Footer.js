@@ -15,10 +15,10 @@ function Footer() {
           <ul>
             <h3>Pages</h3>
             <li>Home</li>
-            <li>Profile </li>
+            <li>Profile</li>
             <li>Subjects</li>
             <li>Assignments</li>
-            <li>Students</li>
+            <li>Student Profiles</li>
           </ul>
           <ul>
             <h3>Support</h3>

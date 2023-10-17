@@ -28,7 +28,7 @@ function Landing() {
           <div className="landing-main-left"> 
             <h1 className = "main-header"> A <span className="bold-word">Streamlined</span> Process to Authorship Attribution </h1>
             <p className = "main-text">Designed with academics in mind, our platform offers a streamlined solution for evaluating document similarity. Academics can effortlessly upload documents, and our algorithm will swiftly determine the extent of their similarity to known profiles. </p>
-            <button className="get-started-button"><p>Get Started</p></button>
+            <a href="#tutorial" className="get-started-button"><p>Get Started</p></a>
           </div>
           <div className="landing-main-right">
               <img src={require(`../assets/images/landing-main.png`)} className='main-image'></img>
@@ -57,7 +57,7 @@ function Landing() {
             </div>
           </div>
         </div>
-        <div className="landing-tutorial reveal">
+        <div id="tutorial" className="landing-tutorial reveal">
           <div className="landing-tutorial-header">
             <h1>How it works</h1>
             <p>In this section, you'll discover a seamlessly intuitive user experience, making it a breeze to understand and use our service.</p>

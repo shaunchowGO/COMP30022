@@ -8,6 +8,32 @@
   font-size: 0.9vw !important;
   font-weight: 500;
 }
+#navbar .alert {
+  background: var(--light);
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 1.5rem 2rem;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.4s ease-in;
+  z-index: 99999;
+}
+#navbar .success {
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+#navbar .fail {
+  color: var(--tertiary-3);
+  border: 1px solid var(--tertiary-3);
+}
+#navbar .alert-reveal {
+  transform: translateY(0px);
+  opacity: 1;
+}
 #navbar .nav-left {
   display: flex;
   align-items: center;
@@ -33,6 +59,7 @@
   text-decoration: none;
   color: var(--dark);
   transition: all 0.1s ease-in;
+  cursor: pointer;
 }
 #navbar .nav-left ul .nav-item::before {
   position: absolute;
@@ -52,15 +79,23 @@
   align-items: center;
   justify-content: flex-end;
 }
-#navbar .nav-right .btn-container button {
+#navbar .nav-right .nav-right-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#navbar .nav-right .nav-right-container .username {
+  margin-right: 3rem;
+}
+#navbar .nav-right .nav-right-container button {
   background: none;
   border: none;
   cursor: pointer;
 }
-#navbar .nav-right .btn-container .login-btn {
+#navbar .nav-right .nav-right-container .login-btn {
   border-bottom: 2px solid var(--primary);
 }
-#navbar .nav-right .btn-container .signup-btn {
+#navbar .nav-right .nav-right-container .signup-btn {
   background: var(--primary);
   padding: 0.5rem 1rem;
   border-radius: 50px;
@@ -68,6 +103,6 @@
   transition: all 0.2s ease-in;
   margin-left: 1.5rem;
 }
-#navbar .nav-right .btn-container .signup-btn:hover {
+#navbar .nav-right .nav-right-container .signup-btn:hover {
   background: var(--primary-hover);
 }/*# sourceMappingURL=Navbar.css.map */

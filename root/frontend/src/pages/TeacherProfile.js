@@ -16,12 +16,13 @@ function TeacherProfile(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
+
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
       try {
-        const teacherData = await getTeacherProfile(props.academicID);
-        const classroomData = await getTeacherPage(props.academicID);
+        const teacherData = await getTeacherProfile(props.academicID[0].Id);
+        const classroomData = await getTeacherPage(props.academicID[0].Id);
 
         setTeacherInfo(teacherData);
         setClassroomData(classroomData);

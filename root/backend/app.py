@@ -3,6 +3,7 @@ from flask_cors import CORS
 #import pyodbc
 from scripts.sql import run_sql_query
 from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, subject_page_query, submissions_for_assignment, submissions_for_student , teacher_page_query
+from scripts.run_ps_script import run_query
 
 app = Flask(__name__)
 CORS(app)
@@ -40,6 +41,26 @@ def get_assignment():
         }
         formatted_rows.append(formatted_row)
     return formatted_rows
+
+
+@app.route('/login', methods=['GET'])
+def get_login():
+    login_email = request.args.get('email')
+    login_password = request.args.get('password')
+    q = "SELECT * FROM [dbo].[login] WHERE Username = ? AND Password = ?"
+    query = q.replace("?", "'" + str(login_email) + "'", 1) 
+    query = query.replace("?", "'" + str(login_password) + "'", 1)
+    res = run_sql_query(query)
+
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Username': row.Username
+        }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
+
 
 #get teacher info from DB 
 @app.route('/teacher', methods=['GET'])

@@ -15,6 +15,7 @@ $nav-padding: 1rem 15vw;
     --tertiary-2: #78d5dd;
     --tertiary-3: #f27d9f;
     --tertiary-4: #fdd796;
+    --green: #6acd92;
 }
 
 
@@ -25,6 +26,10 @@ $nav-padding: 1rem 15vw;
 
 * {
     font-family: 'OpenSans', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -60,6 +65,15 @@ h1 {
 p {
     font-size: 0.9vw !important;
     margin: 0;
+}
+
+.icon {
+    cursor: pointer;
+    transition: all 0.1s ease-in;
+    color: var(--dark);
+    &:hover {
+        color: var(--primary);
+    }
 }
 
 .blue-btn {

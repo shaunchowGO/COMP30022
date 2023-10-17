@@ -36,6 +36,23 @@ export const getTeacherProfile = async (teacherID) => {
   }
 };
 
+export const getLoginData = async (email, password) => {
+  try {
+    console.log(email, password);
+    const response = await axios.get(`${API_BASE_URL}/login`, {
+      params: { email, password },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching login  profile data: ", error);
+    throw error;
+  }
+}
+
 //Get Teacher profile info from DB
 export const getAllTeacherProfile = async () => {
   try {

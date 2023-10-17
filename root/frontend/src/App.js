@@ -9,11 +9,19 @@ import Assignments from './pages/Assignments.js'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 
 function App() {
-  const [academicID, setAcademicID] = React.useState(1111);
+  const [academicID, setAcademicID] = React.useState(
+    JSON.parse(localStorage.getItem('academicID')) || null
+  ); 
+  
+  // Store data in case page refreshes
+  React.useEffect(() => {
+    localStorage.setItem('academicID', JSON.stringify(academicID));
+  }, [academicID]);
+  
   return (
     <Router>
       <div className="App">
-        <Navbar setAcademicID = {setAcademicID}/>
+        <Navbar setAcademicID = {setAcademicID} academicID = {academicID}/>
         <Routes>
           <Route exact path="/" element={<Landing/>}></Route>
           <Route exact path="/group" element={<GroupProfile/>}></Route>

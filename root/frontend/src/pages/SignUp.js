@@ -39,7 +39,7 @@ function SignUp(props) {
                         </div>
                     </div>
                     
-                    <label htmlFor="id">Academin ID<span className="required-field">*</span></label>
+                    <label htmlFor="id">Academic ID<span className="required-field">*</span></label>
                     <input
                         type="text"
                         id="id"

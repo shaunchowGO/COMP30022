@@ -146,6 +146,10 @@
   border: 1px solid var(--gray-1);
   border-radius: 15px;
   padding: 3rem;
+  transition: all 0.1s ease-in;
+}
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:hover {
+  transform: scale(1.01);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(1) .item-number {
   background: var(--tertiary-1);
