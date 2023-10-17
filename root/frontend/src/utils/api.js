@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000";
-
+// const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "20.55.71.66:5000";
 //Get Student Profile info from DB
 export const getStudentProfile = async (studentID) => {
   try {
