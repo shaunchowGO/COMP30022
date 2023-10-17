@@ -3,7 +3,6 @@ from flask_cors import CORS
 #import pyodbc
 from scripts.sql import run_sql_query
 from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, subject_page_query, submissions_for_assignment, submissions_for_student , teacher_page_query
-from scripts.run_ps_script import run_query
 
 app = Flask(__name__)
 CORS(app)
@@ -14,7 +13,6 @@ def get_student():
     student_id = request.args.get('studentID')
     q = "SELECT * FROM [dbo].[student] WHERE Id = ?"
     query = q.replace("?", str(student_id))
-    #query = students_in_subject_query
     res =  run_sql_query(query)
     
     formatted_rows = []
@@ -24,7 +22,6 @@ def get_student():
             'Name': row.Name
         }
         formatted_rows.append(formatted_row)
-        formatted_rows.append(students_in_subject_query)
     return formatted_rows
 
 #get Assignment Info from DB 
@@ -201,9 +198,14 @@ def delete_classroom(id):
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
-        return "No file part", 400
+        return "No file part", 401
 
     file = request.files['file']
+    if 'subject_name' not in request.form:
+        return "No Subject Data", 414
+
+    if 'studentID' not in request.form:
+        return "No Student Data", 415
 
     if file.filename == '':
         return "No selected file", 400
@@ -212,7 +214,14 @@ def upload_file():
         # call script here
         f = open(file)
         filename = file.filename
-        
+        # assignmentID = request.form['assignmentId']
+        # subject_name = request.form['subject_name']
+        # studentID = request.form['studentID']
+        assignmentID = 100
+        subject_name = 'Arts'
+        studentID = 11111
+        uploading_assignment(filename, subject_name, studentID, assignmentID)
+
 
         return f"File uploaded successfully: {f}", 200
 
@@ -249,7 +258,9 @@ def get_subject_info():
     formatted_rows = []
     for row in res:
         formatted_row = {
-            'ID': row.Id
+            'ID': row.Id,
+            'SubjectId': row.SubjectId,
+            'Name': row.Name,
             }
         formatted_rows.append(formatted_row)
     return formatted_rows
@@ -270,6 +281,23 @@ def get_assignment_info():
             'similarityScore': row.Similarity_Score,
             'Date': row.Date
             }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
+
+
+#get student info from DB 
+@app.route('/students', methods=['GET'])
+def get_students_in_subject():
+    subject_id = request.args.get('subjectID')
+    query = students_in_subject_query.replace("?", str(subject_id))
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Name': row.Name
+        }
         formatted_rows.append(formatted_row)
     return formatted_rows
 

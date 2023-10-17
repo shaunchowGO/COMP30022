@@ -6,7 +6,7 @@ WHERE SC.SubjectId = ?
 """
 
 subject_page_query = """
-SELECT TOP (1000) [Id]
+SELECT TOP (1000) [Id],[Name], [SubjectId]
   FROM [dbo].[Assignment]
 
 WHERE SubjectId = ?
