@@ -6,7 +6,7 @@ WHERE SC.SubjectId = ?
 """
 
 subject_page_query = """
-SELECT TOP (1000) [Id]
+SELECT TOP (1000) [Id],[Name], [SubjectId]
   FROM [dbo].[Assignment]
 
 WHERE SubjectId = ?
@@ -20,7 +20,7 @@ WHERE sub.AssignmentId = ?
 """
 
 submissions_for_student = """
-SELECT sub.AssignmentId, s.Name as [Subject Name], sub.Similarity_Score, [Date]  FROM [dbo].Submission as sub
+SELECT sub.AssignmentId, s.Name as [Subject_Name], sub.Similarity_Score, [Date]  FROM [dbo].Submission as sub
 INNER JOIN [dbo].[Assignment] as  A
 on sub.AssignmentId = A.Id
 INNER JOIN [dbo].[Subject] as s
