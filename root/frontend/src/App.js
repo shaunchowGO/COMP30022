@@ -38,7 +38,8 @@ function App() {
           
           {academicID != null ? <Route exact path="/assignment" element={<Assignments/>}></Route>
           :
-          <Route exact path="/assignment" element={<Landing/>}></Route>}
+          <Route exact path="/assignment/:ID" element={<Landing/>}></Route>}
+     
         </Routes>
       </div>
     </Router>
