@@ -6,7 +6,8 @@ $nav-padding: 1rem 15vw;
     --light: #fff;
     --dark: #31303E;
     --primary: #7179e7;
-    --secondary: #8692cd;
+    --primary-light: #d9daf6;
+    --secondary: #aab5ec;
     --primary-hover: #5d6bb3;
     --secondary-hover: #4f688d;
     --light-hover: #d9d9d9;
@@ -140,7 +141,7 @@ input {
                 font-size: 0.7vw;
             }
         }
-        img {
+        img, .profile-image {
             width: 150px;
             height: 150px;
 
@@ -194,7 +195,7 @@ input {
                     font-weight: bold;
                 }
                 &:nth-child(even) {
-                    background: var(--gray-1);
+                    background: var(--primary-light);
                 }
                 &:nth-child(odd) {
                     background: var(--light);

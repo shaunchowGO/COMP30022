@@ -58,6 +58,25 @@ def get_login():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
+@app.route('/comp_login', methods=['GET'])
+def compare_login():
+    login_email = request.args.get('email')
+    q = "SELECT * FROM [dbo].[login] WHERE Username = ?"
+    query = q.replace("?", "'" + str(login_email) + "'", 1) 
+    res = run_sql_query(query)
+
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Username': row.Username
+        }
+        formatted_rows.append(formatted_row)
+    print(formatted_rows)
+    if (len(formatted_rows) == 0) :
+        return 'new'
+    return 'old'
+
 
 #get teacher info from DB 
 @app.route('/teacher', methods=['GET'])
@@ -93,6 +112,38 @@ def get_teacher_all():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
+
+@app.route('/signup', methods=['POST'])
+def create_account():
+    account_data = request.get_json()
+
+    #call create student entry query 
+    query = "INSERT INTO [dbo].[login] (Username, Password, Id) VALUES (?, ?, ?)"
+    params = (account_data['email'], account_data['password'], account_data['aId'])
+    run_sql_query(query, params)
+
+    response = {
+        "message": "New Account created successfully:",
+        "account_data": account_data
+    }
+
+    return jsonify(response), 201
+
+@app.route('/new_academic', methods=['POST'])
+def create_academic():
+    academic_data = request.get_json()
+    academic_name = academic_data['firstName'] + " " + academic_data['lastName']
+    print(academic_name)
+    query = "INSERT INTO [dbo].[academic] (Name, Id) VALUES (?, ?)"
+    params = (academic_name, academic_data['aId'])
+    run_sql_query(query, params)
+
+    response = {
+        "message": "Student Profile created successfully:",
+        "student_data": academic_data
+    }
+
+    return jsonify(response), 201
 
 # Receives student_data from the frontend and Inserts that into the DB 
 @app.route('/student', methods=['POST'])

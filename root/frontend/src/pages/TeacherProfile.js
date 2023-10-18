@@ -16,7 +16,7 @@ function TeacherProfile(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
-
+  
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true)
@@ -68,7 +68,7 @@ function TeacherProfile(props) {
         <AddItem trigger={trigger} SetTrigger={() => SetTrigger(!trigger)} info={{name: "Classroom"}} hasID={true}/>
         <div className="profile-container">
           <div className="profile-info">
-            <img src={require(`../assets/images/${'eduardo.jpeg'}`)} alt="Profile" />
+            <img src={require(`../assets/images/${'profile.png'}`)} alt="Profile" />
             <div className="profile-info-right">
               <h1>{teacherData.name}</h1>
               <p>Academic ID: {teacherData.id}</p>

@@ -38,7 +38,6 @@ export const getTeacherProfile = async (teacherID) => {
 
 export const getLoginData = async (email, password) => {
   try {
-    console.log(email, password);
     const response = await axios.get(`${API_BASE_URL}/login`, {
       params: { email, password },
       headers: {
@@ -52,6 +51,23 @@ export const getLoginData = async (email, password) => {
     throw error;
   }
 }
+
+export const compareLoginData = async (email) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/comp_login`, {
+      params: { email },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching login  profile data: ", error);
+    throw error;
+  }
+}
+
 
 //Get Teacher profile info from DB
 export const getAllTeacherProfile = async () => {
@@ -81,6 +97,39 @@ export const getAssignmentInfo = async () => {
     return response.data;
   } catch (error) {
     console.log("Error fetching assignment info: ", error);
+    throw error;
+  }
+};
+
+//Create Student Profile instance in DB
+export const createNewAccount = async (accountData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/signup`, accountData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error creating student profile: ", error);
+    throw error;
+  }
+};
+
+
+//Create Student Profile instance in DB
+export const createAcademicProfile = async (academicData) => {
+  try {
+    const response = await axios.post(`${API_BASE_URL}/new_academic`, academicData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error creating student profile: ", error);
     throw error;
   }
 };

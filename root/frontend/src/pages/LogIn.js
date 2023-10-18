@@ -5,6 +5,7 @@ import { getLoginData } from '../utils/api';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from '@fortawesome/free-solid-svg-icons';
 import BeatLoader from "react-spinners/BeatLoader";
+import { useNavigate } from 'react-router-dom';
 
 
 function Login(props) {
@@ -14,8 +15,9 @@ function Login(props) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
-        console.log(formData);
     };
+
+    const navigate = useNavigate();
     
     const handleSubmit = async (e) => {
         setIsLoading(true)
@@ -28,16 +30,18 @@ function Login(props) {
               props.manageAlert('Login Successful', 'success');
               setIsLoading(false);
               props.setLogInTrigger();
+              navigate('/');
             }
             else {
-                alert("Invalid Login");
+                props.manageAlert('Invalid Login', 'fail');
                 setIsLoading(false);
             }
         } catch (error) {
           console.error('Error fetching data:', error);
           setIsLoading(false);
         }
-      };
+    };
+
 
     return (props.trigger) ? (
         <div id="login">

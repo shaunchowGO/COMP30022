@@ -24,10 +24,21 @@ function App() {
         <Navbar setAcademicID = {setAcademicID} academicID = {academicID}/>
         <Routes>
           <Route exact path="/" element={<Landing/>}></Route>
-          <Route exact path="/group" element={<GroupProfile/>}></Route>
-          <Route exact path="/student" element={<StudentProfile/>}></Route>
-          <Route exact path="/teacher" element={<TeacherProfile academicID={academicID}/>}></Route>
-          <Route exact path="/assignment" element={<Assignments/>}></Route>
+          {academicID != null ? <Route exact path="/group" element={<GroupProfile/>}></Route>
+          :
+          <Route exact path="/group" element={<Landing/>}></Route>}
+          
+          {academicID != null ? <Route exact path="/student" element={<StudentProfile/>}></Route>
+          :
+          <Route exact path="/student" element={<Landing/>}></Route>}
+
+          {academicID != null ? <Route exact path="/teacher" element={<TeacherProfile academicID={academicID}/>}></Route>
+          :
+          <Route exact path="/teacher" element={<Landing/>}></Route>}
+          
+          {academicID != null ? <Route exact path="/assignment" element={<Assignments/>}></Route>
+          :
+          <Route exact path="/assignment" element={<Landing/>}></Route>}
         </Routes>
       </div>
     </Router>

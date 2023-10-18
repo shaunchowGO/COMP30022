@@ -21,6 +21,7 @@ function Landing() {
       }
     }
   }
+  
   return (
     <div>
       <section id="landing">
@@ -41,19 +42,19 @@ function Landing() {
           </div>
           <div className="landing-info-container">
             <div className="landing-info-item">
-              <h2>Quick and Intuitive</h2>
+              <h2>Easy to Use</h2>
               <p>Our platform offers a quick and intuitive experience, ensuring that you can effortlessly navigate through our services and achieve your goals without unnecessary complexities.</p>
-              <img src={require("../assets/images/attributions.png")}></img>
+              <img src={require("../assets/images/used-by.png")}></img>
             </div>
             <div className="landing-info-item">
-              <h2>Recognized Globally</h2>
-              <p>We providing top-tier solutions that have earned acclaim worldwide for their effectiveness and reliability.</p>
-              <img src={require("../assets/images/registered.png")}></img>
+              <h2>Quick and Responsive</h2>
+              <p>Designed for speed and efficiency, guaranteeing that you can swiftly access our services and experience responsive interactions, allowing you to achieve your goals without delay.</p>
+              <img src={require("../assets/images/attributions.png")}></img>
             </div>
             <div className="landing-info-item">
               <h2>Reliable Service</h2>
               <p>Count on us for a reliable service that you can trust. We prioritize your needs, ensuring that you receive consistent, dependable support for all your requirements.</p>
-              <img src={require("../assets/images/used-by.png")}></img>
+              <img src={require("../assets/images/registered.png")}></img>
             </div>
           </div>
         </div>

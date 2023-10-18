@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom';
 import Login from '../pages/LogIn'
 import SignUp from '../pages/SignUp'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faRightFromBracket, faCheck} from '@fortawesome/free-solid-svg-icons';
+import {faRightFromBracket, faCheck , faXmark} from '@fortawesome/free-solid-svg-icons';
 
 function Navbar(props) {
   const [loginTrigger, setLogInTrigger] = React.useState(false);
   const [signUpTrigger, setSignUpTrigger] = React.useState(false);
-  const [alertValue, setAlertValue] = React.useState({text: 'Alert Template', type: 'success'});
+  const [alertValue, setAlertValue] = React.useState({text: '', type: ''});
 
   if (loginTrigger || signUpTrigger) {
     document.body.style.overflowY = 'hidden';
@@ -36,9 +36,16 @@ function Navbar(props) {
     <nav id="navbar">
       <Login trigger={loginTrigger} setLogInTrigger={() => setLogInTrigger(!loginTrigger)} setSignUpTrigger={() => setSignUpTrigger(!signUpTrigger)} setAcademicID={props.setAcademicID} revealAction={revealAction} manageAlert={manageAlert}/>
 
-      <SignUp trigger={signUpTrigger} setSignUpTrigger={() => setSignUpTrigger(!signUpTrigger)} setLogInTrigger={() => setLogInTrigger(!loginTrigger)}/>
+      <SignUp trigger={signUpTrigger} setSignUpTrigger={() => setSignUpTrigger(!signUpTrigger)} setLogInTrigger={() => setLogInTrigger(!loginTrigger)} revealAction={revealAction} manageAlert={manageAlert}/>
 
-      <div className={`alert ${alertValue.type}`}>{alertValue.text} <FontAwesomeIcon icon={faCheck} /></div>
+        <div className={`alert`}>
+          <div className={`${alertValue.type}`}>
+            {alertValue.text}   {alertValue.type == 'success' ? 
+              <FontAwesomeIcon icon={faCheck}/>
+              : 
+              <FontAwesomeIcon icon={faXmark}/>}
+          </div>
+        </div>
         <div className="nav-left">
           <Link to="/" className="nav-logo"><img src={require("../assets/images/logo.png")}></img></Link>
           <ul className="navs">

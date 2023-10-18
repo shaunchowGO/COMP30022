@@ -8,26 +8,29 @@
         font-weight: 500;
     }
     .alert {
-        background: var(--light);
         position: fixed;
         top: 0;
         right: 0;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
         font-weight: bold;
         margin: 1.5rem 2rem;
         transform: translateY(-10px);
         opacity: 0;
         transition: all 0.4s ease-in;
         z-index: 99999;
-    }
-    .success {
-        color: var(--green);
-        border: 1px solid var(--green);
-    }
-    .fail {
-        color: var(--tertiary-3);
-        border: 1px solid var(--tertiary-3);
+        .success {
+            background: var(--light);
+            color: var(--green);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid var(--green);
+        }
+        .fail {
+            background: var(--light);
+            color: var(--tertiary-3);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid var(--tertiary-3);
+        }
     }
     .alert-reveal {
         transform: translateY(0px);

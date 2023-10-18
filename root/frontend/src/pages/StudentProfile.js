@@ -86,10 +86,7 @@ function StudentProfile() {
           />
           <div className="profile-container">
             <div className="profile-info">
-              <img
-                src={require(`../assets/images/${studentData1.displayPicture}`)}
-                alt="Profile"
-              />
+              <img src={require(`../assets/images/${'profile.png'}`)} alt="Profile" />
               <div className="profile-info-right">
                 <h1>{studentData.name}</h1>
                 <p>Student ID: {studentData.id}</p>
