@@ -16,7 +16,7 @@
   width: 100%;
 }
 #group .profile-info-right .btn-containers .view-btn {
-  color: #ADADAD;
+  color: #adadad;
   background: none;
   border: none;
   text-decoration: underline;
@@ -35,7 +35,7 @@
   color: var(--primary);
 }
 #group .table-row:nth-child(even) {
-  background: #EDF3FF;
+  background: #edf3ff;
 }
 #group .table-content::-webkit-scrollbar-thumb {
   background: var(--primary);
@@ -103,4 +103,4 @@
   width: 1vw;
   cursor: pointer;
   color: var(--light);
-}/*# sourceMappingURL=Group.css.map */
+} /*# sourceMappingURL=Group.css.map */

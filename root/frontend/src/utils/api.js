@@ -50,7 +50,7 @@ export const getLoginData = async (username, password) => {
     console.log("Error fetching login  profile data: ", error);
     throw error;
   }
-}
+};
 
 export const compareLoginData = async (username) => {
   try {
@@ -66,8 +66,7 @@ export const compareLoginData = async (username) => {
     console.log("Error fetching login  profile data: ", error);
     throw error;
   }
-}
-
+};
 
 //Get Teacher profile info from DB
 export const getAllTeacherProfile = async () => {
@@ -117,15 +116,18 @@ export const createNewAccount = async (accountData) => {
   }
 };
 
-
 //Create Student Profile instance in DB
 export const createAcademicProfile = async (academicData) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/new_academic`, academicData, {
-      headers: {
-        "Content-Type": "application/json",
+    const response = await axios.post(
+      `${API_BASE_URL}/new_academic`,
+      academicData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       },
-    });
+    );
 
     return response.data;
   } catch (error) {
@@ -160,7 +162,7 @@ export const createAssignmentProfile = async (assignmentData) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     return response.data;
@@ -180,7 +182,7 @@ export const createClassroomProfile = async (classroomData) => {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     return response.data;
@@ -205,14 +207,14 @@ export const deleteStudentProfile = async (studentId) => {
 export const deleteAssignmentProfile = async (assignmentId) => {
   try {
     const response = await axios.delete(
-      `${API_BASE_URL}/assignment/${assignmentId}`
+      `${API_BASE_URL}/assignment/${assignmentId}`,
     );
 
     return response.data;
   } catch (error) {
     console.log(
       `Error deleting assignment profile with ID ${assignmentId}: `,
-      error
+      error,
     );
     throw error;
   }
@@ -221,14 +223,14 @@ export const deleteAssignmentProfile = async (assignmentId) => {
 export const deleteClassroomProfile = async (classroomId) => {
   try {
     const response = await axios.delete(
-      `${API_BASE_URL}/classroom/${classroomId}`
+      `${API_BASE_URL}/classroom/${classroomId}`,
     );
 
     return response.data;
   } catch (error) {
     console.log(
       `Error deleting classroom profile with ID ${classroomId}: `,
-      error
+      error,
     );
     throw error;
   }

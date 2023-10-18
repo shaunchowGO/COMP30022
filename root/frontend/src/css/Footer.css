@@ -16,7 +16,8 @@
 #footer .footer-container ul {
   text-align: left;
 }
-#footer .footer-container ul h3, #footer .footer-container ul li {
+#footer .footer-container ul h3,
+#footer .footer-container ul li {
   margin-bottom: 1rem !important;
 }
 #footer .footer-container ul h3 {
@@ -45,4 +46,4 @@
 }
 #footer .copyright .terms p {
   cursor: pointer;
-}/*# sourceMappingURL=Footer.css.map */
+} /*# sourceMappingURL=Footer.css.map */

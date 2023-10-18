@@ -34,7 +34,7 @@
   background: #d9d9d9;
 }
 .drop-down .select-option .options::-webkit-scrollbar-thumb {
-  background: #0057FF;
+  background: #0057ff;
   border-radius: 50px;
 }
 .drop-down .select-option .options li {
@@ -47,4 +47,4 @@
 }
 .drop-down .select-option .options li:hover {
   background: #c4a9ff;
-}/*# sourceMappingURL=Dropdown.css.map */
+} /*# sourceMappingURL=Dropdown.css.map */

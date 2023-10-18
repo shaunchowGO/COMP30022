@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import { uploadFile } from '../utils/api';
+import React, { useState } from "react";
+import Modal from "react-modal";
+import { uploadFile } from "../utils/api";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 function FileUploadModal({ isOpen, onRequestClose }) {
   const [file, setFile] = useState(null);
@@ -13,7 +13,7 @@ function FileUploadModal({ isOpen, onRequestClose }) {
   };
 
   const handleUpload = () => {
-    console.log('upload file triggered');
+    console.log("upload file triggered");
     if (file.length > 0) {
       const formData = new FormData();
       file.forEach((file, index) => {
@@ -23,14 +23,14 @@ function FileUploadModal({ isOpen, onRequestClose }) {
       uploadFile(file)
         .then((response) => {
           if (response.ok) {
-            console.log('Files uploaded successfully');
+            console.log("Files uploaded successfully");
             onRequestClose();
           } else {
-            console.error('File upload failed');
+            console.error("File upload failed");
           }
         })
         .catch((error) => {
-          console.error('API call failed:', error);
+          console.error("API call failed:", error);
         });
     }
   };

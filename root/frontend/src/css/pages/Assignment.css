@@ -18,9 +18,10 @@
   background: var(--primary) !important;
 }
 #assignment .table-row:nth-child(even) {
-  background: #E9E3FF;
+  background: #e9e3ff;
 }
-#assignment .table-content::-webkit-scrollbar-thumb, #assignment .options::-webkit-scrollbar-thumb {
+#assignment .table-content::-webkit-scrollbar-thumb,
+#assignment .options::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 50px;
-}/*# sourceMappingURL=Assignment.css.map */
+} /*# sourceMappingURL=Assignment.css.map */
