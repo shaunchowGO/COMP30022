@@ -54,7 +54,7 @@ function GroupProfile() {
               <div className="profile-info-right">
                 <h1>{groupData.filename}</h1>
                 <p>Assignment for: {groupData.subjectName}</p>
-                <button className="blue-btn" onClick={() => SetImportTrigger(!importTrigger)}>+ Add Comparison</button>
+                <button className="blue-btn" onClick={() => SetImportTrigger(!importTrigger)}>+ Add Submission</button>
               </div>
             </div>
   

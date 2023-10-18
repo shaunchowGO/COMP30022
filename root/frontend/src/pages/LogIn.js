@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Login(props) {
-    const [formData, setFormData] = React.useState({ email: '', password: '' });
+    const [formData, setFormData] = React.useState({ username: '', password: '' });
     const [isLoading, setIsLoading] = React.useState(false);
 
     const handleChange = (e) => {
@@ -23,7 +23,7 @@ function Login(props) {
         setIsLoading(true)
         e.preventDefault();
         try {
-          const loginInfo = await getLoginData(formData.email, formData.password);
+          const loginInfo = await getLoginData(formData.username, formData.password);
           console.log('Retrieving Login Data...');
             if (loginInfo[0] != null) {
               props.setAcademicID(loginInfo);
@@ -55,12 +55,12 @@ function Login(props) {
                     <p>Login To Continue</p>
                 </div>
                 <form className="login-form" onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email Address</label>
+                    <label htmlFor="username">Username</label>
                     <input
                         type="text"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
                         required
                         onChange={handleChange}
                     />

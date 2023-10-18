@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const API_BASE_URL = "http://localhost:5000";
-const API_BASE_URL = "http://20.55.71.66:5000";
+const API_BASE_URL = "http://localhost:5000";
+// const API_BASE_URL = "http://20.55.71.66:5000";
 //Get Student Profile info from DB
 export const getStudentProfile = async (studentID) => {
   try {
@@ -36,10 +36,10 @@ export const getTeacherProfile = async (teacherID) => {
   }
 };
 
-export const getLoginData = async (email, password) => {
+export const getLoginData = async (username, password) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/login`, {
-      params: { email, password },
+      params: { username, password },
       headers: {
         "Content-Type": "application/json",
       },
@@ -52,10 +52,10 @@ export const getLoginData = async (email, password) => {
   }
 }
 
-export const compareLoginData = async (email) => {
+export const compareLoginData = async (username) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/comp_login`, {
-      params: { email },
+      params: { username },
       headers: {
         "Content-Type": "application/json",
       },

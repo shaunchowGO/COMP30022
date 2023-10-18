@@ -3,6 +3,7 @@ from flask_cors import CORS
 #import pyodbc
 from scripts.sql import run_sql_query
 from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, subject_page_query, submissions_for_assignment, submissions_for_student , teacher_page_query
+import bcrypt
 
 app = Flask(__name__)
 CORS(app)
@@ -42,12 +43,29 @@ def get_assignment():
 
 @app.route('/login', methods=['GET'])
 def get_login():
-    login_email = request.args.get('email')
+    login_username = request.args.get('username')
     login_password = request.args.get('password')
+
+    password_q = "SELECT * FROM [dbo].[login] WHERE Username = ?"
+    password_query = password_q.replace("?", "'" + str(login_username) + "'", 1) 
+    res_pass = run_sql_query(password_query)
+    hashed_password = None
+    if (len(res_pass) > 0) :
+        hashed_password = res_pass[0][1]
+        
     q = "SELECT * FROM [dbo].[login] WHERE Username = ? AND Password = ?"
-    query = q.replace("?", "'" + str(login_email) + "'", 1) 
+    query = q.replace("?", "'" + str(login_username) + "'", 1) 
     query = query.replace("?", "'" + str(login_password) + "'", 1)
+
+    if hashed_password is not None:
+        # Use bcrypt.checkpw to verify the entered password
+        if bcrypt.checkpw(login_password.encode('utf-8'), hashed_password.encode('utf-8')):
+            q = "SELECT * FROM [dbo].[login] WHERE Username = ? AND Password = ?"
+            query = q.replace("?", "'" + str(login_username) + "'", 1) 
+            query = query.replace("?", "'" + str(hashed_password) + "'", 1)
+
     res = run_sql_query(query)
+
 
     formatted_rows = []
     for row in res:
@@ -60,9 +78,9 @@ def get_login():
 
 @app.route('/comp_login', methods=['GET'])
 def compare_login():
-    login_email = request.args.get('email')
+    login_username = request.args.get('username')
     q = "SELECT * FROM [dbo].[login] WHERE Username = ?"
-    query = q.replace("?", "'" + str(login_email) + "'", 1) 
+    query = q.replace("?", "'" + str(login_username) + "'", 1) 
     res = run_sql_query(query)
 
     formatted_rows = []
@@ -72,7 +90,7 @@ def compare_login():
             'Username': row.Username
         }
         formatted_rows.append(formatted_row)
-    print(formatted_rows)
+
     if (len(formatted_rows) == 0) :
         return 'new'
     return 'old'
@@ -116,12 +134,13 @@ def get_teacher_all():
 @app.route('/signup', methods=['POST'])
 def create_account():
     account_data = request.get_json()
+    hashed_password = bcrypt.hashpw(account_data['password'].encode('utf-8'), bcrypt.gensalt())
 
     #call create student entry query 
     query = "INSERT INTO [dbo].[login] (Username, Password, Id) VALUES (?, ?, ?)"
-    params = (account_data['email'], account_data['password'], account_data['aId'])
+    params = (account_data['username'], hashed_password, account_data['aId'])
     run_sql_query(query, params)
-
+    print(hashed_password)
     response = {
         "message": "New Account created successfully:",
         "account_data": account_data

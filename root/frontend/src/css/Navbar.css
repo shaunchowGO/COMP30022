@@ -20,15 +20,15 @@
   z-index: 99999;
 }
 #navbar .alert .success {
-  background: var(--light);
-  color: var(--green);
+  background: var(--green);
+  color: var(--light);
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: 1px solid var(--green);
 }
 #navbar .alert .fail {
-  background: var(--light);
-  color: var(--tertiary-3);
+  background: var(--tertiary-3);
+  color: var(--light);
   padding: 0.5rem 1rem;
   border-radius: 5px;
   border: 1px solid var(--tertiary-3);

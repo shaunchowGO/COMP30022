@@ -6,7 +6,7 @@ import {faXmark} from '@fortawesome/free-solid-svg-icons';
 import BeatLoader from "react-spinners/BeatLoader";
 
 function SignUp(props) {
-    const [formData, setFormData] = React.useState({ firstName: '', lastName: '', email: '', password: '', cpassword: '', aId: ''});
+    const [formData, setFormData] = React.useState({ firstName: '', lastName: '', username: '', password: '', cpassword: '', aId: ''});
     const [isLoading, setIsLoading] = React.useState(false);
 
     const handleChange = (e) => {
@@ -21,9 +21,9 @@ function SignUp(props) {
         // Check if password matches
         if (formData.password == formData.cpassword) {
             try {
-                // Check if the email already exist in db  
-              const loginInfo = await compareLoginData(formData.email);
-              console.log('Retrieving Login Data...');
+                // Check if the username already exist in db  
+                const loginInfo = await compareLoginData(formData.username);
+                console.log('Retrieving Login Data...');
                 if (loginInfo === 'new') {
                     try {
                         const newAccount = await createNewAccount(formData);
@@ -39,7 +39,7 @@ function SignUp(props) {
                     }
                 }
                 else {
-                    props.manageAlert('Email already in use', 'fail');
+                    props.manageAlert('username already in use', 'fail');
                     setIsLoading(false);
                 }
             } catch (error) {
@@ -92,22 +92,22 @@ function SignUp(props) {
                         </div>
                     </div>
                     
+                    <label htmlFor="username">Username<span className="required-field">*</span></label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your username"
+                        required
+                        onChange={handleChange}
+                    />
+
                     <label htmlFor="id">Academic ID<span className="required-field">*</span></label>
                     <input
                         type="text"
                         id="aId"
                         name="aId"
                         placeholder="Enter your ID"
-                        required
-                        onChange={handleChange}
-                    />
-
-                    <label htmlFor="email">Email Address<span className="required-field">*</span></label>
-                    <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
                         required
                         onChange={handleChange}
                     />
