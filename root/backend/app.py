@@ -3,6 +3,8 @@ from flask_cors import CORS
 #import pyodbc
 from scripts.sql import run_sql_query
 from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, subject_page_query, submissions_for_assignment, submissions_for_student , teacher_page_query
+from scripts.run_ps_script import uploading_assignment
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -169,8 +171,7 @@ def create_assignment():
     assignment_data = request.get_json()
 
     #call create assignment entry query 
-    query = "INSERT INTO [dbo].[Assignment] (Id, SubjectId) VALUES (?, ?)"
-    query.replace('?', params)
+    query = "INSERT INTO [dbo].[Assignment] (SubjectId, Name) VALUES (?, ?)"
     params = (assignment_data['id'], assignment_data['name'])
     run_sql_query(query, params)
 
@@ -263,18 +264,21 @@ def upload_file():
 
     if file:
         # call script here
-        f = open(file)
-        filename = file.filename
-        # assignmentID = request.form['assignmentId']
-        # subject_name = request.form['subject_name']
-        # studentID = request.form['studentID']
-        assignmentID = 100
-        subject_name = 'Arts'
-        studentID = 11111
-        uploading_assignment(filename, subject_name, studentID, assignmentID)
+        file_content = file.read()
+
+        with open('temp.txt', 'wb') as f:
+            f.write(file_content)
+
+        assignmentID = request.form['assignmentID']
+        subject_name = request.form['subject_name']
+        studentID = request.form['studentID']
+
+        uploading_assignment('temp.txt', subject_name, studentID, assignmentID)
+        
+        os.remove("temp.txt")
 
 
-        return f"File uploaded successfully: {f}", 200
+        return file_content
 
     return "Something went wrong", 500
 
