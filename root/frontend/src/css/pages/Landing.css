@@ -101,28 +101,19 @@
 #landing .landing-info .landing-info-container .landing-info-item:first-child {
   background: var(--tertiary-1);
 }
-#landing
-  .landing-info
-  .landing-info-container
-  .landing-info-item:first-child:hover {
+#landing .landing-info .landing-info-container .landing-info-item:first-child:hover {
   background: #6c77af;
 }
 #landing .landing-info .landing-info-container .landing-info-item:nth-child(2) {
   background: var(--tertiary-2);
 }
-#landing
-  .landing-info
-  .landing-info-container
-  .landing-info-item:nth-child(2):hover {
+#landing .landing-info .landing-info-container .landing-info-item:nth-child(2):hover {
   background: #5eb1b9;
 }
 #landing .landing-info .landing-info-container .landing-info-item:last-child {
   background: var(--tertiary-3);
 }
-#landing
-  .landing-info
-  .landing-info-container
-  .landing-info-item:last-child:hover {
+#landing .landing-info .landing-info-container .landing-info-item:last-child:hover {
   background: #d36383;
 }
 #landing .landing-tutorial {
@@ -160,39 +151,19 @@
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:hover {
   transform: scale(1.01);
 }
-#landing
-  .landing-tutorial
-  .landing-tutorial-container
-  .tutorial-item:nth-child(1)
-  .item-number {
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(1) .item-number {
   background: var(--tertiary-1);
 }
-#landing
-  .landing-tutorial
-  .landing-tutorial-container
-  .tutorial-item:nth-child(2)
-  .item-number {
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(2) .item-number {
   background: var(--tertiary-2);
 }
-#landing
-  .landing-tutorial
-  .landing-tutorial-container
-  .tutorial-item:nth-child(3)
-  .item-number {
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(3) .item-number {
   background: var(--tertiary-3);
 }
-#landing
-  .landing-tutorial
-  .landing-tutorial-container
-  .tutorial-item:nth-child(4)
-  .item-number {
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(4) .item-number {
   background: var(--tertiary-4);
 }
-#landing
-  .landing-tutorial
-  .landing-tutorial-container
-  .tutorial-item
-  .item-number {
+#landing .landing-tutorial .landing-tutorial-container .tutorial-item .item-number {
   border-radius: 5px;
   width: 2.5vw;
   aspect-ratio: 1/1;
@@ -207,4 +178,4 @@
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item h3 {
   font-size: 1.2vw;
   margin-bottom: 1rem;
-} /*# sourceMappingURL=Landing.css.map */
+}/*# sourceMappingURL=Landing.css.map */

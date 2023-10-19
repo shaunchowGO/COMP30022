@@ -1,28 +1,26 @@
 {
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.2",
-    "@fortawesome/free-solid-svg-icons": "^6.4.2",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^1.5.0",
-    "react-modal": "^3.16.1"
-  },
-  "scripts": {
-    "install-deps": "npm install"
-  },
-  "devDependencies": {
-    "husky": "^8.0.3",
-    "lint-staged": "^15.0.1",
-    "prettier": "^3.0.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  }
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.4.2",
+		"@fortawesome/free-solid-svg-icons": "^6.4.2",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+		"axios": "^1.5.0",
+		"eslint-config-react-app": "^7.0.1",
+		"react-modal": "^3.16.1"
+	},
+	"scripts": {
+		"install-deps": "npm install",
+		"prepare": "husky install"
+	},
+	"devDependencies": {
+		"eslint": "^8.51.0",
+		"eslint-plugin-react": "^7.33.2",
+		"husky": "^8.0.3",
+		"lint-staged": "^15.0.1",
+		"prettier": "3.0.3"
+	},
+	"lint-staged": {
+		"*.js": "eslint --cache --fix",
+		"*.{js,css,md}": "prettier --write",
+		"*.{py}":  "autopep8 --in-place --max-line-length 80"
+	}
 }

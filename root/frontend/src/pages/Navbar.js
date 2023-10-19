@@ -6,33 +6,17 @@ import SignUp from "../pages/SignUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faRightFromBracket,
-  faCheck,
-  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Navbar(props) {
   const [loginTrigger, setLogInTrigger] = React.useState(false);
   const [signUpTrigger, setSignUpTrigger] = React.useState(false);
-  const [alertValue, setAlertValue] = React.useState({ text: "", type: "" });
 
-  if (loginTrigger || signUpTrigger) {
-    document.body.style.overflowY = "hidden";
-  } else {
-    document.body.style.overflowY = "auto";
-  }
-
-  function revealAction() {
-    var reveals = document.querySelectorAll(".alert");
-    reveals[0].classList.add("alert-reveal");
-    setTimeout(function () {
-      reveals[0].classList.remove("alert-reveal");
-    }, 2000);
-  }
-
-  function manageAlert(text, type) {
-    setAlertValue({ text: text, type: type });
-    revealAction();
-  }
+	if (loginTrigger || signUpTrigger) {
+		document.body.style.overflowY = "hidden";
+	} else {
+		document.body.style.overflowY = "auto";
+	}
 
   return (
     <nav id="navbar">
@@ -41,28 +25,16 @@ function Navbar(props) {
         setLogInTrigger={() => setLogInTrigger(!loginTrigger)}
         setSignUpTrigger={() => setSignUpTrigger(!signUpTrigger)}
         setAcademicID={props.setAcademicID}
-        revealAction={revealAction}
-        manageAlert={manageAlert}
+        manageAlert={props.manageAlert}
       />
 
       <SignUp
         trigger={signUpTrigger}
         setSignUpTrigger={() => setSignUpTrigger(!signUpTrigger)}
         setLogInTrigger={() => setLogInTrigger(!loginTrigger)}
-        revealAction={revealAction}
-        manageAlert={manageAlert}
+        manageAlert={props.manageAlert}
       />
 
-      <div className={`alert`}>
-        <div className={`${alertValue.type}`}>
-          {alertValue.text}{" "}
-          {alertValue.type == "success" ? (
-            <FontAwesomeIcon icon={faCheck} />
-          ) : (
-            <FontAwesomeIcon icon={faXmark} />
-          )}
-        </div>
-      </div>
       <div className="nav-left">
         <Link to="/" className="nav-logo">
           <img src={require("../assets/images/logo.png")}></img>
@@ -84,22 +56,10 @@ function Navbar(props) {
               Profile
             </p>
           )}
-{/* 
-          {props.academicID !== null ? (
-            <Link to="/group" className="nav-item">
-              <p>Subjects</p>
-            </Link>
-          ) : (
-            <p
-              className="nav-item"
-              onClick={() => setLogInTrigger(!loginTrigger)}
-            >
-              Subjects
-            </p>
-          )} */}
 
         </ul>
       </div>
+
       {props.academicID !== null ? (
         <div className="nav-right">
           <div className="nav-right-container">
@@ -109,7 +69,7 @@ function Navbar(props) {
                 className="icon"
                 onClick={() => {
                   props.setAcademicID(null);
-                  manageAlert("Logout Successful", "success");
+                  props.manageAlert("Logout Successful", "success");
                 }}
               >
                 <FontAwesomeIcon icon={faRightFromBracket} />

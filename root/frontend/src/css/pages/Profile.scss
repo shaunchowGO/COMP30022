@@ -1,29 +1,29 @@
 #profile {
-    height: 100%;
-    // display: grid;
-    // grid-template-columns: 4fr 1fr;
-    grid-gap: 10%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("../../assets/images/backgrounds/blue.svg") !important;
-    .blue-btn {
-        background: var(--primary);
-    }
-    .active {
-        background: var(--primary) !important;
-    }
-    .table-header {
-        color: var(--primary);
-    }
-    .table-row {
-        &:nth-child(even) {
-            background: #EFF0FF;
-        }
-    }
-    .table-content {
-        &::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 50px;
-        }
-    }
+	height: 100%;
+	// display: grid;
+	// grid-template-columns: 4fr 1fr;
+	grid-gap: 10%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("../../assets/images/backgrounds/blue.svg") !important;
+	.blue-btn {
+		background: var(--primary);
+	}
+	.active {
+		background: var(--primary) !important;
+	}
+	.table-header {
+		color: var(--primary);
+	}
+	.table-row {
+		&:nth-child(even) {
+			background: #eff0ff;
+		}
+	}
+	.table-content {
+		&::-webkit-scrollbar-thumb {
+			background: var(--primary);
+			border-radius: 50px;
+		}
+	}
 }

@@ -1,107 +1,107 @@
-#sign-up{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(51, 51, 51, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 999;
-  .blue-btn {
-      margin: 0;
-  }
+#sign-up {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(51, 51, 51, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	z-index: 999;
+	.blue-btn {
+		margin: 0;
+	}
 
-  .login-container {
-    position: relative;
-    background: var(--light);
-    padding: 5rem;
-    border-radius: 15px;
-    .logo {
-      width: 10vw;
-    }
-    p {
-      margin-bottom: 1rem;
-    }
-    .signup-header {
-      margin-bottom: 2rem;
-    }
-    .close-btn {
-      position: absolute;
-      top: 2.5%;
-      right: 5%;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-  
-    .close-icon {
-        width: 25px;
-        height: 25px;
-        border-radius: 15px;
-    }
-    .login-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      label {
-        text-align: left;
-        .required-field{
-          color: red;
-        }
-      }
-      .name-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1rem;
-        .names-input {
-          display: flex;
-          flex-direction: column;
-          input {
-            margin-bottom: 1rem;
-            height: 35px;
-            border: none;
-            border-bottom: 2px solid var(--primary);
-            &:focus {
-                outline: none;
-            }
-          }
-        }
-      }
-    }
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      .loading-icon {
-          margin-top: 0.5rem;
-          transform: scale(0.9);
-      }
-      .forgot-password {
-          text-align: left;
-          align-self: flex-start;
-          font-size: 0.7vw !important;
-          text-decoration: underline;
-          margin-bottom: 0.5rem;
-          cursor: pointer;
-      }
-      .blue-btn {
-          margin: 0;
-          font-size: 0.9vw !important;
-          width: 100%;
-      }
-    }
-  }
-  .user-text {
-    text-align: left;
-    font-size: 0.7vw !important;
-    margin-top: 1rem;
-    .underline-text {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
+	.login-container {
+		position: relative;
+		background: var(--light);
+		padding: 5rem;
+		border-radius: 15px;
+		.logo {
+			width: 10vw;
+		}
+		p {
+			margin-bottom: 1rem;
+		}
+		.signup-header {
+			margin-bottom: 2rem;
+		}
+		.close-btn {
+			position: absolute;
+			top: 2.5%;
+			right: 5%;
+			background: none;
+			border: none;
+			cursor: pointer;
+		}
+
+		.close-icon {
+			width: 25px;
+			height: 25px;
+			border-radius: 15px;
+		}
+		.login-form {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			label {
+				text-align: left;
+				.required-field {
+					color: red;
+				}
+			}
+			.name-container {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 1rem;
+				.names-input {
+					display: flex;
+					flex-direction: column;
+					input {
+						margin-bottom: 1rem;
+						height: 35px;
+						border: none;
+						border-bottom: 2px solid var(--primary);
+						&:focus {
+							outline: none;
+						}
+					}
+				}
+			}
+		}
+		.button-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			.loading-icon {
+				margin-top: 0.5rem;
+				transform: scale(0.9);
+			}
+			.forgot-password {
+				text-align: left;
+				align-self: flex-start;
+				font-size: 0.7vw !important;
+				text-decoration: underline;
+				margin-bottom: 0.5rem;
+				cursor: pointer;
+			}
+			.blue-btn {
+				margin: 0;
+				font-size: 0.9vw !important;
+				width: 100%;
+			}
+		}
+	}
+	.user-text {
+		text-align: left;
+		font-size: 0.7vw !important;
+		margin-top: 1rem;
+		.underline-text {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
 }

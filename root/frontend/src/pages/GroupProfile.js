@@ -5,12 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
 import AddItem from "./AddItem.js";
-import Filter from "./Filter.js";
 import "../css/pages/Group.css";
 import RotateLoader from "react-spinners/RotateLoader";
 
-
-function GroupProfile() {
+function GroupProfile(props) {
   const groupData1 = {
     name: "COMP30022",
     subjectName: "IT Project",
@@ -98,6 +96,7 @@ function GroupProfile() {
 
 
   if (isLoading){
+    console.log("test");
     return(
       <div>
         <section id="group-spinner">
@@ -108,6 +107,7 @@ function GroupProfile() {
       </div>
     );
   }
+
   if (!isLoading) {
     console.log("Group data:", groupData);
     console.log('subject data:', subjectData)
@@ -120,6 +120,7 @@ function GroupProfile() {
             hasID={true}
             hasDate={true}
             info={{ name: "Assignment" }}
+            manageAlert={props.manageAlert}
           />
         ) : (
           <AddItem
@@ -127,6 +128,7 @@ function GroupProfile() {
             SetTrigger={() => SetTrigger(!trigger)}
             hasID={true}
             info={{ name: "Students" }}
+            manageAlert={props.manageAlert}
           />
         )}
         <section id="group">
@@ -170,63 +172,62 @@ function GroupProfile() {
               </div>
             </div>
 
-            <div className="table">
-              {viewingAssignments ? (
-                <div className="table-header">
-                  <p>Assignment Name</p>
-                  <p>Detail</p>
-                </div>
-              ) : (
-                <div className="table-header">
-                  <p>Students</p>
-                </div>
-              )}
+						<div className="table">
+							{viewingAssignments ? (
+								<div className="table-header">
+									<p>Assignment Name</p>
+									<p>Detail</p>
+								</div>
+							) : (
+								<div className="table-header">
+									<p>Students</p>
+								</div>
+							)}
 
-              {viewingAssignments ? (
-                <div className="table-content">
-                  {groupData && groupData.map((assignment, index) => (
-                    <div className="table-row" key={index}>
-                      <div className="file-name">{assignment.Name}</div>
-                      <div className="row-detail">
-                      <Link to={`/assignment/${assignment.ID}`}>
-                          <FontAwesomeIcon className="icon" icon={faEye} />
-                        </Link>
-                        <FontAwesomeIcon className="icon" icon={faTrash} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="card-content">
-                  {studentData.details.map((student, index) => (
-                    <div className="card" key={index}>
-                      <img
-                        src={require("../assets/images/registered.png")}
-                      ></img>
-                      <p className="card-id">{student.id}</p>
-                      <h3 className="file-name">{student.name}</h3>
-                      <div className="card-detail">
-                        <div className="card-detail-icon">
-                          <FontAwesomeIcon className="icon" icon={faEye} />
-                          <FontAwesomeIcon className="icon" icon={faTrash} />
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-          {/* {viewingAssignments ?
+							{viewingAssignments ? (
+								<div className="table-content">
+									{groupData &&
+										groupData.map((assignment, index) => (
+											<div className="table-row" key={index}>
+												<div className="file-name">{assignment.Name}</div>
+												<div className="row-detail">
+													<Link to={`/assignment/${assignment.ID}`}>
+														<FontAwesomeIcon className="icon" icon={faEye} />
+													</Link>
+													<FontAwesomeIcon className="icon" icon={faTrash} />
+												</div>
+											</div>
+										))}
+								</div>
+							) : (
+								<div className="card-content">
+									{studentData.details.map((student, index) => (
+										<div className="card" key={index}>
+											<img src={require("../assets/images/registered.png")}></img>
+											<p className="card-id">{student.id}</p>
+											<h3 className="file-name">{student.name}</h3>
+											<div className="card-detail">
+												<div className="card-detail-icon">
+													<FontAwesomeIcon className="icon" icon={faEye} />
+													<FontAwesomeIcon className="icon" icon={faTrash} />
+												</div>
+											</div>
+										</div>
+									))}
+								</div>
+							)}
+						</div>
+					</div>
+					{/* {viewingAssignments ?
               <Filter buttonLabels={["Assignment Name"]}/>
               :
               <Filter buttonLabels={["ID", "Student Name"]}/>
             } */}
-        </section>
-        <Footer />
-      </div>
-    );
-  }
+				</section>
+				<Footer />
+			</div>
+		);
+	}
 }
 
 export default GroupProfile;

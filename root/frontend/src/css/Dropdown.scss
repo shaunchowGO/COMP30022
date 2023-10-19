@@ -1,55 +1,54 @@
 .drop-down {
-    p {
-        text-align: left;
-        font-size: 12px;
-    }
-    .select-option {
-        input {
-            box-sizing: border-box;
-            width: 100%;
-            border: 1px solid #000 !important;
-            border-radius: 5px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        .selected {
-            padding: 0.5rem;
-            border: 1px solid #000;
-            border-radius: 5px;
-            margin-bottom: 0.5rem;
-            text-align: left;
-        }
-        .options {
-            border: 1px solid #000;
-            border-radius: 5px;
-            margin: 0;
-            padding: 0;
-            max-height: 150px;
-            overflow-y: auto;
-            &::-webkit-scrollbar {
-                width: 0.5vw;
-            }
-            &::-webkit-scrollbar-track {
-                background: #d9d9d9;
-            }
-            &::-webkit-scrollbar-thumb {
-                background: #0057FF;
-                border-radius: 50px;
-            }
-            display: flex;
-            flex-direction: column;
-            li {
-                text-decoration: none;
-                list-style: none;
-                padding: 0.5rem;
-                text-align: left;
-                transition: all 0.1s ease-in;
-                background: #fff;
-                &:hover {
-                    background: #c4a9ff;
-                }
-            }
-            
-        }
-    }
+	p {
+		text-align: left;
+		font-size: 12px;
+	}
+	.select-option {
+		input {
+			box-sizing: border-box;
+			width: 100%;
+			border: 1px solid #000 !important;
+			border-radius: 5px;
+			padding: 1rem;
+			margin-bottom: 0.5rem;
+		}
+		.selected {
+			padding: 0.5rem;
+			border: 1px solid #000;
+			border-radius: 5px;
+			margin-bottom: 0.5rem;
+			text-align: left;
+		}
+		.options {
+			border: 1px solid #000;
+			border-radius: 5px;
+			margin: 0;
+			padding: 0;
+			max-height: 150px;
+			overflow-y: auto;
+			&::-webkit-scrollbar {
+				width: 0.5vw;
+			}
+			&::-webkit-scrollbar-track {
+				background: #d9d9d9;
+			}
+			&::-webkit-scrollbar-thumb {
+				background: #0057ff;
+				border-radius: 50px;
+			}
+			display: flex;
+			flex-direction: column;
+			li {
+				text-decoration: none;
+				list-style: none;
+				padding: 0.5rem;
+				text-align: left;
+				transition: all 0.1s ease-in;
+				background: #fff;
+				&:hover {
+					background: #c4a9ff;
+				}
+			}
+		}
+	}
 }
