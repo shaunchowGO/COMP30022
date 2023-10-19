@@ -37,7 +37,7 @@ function AddItem(props) {
         console.log("Assignment profile created:", assignmentProfile);
       }
       if (props.info.name === "Classroom") {
-        const classroomProfile = await createClassroomProfile(formData);
+        const classroomProfile = await createClassroomProfile(formData, props.info.ID);
 
         console.log("Classroom profile created:", classroomProfile);
       }

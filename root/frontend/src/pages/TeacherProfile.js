@@ -48,6 +48,7 @@ function TeacherProfile(props) {
   }
 
   if (!isLoading) {
+    console.log('classroomData: ',classroomData)
     const teacherData = {
       name: teacherInfo.Name,
       id: teacherInfo.Id,
@@ -66,7 +67,7 @@ function TeacherProfile(props) {
           <AddItem
             trigger={trigger}
             SetTrigger={() => SetTrigger(!trigger)}
-            info={{ name: "Classroom" }}
+            info={{ name: "Classroom", ID:props.academicID[0].Id }}
             hasID={true}
           />
           <div className="profile-container">
