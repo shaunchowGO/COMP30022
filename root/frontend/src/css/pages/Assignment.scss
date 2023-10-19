@@ -1,32 +1,33 @@
 #assignment {
-    height: 100%;
-    // display: grid;
-    // grid-template-columns: 4fr 1fr;
-    grid-gap: 10%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url("../../assets/images/backgrounds/blue.svg") !important;
-    .blue-btn {
-        background: var(--primary);
-        &:hover {
-            background-color: #5e2bca;
-        }
-    }
-    .table-header {
-        color: var(--primary);
-    }
-    .active {
-        background: var(--primary) !important;
-    }
-    .table-row {
-        &:nth-child(even) {
-            background: #E9E3FF;
-        }
-    }
-    .table-content, .options {
-        &::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 50px;
-        }
-    }   
+	height: 100%;
+	// display: grid;
+	// grid-template-columns: 4fr 1fr;
+	grid-gap: 10%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("../../assets/images/backgrounds/blue.svg") !important;
+	.blue-btn {
+		background: var(--primary);
+		&:hover {
+			background-color: #5e2bca;
+		}
+	}
+	.table-header {
+		color: var(--primary);
+	}
+	.active {
+		background: var(--primary) !important;
+	}
+	.table-row {
+		&:nth-child(even) {
+			background: #e9e3ff;
+		}
+	}
+	.table-content,
+	.options {
+		&::-webkit-scrollbar-thumb {
+			background: var(--primary);
+			border-radius: 50px;
+		}
+	}
 }
