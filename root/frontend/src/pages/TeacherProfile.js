@@ -22,18 +22,17 @@ function TeacherProfile(props) {
 				const teacherData = await getTeacherProfile(props.academicID[0].Id);
 				const classroomData = await getTeacherPage(props.academicID[0].Id);
 
-				setTeacherInfo(teacherData);
-				setClassroomData(classroomData);
+        setTeacherInfo(teacherData);
+        setClassroomData(classroomData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
+    }
 
-				setIsLoading(false);
-			} catch (error) {
-				console.error("Error fetching data:", error);
-				setIsLoading(false);
-			}
-		}
-
-		fetchData();
-	}, [props.academicID]);
+    fetchData();
+  }, []);
 
 	if (isLoading) {
 		return (
@@ -61,28 +60,37 @@ function TeacherProfile(props) {
 		};
 		console.log("teacherdata: ", teacherData);
 
-		return (
-			<div>
-				<section id="teacher">
-					<AddItem
-						trigger={trigger}
-						SetTrigger={() => SetTrigger(!trigger)}
-						info={{ name: "Classroom", ID: props.academicID[0].Id }}
-						hasID={true}
-					/>
-					<div className="profile-container">
-						<div className="profile-info">
-							<img src={require(`../assets/images/${"profile.png"}`)} alt="Profile" />
-							<div className="profile-info-right">
-								<h1>{teacherData.name}</h1>
-								<p>Academic ID: {teacherData.id}</p>
-								<div className="btn-container">
-									<button className="blue-btn" onClick={() => SetTrigger(!trigger)}>
-										+ Add Classroom
-									</button>
-								</div>
-							</div>
-						</div>
+    return (
+      <div>
+        <section id="teacher">
+          <AddItem
+            trigger={trigger}
+            SetTrigger={() => SetTrigger(!trigger)}
+            info={{ name: "Classroom", ID:props.academicID[0].Id }}
+            hasID={true}
+            manageAlert={props.manageAlert}
+            inputData={getTeacherPage(props.academicID[0].Id)}
+            setClassroomData={setClassroomData}
+          />
+          <div className="profile-container">
+            <div className="profile-info">
+              <img
+                src={require(`../assets/images/${"profile.png"}`)}
+                alt="Profile"
+              />
+              <div className="profile-info-right">
+                <h1>{teacherData.name}</h1>
+                <p>Academic ID: {teacherData.id}</p>
+                <div className="btn-container">
+                  <button
+                    className="blue-btn"
+                    onClick={() => SetTrigger(!trigger)}
+                  >
+                    + Add Classroom
+                  </button>
+                </div>
+              </div>
+            </div>
 
 						<div className="table">
 							<div className="table-header">

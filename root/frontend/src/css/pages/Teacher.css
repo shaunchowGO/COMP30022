@@ -1,7 +1,7 @@
 #teacher {
-	height: 100%;
-	grid-gap: 10%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-image: url("../../assets/images/backgrounds/blue.svg");
-} /*# sourceMappingURL=Teacher.css.map */
+  height: 100%;
+  grid-gap: 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/backgrounds/blue.svg");
+}/*# sourceMappingURL=Teacher.css.map */

@@ -1,23 +1,23 @@
 #profile {
-	height: 100%;
-	grid-gap: 10%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-image: url("../../assets/images/backgrounds/blue.svg") !important;
+  height: 100%;
+  grid-gap: 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/backgrounds/blue.svg") !important;
 }
 #profile .blue-btn {
-	background: var(--primary);
+  background: var(--primary);
 }
 #profile .active {
-	background: var(--primary) !important;
+  background: var(--primary) !important;
 }
 #profile .table-header {
-	color: var(--primary);
+  color: var(--primary);
 }
 #profile .table-row:nth-child(even) {
-	background: #eff0ff;
+  background: #eff0ff;
 }
 #profile .table-content::-webkit-scrollbar-thumb {
-	background: var(--primary);
-	border-radius: 50px;
-} /*# sourceMappingURL=Profile.css.map */
+  background: var(--primary);
+  border-radius: 50px;
+}/*# sourceMappingURL=Profile.css.map */

@@ -1,181 +1,181 @@
 #landing {
-	background: var(--light);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 0;
+  background: var(--light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 #landing .landing-main {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	padding: 5rem 15vw;
-	padding-top: 2rem;
-	height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 5rem 15vw;
+  padding-top: 2rem;
+  height: 80vh;
 }
 #landing .landing-main .landing-main-left {
-	justify-self: left;
-	text-align: left;
-	display: flex;
-	flex-direction: column;
-	align-items: start;
-	justify-content: center;
+  justify-self: left;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 }
 #landing .landing-main .landing-main-left .main-header {
-	font-size: 2.7vw !important;
-	margin: 0;
+  font-size: 2.7vw !important;
+  margin: 0;
 }
 #landing .landing-main .landing-main-left .main-header .bold-word {
-	color: var(--primary);
+  color: var(--primary);
 }
 #landing .landing-main .landing-main-left .main-text {
-	font-size: 1vw !important;
-	margin: 2rem 0;
+  font-size: 1vw !important;
+  margin: 2rem 0;
 }
 #landing .landing-main .landing-main-left .get-started-button {
-	background: var(--primary);
-	color: var(--light);
-	padding: 1rem 1.5rem;
-	border: none;
-	border-radius: 50px;
-	font-weight: bold;
-	cursor: pointer;
-	transition: all 0.2s ease-in;
+  background: var(--primary);
+  color: var(--light);
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
 }
 #landing .landing-main .landing-main-left .get-started-button:hover {
-	background: var(--primary-hover);
+  background: var(--primary-hover);
 }
 #landing .landing-main .landing-main-right {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
 }
 #landing .landing-main .landing-main-right .main-image {
-	width: 35vw;
-	position: relative;
-	top: -26px;
+  width: 35vw;
+  position: relative;
+  top: -26px;
 }
 #landing .landing-info {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #landing .landing-info .landing-info-header {
-	width: 30%;
+  width: 30%;
 }
 #landing .landing-info .landing-info-header h1 {
-	margin-bottom: 2rem;
-	color: var(--primary);
+  margin-bottom: 2rem;
+  color: var(--primary);
 }
 #landing .landing-info .landing-info-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-gap: 1rem;
-	padding: 3rem 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  padding: 3rem 10rem;
 }
 #landing .landing-info .landing-info-container .landing-info-item {
-	position: relative;
-	padding: 3rem;
-	text-align: left;
-	border-radius: 15px;
-	color: var(--light);
-	transition: all 0.2s ease-in;
+  position: relative;
+  padding: 3rem;
+  text-align: left;
+  border-radius: 15px;
+  color: var(--light);
+  transition: all 0.2s ease-in;
 }
 #landing .landing-info .landing-info-container .landing-info-item * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 #landing .landing-info .landing-info-container .landing-info-item h2 {
-	font-size: 1.5vw;
-	margin-bottom: 1rem;
+  font-size: 1.5vw;
+  margin-bottom: 1rem;
 }
 #landing .landing-info .landing-info-container .landing-info-item img {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	opacity: 0.2;
-	width: 25%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0.2;
+  width: 25%;
 }
 #landing .landing-info .landing-info-container .landing-info-item:first-child {
-	background: var(--tertiary-1);
+  background: var(--tertiary-1);
 }
 #landing .landing-info .landing-info-container .landing-info-item:first-child:hover {
-	background: #6c77af;
+  background: #6c77af;
 }
 #landing .landing-info .landing-info-container .landing-info-item:nth-child(2) {
-	background: var(--tertiary-2);
+  background: var(--tertiary-2);
 }
 #landing .landing-info .landing-info-container .landing-info-item:nth-child(2):hover {
-	background: #5eb1b9;
+  background: #5eb1b9;
 }
 #landing .landing-info .landing-info-container .landing-info-item:last-child {
-	background: var(--tertiary-3);
+  background: var(--tertiary-3);
 }
 #landing .landing-info .landing-info-container .landing-info-item:last-child:hover {
-	background: #d36383;
+  background: #d36383;
 }
 #landing .landing-tutorial {
-	margin: 5rem 0;
-	padding: 0 10vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+  margin: 5rem 0;
+  padding: 0 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 #landing .landing-tutorial * {
-	padding: 0;
-	margin: 0;
+  padding: 0;
+  margin: 0;
 }
 #landing .landing-tutorial .landing-tutorial-header {
-	width: 30vw;
-	margin-bottom: 3rem;
+  width: 30vw;
+  margin-bottom: 3rem;
 }
 #landing .landing-tutorial .landing-tutorial-header h1 {
-	margin-bottom: 2rem;
-	color: var(--primary);
+  margin-bottom: 2rem;
+  color: var(--primary);
 }
 #landing .landing-tutorial .landing-tutorial-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 1rem;
-	text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  text-align: left;
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item {
-	border: 1px solid var(--gray-1);
-	border-radius: 15px;
-	padding: 3rem;
-	transition: all 0.1s ease-in;
+  border: 1px solid var(--gray-1);
+  border-radius: 15px;
+  padding: 3rem;
+  transition: all 0.1s ease-in;
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:hover {
-	transform: scale(1.01);
+  transform: scale(1.01);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(1) .item-number {
-	background: var(--tertiary-1);
+  background: var(--tertiary-1);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(2) .item-number {
-	background: var(--tertiary-2);
+  background: var(--tertiary-2);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(3) .item-number {
-	background: var(--tertiary-3);
+  background: var(--tertiary-3);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item:nth-child(4) .item-number {
-	background: var(--tertiary-4);
+  background: var(--tertiary-4);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item .item-number {
-	border-radius: 5px;
-	width: 2.5vw;
-	aspect-ratio: 1/1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-bottom: 1rem;
-	font-size: 1.2vw;
-	font-weight: bold;
-	color: var(--light);
+  border-radius: 5px;
+  width: 2.5vw;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: var(--light);
 }
 #landing .landing-tutorial .landing-tutorial-container .tutorial-item h3 {
-	font-size: 1.2vw;
-	margin-bottom: 1rem;
-} /*# sourceMappingURL=Landing.css.map */
+  font-size: 1.2vw;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=Landing.css.map */

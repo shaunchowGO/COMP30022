@@ -1,27 +1,27 @@
 #assignment {
-	height: 100%;
-	grid-gap: 10%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-image: url("../../assets/images/backgrounds/blue.svg") !important;
+  height: 100%;
+  grid-gap: 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/images/backgrounds/blue.svg") !important;
 }
 #assignment .blue-btn {
-	background: var(--primary);
+  background: var(--primary);
 }
 #assignment .blue-btn:hover {
-	background-color: #5e2bca;
+  background-color: #5e2bca;
 }
 #assignment .table-header {
-	color: var(--primary);
+  color: var(--primary);
 }
 #assignment .active {
-	background: var(--primary) !important;
+  background: var(--primary) !important;
 }
 #assignment .table-row:nth-child(even) {
-	background: #e9e3ff;
+  background: #e9e3ff;
 }
 #assignment .table-content::-webkit-scrollbar-thumb,
 #assignment .options::-webkit-scrollbar-thumb {
-	background: var(--primary);
-	border-radius: 50px;
-} /*# sourceMappingURL=Assignment.css.map */
+  background: var(--primary);
+  border-radius: 50px;
+}/*# sourceMappingURL=Assignment.css.map */
