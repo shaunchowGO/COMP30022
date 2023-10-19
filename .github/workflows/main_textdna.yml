@@ -31,6 +31,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Backend Tests
+       shell: pwsh
         run: pytest
 
       - name: Upload artifact for deployment jobs
