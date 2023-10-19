@@ -26,7 +26,6 @@ function Dropdown(props) {
 								onClick={() => {
 									setSelectedItem(item.Name);
 									setToggleDrop(!toggleDrop);
-									props.setAcademicID([item.Id, item.Name]);
 								}}
 							>
 								{item.Name}

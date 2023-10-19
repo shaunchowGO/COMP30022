@@ -22,8 +22,6 @@ function GroupProfile() {
   const [showDocumentViewer, setShowDocumentViewer] = useState(false);
   const [subjectStudent, setSubjectStudent] = React.useState();
  
-
-  
   useEffect(() => {
     async function fetchData() {
       setFirstRequest(true)
@@ -47,7 +45,7 @@ function GroupProfile() {
     fetchData();
   }, [ID]);
   console.log('loading 1:', isLoading)
-
+  
   useEffect(() => {
     async function fetchSubjectData() {
       console.log('loading:', isLoading)
@@ -61,7 +59,7 @@ function GroupProfile() {
             const subject = await getSubjectInfo(subjectID)
             const studentData1 = await getSubjectStudents(subjectID);
             setSubjectData(subject)
-            setSubjectStudent(studentData1);
+            setSubjectStudent([studentData1]);
 
 
             setIsLoading(false);
@@ -109,9 +107,11 @@ function GroupProfile() {
         <Import
             trigger={importTrigger}
             SetImportTrigger={() => SetImportTrigger(!importTrigger)}
+            isCompare={true}
             studentID={updatedStudentData.studentId}
             assignmentID={ID}
             subjectName={updatedStudentData.subjectName}
+            data={subjectStudent}
           />
           <div className="profile-container">
             <div className="profile-info">

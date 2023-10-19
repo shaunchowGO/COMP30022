@@ -71,7 +71,6 @@ function GroupProfile(props) {
   const [groupData, setGroupData] = useState(null);
   const [subjectData, setSubjectData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     async function retrieveGroupInfo() {
       setIsLoading(true);
@@ -121,9 +120,6 @@ function GroupProfile(props) {
             hasDate={true}
             info={{ name: "Assignment" }}
             manageAlert={props.manageAlert}
-            inputData={ID}
-            getFunction={getSubjectPage}
-            setNewData={setGroupData}
           />
         ) : (
           <AddItem
@@ -132,6 +128,9 @@ function GroupProfile(props) {
             hasID={true}
             info={{ name: "Students" }}
             manageAlert={props.manageAlert}
+            inputData={ID}
+			      getFunction={getSubjectInfo}
+            setNewData={setSubjectData}
           />
         )}
         <section id="group">

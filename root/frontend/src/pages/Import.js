@@ -63,6 +63,8 @@ function Import(props) {
 		document.body.style.overflowY = "auto";
 	}
 
+	console.log(props.isCompare)
+
 	return props.trigger ? (
 		<div id="import">
 			<div className="import-container">
@@ -95,7 +97,7 @@ function Import(props) {
 					</div>
 				)}
 
-				{props.isCompare && <Dropdown data={props.studentData.details} />}
+				{props.isCompare && <Dropdown data={props.data} />}
 
 				<div className="import-btn">
 					<button
