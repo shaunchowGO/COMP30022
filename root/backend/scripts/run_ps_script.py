@@ -44,8 +44,8 @@ def create_folder(filepath='creating_folder.ps1', storage_path= "Math/11111"):
     subprocess.check_output(["PowerShell.exe", "-Executionpolicy", "byPass", "-File", filepath, "-sourceFilePath", storage_path])
     
 
-def uploading_assignment(filepath='uploading_assignment_to_storage.ps1', textfilepath= '', subject_name = "Arts", studentID = "11111", assignmentID = "100"):
-    
+def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "11111", assignmentID = "100"):
+    filepath='uploading_assignment_to_storage.ps1'
     """ Uploads a textfile to storage. Takes in:
         text file path (to be uploaded) and uploads it to storage with targetpath of
         {subjectName}/{studentID}/{assignmentID}.
