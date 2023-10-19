@@ -71,6 +71,7 @@ function Navbar(props) {
           <Link to="/" className="nav-item">
             <p>Home</p>
           </Link>
+
           {props.academicID !== null ? (
             <Link to="/teacher" className="nav-item">
               <p>Profile</p>
@@ -83,6 +84,7 @@ function Navbar(props) {
               Profile
             </p>
           )}
+{/* 
           {props.academicID !== null ? (
             <Link to="/group" className="nav-item">
               <p>Subjects</p>
@@ -94,7 +96,8 @@ function Navbar(props) {
             >
               Subjects
             </p>
-          )}
+          )} */}
+
         </ul>
       </div>
       {props.academicID !== null ? (
