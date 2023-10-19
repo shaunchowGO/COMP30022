@@ -20,13 +20,13 @@ function Import(props) {
   };
 
   const handleFileType = (event) => {
-    const allowedTypes = ["application/pdf"];
+    const allowedTypes = ["text/plain"];
     const validFiles = Array.from(event.target.files).filter((file) => {
       return allowedTypes.includes(file.type);
     });
 
     if (validFiles.length === 0) {
-      alert("Please select one or more PDF files.");
+      alert("Please select one or more text files.");
     } else {
       setFiles(validFiles);
     }

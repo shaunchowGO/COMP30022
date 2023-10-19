@@ -85,9 +85,10 @@ export const getAllTeacherProfile = async () => {
 };
 
 // Get Assignment Info from DB
-export const getAssignmentInfo = async () => {
+export const getAssignmentInfo = async (subjectID) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/assignment`, {
+      params: {subjectID},
       headers: {
         "Content-Type": "application/json",
       },
@@ -96,6 +97,42 @@ export const getAssignmentInfo = async () => {
     return response.data;
   } catch (error) {
     console.log("Error fetching assignment info: ", error);
+    throw error;
+  }
+};
+
+
+// Get Subject Info from DB
+export const getSubjectInfo = async (subjectID) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/subject`, {
+      params: {subjectID},
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching Subject info: ", error);
+    throw error;
+  }
+};
+
+
+// Get Submisison Info from DB
+export const getSubmissionInfo = async (assignmentID) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/submissions`, {
+      params: {assignmentID},
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching submission info: ", error);
     throw error;
   }
 };

@@ -107,7 +107,7 @@ function TeacherProfile(props) {
                       <div>{classroom.assignmentNo}</div>
                       <div>{classroom.studentNo}</div>
                       <div className="row-detail">
-                        <Link to="/group">
+                        <Link to={`/group/${classroom.id}`}>
                           <FontAwesomeIcon className="icon" icon={faEye} />
                         </Link>
                         <FontAwesomeIcon className="icon" icon={faTrash} />

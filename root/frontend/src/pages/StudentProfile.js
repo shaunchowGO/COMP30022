@@ -77,13 +77,6 @@ function StudentProfile() {
     return (
       <div>
         <section id="profile">
-          <Import
-            trigger={importTrigger}
-            SetImportTrigger={() => SetImportTrigger(!importTrigger)}
-            studentID={academicID}
-            assignmentID={100}
-            subjectName="Arts"
-          />
           <div className="profile-container">
             <div className="profile-info">
               <img
@@ -93,12 +86,7 @@ function StudentProfile() {
               <div className="profile-info-right">
                 <h1>{studentData.name}</h1>
                 <p>Student ID: {studentData.id}</p>
-                <button
-                  className="blue-btn"
-                  onClick={() => SetImportTrigger(!importTrigger)}
-                >
-                  + Add Document
-                </button>
+                
               </div>
             </div>
 

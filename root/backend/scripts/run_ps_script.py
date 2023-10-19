@@ -45,7 +45,7 @@ def create_folder(filepath='creating_folder.ps1', storage_path= "Math/11111"):
     
 
 def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "11111", assignmentID = "100"):
-    filepath='uploading_assignment_to_storage.ps1'
+    filepath='scripts/uploading_assignment_to_storage.ps1'
     
     """ Uploads a textfile to storage. Takes in:
         text file path (to be uploaded) and uploads it to storage with targetpath of
@@ -60,7 +60,7 @@ def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "1
                              "-assignmentID", str(assignmentID),
                              "-textFilePath", textfilepath])
 
-def downloading_past_assignment(filepath='downloading_assignment.ps1', download_file_path = "temp.txt" , subject_name = "Arts", studentID = "11111", assignmentID = "100"):
+def downloading_past_assignment(filepath='downloading_assignment.ps1', download_file_path = "temp.txt" , subject_name = "Arts", studentID = "11111", assignmentID = "1"):
 
     """ Downloads the assignment from storage account to download_file_path
         Note: download_file_path needs to end with ".tzt"
@@ -73,3 +73,4 @@ def downloading_past_assignment(filepath='downloading_assignment.ps1', download_
                              "-studentID", str(studentID),
                              "-assignmentID", str(assignmentID),
                              "-downloadFilePath", download_file_path])
+

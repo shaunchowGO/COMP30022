@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getAssignmentInfo, getSubjectPage } from "../utils/api";
+import { Link, useParams } from "react-router-dom";
+import { getSubjectInfo, getSubjectPage } from "../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
@@ -69,37 +69,48 @@ function GroupProfile() {
       },
     ],
   };
-
+  const { ID } = useParams();
   const [groupData, setGroupData] = useState(null);
+  const [subjectData, setSubjectData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function retrieveGroupInfo() {
       setIsLoading(true);
-      const data = await getSubjectPage(8001);
-      console.log("Retrieving getSubjectPage Data...");
-      setGroupData(data);
+      try{
+        const groupData = await getSubjectPage(ID);
+        const subjectData = await getSubjectInfo(ID)
+        console.log("Retrieving getSubjectPage Data... ",ID);
+
+        setGroupData(groupData);
+        setSubjectData(subjectData);
+        setIsLoading(false);
+      } catch (error){
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      }
     }
     retrieveGroupInfo();
-    setIsLoading(false);
   }, []);
 
   const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
+
   if (isLoading){
     return(
       <div>
-        <section id="teacher">
+        <section id="group-spinner">
         <div className="loading-container">
           <RotateLoader color="#7179e7" />
         </div>
       </section>
       </div>
-    )
+    );
   }
   if (!isLoading) {
     console.log("Group data:", groupData);
+    console.log('subject data:', subjectData)
     return (
       <div>
         {viewingAssignments ? (
@@ -122,8 +133,8 @@ function GroupProfile() {
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
-                <h1>{groupData1.name}</h1>
-                <p>Subject Name: {groupData1.subjectName}</p>
+                <h1>{subjectData[0].Id}</h1>
+                <p>Subject Name: {subjectData[0].Name}</p>
                 <div className="btn-containers">
                   {viewingAssignments ? (
                     <button

@@ -13,10 +13,10 @@ WHERE SubjectId = ?
 """
 
 submissions_for_assignment = """
-SELECT std.Name, sub.similarity_score, sub.[date] as [Date Added] FROM [dbo].Student as std
+SELECT std.Name, sub.similarity_score, sub.[date] as [DateAdded] FROM [dbo].Student as std
 INNER JOIN [dbo].[Submission] as sub
 on std.Id = sub.StudentId
-WHERE sub.AssignmentId = ?
+WHERE sub.AssignmentId = ? 
 """
 
 submissions_for_student = """

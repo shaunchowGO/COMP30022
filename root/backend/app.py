@@ -6,7 +6,7 @@ from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, s
 import bcrypt
 from scripts.run_ps_script import uploading_assignment
 import os
-
+from algorithm_scripts.algorithm import similarity_score
 
 app = Flask(__name__)
 CORS(app)
@@ -31,17 +31,60 @@ def get_student():
 #get Assignment Info from DB 
 @app.route('/assignment', methods=['GET'])
 def get_assignment():
-    query = "SELECT * FROM [dbo].[assignment]"
+    subject_id = request.args.get('subjectID')
+    q = "SELECT * FROM [dbo].[assignment] WHERE Id = ?"
+    query = q.replace("?", str(subject_id))
     res =  run_sql_query(query)
     
     formatted_rows = []
     for row in res:
         formatted_row = {
             'Id': row.Id,
+            'Name': row.Name,
             'SubjectId': row.SubjectId
         }
         formatted_rows.append(formatted_row)
     return formatted_rows
+
+#get Subject Info from DB 
+@app.route('/subject', methods=['GET'])
+def get_subject():
+    subject_id = request.args.get('subjectID')
+    q = "SELECT * FROM [dbo].[Subject] WHERE Id = ?"
+    query = q.replace("?", str(subject_id))
+    res =  run_sql_query(query)
+    
+    formatted_row = []
+    if res:
+        formatted_row = {
+            'Id': res[0].Id,
+            'Name': res[0].Name
+        }
+        
+    return formatted_row
+
+
+
+#get submission info from DB 
+@app.route('/submissions', methods=['GET'])
+def get_submission():
+    assignment_id = request.args.get('assignmentID')
+    q = "SELECT * FROM [dbo].[Submission] WHERE AssignmentId = ?"
+    query = q.replace("?", str(assignment_id))
+    res =  run_sql_query(query)
+    
+    formatted_row = []
+    for row in res:
+        formatted_row = {
+            'AssignmentId': row.AssignmentId,
+            'StudentId': row.StudentId,
+            'SubmissionId': row.SubmissionId,
+            'Date': row.Date,
+            'Similarity_Score': row.Similarity_Score
+        }
+        
+    return formatted_row
+
 
 
 @app.route('/login', methods=['GET'])
@@ -115,6 +158,8 @@ def get_teacher():
         }
         
     return formatted_row
+
+
 
 
 # Routes for SQL Insertion 
@@ -299,13 +344,16 @@ def upload_file():
         assignmentID = request.form['assignmentID']
         subject_name = request.form['subject_name']
         studentID = request.form['studentID']
+        # print(assignmentID, subject_name, studentID)
 
-        uploading_assignment('temp.txt', subject_name, studentID, assignmentID)
-        
+        # uploading_assignment('temp.txt', subject_name, studentID, assignmentID)
+        uploading_assignment('temp.txt', 'Coding101', '11111', '2')
+        score = similarity_score('temp.txt')
         os.remove("temp.txt")
+        print(score)
 
 
-        return file_content
+        return file_content, score
 
     return "Something went wrong", 500
 
@@ -329,7 +377,7 @@ def get_teacher_info():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-#get teacher page info based on academicID 
+#get subject page info based on academicID 
 @app.route('/subject-info', methods=['GET'])
 def get_subject_info():
     academic_id = request.args.get('subjectID')
@@ -347,21 +395,20 @@ def get_subject_info():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-#get teacher page info based on academicID 
+#get submission page info based on academicID 
 @app.route('/assignment-info', methods=['GET'])
 def get_assignment_info():
     academic_id = request.args.get('studentID')
     params = (academic_id)
-    query = submissions_for_student.replace("?", str(params))
+    query = submissions_for_assignment.replace("?", str(params))
     res =  run_sql_query(query)
     
     formatted_rows = []
     for row in res:
         formatted_row = {
-            'ID': row.AssignmentId,
-            'subjectName': row.Subject_Name,
-            'similarityScore': row.Similarity_Score,
-            'Date': row.Date
+            'Name': row.Name,
+            'similarityScore': row.similarity_score,
+            'Date': row.DateAdded
             }
         formatted_rows.append(formatted_row)
     return formatted_rows
