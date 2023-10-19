@@ -29,22 +29,14 @@ WHERE sub.studentId = ?
 """
 
 teacher_page_query = """
-SELECT
-    S.Name AS Subject,
-    S.ID AS ID,
-    COUNT(DISTINCT A.ID) as [AssignmentCount], 
-    COUNT(DISTINCT SC.StudentID) as [StudentCount]
-FROM
-    dbo.Subject S
-INNER JOIN
-    dbo.Assignment A ON S.ID = A.SubjectID
-INNER JOIN
-    dbo.AcademicsCohort AC ON S.ID = AC.SubjectId
-INNER JOIN
-    dbo.StudentsCohort SC ON S.ID = SC.SubjectID
-WHERE
-    AC.AcademicId = ?
-GROUP BY
-    S.ID,
-    S.Name
+SELECT s.Name as [Subject], s.id as [ID], count(distinct a.Id) as [AssignmentCount], count(distinct sc.StudentId) as [StudentCount] FROM dbo.AcademicsCohort AS ac
+inner join dbo.Subject AS s
+on s.Id = ac.SubjectId
+left join dbo.Assignment as a
+on a.SubjectId = s.Id
+left join dbo.StudentsCohort as sc
+on sc.SubjectId = s.Id
+where
+ac.AcademicId = ?
+group by s.id, s.name
     """
