@@ -25,9 +25,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing />}></Route>
           {academicID != null ? (
-            <Route exact path="/group" element={<GroupProfile />}></Route>
+            <Route exact path="/group/:ID" element={<GroupProfile />}></Route>
           ) : (
-            <Route exact path="/group" element={<Landing />}></Route>
+            <Route exact path="/group/:ID" element={<Landing />}></Route>
           )}
 
           {academicID != null ? (
