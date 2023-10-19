@@ -61,9 +61,9 @@ function App() {
           )}
 
           {academicID != null ? (
-            <Route exact path="/student" element={<StudentProfile manageAlert={manageAlert}/>}></Route>
+            <Route exact path="/student/:ID" element={<StudentProfile manageAlert={manageAlert}/>}></Route>
           ) : (
-            <Route exact path="/student" element={<Landing />}></Route>
+            <Route exact path="/student/:ID" element={<Landing />}></Route>
           )}
 
           {academicID != null ? (

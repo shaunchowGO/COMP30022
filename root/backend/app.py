@@ -28,6 +28,23 @@ def get_student():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
+#get student in subject
+@app.route('/subject_student', methods=['GET'])
+def get_subject_student():
+    subject_id = request.args.get('subjectID')
+    q = "SELECT * FROM [dbo].[StudentsCohort] AS sc INNER JOIN [dbo].[Student] AS s ON s.id = sc.StudentId WHERE sc.subjectId = ?"
+    query = q.replace("?", str(subject_id))
+    res =  run_sql_query(query)
+
+    formatted_row = []
+    if res:
+        formatted_row = {
+            'Id': res[0].Id,
+            'Name': res[0].Name
+        }
+
+    return formatted_row
+
 #get Assignment Info from DB 
 @app.route('/assignment', methods=['GET'])
 def get_assignment():
@@ -348,7 +365,7 @@ def upload_file():
         # print(assignmentID, subject_name, studentID)
 
         # uploading_assignment('temp.txt', subject_name, studentID, assignmentID)
-        uploading_assignment('temp.txt', 'Coding101', '11111', '2')
+        # uploading_assignment(filepath='scripts/uploading_assignment_to_storage.ps1','temp.txt', 'Coding101', '11111', '2')
         score = similarity_score('temp.txt')
         os.remove("temp.txt")
         print(score)

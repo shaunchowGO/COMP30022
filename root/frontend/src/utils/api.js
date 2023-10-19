@@ -201,6 +201,23 @@ export const createAssignmentProfile = async assignmentData => {
 	}
 };
 
+// Get student for the subject
+export const getSubjectStudents = async subjectID => { 
+    try {
+        const response = await axios.get(`${API_BASE_URL}/subject_student`, {
+            params: { subjectID },
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        return response.data;
+    } catch (error) {
+        console.log("Error fetching student profile data: ", error);
+        throw error;
+    }
+};
+
 // Creates a Classroom instance in DB
 export const createClassroomProfile = async (classroomData, academicID) => {
 	try {
