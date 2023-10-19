@@ -77,6 +77,13 @@ function StudentProfile() {
     return (
       <div>
         <section id="profile">
+			<Import
+				trigger={importTrigger}
+				SetImportTrigger={() => SetImportTrigger(!importTrigger)}
+				studentID={academicID}
+				assignmentID={100}
+				subjectName="Arts"
+			/>
           <div className="profile-container">
             <div className="profile-info">
               <img
@@ -86,33 +93,38 @@ function StudentProfile() {
               <div className="profile-info-right">
                 <h1>{studentData.name}</h1>
                 <p>Student ID: {studentData.id}</p>
-                
+                <button
+                  className="blue-btn"
+                  onClick={() => SetImportTrigger(!importTrigger)}
+                >
+                  + Add Document
+                </button>
               </div>
             </div>
 
-						<div className="table">
-							<div className="table-header">
-								<p>Assignment Name</p>
-								<p>Subject</p>
-								<p>Similarity Score</p>
-								<p>Date Added</p>
-								<p>Detail</p>
-							</div>
+			<div className="table">
+				<div className="table-header">
+					<p>Assignment Name</p>
+					<p>Subject</p>
+					<p>Similarity Score</p>
+					<p>Date Added</p>
+					<p>Detail</p>
+			</div>
 
-							<div className="table-content">
-								{studentData.assignmentDetails.map((assignment, index) => (
-									<div className="table-row" key={index}>
-										<div className="file-name">{assignment.name}</div>
-										<div>{assignment.group}</div>
-										<div>{assignment.simScore}%</div>
-										<div>{assignment.date}</div>
-										<div className="row-detail">
-											<FontAwesomeIcon className="icon" icon={faDownload} />
-											<FontAwesomeIcon className="icon" icon={faTrash} />
-										</div>
-									</div>
-								))}
+				<div className="table-content">
+					{studentData.assignmentDetails.map((assignment, index) => (
+						<div className="table-row" key={index}>
+							<div className="file-name">{assignment.name}</div>
+							<div>{assignment.group}</div>
+							<div>{assignment.simScore}%</div>
+							<div>{assignment.date}</div>
+							<div className="row-detail">
+								<FontAwesomeIcon className="icon" icon={faDownload} />
+								<FontAwesomeIcon className="icon" icon={faTrash} />
 							</div>
+						</div>
+					))}
+				</div>
 						</div>
 					</div>
 					{/* <Filter buttonLabels={["Assignment Name", "Subject Name", "Similarity Score", "Date Added"]} hasScore={true}/> */}

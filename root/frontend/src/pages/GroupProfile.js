@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getSubjectInfo, getSubjectPage } from "../utils/api";
+import { getSubjectInfo, getSubjectPage, getSubjectStudents } from "../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
@@ -71,14 +71,17 @@ function GroupProfile(props) {
   const [groupData, setGroupData] = useState(null);
   const [subjectData, setSubjectData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [subjectStudent, setSubjectStudent] = useState();
   useEffect(() => {
     async function retrieveGroupInfo() {
       setIsLoading(true);
       try{
         const groupData = await getSubjectPage(ID);
         const subjectData = await getSubjectInfo(ID)
+        const student = await getSubjectStudents(ID);
         console.log("Retrieving getSubjectPage Data... ",ID);
 
+        setSubjectStudent(student)
         setGroupData(groupData);
         setSubjectData(subjectData);
         setIsLoading(false);
@@ -89,6 +92,7 @@ function GroupProfile(props) {
     }
     retrieveGroupInfo();
   }, []);
+  console.log("group students: ", subjectStudent);
 
   const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
@@ -203,14 +207,16 @@ function GroupProfile(props) {
 								</div>
 							) : (
 								<div className="card-content">
-									{studentData.details.map((student, index) => (
+									{subjectStudent.map((student, index) => (
 										<div className="card" key={index}>
 											<img src={require("../assets/images/registered.png")}></img>
-											<p className="card-id">{student.id}</p>
-											<h3 className="file-name">{student.name}</h3>
+											<p className="card-id">{student.Id}</p>
+											<h3 className="file-name">{student.Name}</h3>
 											<div className="card-detail">
 												<div className="card-detail-icon">
-													<FontAwesomeIcon className="icon" icon={faEye} />
+                          <Link to={`/student/${student.Id}`}>
+                            <FontAwesomeIcon className="icon" icon={faEye} />
+                          </Link>
 													<FontAwesomeIcon className="icon" icon={faTrash} />
 												</div>
 											</div>

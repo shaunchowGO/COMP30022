@@ -45,7 +45,7 @@ function GroupProfile() {
     fetchData();
   }, [ID]);
   console.log('loading 1:', isLoading)
-  
+
   useEffect(() => {
     async function fetchSubjectData() {
       console.log('loading:', isLoading)
@@ -59,7 +59,7 @@ function GroupProfile() {
             const subject = await getSubjectInfo(subjectID)
             const studentData1 = await getSubjectStudents(subjectID);
             setSubjectData(subject)
-            setSubjectStudent([studentData1]);
+            setSubjectStudent(studentData1);
 
 
             setIsLoading(false);

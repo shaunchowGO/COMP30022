@@ -36,14 +36,14 @@ def get_subject_student():
     query = q.replace("?", str(subject_id))
     res =  run_sql_query(query)
 
-    formatted_row = []
-    if res:
+    formatted_rows = []
+    for row in res:
         formatted_row = {
-            'Id': res[0].Id,
-            'Name': res[0].Name
+            'Id': row.Id,
+            'Name': row.Name
         }
-
-    return formatted_row
+        formatted_rows.append(formatted_row)
+    return formatted_rows
 
 #get Assignment Info from DB 
 @app.route('/assignment', methods=['GET'])
@@ -420,7 +420,7 @@ def get_assignment_info():
     params = (academic_id)
     query = submissions_for_assignment.replace("?", str(params))
     res =  run_sql_query(query)
-    
+    print(res)
     formatted_rows = []
     for row in res:
         formatted_row = {
