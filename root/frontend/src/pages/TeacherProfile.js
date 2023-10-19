@@ -21,18 +21,17 @@ function TeacherProfile(props) {
 			try {
 				const teacherData = await getTeacherProfile(props.academicID[0].Id);
 				const classroomData = await getTeacherPage(props.academicID[0].Id);
-
-        setTeacherInfo(teacherData);
-        setClassroomData(classroomData);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
+				
+				setTeacherInfo(teacherData);
+				setClassroomData(classroomData);
+				setIsLoading(false);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+				setIsLoading(false);
+			}
+		}
+		fetchData();
+	}, []);
 
 	if (isLoading) {
 		return (
@@ -69,8 +68,9 @@ function TeacherProfile(props) {
             info={{ name: "Classroom", ID:props.academicID[0].Id }}
             hasID={true}
             manageAlert={props.manageAlert}
-            inputData={getTeacherPage(props.academicID[0].Id)}
-            setClassroomData={setClassroomData}
+            inputData={props.academicID[0].Id}
+			getFunction={getTeacherPage}
+            setNewData={setClassroomData}
           />
           <div className="profile-container">
             <div className="profile-info">

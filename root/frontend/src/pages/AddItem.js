@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/popups/AddItem.css";
+// import { getTeacherPage } from "../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -32,12 +33,12 @@ function AddItem(props) {
         setIsLoading(true)
         try {
           const studentProfile = await createStudentProfile(formData);
-          console.log("Student profile created:", studentProfile);
           props.manageAlert("Profile Created", "success");
+          const newData = await props.getFunction(props.inputData);
+          props.setNewData(newData)
           setIsLoading(false)
-          window.location.reload();
-        } catch (error) {
-          console.log("Error adding classroom")
+        } 
+        catch (error) {
           props.manageAlert("Profile Creation failed", "failed");
           setIsLoading(false)
         }
@@ -46,12 +47,12 @@ function AddItem(props) {
         setIsLoading(true)
         try {
           const assignmentProfile = await createAssignmentProfile(formData);
-          console.log("Assignment profile created:", assignmentProfile);
           props.manageAlert("Assignment Created", "success");
+          const newData = await props.getFunction(props.inputData);
+          props.setNewData(newData)
           setIsLoading(false)
-          window.location.reload();
-        } catch (error) {
-          console.log("Error adding classroom")
+        } 
+        catch (error) {
           props.manageAlert("Assignment Creation failed", "failed");
           setIsLoading(false)
         }
@@ -60,12 +61,13 @@ function AddItem(props) {
         setIsLoading(true)
         try {
           const classroomProfile = await createClassroomProfile(formData, props.info.ID);
-          console.log("Classroom profile created:", classroomProfile);
           props.manageAlert("Classroom Created", "success");
+          //refresh once new data is added
+          const newData = await props.getFunction(props.inputData);
+          props.setNewData(newData)
           setIsLoading(false)
-          window.location.reload();
-        } catch (error) {
-          console.log("Error adding classroom")
+        } 
+        catch (error) {
           props.manageAlert("Classroom Creation failed", "failed");
           setIsLoading(false)
         }
