@@ -7,9 +7,11 @@ import Footer from "./Footer.js";
 import AddItem from "./AddItem.js";
 import Filter from "./Filter.js";
 import "../css/pages/Group.css";
+import RotateLoader from "react-spinners/RotateLoader";
+
 
 function GroupProfile() {
-  const groupData = {
+  const groupData1 = {
     name: "COMP30022",
     subjectName: "IT Project",
     assignments: [
@@ -68,7 +70,7 @@ function GroupProfile() {
     ],
   };
 
-  const [groupData1, setGroupData] = useState(null);
+  const [groupData, setGroupData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -85,8 +87,19 @@ function GroupProfile() {
   const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
+  if (isLoading){
+    return(
+      <div>
+        <section id="teacher">
+        <div className="loading-container">
+          <RotateLoader color="#7179e7" />
+        </div>
+      </section>
+      </div>
+    )
+  }
   if (!isLoading) {
-    console.log("Group data:", groupData1);
+    console.log("Group data:", groupData);
     return (
       <div>
         {viewingAssignments ? (
@@ -109,8 +122,8 @@ function GroupProfile() {
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
-                <h1>{groupData.name}</h1>
-                <p>Subject Name: {groupData.subjectName}</p>
+                <h1>{groupData1.name}</h1>
+                <p>Subject Name: {groupData1.subjectName}</p>
                 <div className="btn-containers">
                   {viewingAssignments ? (
                     <button
@@ -160,11 +173,11 @@ function GroupProfile() {
 
               {viewingAssignments ? (
                 <div className="table-content">
-                  {groupData.assignments.map((assignment, index) => (
+                  {groupData && groupData.map((assignment, index) => (
                     <div className="table-row" key={index}>
-                      <div className="file-name">{assignment.name}</div>
+                      <div className="file-name">{assignment.Name}</div>
                       <div className="row-detail">
-                        <Link to="/assignment">
+                      <Link to={`/assignment/${assignment.ID}`}>
                           <FontAwesomeIcon className="icon" icon={faEye} />
                         </Link>
                         <FontAwesomeIcon className="icon" icon={faTrash} />

@@ -47,7 +47,7 @@ function App() {
           )}
 
           {academicID != null ? (
-            <Route exact path="/assignment" element={<Assignments />}></Route>
+            <Route exact path="/assignment/:ID" element={<Assignments />}></Route>
           ) : (
             <Route exact path="/assignment/:ID" element={<Landing />}></Route>
           )}

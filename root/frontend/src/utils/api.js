@@ -173,16 +173,19 @@ export const createAssignmentProfile = async (assignmentData) => {
 };
 
 // Creates a Classroom instance in DB
-export const createClassroomProfile = async (classroomData) => {
+export const createClassroomProfile = async (classroomData, academicID) => {
   try {
     const response = await axios.post(
       `${API_BASE_URL}/classroom`,
-      classroomData,
+      classroomData, 
       {
         headers: {
           "Content-Type": "application/json",
         },
-      },
+        params: {
+          academicID: academicID
+        }
+      }
     );
 
     return response.data;

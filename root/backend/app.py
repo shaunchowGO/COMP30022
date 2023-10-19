@@ -7,6 +7,7 @@ import bcrypt
 from scripts.run_ps_script import uploading_assignment
 import os
 
+
 app = Flask(__name__)
 CORS(app)
 
@@ -205,11 +206,18 @@ def create_assignment():
 @app.route('/classroom', methods=['POST'])
 def create_classroom():
     classroom_data = request.get_json()
+    academicID = request.args.get('academicID')
 
     #call create classroom entry query 
     query = "INSERT INTO [dbo].[Subject] (Name, Id) VALUES (?, ?)"
     params = (classroom_data['name'], classroom_data['id'])
     run_sql_query(query, params)
+
+    query1 = "INSERT INTO [dbo].[AcademicsCohort] (SubjectId, AcademicId) VALUES (?, ?)"
+    params1 = (classroom_data['id'], academicID)
+    run_sql_query(query1, params1)
+
+
 
     response = {
         "message": "Classroom Profile created successfully:",
@@ -287,7 +295,7 @@ def upload_file():
 
         with open('temp.txt', 'wb') as f:
             f.write(file_content)
-
+ 
         assignmentID = request.form['assignmentID']
         subject_name = request.form['subject_name']
         studentID = request.form['studentID']
