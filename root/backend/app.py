@@ -240,6 +240,7 @@ def create_assignment():
     params = (assignment_data['id'], assignment_data['name'])
     run_sql_query(query, params)
 
+
     response = {
         "message": "Assignment Profile created successfully:",
         "assignment_data": assignment_data

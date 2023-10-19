@@ -46,6 +46,7 @@ function AddItem(props) {
       if (props.info.name === "Assignment") {
         setIsLoading(true)
         try {
+          
           const assignmentProfile = await createAssignmentProfile(formData);
           props.manageAlert("Assignment Created", "success");
           const newData = await props.getFunction(props.inputData);
@@ -96,7 +97,8 @@ function AddItem(props) {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="additem-input">
-            {props.hasID && <label htmlFor="id">{props.info.name} ID:</label>}
+            {props.hasID && <label htmlFor="id">{props.info.name === "Assignment" ? "Subject " : props.info.name}
+ ID:</label>}
             {props.hasID && (
               <input
                 type="number"

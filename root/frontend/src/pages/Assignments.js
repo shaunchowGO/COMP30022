@@ -108,7 +108,7 @@ function GroupProfile() {
                     <div>{assignment.similarityScore}%</div>
                     <div>{assignment.Date}</div>
                     <div className="row-detail">
-                      <Link to="/student">
+                      <Link to={`/student/${assignment.ID}`}>
                         <FontAwesomeIcon className="icon" icon={faEye} />
                       </Link>
                       <FontAwesomeIcon className="icon" icon={faTrash} />

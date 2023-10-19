@@ -58,10 +58,6 @@ def run_sql_query(query, params=None):
 
         
  
-   
 
-  
 
-# q = submissions_for_student.replace("?", str(11111))
-run_sql_query('SELECT * FROM [dbo].[academicsCohort]')
-# run_sql_query(q)
+run_sql_query('SELECT * FROM [dbo].[assignment]')

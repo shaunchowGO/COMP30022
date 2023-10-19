@@ -121,6 +121,9 @@ function GroupProfile(props) {
             hasDate={true}
             info={{ name: "Assignment" }}
             manageAlert={props.manageAlert}
+            inputData={ID}
+            getFunction={getSubjectPage}
+            setNewData={setGroupData}
           />
         ) : (
           <AddItem
@@ -135,8 +138,8 @@ function GroupProfile(props) {
           <div className="profile-container">
             <div className="profile-info">
               <div className="profile-info-right">
-                <h1>{subjectData[0].Id}</h1>
-                <p>Subject Name: {subjectData[0].Name}</p>
+                <h1>{subjectData.Id}</h1>
+                <p>Subject Name: {subjectData.Name}</p>
                 <div className="btn-containers">
                   {viewingAssignments ? (
                     <button
