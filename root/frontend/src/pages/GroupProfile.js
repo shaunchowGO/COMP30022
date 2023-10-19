@@ -133,8 +133,8 @@ function GroupProfile(props) {
             info={{ name: "Students" }}
             manageAlert={props.manageAlert}
             inputData={ID}
-			      getFunction={getSubjectInfo}
-            setNewData={setSubjectData}
+			      getFunction={getSubjectStudents}
+            setNewData={setSubjectStudent}
           />
         )}
         <section id="group">

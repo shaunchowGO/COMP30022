@@ -24,8 +24,9 @@ function Dropdown(props) {
 							<li
 								className="file-name"
 								onClick={() => {
-									setSelectedItem(item.Name);
+									setSelectedItem(item.Id);
 									setToggleDrop(!toggleDrop);
+									props.setStudentID(item.Id);
 								}}
 							>
 								{item.Name}

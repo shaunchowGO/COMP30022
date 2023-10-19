@@ -60,4 +60,18 @@ def run_sql_query(query, params=None):
  
 
 
-run_sql_query('SELECT * FROM [dbo].[assignment]')
+submissions_for_student = """
+SELECT sub.AssignmentId, s.Name as [Subject_Name], sub.Similarity_Score, [Date]  FROM [dbo].Submission as sub
+INNER JOIN [dbo].[Assignment] as  A
+on sub.AssignmentId = A.Id
+INNER JOIN [dbo].[Subject] as s
+on s.Id = A.subjectId
+WHERE sub.studentId = 11111
+"""
+
+# q = "SELECT * FROM [dbo].[StudentsCohort] AS sc INNER JOIN [dbo].[Student] AS s ON s.id = sc.StudentId WHERE sc.subjectId = 8001"
+
+q = "SELECT TOP 1 * FROM [dbo].[student] WHERE Id = 11111"
+
+# run_sql_query('SELECT * FROM [dbo].[assignment]')
+run_sql_query(q)

@@ -343,6 +343,23 @@ export const getStudentAssignmentInfo = async studentID => {
 	}
 };
 
+//Get student profile assignment info from DB
+export const getStudentPageAssignmentInfo = async studentID => {
+	try {
+		const response = await axios.get(`${API_BASE_URL}/student-assignment-info`, {
+			params: { studentID },
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		return response.data;
+	} catch (error) {
+		console.log("Error fetching Student's assignment info: ", error);
+		throw error;
+	}
+};
+
 //Get Student Profile info from DB
 export const getStudentsInSubject = async subjectID => {
 	try {
