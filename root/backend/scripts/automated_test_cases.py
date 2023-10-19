@@ -26,7 +26,7 @@ query_correct2 = {"Name" : ["Eduardo Rafa", "Yue Federer", "Yolando Djogovic", "
 query_correct3 = {"table_name": ["AcademicsCohort", "Comparison", "StudentsCohort"]}
 
 
-upload_1 = uploading_assignment("uploading_assignment_to_storage.ps1","uploaded_test.txt", "testcase", "11112", "500")
+upload_1 = uploading_assignment("uploading_assignment_to_storage.ps1","test.txt", "testcase", "11112", "500")
 
 
 reading_1 = downloading_past_assignment("downloading_assignment.ps1", "downloaded_test.txt", "testcase", "11112", "500")
@@ -51,8 +51,8 @@ for i in range(1,2):
 # Reading Past Assignments   
 print("\n---------------------------- Reading Assignments ----------------------------")
 for i in range(1,2):
-    print("File Upload",i," status: " + get_status(locals()[f"reading_{i}"]))
-
+    print("File Download",i," status: " + get_status(locals()[f"reading_{i}"]))
+    os.remove("downloaded_test.txt")
 # Creating Folders
 print("\n---------------------------- Creating Folders  ----------------------------")
 for i in range(1,4):
