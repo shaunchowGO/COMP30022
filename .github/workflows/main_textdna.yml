@@ -30,7 +30,7 @@ jobs:
 
       - name: Setup PowerShell
         run: |
-          Install-Module -Name Az -Force
+          pwsh -Command "Install-Module -Name Az -Force"
 
 
       - name: Create and start virtual environment
