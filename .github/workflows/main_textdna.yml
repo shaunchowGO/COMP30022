@@ -24,7 +24,9 @@ jobs:
           python-version: "3.11"
         
       - name: Install PowerShell
-        run: choco install powershell -y
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y powershell
 
       - name: Setup PowerShell
         run: |
