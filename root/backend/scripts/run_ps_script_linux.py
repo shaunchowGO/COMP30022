@@ -16,7 +16,10 @@ def run_query(filepath = "root/backend/scripts/Query_SQL_SPrincipal.ps1", query=
     
     lines = queryResult.split("\r\n")
     lines = [l for l in lines if l != '']
-    lines.pop(1)
+    try:
+        lines.pop(1)
+    except:
+        pass
     columns = [x for x in lines[0].split(' ') if x.isalpha()]
     columndict = {}
     for c in columns:
