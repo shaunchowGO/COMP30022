@@ -11,7 +11,7 @@ def run_query(filepath = "Query_SQL_SPrincipal.ps1", query= "SELECT * FROM [dbo]
     if linux:
         ps = "pwsh"
     
-    p = subprocess.check_output([ps, "-Executionpolicy", "byPass", "-File", filepath, "-Query", query], linux=0)
+    p = subprocess.check_output([ps, "-Executionpolicy", "byPass", "-File", filepath, "-Query", query])
     queryResult = p.decode("ASCII")
     
     lines = queryResult.split("\r\n")
@@ -33,7 +33,7 @@ def run_query(filepath = "Query_SQL_SPrincipal.ps1", query= "SELECT * FROM [dbo]
     return columndict
     
 
-def create_folder(filepath='creating_folder.ps1', storage_path= "Math/11111",linux=0):
+def create_folder(filepath='creating_folder.ps1', storage_path="Math/11111", linux=0):
     
     """ Storage folder structure is {SubjectName}/{StudID}.
         (Note in storage_path, seperators are "/" instead of "\\" that are in filepath). Examples:
@@ -46,10 +46,10 @@ def create_folder(filepath='creating_folder.ps1', storage_path= "Math/11111",lin
     ps = "PowerShell.exe"
     if linux:
         ps = "pwsh"
-    subprocess.check_output([ps, "-Executionpolicy", "byPass", "-File", filepath, "-sourceFilePath", storage_path],linux=0)
+    subprocess.check_output([ps, "-Executionpolicy", "byPass", "-File", filepath, "-sourceFilePath", storage_path])
     
     
-def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "11111", assignmentID = "100"):
+def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "11111", assignmentID = "100", linux=0):
     filepath='uploading_assignment_to_storage.ps1'
     """ Uploads a textfile to storage. Takes in:
         text file path (to be uploaded) and uploads it to storage with targetpath of
