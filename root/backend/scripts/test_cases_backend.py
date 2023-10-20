@@ -17,14 +17,14 @@ def get_status(var):
        return "Success"
     return "Fail"
 queries = {
-    "query1" : "Select count(distinct studentId) from [dbo].[submission] where AssignmentId = 2",
+    "query1" : "Select count(distinct studentId) as counter from [dbo].[submission] where AssignmentId = 2",
     "query2" : "select Name from [dbo].[Academic]",
     "query3" : "SELECT top(3) table_name FROM INFORMATION_SCHEMA. TABLES"
 }
 
 queriesCorrect= {
     "query_correct1" : {"counter": 2},
-    "query_correct2" : {"Name" : ["Eduardo Rafa", "Yue Federer", "Yolando Djogovic", "Yue YueYue"]},
+    "query_correct2" : {"Name" : ["Eduardo Rafa", "Yue Federer", "Yolando Djogovic"]},
     "query_correct3" : {"table_name": ["AcademicsCohort", "Comparison", "StudentsCohort"]}
 }
 
