@@ -23,13 +23,13 @@ jobs:
         with:
           python-version: "3.11"
         
-      - name: Setup PowerShell
-        uses: actions/setup-powershell@v2
-        with:
-          powershell-version: '7.x'  # Install PowerShell 7
+      - name: Install PowerShell
+        run: choco install powershell -y
 
-      - name: Install Az Module
-        run: Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
+      - name: Setup PowerShell
+        run: |
+          Install-Module -Name Az -Force
+
 
       - name: Create and start virtual environment
         run: |
