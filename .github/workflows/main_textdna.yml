@@ -24,10 +24,8 @@ jobs:
           python-version: "3.11"
 
       - name: Install PowerShell
-        uses: actions/setup-powershell@v1
-        with:
-          pwsh-version: '7.x'
-          pwsh-preview: false
+        uses: appleboy/setup-pwsh@v1
+        
 
 
       - name: Create and start virtual environment
