@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - main
+      - automated-testing
   workflow_dispatch:
 
 jobs:
@@ -22,6 +23,12 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install PowerShell
+        uses: actions/setup-powershell@v1
+        with:
+          pwsh-version: '7.x'
+          pwsh-preview: false
+          
       - name: Create and start virtual environment
         run: |
           python -m venv venv
