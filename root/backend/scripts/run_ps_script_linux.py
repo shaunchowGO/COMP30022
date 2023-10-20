@@ -3,7 +3,7 @@
 
 #NOTE ALL PATHS HAVE A DOUBLE SLASH "\\" NOT "\"
 
-def run_query(filepath = "Query_SQL_SPrincipal.ps1", query= "SELECT * FROM [dbo].[submission]", linux=0):
+def run_query(filepath = "COMP30022/root/backend/scripts/Query_SQL_SPrincipal.ps1", query= "SELECT * FROM [dbo].[submission]", linux=0):
     
     # Note filepath has to "\\" or "/" but not "\"
     import sys, subprocess
@@ -33,7 +33,7 @@ def run_query(filepath = "Query_SQL_SPrincipal.ps1", query= "SELECT * FROM [dbo]
     return columndict
     
 
-def create_folder(filepath='creating_folder.ps1', storage_path="Math/11111", linux=0):
+def create_folder(filepath='COMP30022/root/backend/scripts/creating_folder.ps1', storage_path="Math/11111", linux=0):
     
     """ Storage folder structure is {SubjectName}/{StudID}.
         (Note in storage_path, seperators are "/" instead of "\\" that are in filepath). Examples:
@@ -50,7 +50,7 @@ def create_folder(filepath='creating_folder.ps1', storage_path="Math/11111", lin
     
     
 def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "11111", assignmentID = "100", linux=0):
-    filepath='uploading_assignment_to_storage.ps1'
+    filepath='COMP30022/root/backend/scripts/uploading_assignment_to_storage.ps1'
     """ Uploads a textfile to storage. Takes in:
         text file path (to be uploaded) and uploads it to storage with targetpath of
         {subjectName}/{studentID}/{assignmentID}.
@@ -66,7 +66,7 @@ def uploading_assignment(textfilepath= '', subject_name = "Arts", studentID = "1
                              "-assignmentID", str(assignmentID),
                              "-textFilePath", textfilepath])
 
-def downloading_past_assignment(filepath='downloading_assignment.ps1', download_file_path = "temp.txt" , subject_name = "Arts", studentID = "11111", assignmentID = "1",linux=0):
+def downloading_past_assignment(filepath='COMP30022/root/backend/scripts/downloading_assignment.ps1', download_file_path = "temp.txt" , subject_name = "Arts", studentID = "11111", assignmentID = "1",linux=0):
 
     """ Downloads the assignment from storage account to download_file_path
         Note: download_file_path needs to end with ".tzt"
