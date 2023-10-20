@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - main
+      - Automated-Testing
   workflow_dispatch:
 
 jobs:
@@ -21,6 +22,16 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.11"
+        
+      - name: Install PowerShell
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y powershell
+
+      - name: Setup PowerShell
+        run: |
+          pwsh -Command "Install-Module -Name Az -Force"
+
 
       - name: Create and start virtual environment
         run: |
