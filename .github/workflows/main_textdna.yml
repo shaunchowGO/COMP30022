@@ -22,9 +22,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.11"
-
-      - name: Install PowerShell
-        uses: appleboy/setup-pwsh@v1
         
       - name: Setup PowerShell
         uses: actions/setup-powershell@v2
