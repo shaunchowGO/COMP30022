@@ -29,6 +29,7 @@ jobs:
           pwsh-version: '7.x'
           pwsh-preview: false
 
+
       - name: Create and start virtual environment
         run: |
           python -m venv venv
