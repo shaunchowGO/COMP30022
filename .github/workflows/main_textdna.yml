@@ -26,7 +26,13 @@ jobs:
       - name: Install PowerShell
         uses: appleboy/setup-pwsh@v1
         
+      - name: Setup PowerShell
+        uses: actions/setup-powershell@v2
+        with:
+          powershell-version: '7.x'  # Install PowerShell 7
 
+      - name: Install Az Module
+        run: Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
 
       - name: Create and start virtual environment
         run: |
