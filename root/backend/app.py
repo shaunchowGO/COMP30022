@@ -15,16 +15,18 @@ CORS(app)
 @app.route('/student', methods=['GET'])
 def get_student():
     student_id = request.args.get('studentID')
-    q = "SELECT TOP 1 * FROM [dbo].[student] WHERE Id = ?"
+    q = "SELECT * FROM [dbo].[student] WHERE Id = ?"
     query = q.replace("?", str(student_id))
     res =  run_sql_query(query)
     
+    formatted_rows = []
     for row in res:
         formatted_row = {
             'Id': row.Id,
             'Name': row.Name
         }
-    return jsonify(formatted_row)
+        formatted_rows.append(formatted_row)
+    return formatted_rows
 
 #get student in subject
 @app.route('/subject_student', methods=['GET'])
@@ -364,12 +366,12 @@ def upload_file():
 
         # uploading_assignment('temp.txt', subject_name, studentID, assignmentID)
         # uploading_assignment(filepath='scripts/uploading_assignment_to_storage.ps1','temp.txt', 'Coding101', '11111', '2')
-        # score = similarity_score('temp.txt')
+        score = similarity_score('temp.txt')
         os.remove("temp.txt")
-        # print(score)
+        print(score)
 
 
-        return file_content
+        return file_content, score
 
     return "Something went wrong", 500
 
@@ -412,25 +414,6 @@ def get_subject_info():
     return formatted_rows
 
 #get submission page info based on academicID 
-@app.route('/student-assignment-info', methods=['GET'])
-def get_student_assignment_info():
-    academic_id = request.args.get('studentID')
-    params = (academic_id)
-    query = submissions_for_student.replace("?", str(params))
-    res =  run_sql_query(query)
-    
-    formatted_rows = []
-    for row in res:
-        formatted_row = {
-            'AssignmentId': row.AssignmentId,
-            'similarityScore': row.Similarity_Score,
-            'Date': row.Date,
-            'Subject_Name': row.Subject_Name
-            }
-        formatted_rows.append(formatted_row)
-    return formatted_rows
-
-#get submission page info based on academicID 
 @app.route('/assignment-info', methods=['GET'])
 def get_assignment_info():
     academic_id = request.args.get('studentID')
@@ -447,6 +430,7 @@ def get_assignment_info():
             }
         formatted_rows.append(formatted_row)
     return formatted_rows
+
 
 #get student info from DB 
 @app.route('/students', methods=['GET'])

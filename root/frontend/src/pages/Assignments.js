@@ -90,23 +90,16 @@ function GroupProfile() {
       </div>
     );
   }
-  if (!isLoading && subjectData) {
+  if (!isLoading && subjectStudent) {
     console.log('submission :', submissionData)
     console.log('stuent data',studentData)
     console.log('subjectData: ', subjectData)
     console.log('subjectStudent:', subjectStudent);
-    const updatedStudentData = studentData.map(student => {
-      const matchingSubjectStudent = subjectStudent.find(sub => sub.Name === student.Name);
-      if (matchingSubjectStudent) {
-        return {
-          ...student,
-          studentId: matchingSubjectStudent.Id, 
-          subjectName: subjectData.Name
-        };
-      }
-      return student;
-    });
-    
+    const updatedStudentData = studentData.map(student => ({
+      ...student,
+      studentId: subjectStudent.Id,
+      subjectName: subjectData.Name
+    }));
     console.log('updatedStudentData', updatedStudentData)
     return (
       <div>

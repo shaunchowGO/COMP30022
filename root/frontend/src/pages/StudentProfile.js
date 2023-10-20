@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getStudentProfile, getStudentPageAssignmentInfo } from "../utils/api.js";
+import { getStudentProfile, getStudentAssignmentInfo } from "../utils/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faDownload } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
@@ -34,7 +34,7 @@ function StudentProfile() {
 			setIsLoading(true);
 			try {
 				const studentData = await getStudentProfile(academicID);
-				const assignmentData = await getStudentPageAssignmentInfo(academicID);
+				const assignmentData = await getStudentAssignmentInfo(academicID);
 
 				setStudentInfo(studentData);
 				setAssignmentInfo(assignmentData);
@@ -63,8 +63,8 @@ function StudentProfile() {
 
 	if (!isLoading) {
 		const studentData = {
-			name: studentInfo.Name,
-			id: studentInfo.Id,
+			name: studentInfo[0].Name,
+			id: studentInfo[0].Id,
 			assignmentDetails: assignmentInfo.map(assignment => ({
 				name: assignment.ID,
 				group: assignment.subjectName,
@@ -77,6 +77,13 @@ function StudentProfile() {
     return (
       <div>
         <section id="profile">
+			<Import
+				trigger={importTrigger}
+				SetImportTrigger={() => SetImportTrigger(!importTrigger)}
+				studentID={academicID}
+				assignmentID={100}
+				subjectName="Arts"
+			/>
           <div className="profile-container">
             <div className="profile-info">
               <img

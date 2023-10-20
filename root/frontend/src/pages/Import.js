@@ -8,7 +8,6 @@ import Dropdown from "./Dropdown.js";
 function Import(props) {
 	const [files, setFiles] = React.useState(null);
 	const inputRef = React.useRef();
-	const [studentID, setStudentID] = React.useState(null)
 
 	const handleDrag = event => {
 		event.preventDefault();
@@ -19,7 +18,6 @@ function Import(props) {
 		setFiles(event.dataTransfer.files);
 		console.log(files);
 	};
-
 
   const handleFileType = (event) => {
     const allowedTypes = ["text/plain"];
@@ -44,8 +42,9 @@ function Import(props) {
 				const studentInfo = {
 					assignmentID: props.assignmentID,
 					subject_name: props.subjectName,
-					studentID: studentID.id
+					studentID: props.studentID,
 				};
+				console.log(studentInfo);
 
 				const response = await uploadFile(files[0], studentInfo);
 
@@ -64,6 +63,7 @@ function Import(props) {
 		document.body.style.overflowY = "auto";
 	}
 
+	console.log(props.isCompare)
 
 	return props.trigger ? (
 		<div id="import">
@@ -97,7 +97,7 @@ function Import(props) {
 					</div>
 				)}
 
-				{props.isCompare && <Dropdown data={props.data} setStudentID={setStudentID}/>}
+				{props.isCompare && <Dropdown data={props.data} />}
 
 				<div className="import-btn">
 					<button
