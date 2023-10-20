@@ -1,6 +1,6 @@
 from time import time
 start = time()
-from run_ps_script import *
+from run_ps_script_linux import *
 import os
 def compare(obj, ans):
     if type(obj) is dict:
@@ -29,23 +29,23 @@ queriesCorrect= {
 }
 
 upload= {
-    "upload_1" : uploading_assignment("test.txt", "testcase", "11111", "5500")
+    "upload_1" : uploading_assignment("test.txt", "testcase", "11111", "5500", linux=1)
 }
 
 reading ={
-    "reading_1" : downloading_past_assignment("downloading_assignment.ps1", "downloaded_test.txt", "testcase", "11112", "500")
+    "reading_1" : downloading_past_assignment("downloading_assignment.ps1", "downloaded_test.txt", "testcase", "11112", "500", linux=1)
 }
 
 creating={
-    "create_folder_1" : create_folder("creating_student_folder.ps1", "testcase/testing1"),
-    "create_folder_2" : create_folder("creating_student_folder.ps1", "testcase/testing2"),
-    "create_folder_3" : create_folder("creating_student_folder.ps1", "testcase/testing3")
+    "create_folder_1" : create_folder("creating_student_folder.ps1", "testcase/testing1", linux=1),
+    "create_folder_2" : create_folder("creating_student_folder.ps1", "testcase/testing2", linux=1),
+    "create_folder_3" : create_folder("creating_student_folder.ps1", "testcase/testing3", linux=1)
 }
 # Querying Sql tables
 def test_backend():
     print("---------------------------- Query Script Testing ----------------------------") 
     for i in range(1,4):
-        result = run_query(query = queries[f"query{i}"])
+        result = run_query(query = queries[f"query{i}"], linux=1)
         status =  get_status(compare(result, queriesCorrect[f"query_correct{i}"]))
         print("Query number",i," status: " + status)
         assert(status)=="Success"
