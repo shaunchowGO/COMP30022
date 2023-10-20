@@ -29,17 +29,17 @@ queriesCorrect= {
 }
 
 upload= {
-    "upload_1" : uploading_assignment("test.txt", "testcase", "11111", "5500", linux=1)
+    "upload_1" : uploading_assignment("root/backend/scripts/test.txt", "testcase", "11111", "5500", linux=1)
 }
 
 reading ={
-    "reading_1" : downloading_past_assignment("downloading_assignment.ps1", "downloaded_test.txt", "testcase", "11112", "500", linux=1)
+    "reading_1" : downloading_past_assignment("root/backend/scripts/downloading_assignment.ps1", "root/backend/scripts/downloaded_test.txt", "testcase", "11112", "500", linux=1)
 }
 
 creating={
-    "create_folder_1" : create_folder("creating_student_folder.ps1", "testcase/testing1", linux=1),
-    "create_folder_2" : create_folder("creating_student_folder.ps1", "testcase/testing2", linux=1),
-    "create_folder_3" : create_folder("creating_student_folder.ps1", "testcase/testing3", linux=1)
+    "create_folder_1" : create_folder("root/backend/scripts/creating_student_folder.ps1", "testcase/testing1", linux=1),
+    "create_folder_2" : create_folder("root/backend/scripts/creating_student_folder.ps1", "testcase/testing2", linux=1),
+    "create_folder_3" : create_folder("root/backend/scripts/creating_student_folder.ps1", "testcase/testing3", linux=1)
 }
 # Querying Sql tables
 def test_backend():
@@ -60,7 +60,7 @@ def test_backend():
     print("\n---------------------------- Reading Assignments ----------------------------")
     for i in range(1,2):
         print("File Download",i," status: " + get_status(reading[f"reading_{i}"]))
-        os.remove("downloaded_test.txt")
+        os.remove("root/backend/scripts/downloaded_test.txt")
         assert(get_status(reading[f"reading_{i}"]))=="Success"
     # Creating Folders
     print("\n---------------------------- Creating Folders  ----------------------------")
