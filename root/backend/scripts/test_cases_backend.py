@@ -19,13 +19,13 @@ def get_status(var):
 queries = {
     "query1" : "Select count(distinct studentId) as counter from [dbo].[submission] where AssignmentId = 2",
     "query2" : "select Name from [dbo].[Academic]",
-    "query3" : "SELECT top(3) table_name FROM INFORMATION_SCHEMA. TABLES"
+    "query3" : "select count(*) as counter from dbo.test where col1 = 2"
 }
 
 queriesCorrect= {
     "query_correct1" : {"counter": 2},
     "query_correct2" : {"Name" : ["Eduardo Rafa", "Yue Federer", "Yolando Djogovic"]},
-    "query_correct3" : {"table_name": ["AcademicsCohort", "Comparison", "StudentsCohort"]}
+    "query_correct3" : {"counter": 1}
 }
 
 upload= {
