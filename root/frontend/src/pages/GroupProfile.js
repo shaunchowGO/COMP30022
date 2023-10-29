@@ -92,14 +92,11 @@ function GroupProfile(props) {
     }
     retrieveGroupInfo();
   }, []);
-  console.log("group students: ", subjectStudent);
-
   const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
 
   if (isLoading){
-    console.log("test");
     return(
       <div>
         <section id="group-spinner">
@@ -112,8 +109,6 @@ function GroupProfile(props) {
   }
 
   if (!isLoading) {
-    console.log("Group data:", groupData);
-    console.log('subject data:', subjectData)
     return (
       <div>
         {viewingAssignments ? (
@@ -133,8 +128,9 @@ function GroupProfile(props) {
             info={{ name: "Students" }}
             manageAlert={props.manageAlert}
             inputData={ID}
-			      getFunction={getSubjectInfo}
-            setNewData={setSubjectData}
+            subjectID={subjectData.Id}
+			      getFunction={getSubjectStudents}
+            setNewData={setSubjectStudent}
           />
         )}
         <section id="group">

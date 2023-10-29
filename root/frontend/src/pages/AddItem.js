@@ -7,16 +7,18 @@ import {
   createStudentProfile,
   createAssignmentProfile,
   createClassroomProfile,
+  addStudentSubject,
+  getAllStudentProfile
 } from "../utils/api";
 import BeatLoader from "react-spinners/BeatLoader";
 
 function AddItem(props) {
   const [formData, setFormData] = useState({
-    name: "",
-    id: "",
-    dueDate: null,
-    startDate: null,
+    Name: "",
+    Id: "",
+    subject_id: props.subjectID
   });
+
   const [isLoading, setIsLoading] = React.useState(false);
 
 	const handleInputChange = event => {
@@ -24,22 +26,42 @@ function AddItem(props) {
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = async event => {
-		event.preventDefault();
-		console.log(formData);
+  React.useEffect(() => {
+    async function waitForSubjectID() {
+      while (!props.subjectID) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+      }
 
+      setFormData({ ...formData, subject_id: props.subjectID });
+    }
+    waitForSubjectID();
+  }, [props.subjectID]);
+  
+	const handleSubmit = async event => {
+    event.preventDefault();
+    console.log("class id", props.subjectID);
+    console.log("class id", formData);
     try {
       if (props.info.name === "Students") {
         setIsLoading(true)
         try {
-          const studentProfile = await createStudentProfile(formData);
+          const allStudents = await getAllStudentProfile();
+          console.log("all students", allStudents);
+          const exists = allStudents.some(item => item.Id == formData.Id);
+          console.log(exists);
+          console.log(formData);
+          if (exists == false) {
+            const newStudent = await createStudentProfile(formData);
+          }
+          // const studentProfile = await addStudentSubject(formData);
+          console.log("add success!");
           props.manageAlert("Profile Created", "success");
           const newData = await props.getFunction(props.inputData);
           props.setNewData(newData)
           setIsLoading(false)
         } 
         catch (error) {
-          props.manageAlert("Profile Creation failed", "failed");
+          props.manageAlert("Add failed", "fail");
           setIsLoading(false)
         }
       }
@@ -54,7 +76,7 @@ function AddItem(props) {
           setIsLoading(false)
         } 
         catch (error) {
-          props.manageAlert("Assignment Creation failed", "failed");
+          props.manageAlert("Assignment Creation failed", "fail");
           setIsLoading(false)
         }
       }
@@ -69,7 +91,7 @@ function AddItem(props) {
           setIsLoading(false)
         } 
         catch (error) {
-          props.manageAlert("Classroom Creation failed", "failed");
+          props.manageAlert("Classroom Creation failed", "fail");
           setIsLoading(false)
         }
       }
@@ -97,21 +119,21 @@ function AddItem(props) {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="additem-input">
-            {props.hasID && <label htmlFor="id">{props.info.name === "Assignment" ? "Subject " : props.info.name}
+            {props.hasID && <label htmlFor="Id">{props.info.name === "Assignment" ? "Subject " : props.info.name}
  ID:</label>}
             {props.hasID && (
               <input
                 type="number"
-                id="id"
-                name="id"
+                id="Id"
+                name="Id"
                 value={formData.id}
                 onChange={handleInputChange}
                 required
               />
             )}
 
-						<label htmlFor="name">{props.info.name} Name:</label>
-						<input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
+						<label htmlFor="Name">{props.info.name} Name:</label>
+						<input type="text" id="Name" name="Name" value={formData.name} onChange={handleInputChange} required />
 
 						{/* Render Due date & End end date fields if in props */}
 						{/* {props.hasDate && (

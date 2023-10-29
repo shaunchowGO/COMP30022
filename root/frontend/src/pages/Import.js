@@ -4,9 +4,11 @@ import "../css/popups/Import.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import Dropdown from "./Dropdown.js";
+import BeatLoader from "react-spinners/BeatLoader";
 
 function Import(props) {
 	const [files, setFiles] = React.useState(null);
+	const [isLoading, setIsLoading] = React.useState(false);
 	const inputRef = React.useRef();
 
 	const handleDrag = event => {
@@ -38,6 +40,7 @@ function Import(props) {
 		event.preventDefault();
 
 		if (files) {
+			setIsLoading(true)
 			try {
 				const studentInfo = {
 					assignmentID: props.assignmentID,
@@ -49,10 +52,11 @@ function Import(props) {
 				const response = await uploadFile(files[0], studentInfo);
 
 				console.log("Upload success:", response);
-
+				setIsLoading(false)
 				setFiles(null);
 			} catch (error) {
 				console.error("Upload failed:", error);
+				setIsLoading(false)
 			}
 		}
 	};
@@ -62,8 +66,6 @@ function Import(props) {
 	} else {
 		document.body.style.overflowY = "auto";
 	}
-
-	console.log(props.isCompare)
 
 	return props.trigger ? (
 		<div id="import">
@@ -100,17 +102,23 @@ function Import(props) {
 				{props.isCompare && <Dropdown data={props.data} />}
 
 				<div className="import-btn">
-					<button
-						className="discard-btn blue-btn"
-						onClick={() => {
-							setFiles(null);
-						}}
-					>
-						Discard
-					</button>
-					<button className="blue-btn" onClick={() => handleImport(event)}>
-						Import
-					</button>
+					{isLoading ? (
+						<BeatLoader className="loading-icon" color="#7179e7" />
+						) : (
+							<>
+								<button
+									className="discard-btn blue-btn"
+									onClick={() => {
+										setFiles(null);
+									}}
+								>
+									Discard
+								</button>
+								<button className="blue-btn" onClick={() => handleImport(event)}>
+									Import
+								</button>
+							</>
+						)}
 				</div>
 			</div>
 		</div>
