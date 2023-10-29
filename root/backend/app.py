@@ -28,13 +28,30 @@ def get_student():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
+#get teacher info 
+@app.route('/student_all', methods=['GET'])
+def get_student_all():
+    query = "SELECT * FROM [dbo].[student]"
+    res =  run_sql_query(query)
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Name': row.Name
+        }
+        formatted_rows.append(formatted_row)
+
+    print(formatted_rows)
+    return formatted_rows
+
+
 #get student in subject
 @app.route('/subject_student', methods=['GET'])
 def get_subject_student():
     subject_id = request.args.get('subjectID')
     q = "SELECT * FROM [dbo].[StudentsCohort] AS sc INNER JOIN [dbo].[Student] AS s ON s.id = sc.StudentId WHERE sc.subjectId = ?"
     query = q.replace("?", str(subject_id))
-    res =  run_sql_query(query)
+    res =  run_sql_query(query) 
 
     formatted_rows = []
     for row in res:
@@ -239,6 +256,22 @@ def create_student():
     query = "INSERT INTO [dbo].[student] (Name, Id) VALUES (?, ?)"
     params = (student_data['name'], student_data['id'])
     run_sql_query(query, params)
+
+    response = {
+        "message": "Student Profile created successfully:",
+        "student_data": student_data
+    }
+
+    return jsonify(response), 201
+
+@app.route('/subject_student', methods=['POST'])
+def add_student_classroom():
+    student_data = request.get_json()
+    print(student_data)
+    query = "INSERT INTO [dbo].[StudentsCohort]  (SubjectId, StudentId) VALUES (?,  ?)"
+    params = (student_data['subject_id'], student_data['Id'])
+    run_sql_query(query, params)
+    print(query)
 
     response = {
         "message": "Student Profile created successfully:",

@@ -19,6 +19,22 @@ export const getStudentProfile = async studentID => {
 	}
 };
 
+//Get Student Profile info from DB
+export const getAllStudentProfile = async () => {
+	try {
+		const response = await axios.get(`${API_BASE_URL}/student_all`, {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		return response.data;
+	} catch (error) {
+		console.log("Error fetching student profile data: ", error);
+		throw error;
+	}
+};
+
 //Get Teacher profile info from DB
 export const getTeacherProfile = async teacherID => {
 	try {
@@ -184,6 +200,22 @@ export const createStudentProfile = async studentData => {
 		throw error;
 	}
 };
+
+export const addStudentSubject = async studentData => {
+	try {
+		const response = await axios.post(`${API_BASE_URL}/subject_student`, studentData, {
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		return response.data;
+	} catch (error) {
+		console.log("Error creating student profile: ", error);
+		throw error;
+	}
+};
+
 
 // Creates an Assignment Profile instance in the DB
 export const createAssignmentProfile = async assignmentData => {
