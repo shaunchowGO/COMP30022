@@ -7,6 +7,8 @@ import Dropdown from "./Dropdown.js";
 
 function Import(props) {
 	const [files, setFiles] = React.useState(null);
+	const [selectedStudent, setSelectedStudent] = React.useState(null);
+
 	const inputRef = React.useRef();
 
 	const handleDrag = event => {
@@ -37,12 +39,13 @@ function Import(props) {
 	const handleImport = async event => {
 		event.preventDefault();
 
-		if (files) {
+		if (files && selectedStudent) {
+			console.log('selectedStudent:', selectedStudent)
 			try {
 				const studentInfo = {
 					assignmentID: props.assignmentID,
-					subject_name: props.subjectName,
-					studentID: props.studentID,
+					subject_name: selectedStudent.Name,
+					studentID: selectedStudent.Id,
 				};
 				console.log(studentInfo);
 
@@ -97,8 +100,9 @@ function Import(props) {
 					</div>
 				)}
 
-				{props.isCompare && <Dropdown data={props.data} />}
-
+				{props.isCompare && <Dropdown
+							data={props.data}
+							onSelect={(student) => setSelectedStudent(student)}/>}
 				<div className="import-btn">
 					<button
 						className="discard-btn blue-btn"

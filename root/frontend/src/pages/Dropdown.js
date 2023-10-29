@@ -12,6 +12,12 @@ function Dropdown(props) {
 		}
 	};
 
+	const handleSelect = (item) => {
+		setSelectedItem(item.Name);
+		setToggleDrop(false);
+		props.onSelect(item);
+	  };
+
 	return (
 		<div className="drop-down">
 			<div className="select-option">
@@ -24,7 +30,7 @@ function Dropdown(props) {
 							<li
 								className="file-name"
 								onClick={() => {
-									setSelectedItem(item.Name);
+									handleSelect(item);
 									setToggleDrop(!toggleDrop);
 								}}
 							>
