@@ -8,6 +8,7 @@ import Filter from './Filter.js'
 import { getStudentAssignmentInfo, getAssignmentInfo, getSubjectInfo, getSubjectStudents } from '../utils/api.js';
 import '../css/pages/Assignment.css'
 import RotateLoader from "react-spinners/RotateLoader";
+import ViewDocument from '../components/ViewDocuments.js';
 
 
 function GroupProfile() {
@@ -19,9 +20,15 @@ function GroupProfile() {
   const [firstRequest, setFirstRequest] = useState(true);
   const [importTrigger, SetImportTrigger] = React.useState(false);
   const { ID } = useParams();
-  const [showDocumentViewer, setShowDocumentViewer] = useState(false);
   const [subjectStudent, setSubjectStudent] = React.useState();
- 
+
+  const [selectedAssignment, setSelectedAssignment] = useState(null);
+
+  const openViewDocument = (assignment) => {
+    console.log('assignment', assignment )
+    setSelectedAssignment(assignment);
+  };
+
   useEffect(() => {
     async function fetchData() {
       setFirstRequest(true)
@@ -75,10 +82,6 @@ function GroupProfile() {
     }
   }, [firstRequest]);
   
-
-  const handleViewDocument = () => {
-    setShowDocumentViewer(true);
-  }
   if (isLoading){
     return(
       <div>
@@ -95,11 +98,17 @@ function GroupProfile() {
     console.log('stuent data',studentData)
     console.log('subjectData: ', subjectData)
     console.log('subjectStudent:', subjectStudent);
-    const updatedStudentData = studentData.map(student => ({
-      ...student,
-      studentId: subjectStudent.Id,
-      subjectName: subjectData.Name
-    }));
+    const updatedStudentData = studentData.map(student => {
+      const matchingSubjectStudent = subjectStudent.find(subject => subject.Name === student.Name);
+    
+      return {
+        ...student,
+        studentId: matchingSubjectStudent ? matchingSubjectStudent.Id : undefined,
+        subjectName: subjectData.Name,
+        assignmentID: ID
+      };
+    });
+    
     console.log('updatedStudentData', updatedStudentData)
     return (
       <div>
@@ -136,17 +145,22 @@ function GroupProfile() {
               <div className="table-content">
                 {updatedStudentData.map((assignment, index) => (
                   <div className="table-row" key={index}>
+                    <Link to={`/student/${assignment.studentId}`}>
                     <div className="file-name">{assignment.Name}</div>
+                    </Link>
                     <div>{assignment.similarityScore}%</div>
                     <div>{assignment.Date}</div>
                     <div className="row-detail">
-                      <Link to={`/student/${assignment.studentId}`}>
-                        <FontAwesomeIcon className="icon" icon={faEye} />
-                      </Link>
+                      <FontAwesomeIcon className="icon" icon={faEye} onClick={() => openViewDocument(assignment)}/>
                       <FontAwesomeIcon className="icon" icon={faTrash} />
                     </div>
                   </div>
                 ))}
+                {selectedAssignment && (<ViewDocument
+                  subjectName={selectedAssignment.subjectName}
+                  studentID={selectedAssignment.studentId}
+                  assignmentID={selectedAssignment.assignmentID}/>
+                )}
               </div>
             </div>
           </div>

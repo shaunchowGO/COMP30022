@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 #import pyodbc
 from scripts.sql import run_sql_query
 from scripts.SQL_queries_dynamic.sql_queries import students_in_subject_query, subject_page_query, submissions_for_assignment, submissions_for_student , teacher_page_query
 import bcrypt
-from scripts.run_ps_script import uploading_assignment
+from scripts.run_ps_script import uploading_assignment, downloading_past_assignment
 import os
 from algorithm_scripts.algorithm import similarity_score
 
@@ -391,22 +391,33 @@ def upload_file():
 
         with open('temp.txt', 'wb') as f:
             f.write(file_content)
- 
-        assignmentID = request.form['assignmentID']
-        subject_name = request.form['subject_name']
-        studentID = request.form['studentID']
-        # print(assignmentID, subject_name, studentID)
+        data = request.get_json()
+        assignmentID = data.get('assignmentID')
+        subject_name = data.get('subject_name')
+        studentID = data.get('studentID')
+        print(assignmentID, subject_name, studentID)
 
         # uploading_assignment('temp.txt', subject_name, studentID, assignmentID)
         # uploading_assignment(filepath='scripts/uploading_assignment_to_storage.ps1','temp.txt', 'Coding101', '11111', '2')
-        score = similarity_score('temp.txt')
-        os.remove("temp.txt")
-        print(score)
+        # score = similarity_score('temp.txt')
+        # os.remove("temp.txt")
+        # print(score)
 
 
-        return file_content, score
+        return file_content
 
     return "Something went wrong", 500
+
+#download file from file storage temporarily and returns it
+@app.route('/download', methods=['GET'])
+def download_submission():
+    subject_name = request.args.get('subjectName')
+    studentID = request.args.get('studentID')
+    assignmentID = request.args.get('assignmentID')
+    downloading_past_assignment(filepath='scripts/downloading_assignment.ps1', download_file_path='temp.txt', subject_name=subject_name, studentID=studentID, assignmentID=assignmentID)
+    file_path = 'temp.txt'
+
+    return send_file(file_path, as_attachment=True)
 
 
 #get teacher page info based on academicID 

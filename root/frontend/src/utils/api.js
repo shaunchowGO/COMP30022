@@ -391,3 +391,24 @@ export const getStudentsInSubject = async subjectID => {
 		throw error;
 	}
 };
+
+export const downloadSubmission = async (subjectName, studentID, assignmentID) => {
+	const downloadUrl = `${API_BASE_URL}/download?subjectName=${subjectName}&studentID=${studentID}&assignmentID=${assignmentID}`;
+	
+	try {
+	  const response = await axios.get(downloadUrl, {
+		responseType: 'blob', 
+	  });
+  
+	  if (response.status === 200) {
+		return {
+		  downloadUrl,
+		  blob: new Blob([response.data]),
+		};
+	  } else {
+		throw new Error('Download request failed');
+	  }
+	} catch (error) {
+	  throw error;
+	}
+  };
