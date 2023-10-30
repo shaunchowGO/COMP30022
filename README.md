@@ -1,27 +1,27 @@
 ### Table of Contents 
-*[Project Overview](#project-overview)
-*[Demo](#demo)
-*[Features](#features)
-*[Documentation](#documentation)
-*[Key Algorithm](#key-algorithm)
-*[Application Layers and Key Classes](#application-layers-and-key-classes)
-*[System Requirements](#system-requirements)
-*[Installation Guide](#installation-guide)
-*[Changelog](#changelog)
-*[Traceability Matrix](#traceability-matrix)
+* [Project Overview](#project-overview)
+* [Demo](#demo)
+* [Features](#features)
+* [Documentation](#documentation)
+* [Key Algorithm](#key-algorithm)
+* [Application Layers and Key Classes](#application-layers-and-key-classes)
+* [System Requirements](#system-requirements)
+* [Installation Guide](#installation-guide)
+* [Changelog](#changelog)
+* [Traceability Matrix](#traceability-matrix)
 
 
 
 
 ### Project Overview
 
-The aim of the project was to develop a web interface that allows academics to determine the authenticity of students submissions. The project was developed for our client Eduardo Oliveira, a faculty member at the University of Melbourne who requested an interface to utilize the stylometry algorithm they had developed 
+The aim of the project was to develop a web interface that allows academics to determine the authenticity of students submissions. The project was developed for our client Eduardo Oliveira, a faculty member at the University of Melbourne who requested an interface to utilize the stylometry algorithm they had developed. 
 
 ### Demo
 
 The hosted website can be found at https://textdna.azurewebsites.net/
 <p align ="center">
-    <img src="images\front-page.jpg" width="300">
+    <img src="images\front-page.jpg" width="600">
 </p>
 
 ### Features
@@ -45,7 +45,7 @@ The test cases utilized when verifying the functionality can be found in the [te
 ### Application Layers and Key Classes
 
 <p align ="center">
-    <img src="docs\Architectural Diagram.jpg" width="300">
+    <img src="docs\Architectural Diagram.jpg" width="600">
 </p>
 
 ### System Requirements
@@ -64,11 +64,11 @@ The test cases utilized when verifying the functionality can be found in the [te
 * Databases
     * Entity- Relationship Diagram: 
     <p align ="center">
-        <img src="docs\Database_Structure\Entity_Relationship_Diagram.png" width="300">
+        <img src="docs\Database_Structure\Entity_Relationship_Diagram.png" width="600">
     </p>
     * Phyical Database Diagram
     <p align ="center">
-        <img src="docs\Database_Structure\Physical_Database_Diagram.png" width="300">
+        <img src="docs\Database_Structure\Physical_Database_Diagram.png" width="600">
     </p>
 
 * Relevant dependencies and their versions can be found at [requirements.txt](requirements.txt)
