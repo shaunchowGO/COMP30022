@@ -47,7 +47,7 @@ function Import(props) {
 			try {
 				const studentInfo = {
 					assignmentID: props.assignmentID,
-					subject_name: selectedStudent.Name,
+					subject_name: props.subjectName,
 					studentID: selectedStudent.Id,
 				};
 				console.log(studentInfo);

@@ -108,9 +108,8 @@ function GroupProfile() {
             trigger={importTrigger}
             SetImportTrigger={() => SetImportTrigger(!importTrigger)}
             isCompare={true}
-            studentID={updatedStudentData.studentId}
             assignmentID={ID}
-            subjectName={updatedStudentData.subjectName}
+            subjectName={subjectData.Name}
             data={subjectStudent}
           />
           <div className="profile-container">
