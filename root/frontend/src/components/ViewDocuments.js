@@ -33,7 +33,7 @@ const ViewDocument = ({ subjectName, studentID, assignmentID }) => {
 
   return (
     <div>
-      <button onClick={openModal}><i className="fa fa-eye"></i> View Submission</button>
+      <button className='download-button' onClick={openModal}><i className="fa fa-eye"></i> View Submission</button>
 
       <Modal
         isOpen={modalIsOpen}
@@ -41,7 +41,7 @@ const ViewDocument = ({ subjectName, studentID, assignmentID }) => {
       >
         {fileContent ? (
         <div>
-          <pre>{fileContent}</pre>
+          <pre className='file-container'>{fileContent}</pre>
           {downloadUrl && (
             <a href={downloadUrl} download>
               <button className="download-button">Download Submission</button>
