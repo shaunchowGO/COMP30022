@@ -20,6 +20,6 @@ pycodestyle==2.11.1
 pytest==7.4.2
 tensorflow
 pickle-mixin
-nltk
+nltk==3.8.1
 pickle
 gensim 
