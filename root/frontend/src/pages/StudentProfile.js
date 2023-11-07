@@ -120,7 +120,7 @@ function StudentProfile() {
 							<div>{assignment.date}</div>
 							<div className="row-detail">
 								<FontAwesomeIcon className="icon" icon={faDownload} />
-								<FontAwesomeIcon className="icon" icon={faTrash} />
+								{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
 							</div>
 						</div>
 					))}

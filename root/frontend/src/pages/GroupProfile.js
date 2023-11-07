@@ -196,7 +196,7 @@ function GroupProfile(props) {
 													<Link to={`/assignment/${assignment.ID}`}>
 														<FontAwesomeIcon className="icon" icon={faEye} />
 													</Link>
-													<FontAwesomeIcon className="icon" icon={faTrash} />
+													{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
 												</div>
 											</div>
 										))}
@@ -213,7 +213,7 @@ function GroupProfile(props) {
                           <Link to={`/student/${student.Id}`}>
                             <FontAwesomeIcon className="icon" icon={faEye} />
                           </Link>
-													<FontAwesomeIcon className="icon" icon={faTrash} />
+													{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
 												</div>
 											</div>
 										</div>

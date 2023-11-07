@@ -112,7 +112,7 @@ function TeacherProfile(props) {
 												<Link to={`/group/${classroom.id}`}>
 													<FontAwesomeIcon className="icon" icon={faEye} />
 												</Link>
-												<FontAwesomeIcon className="icon" icon={faTrash} />
+												{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
 											</div>
 										</div>
 									))}

@@ -152,7 +152,7 @@ function GroupProfile() {
                     <div>{assignment.Date}</div>
                     <div className="row-detail">
                       <FontAwesomeIcon className="icon" icon={faEye} onClick={() => openViewDocument(assignment)}/>
-                      <FontAwesomeIcon className="icon" icon={faTrash} />
+                      {/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
                     </div>
                   </div>
                 ))}
