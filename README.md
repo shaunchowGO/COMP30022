@@ -75,7 +75,24 @@ The test cases utilized when verifying the functionality can be found in the [te
 
 ### Installation Guide 
 
-* Setup: 
+### Setup
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/shaunchowGO/COMP30022.git
+2. **Backend Setup:**
+
+   ```bash
+    cd root/backend
+    pip install -r requirements.txt
+    python app.py
+3. **Frontend Setup:**
+
+    ```bash
+    cd root/frontend
+    npm install
+    npm start
 * Deployment Guideline:
 
 
