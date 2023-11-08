@@ -7,6 +7,8 @@
 * [Application Layers and Key Classes](#application-layers-and-key-classes)
 * [System Requirements](#system-requirements)
 * [Installation Guide](#installation-guide)
+* [Setup](#setup)
+* [Deployment Guidelines](#deployment-guideline)
 * [Changelog](#changelog)
 * [Traceability Matrix](#traceability-matrix)
 
@@ -23,6 +25,8 @@ The hosted website can be found at https://textdna.azurewebsites.net/
 <p align ="center">
     <img src="images\front-page.jpg" width="600">
 </p>
+
+It is not currently up as deploying on Azure comes with costs and as such the client has informed us to avoid deploying it unless necessary
 
 ### Features
 
@@ -41,6 +45,26 @@ The key documentation regarding the project such as User Stories, Requirements, 
 The test cases utilized when verifying the functionality can be found in the [tests](tests) folder 
 
 ### Key Algorithm
+Each trained profile requires 4  items to be created: 
+Word2Vec model
+Previous essays turned to vectors by Word2Vec model
+clf_network model [tensorflow]
+base_network model [tensorflow]
+
+The algorithm steps can be observed in "root\backend\algorithm_scripts\algorithm.py" 
+Note: The file paths for the parametres of the trained models are supplied as parametres:
+
+1- Converts unknown text into vectors using trained Word2Vec model
+2- Extract text features using base_network model
+3- Using clf_network model, Compares the text features to the trained profile's text features, and outputs a similarity score
+
+In our project, we have decided to create one trained profile only (for simplicity), so every submission (regardless of the student) is compared against that same trained model, rather than a different trained model for each student.
+
+To train new models for new profiles, store trained models and pass their filepaths to the function in "root\backend\algorithm_scripts\algorithm.py". 
+
+To generate / train models, refer to the client's [Eduardo] python notebook in:
+https://unimelbcloud-my.sharepoint.com/personal/eduardo_oliveira_unimelb_edu_au/_layouts/15/onedrive.aspx?ga=1&id=%2Fpersonal%2Feduardo_oliveira_unimelb_edu_au%2FDocuments%2F2023%2FProject_Code-20230815T025227Z%2FProject_Code%2FPAN14_Code 
+
 
 ### Application Layers and Key Classes
 
@@ -74,6 +98,32 @@ The test cases utilized when verifying the functionality can be found in the [te
 * Relevant dependencies and their versions can be found at [requirements.txt](requirements.txt)
 
 ### Installation Guide 
+Install dependencies by:
+* "pip install -r requirements.txt" [Found in COMP30022 directory]
+* cd "COMP30022\root\frontend"
+* npm install react-scripts --save
+* Log into https://portal.azure.com/ using credentials and go into sql server instance "sql-server-capstone-project" and add your IP address into firewall settings under "networking"
+* Using VScode [or other interfaces], clone the repo https://github.com/shaunchowGO/COMP30022.git
+open 2 terminals, one to run front-end, and another to run back-end
+* For front-end run the following commands: 
+    * cd "COMP30022\root\frontend"
+    * npm start
+* For back-end run the following commands:
+    * cd "COMP30022\root\backend"
+    * python app.py
+This should automatically open a new tab your localhost path, where you can interact  with the interface.
+
+Credentials to access repository , storage account, server , databases
+The interface uses the following services which can be accessed through https://portal.azure.com/:
+* storage account [storage1itproject]
+* SQL Database [sql-db-capstone-project]
+* SQL Server [sql-server-capstone-project]
+* Virtual Machine [VM-capstone-project] (to host the back-end in deployment)
+* App service [textDNA] (for front-end and other credentials for back-end)
+
+__Credentials are:__
+Username: Shaun@younismamoun2001gmail.onmicrosoft.com
+Password: Mosa2012351
 
 ### Setup
 
@@ -93,8 +143,27 @@ The test cases utilized when verifying the functionality can be found in the [te
     cd root/frontend
     npm install
     npm start
-* Deployment Guideline:
 
+### Deployment Guideline:
+    * Log into https://portal.azure.com/:
+    * Open CLI in the cloud (Bash terminal hosted on Azure)
+    * Go into textDNA appService
+    * Navigate to the git repo [already cloned]
+    * Run front-end by:
+        * Start the instance of textDNA app
+        * cd "COMP30022\root\frontend"
+        * az webapp up [run this command  in frontend directory]
+    * Run back-end by:
+        * edit the link [Ask Shaun] in file ...
+        * navigate to [VM-capstone-project]  instance
+    * Start it
+        * Open CLI and run:
+        * "az ssh vm --resource-group rg-capstone-project --vm-name VM-capstone-project --subscription 05dcda3f-04cb-4057-bfbe-472610744c79"
+        * cd COMP30022
+        * pip install -r requirements.txt
+        * cd root\backend
+        * python3 app.py
+        * Go to website "textdna.azurewebsites.net"
 
 ### Changelog 
 
