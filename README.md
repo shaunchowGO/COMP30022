@@ -54,9 +54,9 @@ base_network model [tensorflow]
 The algorithm steps can be observed in "root\backend\algorithm_scripts\algorithm.py" 
 Note: The file paths for the parametres of the trained models are supplied as parametres:
 
-1- Converts unknown text into vectors using trained Word2Vec model
-2- Extract text features using base_network model
-3- Using clf_network model, Compares the text features to the trained profile's text features, and outputs a similarity score
+1. Converts unknown text into vectors using trained Word2Vec model
+2. Extract text features using base_network model
+3. Using clf_network model, Compares the text features to the trained profile's text features, and outputs a similarity score
 
 In our project, we have decided to create one trained profile only (for simplicity), so every submission (regardless of the student) is compared against that same trained model, rather than a different trained model for each student.
 
@@ -122,8 +122,8 @@ The interface uses the following services which can be accessed through https://
 * App service [textDNA] (for front-end and other credentials for back-end)
 
 __Credentials are:__
-Username: Shaun@younismamoun2001gmail.onmicrosoft.com
-Password: Mosa2012351
+* Username: Shaun@younismamoun2001gmail.onmicrosoft.com
+* Password: Mosa2012351
 
 ### Setup
 
