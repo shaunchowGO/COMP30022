@@ -126,18 +126,19 @@ __Credentials are:__
 * Password: Mosa2012351
 
 ### Setup
+1. Download Powershell 7 and run Install-Module-name Az
 
-1. **Clone the Repository:**
+2. **Clone the Repository:**
 
    ```bash
    git clone https://github.com/shaunchowGO/COMP30022.git
-2. **Backend Setup:**
+3. **Backend Setup:**
 
    ```bash
     cd root/backend
     pip install -r requirements.txt
     python app.py
-3. **Frontend Setup:**
+4. **Frontend Setup:**
 
     ```bash
     cd root/frontend
