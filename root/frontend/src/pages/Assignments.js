@@ -146,7 +146,7 @@ function GroupProfile() {
                 {updatedStudentData.map((assignment, index) => (
                   <div className="table-row" key={index}>
                     <Link to={`/student/${assignment.studentId}`}>
-                    <div className="file-name">{assignment.Name}</div>
+                      <div className="file-name">{assignment.Name}</div>
                     </Link>
                     <div>{assignment.similarityScore}%</div>
                     <div>{assignment.Date}</div>

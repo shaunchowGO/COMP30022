@@ -9,6 +9,7 @@ const API_BASE_URL = "http://localhost:5000";
 //Create Student Profile instance in DB
 export const createStudentProfile = async studentData => {
 	try {
+		console.log(studentData)
 		const response = await axios.post(`${API_BASE_URL}/student`, studentData, {
 			headers: {
 				"Content-Type": "application/json",
@@ -17,7 +18,7 @@ export const createStudentProfile = async studentData => {
 
 		return response.data;
 	} catch (error) {
-		console.log("Error creating student profile: ", error);
+		console.log("Error creating student profile: ", error);	
 		throw error;
 	}
 };
@@ -100,6 +101,24 @@ export const getStudentsInSubject = async subjectID => {
 		throw error;
 	}
 };
+
+//Get Student Profile info from DB based on their ID
+export const getStudentFiles = async studentID => {
+	try {
+		const response = await axios.get(`${API_BASE_URL}/student_files`, {
+			params: { studentID },
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		return response.data;
+	} catch (error) {
+		console.log("Error fetching student profile data: ", error);
+		throw error;
+	}
+};
+
 
 
 // =============================================================	Teachers    ============================================================= //

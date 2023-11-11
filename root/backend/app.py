@@ -13,6 +13,8 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
+# =============================================================	Students    ============================================================= //
+
 #get student info from DB 
 @app.route('/student', methods=['GET'])
 def get_student():
@@ -30,11 +32,14 @@ def get_student():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-#get teacher info 
-@app.route('/student_all', methods=['GET'])
-def get_student_all():
-    query = "SELECT * FROM [dbo].[student]"
+# view the student profile info (e.g. files)
+@app.route('/student_files', methods=['GET'])
+def get_student_files():
+    student_id = request.args.get('studentID')
+    q = "SELECT A.[Name] as Assignment_Name, Sj.[Name] as [Subject], S.[Similarity_Score], S.[Date] as Date_AddedFROM [dbo].[Submission] as S inner join dbo.[Assignment] as A on S.AssignmentId = A.Id inner join dbo.Subject as Sj on A.SubjectId = Sj.Id where S.StudentId = ?"
+    query = q.replace("?", str(student_id))
     res =  run_sql_query(query)
+    
     formatted_rows = []
     for row in res:
         formatted_row = {
@@ -42,10 +47,7 @@ def get_student_all():
             'Name': row.Name
         }
         formatted_rows.append(formatted_row)
-
-    print(formatted_rows)
     return formatted_rows
-
 
 #get student in subject
 @app.route('/subject_student', methods=['GET'])
@@ -64,30 +66,97 @@ def get_subject_student():
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-#get Assignment Info from DB 
-@app.route('/assignment', methods=['GET'])
-def get_assignment():
+# Receives student_data from the frontend and Inserts that into the DB 
+@app.route('/student', methods=['POST'])
+def create_student():
+    student_data = request.get_json()
+    #call create student folder script
+
+    #call create student entry query 
+    query = "INSERT INTO [dbo].[student] (Name, Id) VALUES (?, ?)"
+    params = (student_data['name'], student_data['id'])
+    run_sql_query(query, params)
+
+    response = {
+        "message": "Student Profile created successfully:",
+        "student_data": student_data
+    }
+
+    return jsonify(response), 201
+
+#Routes for Deleting Entries in SQL
+#Delete Student Entry by ID
+@app.route('/student/<int:id>', methods=['DELETE'])
+def delete_student(id):
+
+    query = "DELETE FROM [dbo].[student] WHERE Id = ?"
+    params = (id,)
+    run_sql_query(query, params)
+
+    response = {
+        "message": f"Student with ID {id} deleted successfully"
+    }
+
+    return jsonify(response), 204 
+
+#get teacher info 
+@app.route('/student_all', methods=['GET'])
+def get_student_all():
+    query = "SELECT * FROM [dbo].[student]"
+    res =  run_sql_query(query)
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Name': row.Name
+        }
+        formatted_rows.append(formatted_row)
+
+    print(formatted_rows)
+    return formatted_rows
+
+#get student info from DB 
+@app.route('/students', methods=['GET'])
+def get_students_in_subject():
     subject_id = request.args.get('subjectID')
-    q = "SELECT * FROM [dbo].[assignment] WHERE Id = ?"
-    query = q.replace("?", str(subject_id))
+    query = students_in_subject_query.replace("?", str(subject_id))
     res =  run_sql_query(query)
     
     formatted_rows = []
     for row in res:
         formatted_row = {
             'Id': row.Id,
-            'Name': row.Name,
-            'SubjectId': row.SubjectId
+            'Name': row.Name
         }
         formatted_rows.append(formatted_row)
     return formatted_rows
 
-#get Subject Info from DB 
-@app.route('/subject', methods=['GET'])
-def get_subject():
-    subject_id = request.args.get('subjectID')
-    q = "SELECT * FROM [dbo].[Subject] WHERE Id = ?"
-    query = q.replace("?", str(subject_id))
+
+
+# =============================================================	Teachers    ============================================================= //
+
+# Routes for SQL Insertion 
+#get teacher info 
+@app.route('/teacher1', methods=['GET'])
+def get_teacher_all():
+    query = "SELECT * FROM [dbo].[academic]"
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Name': row.Name
+        }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
+
+#get teacher info from DB 
+@app.route('/teacher', methods=['GET'])
+def get_teacher():
+    teacher_id = request.args.get('teacherID')
+    q = "SELECT * FROM [dbo].[academic] WHERE Id = ?"
+    query = q.replace("?", str(teacher_id))
     res =  run_sql_query(query)
     
     formatted_row = []
@@ -99,29 +168,42 @@ def get_subject():
         
     return formatted_row
 
+@app.route('/new_academic', methods=['POST'])
+def create_academic():
+    academic_data = request.get_json()
+    academic_name = academic_data['firstName'] + " " + academic_data['lastName']
+    print(academic_name)
+    query = "INSERT INTO [dbo].[academic] (Name, Id) VALUES (?, ?)"
+    params = (academic_name, academic_data['aId'])
+    run_sql_query(query, params)
 
+    response = {
+        "message": "Student Profile created successfully:",
+        "student_data": academic_data
+    }
 
-#get submission info from DB 
-@app.route('/submissions', methods=['GET'])
-def get_submission():
-    assignment_id = request.args.get('assignmentID')
-    q = "SELECT * FROM [dbo].[Submission] WHERE AssignmentId = ?"
-    query = q.replace("?", str(assignment_id))
+    return jsonify(response), 201
+
+#get teacher page info based on academicID 
+@app.route('/teacher-info', methods=['GET'])
+def get_teacher_info():
+    academic_id = request.args.get('teacherID')
+    params = (academic_id)
+    query = teacher_page_query.replace("?", str(params))
     res =  run_sql_query(query)
     
-    formatted_row = []
+    formatted_rows = []
     for row in res:
         formatted_row = {
-            'AssignmentId': row.AssignmentId,
-            'StudentId': row.StudentId,
-            'SubmissionId': row.SubmissionId,
-            'Date': row.Date,
-            'Similarity_Score': row.Similarity_Score
+            'Subject': row.Subject,
+            'SubjectID': row.ID,
+            'Assignments': row.AssignmentCount,
+            'Students': row.StudentCount
         }
-        
-    return formatted_row
+        formatted_rows.append(formatted_row)
+    return formatted_rows
 
-
+# =============================================================	Logins    ============================================================= //
 
 @app.route('/login', methods=['GET'])
 def get_login():
@@ -177,44 +259,6 @@ def compare_login():
         return 'new'
     return 'old'
 
-
-#get teacher info from DB 
-@app.route('/teacher', methods=['GET'])
-def get_teacher():
-    teacher_id = request.args.get('teacherID')
-    q = "SELECT * FROM [dbo].[academic] WHERE Id = ?"
-    query = q.replace("?", str(teacher_id))
-    res =  run_sql_query(query)
-    
-    formatted_row = []
-    if res:
-        formatted_row = {
-            'Id': res[0].Id,
-            'Name': res[0].Name
-        }
-        
-    return formatted_row
-
-
-
-
-# Routes for SQL Insertion 
-#get teacher info 
-@app.route('/teacher1', methods=['GET'])
-def get_teacher_all():
-    query = "SELECT * FROM [dbo].[academic]"
-    res =  run_sql_query(query)
-    
-    formatted_rows = []
-    for row in res:
-        formatted_row = {
-            'Id': row.Id,
-            'Name': row.Name
-        }
-        formatted_rows.append(formatted_row)
-    return formatted_rows
-
-
 @app.route('/signup', methods=['POST'])
 def create_account():
     account_data = request.get_json()
@@ -232,55 +276,45 @@ def create_account():
 
     return jsonify(response), 201
 
-@app.route('/new_academic', methods=['POST'])
-def create_academic():
-    academic_data = request.get_json()
-    academic_name = academic_data['firstName'] + " " + academic_data['lastName']
-    print(academic_name)
-    query = "INSERT INTO [dbo].[academic] (Name, Id) VALUES (?, ?)"
-    params = (academic_name, academic_data['aId'])
-    run_sql_query(query, params)
+# =============================================================	Assignments    ============================================================= //
 
-    response = {
-        "message": "Student Profile created successfully:",
-        "student_data": academic_data
-    }
+#get Assignment Info from DB 
+@app.route('/assignment', methods=['GET'])
+def get_assignment():
+    subject_id = request.args.get('subjectID')
+    q = "SELECT * FROM [dbo].[assignment] WHERE Id = ?"
+    query = q.replace("?", str(subject_id))
+    res =  run_sql_query(query)
+    
+    formatted_rows = []
+    for row in res:
+        formatted_row = {
+            'Id': row.Id,
+            'Name': row.Name,
+            'SubjectId': row.SubjectId
+        }
+        formatted_rows.append(formatted_row)
+    return formatted_rows
 
-    return jsonify(response), 201
-
-# Receives student_data from the frontend and Inserts that into the DB 
-@app.route('/student', methods=['POST'])
-def create_student():
-    student_data = request.get_json()
-    #call create student folder script
-
-    #call create student entry query 
-    query = "INSERT INTO [dbo].[student] (Name, Id) VALUES (?, ?)"
-    params = (student_data['name'], student_data['id'])
-    run_sql_query(query, params)
-
-    response = {
-        "message": "Student Profile created successfully:",
-        "student_data": student_data
-    }
-
-    return jsonify(response), 201
-
-@app.route('/subject_student', methods=['POST'])
-def add_student_classroom():
-    student_data = request.get_json()
-    print(student_data)
-    query = "INSERT INTO [dbo].[StudentsCohort]  (SubjectId, StudentId) VALUES (?,  ?)"
-    params = (student_data['subject_id'], student_data['Id'])
-    run_sql_query(query, params)
-    print(query)
-
-    response = {
-        "message": "Student Profile created successfully:",
-        "student_data": student_data
-    }
-
-    return jsonify(response), 201
+#get submission info from DB 
+@app.route('/submissions', methods=['GET'])
+def get_submission():
+    assignment_id = request.args.get('assignmentID')
+    q = "SELECT * FROM [dbo].[Submission] WHERE AssignmentId = ?"
+    query = q.replace("?", str(assignment_id))
+    res =  run_sql_query(query)
+    
+    formatted_row = []
+    for row in res:
+        formatted_row = {
+            'AssignmentId': row.AssignmentId,
+            'StudentId': row.StudentId,
+            'SubmissionId': row.SubmissionId,
+            'Date': row.Date,
+            'Similarity_Score': row.Similarity_Score
+        }
+        
+    return formatted_row
 
 # Receives assignment_data from the frontend and Inserts that into the DB 
 @app.route('/assignment', methods=['POST'])
@@ -300,46 +334,6 @@ def create_assignment():
 
     return jsonify(response), 201
 
-# Receives classroom_data from the frontend and Inserts that into the DB 
-@app.route('/classroom', methods=['POST'])
-def create_classroom():
-    classroom_data = request.get_json()
-    academicID = request.args.get('academicID')
-
-    #call create classroom entry query 
-    query = "INSERT INTO [dbo].[Subject] (Name, Id) VALUES (?, ?)"
-    params = (classroom_data['name'], classroom_data['id'])
-    run_sql_query(query, params)
-
-    query1 = "INSERT INTO [dbo].[AcademicsCohort] (SubjectId, AcademicId) VALUES (?, ?)"
-    params1 = (classroom_data['id'], academicID)
-    run_sql_query(query1, params1)
-
-
-
-    response = {
-        "message": "Classroom Profile created successfully:",
-        "classroom_data": classroom_data
-    }
-
-    return jsonify(response), 201
-
-#Routes for Deleting Entries in SQL
-
-#Delete Student Entry by ID
-@app.route('/student/<int:id>', methods=['DELETE'])
-def delete_student(id):
-
-    query = "DELETE FROM [dbo].[student] WHERE Id = ?"
-    params = (id,)
-    run_sql_query(query, params)
-
-    response = {
-        "message": f"Student with ID {id} deleted successfully"
-    }
-
-    return jsonify(response), 204 
-
 #Delete Assignment Entry by ID
 @app.route('/assignment/<int:id>', methods=['DELETE'])
 def delete_assignment(id):
@@ -354,20 +348,16 @@ def delete_assignment(id):
 
     return jsonify(response), 204  
 
-#Delete Classroom entry By ID
-@app.route('/classroom/<int:id>', methods=['DELETE'])
-def delete_classroom(id):
+#download file from file storage temporarily and returns it
+@app.route('/download', methods=['GET'])
+def download_submission():
+    subject_name = request.args.get('subjectName')
+    studentID = request.args.get('studentID')
+    assignmentID = request.args.get('assignmentID')
+    downloading_past_assignment(filepath='scripts/downloading_assignment.ps1', download_file_path='temp.txt', subject_name=subject_name, studentID=studentID, assignmentID=assignmentID)
+    file_path = 'temp.txt'
 
-    query = "DELETE FROM [dbo].[Subject] WHERE Id = ?"
-    params = (id,)
-    run_sql_query(query, params)
-
-    response = {
-        "message": f"Classroom with ID {id} deleted successfully"
-    }
-
-    return jsonify(response), 204  
-
+    return send_file(file_path, as_attachment=True)
 
 #Routes to connect to the File Storage 
 
@@ -414,55 +404,6 @@ def upload_file():
 
     return "Something went wrong", 500
 
-#download file from file storage temporarily and returns it
-@app.route('/download', methods=['GET'])
-def download_submission():
-    subject_name = request.args.get('subjectName')
-    studentID = request.args.get('studentID')
-    assignmentID = request.args.get('assignmentID')
-    downloading_past_assignment(filepath='scripts/downloading_assignment.ps1', download_file_path='temp.txt', subject_name=subject_name, studentID=studentID, assignmentID=assignmentID)
-    file_path = 'temp.txt'
-
-    return send_file(file_path, as_attachment=True)
-
-
-#get teacher page info based on academicID 
-@app.route('/teacher-info', methods=['GET'])
-def get_teacher_info():
-    academic_id = request.args.get('teacherID')
-    params = (academic_id)
-    query = teacher_page_query.replace("?", str(params))
-    res =  run_sql_query(query)
-    
-    formatted_rows = []
-    for row in res:
-        formatted_row = {
-            'Subject': row.Subject,
-            'SubjectID': row.ID,
-            'Assignments': row.AssignmentCount,
-            'Students': row.StudentCount
-        }
-        formatted_rows.append(formatted_row)
-    return formatted_rows
-
-#get subject page info based on academicID 
-@app.route('/subject-info', methods=['GET'])
-def get_subject_info():
-    academic_id = request.args.get('subjectID')
-    params = (academic_id)
-    query = subject_page_query.replace("?", str(params))
-    res =  run_sql_query(query)
-    
-    formatted_rows = []
-    for row in res:
-        formatted_row = {
-            'ID': row.Id,
-            'SubjectId': row.SubjectId,
-            'Name': row.Name,
-            }
-        formatted_rows.append(formatted_row)
-    return formatted_rows
-
 #get submission page info based on academicID 
 @app.route('/assignment-info', methods=['GET'])
 def get_assignment_info():
@@ -482,21 +423,97 @@ def get_assignment_info():
     return formatted_rows
 
 
-#get student info from DB 
-@app.route('/students', methods=['GET'])
-def get_students_in_subject():
+# =============================================================	Subjects    ============================================================= //
+
+#get Subject Info from DB 
+@app.route('/subject', methods=['GET'])
+def get_subject():
     subject_id = request.args.get('subjectID')
-    query = students_in_subject_query.replace("?", str(subject_id))
+    q = "SELECT * FROM [dbo].[Subject] WHERE Id = ?"
+    query = q.replace("?", str(subject_id))
+    res =  run_sql_query(query)
+    
+    formatted_row = []
+    if res:
+        formatted_row = {
+            'Id': res[0].Id,
+            'Name': res[0].Name
+        }
+        
+    return formatted_row
+
+#get subject page info based on academicID 
+@app.route('/subject-info', methods=['GET'])
+def get_subject_info():
+    academic_id = request.args.get('subjectID')
+    params = (academic_id)
+    query = subject_page_query.replace("?", str(params))
     res =  run_sql_query(query)
     
     formatted_rows = []
     for row in res:
         formatted_row = {
-            'Id': row.Id,
-            'Name': row.Name
-        }
+            'ID': row.Id,
+            'SubjectId': row.SubjectId,
+            'Name': row.Name,
+            }
         formatted_rows.append(formatted_row)
     return formatted_rows
+
+# =============================================================	Classrooms    ============================================================= //
+
+@app.route('/subject_student', methods=['POST'])
+def add_student_classroom():
+    student_data = request.get_json()
+    print(student_data)
+    query = "INSERT INTO [dbo].[StudentsCohort]  (SubjectId, StudentId) VALUES (?,  ?)"
+    params = (student_data['subject_id'], student_data['Id'])
+    run_sql_query(query, params)
+    print(query)
+
+    response = {
+        "message": "Student Profile created successfully:",
+        "student_data": student_data
+    }
+
+    return jsonify(response), 201
+
+# Receives classroom_data from the frontend and Inserts that into the DB 
+@app.route('/classroom', methods=['POST'])
+def create_classroom():
+    classroom_data = request.get_json()
+    academicID = request.args.get('academicID')
+
+    #call create classroom entry query 
+    query = "INSERT INTO [dbo].[Subject] (Name, Id) VALUES (?, ?)"
+    params = (classroom_data['name'], classroom_data['id'])
+    run_sql_query(query, params)
+
+    query1 = "INSERT INTO [dbo].[AcademicsCohort] (SubjectId, AcademicId) VALUES (?, ?)"
+    params1 = (classroom_data['id'], academicID)
+    run_sql_query(query1, params1)
+    
+    response = {
+        "message": "Classroom Profile created successfully:",
+        "classroom_data": classroom_data
+    }
+
+    return jsonify(response), 201
+
+#Delete Classroom entry By ID
+@app.route('/classroom/<int:id>', methods=['DELETE'])
+def delete_classroom(id):
+
+    query = "DELETE FROM [dbo].[Subject] WHERE Id = ?"
+    params = (id,)
+    run_sql_query(query, params)
+
+    response = {
+        "message": f"Classroom with ID {id} deleted successfully"
+    }
+
+    return jsonify(response), 204  
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)  

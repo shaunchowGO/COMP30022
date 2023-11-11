@@ -9,64 +9,6 @@ import "../css/pages/Group.css";
 import RotateLoader from "react-spinners/RotateLoader";
 
 function GroupProfile(props) {
-  const groupData1 = {
-    name: "COMP30022",
-    subjectName: "IT Project",
-    assignments: [
-      {
-        name: "Sample Assignment 1",
-        startDate: "Aug 9, 2023",
-        dueDate: "Sep 9, 2023",
-        date: "Aug 10, 2022",
-      },
-      {
-        name: "Sample Assignment 2",
-        startDate: "Aug 9, 2023",
-        dueDate: "Sep 9, 2023",
-        date: "Aug 10, 2022",
-      },
-      {
-        name: "Sample Assignment 3",
-        startDate: "Aug 9, 2023",
-        dueDate: "Sep 9, 2023",
-        date: "Aug 10, 2022",
-      },
-      {
-        name: "Sample Assignment 3",
-        startDate: "Aug 9, 2023",
-        dueDate: "Sep 9, 2023",
-        date: "Aug 10, 2022",
-      },
-    ],
-  };
-  const studentData = {
-    details: [
-      {
-        id: 1167144,
-        name: "Thaya Chevaphatrakul",
-      },
-      {
-        id: 1152451,
-        name: "Rohit Sandeep",
-      },
-      {
-        id: 1152451,
-        name: "Rohit Sandeep",
-      },
-      {
-        id: 1152451,
-        name: "Rohit Sandeep",
-      },
-      {
-        id: 1152451,
-        name: "Rohit Sandeep",
-      },
-      {
-        id: 1152451,
-        name: "Rohit Sandeep",
-      },
-    ],
-  };
   const { ID } = useParams();
   const [groupData, setGroupData] = useState(null);
   const [subjectData, setSubjectData] = useState(null);
@@ -115,10 +57,14 @@ function GroupProfile(props) {
           <AddItem
             trigger={trigger}
             SetTrigger={() => SetTrigger(!trigger)}
-            hasID={true}
-            hasDate={true}
+            // hasID={true}
             info={{ name: "Assignment" }}
+            hasDate={true}
+            subjectID={subjectData.Id}
+            inputData={ID}
             manageAlert={props.manageAlert}
+            getFunction={getSubjectPage}
+            setNewData={setGroupData}
           />
         ) : (
           <AddItem

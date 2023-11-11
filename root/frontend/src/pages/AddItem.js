@@ -32,28 +32,24 @@ function AddItem(props) {
         await new Promise(resolve => setTimeout(resolve, 100));
       }
 
-      setFormData({ ...formData, subject_id: props.subjectID });
+      setFormData({ ...formData, Id: props.subjectID, subject_id: props.subjectID });
+      console.log(props.subjectID, "subject ID is")
     }
     waitForSubjectID();
   }, [props.subjectID]);
   
 	const handleSubmit = async event => {
     event.preventDefault();
-    console.log("class id", props.subjectID);
-    console.log("class id", formData);
     try {
       if (props.info.name === "Students") {
         setIsLoading(true)
         try {
           const allStudents = await getAllStudentProfile();
-          console.log("all students", allStudents);
           const exists = allStudents.some(item => item.Id == formData.Id);
-          console.log(exists);
-          console.log(formData);
           if (exists == false) {
             const newStudent = await createStudentProfile(formData);
           }
-          // const studentProfile = await addStudentSubject(formData);
+          const studentProfile = await addStudentSubject(formData);
           console.log("add success!");
           props.manageAlert("Profile Created", "success");
           const newData = await props.getFunction(props.inputData);
@@ -68,10 +64,11 @@ function AddItem(props) {
       if (props.info.name === "Assignment") {
         setIsLoading(true)
         try {
-          
+          console.log(formData);
           const assignmentProfile = await createAssignmentProfile(formData);
           props.manageAlert("Assignment Created", "success");
           const newData = await props.getFunction(props.inputData);
+          console.log(newData, "testing");
           props.setNewData(newData)
           setIsLoading(false)
         } 
@@ -120,7 +117,7 @@ function AddItem(props) {
         <form onSubmit={handleSubmit}>
           <div className="additem-input">
             {props.hasID && <label htmlFor="Id">{props.info.name === "Assignment" ? "Subject " : props.info.name}
- ID:</label>}
+            ID:</label>}
             {props.hasID && (
               <input
                 type="number"
@@ -134,32 +131,6 @@ function AddItem(props) {
 
 						<label htmlFor="Name">{props.info.name} Name:</label>
 						<input type="text" id="Name" name="Name" value={formData.name} onChange={handleInputChange} required />
-
-						{/* Render Due date & End end date fields if in props */}
-						{/* {props.hasDate && (
-                        <div>
-                            <label htmlFor="dueDate">Due Date:</label>
-                            <input
-                                type="date"
-                                id="dueDate"
-                                name="dueDate"
-                                value={formData.dueDate || ''}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-                        )}
-                        {props.hasDate && (
-                            <div>
-                                <label htmlFor="startDate">Start Date:</label>
-                                <input
-                                    type="date"
-                                    id="startDate"
-                                    name="startDate"
-                                    value={formData.startDate || ''}
-                                    onChange={handleInputChange}
-                                />
-                            </div>
-                        )} */}
           </div>
           {isLoading ? (
               <BeatLoader className="loading-icon" color="#7179e7" />
