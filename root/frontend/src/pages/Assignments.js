@@ -25,7 +25,6 @@ function GroupProfile() {
   const [selectedAssignment, setSelectedAssignment] = useState(null);
 
   const openViewDocument = (assignment) => {
-    console.log('assignment', assignment )
     setSelectedAssignment(assignment);
   };
 
@@ -38,7 +37,6 @@ function GroupProfile() {
 
         setStudentData(students);
         setSubmissionData(submissions);
-        console.log(submissionData)
 
         setFirstRequest(false);
       } catch (error) {
@@ -67,7 +65,7 @@ function GroupProfile() {
             const studentData1 = await getSubjectStudents(subjectID);
             setSubjectData(subject)
             setSubjectStudent(studentData1);
-
+            console.log()
 
             setIsLoading(false);
           } catch (error) {
@@ -90,14 +88,11 @@ function GroupProfile() {
           <RotateLoader color="#7179e7" />
         </div>
       </section>
+      <Footer />
       </div>
     );
   }
   if (!isLoading && subjectStudent) {
-    console.log('submission :', submissionData)
-    console.log('stuent data',studentData)
-    console.log('subjectData: ', subjectData)
-    console.log('subjectStudent:', subjectStudent);
     const updatedStudentData = studentData.map(student => {
       const matchingSubjectStudent = subjectStudent.find(subject => subject.Name === student.Name);
     

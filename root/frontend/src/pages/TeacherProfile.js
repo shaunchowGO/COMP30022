@@ -41,6 +41,7 @@ function TeacherProfile(props) {
 						<RotateLoader color="#7179e7" />
 					</div>
 				</section>
+				<Footer />
 			</div>
 		);
 	}

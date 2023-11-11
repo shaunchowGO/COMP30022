@@ -46,6 +46,7 @@ function GroupProfile(props) {
           <RotateLoader color="#7179e7" />
         </div>
       </section>
+      <Footer />
       </div>
     );
   }
@@ -57,7 +58,6 @@ function GroupProfile(props) {
           <AddItem
             trigger={trigger}
             SetTrigger={() => SetTrigger(!trigger)}
-            // hasID={true}
             info={{ name: "Assignment" }}
             hasDate={true}
             subjectID={subjectData.Id}

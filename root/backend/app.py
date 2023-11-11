@@ -33,18 +33,21 @@ def get_student():
     return formatted_rows
 
 # view the student profile info (e.g. files)
-@app.route('/student_files', methods=['GET'])
+@app.route('/student-files', methods=['GET'])
 def get_student_files():
-    student_id = request.args.get('studentID')
-    q = "SELECT A.[Name] as Assignment_Name, Sj.[Name] as [Subject], S.[Similarity_Score], S.[Date] as Date_AddedFROM [dbo].[Submission] as S inner join dbo.[Assignment] as A on S.AssignmentId = A.Id inner join dbo.Subject as Sj on A.SubjectId = Sj.Id where S.StudentId = ?"
-    query = q.replace("?", str(student_id))
+    academic_id = request.args.get('studentID')
+    params = (academic_id)
+    q = "SELECT A.[Name] as Assignment_Name, Sj.[Name] as [Subject], S.[Similarity_Score], S.[Date] as Date_Added FROM [dbo].[Submission] as S inner join [dbo].[Assignment] as A on S.AssignmentId = A.Id inner join [dbo].[Subject] as Sj on A.SubjectId = Sj.Id where S.StudentId = ?"
+
+    query = q.replace("?", str(params))
     res =  run_sql_query(query)
-    
     formatted_rows = []
     for row in res:
         formatted_row = {
-            'Id': row.Id,
-            'Name': row.Name
+            'Name': row.Assignment_Name,
+            'Subject': row.Subject,
+            'Date': row.Date_Added,
+            'SimilarityScore': row.Similarity_Score
         }
         formatted_rows.append(formatted_row)
     return formatted_rows
@@ -421,7 +424,6 @@ def get_assignment_info():
             }
         formatted_rows.append(formatted_row)
     return formatted_rows
-
 
 # =============================================================	Subjects    ============================================================= //
 

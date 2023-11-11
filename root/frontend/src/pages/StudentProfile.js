@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getStudentProfile, getStudentAssignmentInfo } from "../utils/api.js";
+import { Link, useParams } from "react-router-dom";
+import { getStudentProfile, getStudentFiles, getAllStudentProfile } from "../utils/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faDownload } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
@@ -8,36 +9,29 @@ import RotateLoader from "react-spinners/RotateLoader";
 import "../css/pages/Profile.css";
 
 function StudentProfile() {
-	const studentData1 = {
-		name: "Rohit Ambakkat",
-		studentNumber: 129312,
-		assignmentDetails: [
-			{
-				name: "COMP30022_Assignment1",
-				group: "COMP30022",
-				date: "Sep 9, 2023",
-				simScore: 92,
-			},
-		],
-		displayPicture: "profile_img.jpg",
-	};
-
+	const { ID } = useParams();
 	const [studentInfo, setStudentInfo] = React.useState(null);
 	const [assignmentInfo, setAssignmentInfo] = React.useState(null);
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [importTrigger, SetImportTrigger] = React.useState(false);
 
-	const academicID = 11111;
-
 	useEffect(() => {
 		async function fetchData() {
 			setIsLoading(true);
 			try {
-				const studentData = await getStudentProfile(academicID);
-				const assignmentData = await getStudentAssignmentInfo(academicID);
-
+				const allStudents = await getAllStudentProfile();
+				console.log(allStudents)
+				const studentData = await getStudentProfile(ID);
+				console.log(studentData, "data")
 				setStudentInfo(studentData);
-				setAssignmentInfo(assignmentData);
+				const assignmentData = await getStudentFiles(ID);
+				console.log(assignmentData, "student stuff");
+				if (assignmentData == null) {
+					setAssignmentInfo([]);
+				}
+				else {
+					setAssignmentInfo(assignmentData);
+				}
 
 				setIsLoading(false);
 			} catch (error) {
@@ -47,8 +41,8 @@ function StudentProfile() {
 		}
 
 		fetchData();
-	}, [academicID]);
-	console.log(assignmentInfo);
+	}, [ID]);
+
 	if (isLoading) {
 		return (
 			<div>
@@ -57,30 +51,33 @@ function StudentProfile() {
 						<RotateLoader color="#7179e7" />
 					</div>
 				</section>
+				<Footer />
 			</div>
 		);
 	}
 
 	if (!isLoading) {
+		console.log(studentInfo, "assignment stuff 0")
+		console.log(studentInfo[0], "assignment stuff 1")
 		const studentData = {
 			name: studentInfo[0].Name,
 			id: studentInfo[0].Id,
 			assignmentDetails: assignmentInfo.map(assignment => ({
-				name: assignment.ID,
-				group: assignment.subjectName,
+				name: assignment.Name,
+				group: assignment.Subject,
 				date: assignment.Date,
-				simScore: assignment.similarityScore,
+				simScore: assignment.SimilarityScore,
 			})),
 		};
 		console.log("student data: ", studentData);
-
+	console.log(studentData)
     return (
       <div>
         <section id="profile">
 			<Import
 				trigger={importTrigger}
 				SetImportTrigger={() => SetImportTrigger(!importTrigger)}
-				studentID={academicID}
+				studentID={ID}
 				assignmentID={100}
 				subjectName="Arts"
 			/>
@@ -109,7 +106,7 @@ function StudentProfile() {
 					<p>Similarity Score</p>
 					<p>Date Added</p>
 					<p>Detail</p>
-			</div>
+				</div>
 
 				<div className="table-content">
 					{studentData.assignmentDetails.map((assignment, index) => (

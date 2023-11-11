@@ -97,17 +97,10 @@
   width: 25%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 #group .card-content .card .card-detail .card-detail-icon .icon {
   width: 1vw;
   cursor: pointer;
   color: var(--light);
 }/*# sourceMappingURL=Group.css.map */
-#group-spinner {
-  height: 100%;
-  grid-gap: 10%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("../../assets/images/backgrounds/blue.svg");
-} /*# sourceMappingURL=Teacher.css.map */

@@ -105,7 +105,7 @@ export const getStudentsInSubject = async subjectID => {
 //Get Student Profile info from DB based on their ID
 export const getStudentFiles = async studentID => {
 	try {
-		const response = await axios.get(`${API_BASE_URL}/student_files`, {
+		const response = await axios.get(`${API_BASE_URL}/student`, {
 			params: { studentID },
 			headers: {
 				"Content-Type": "application/json",
