@@ -88,7 +88,8 @@ The key application pages and their connections can be seen below
 <p align ="center">
     <img src="images\application_pages.jpg" width="600">
 </p>
-To view appliation design and layout in more detail you can access the Figma:
+
+To view appliation design and layout in more detail you can access the Figma
 * [Low Fidelity Prototype](https://www.figma.com/file/qmZvg96JrZJDOzqwITEPKl/Low-Fidelity-Protoype?type=design&node-id=0%3A1&mode=design&t=1DJqkPlTPLxTafgt-1)
 * [High Fideltiy Protoype](https://www.figma.com/file/DWnINDGCW5ZfZITFtEow0p/High-Fidelity-Protoype?type=design&node-id=0%3A1&mode=design&t=9QwltwLYuzZ6Wo1A-1)
 
@@ -197,14 +198,14 @@ This should automatically open a new tab your localhost path, where you can inte
 
 ### Changelog 
 
-## Sprint 1
-* [v1.0](changelog\v1.0.md)
+# Sprint 1
+* [v1.0](changelog\v1.md)
 
-## Sprint 2
-* [v2.0](changelog\v2.0.md)
+# Sprint 2
+* [v2.0](changelog\v2.md)
 
-## Sprint 3
-* [v3.0](changelog\v3.0.md)
+# Sprint 3
+* [v3.0](changelog\v3.md)
 
-## Sprint 4
-* [v4.0](changelog\v4.0.md)
+# Sprint 4
+* [v4.0](changelog\v4.md)
