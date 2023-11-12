@@ -78,12 +78,12 @@ https://unimelbcloud-my.sharepoint.com/personal/eduardo_oliveira_unimelb_edu_au/
 
 ### Application Layers and Key Classes
 
-# Application Layers
+#### Application Layers
 <p align ="center">
     <img src="docs\Architectural Diagram.jpg" width="600">
 </p>
 
-# Key Application Classes and Pages
+#### Key Application Classes and Pages
 The key application pages and their connections can be seen below 
 <p align ="center">
     <img src="images\application_pages.jpg" width="600">
@@ -200,7 +200,7 @@ This should automatically open a new tab your localhost path, where you can inte
 
 Format: Change_ID[User_Story_ID,User_Story_ID...]
 
-# Sprint 1
+#### Sprint 1
 This sprint focused on creating  the foundations of our project. The aim was to establish a simple working interface 
 
 Changes: 
@@ -214,7 +214,7 @@ Changes:
 * 1.0.1[2.3,1.3]: Added file structure & studentProfile
 
 
-# Sprint 2
+#### Sprint 2
 This sprint was to resolve issues discovered in v1.0. We continued development and added additional features and refined product. The aim was also to connect required services such as databases to the interface 
 
 Changes: 
@@ -235,7 +235,7 @@ Changes:
 * 2.0.1[1.1]: Added FileUpload component
 * 2.0.0[2.1,2.2]: Added signup/login page and footer
 
-# Sprint 3
+#### Sprint 3
 This sprint was to complete the development of all requried functionalities. Focused on preparing the product to be prepared for handover to client. Preparation for deployment was also a focus of the Sprint 
 
 Changes:
@@ -273,7 +273,7 @@ Changes:
 * 3.0.1[1,2]: Small edits to running powershell on python
 * 3.0.0[1,2]: Added Output of Query in Python Dict
 
-# Sprint 4
+#### Sprint 4
 This sprint was to test the current capabilities of the interface. We aimed to debug issues within the interface and continue to refine the interface 
 
 Changes: 
