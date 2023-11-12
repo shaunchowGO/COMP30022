@@ -30,20 +30,20 @@ It is not currently up as deploying on Azure comes with costs and as such the cl
 
 * Sprint 1
     * Develop a profile for a student to be used for analysis
-    * Manage Class 
+    * Manage Class  
 
 * Sprint 2
     * Add and View Student Profiles to the Class
     * Add and View Class Assignments to Class
     * View Assignment Submissions 
+    * Create an account 
+    * Log in and out of the interface
 
 * Sprint 3
-    * Upload Submissions 
+    * Upload Submissions
     * Analyze text against a profile that is stored
         *  View Analysis Score 
         *  View Submitted Document
-    * Create an account 
-    * Log in and out of the interface
 
 
 
@@ -196,3 +196,15 @@ This should automatically open a new tab your localhost path, where you can inte
         * Go to website "textdna.azurewebsites.net"
 
 ### Changelog 
+
+## Sprint 1
+* [v1.0](changelog\v1.0.md)
+
+## Sprint 2
+* [v2.0](changelog\v2.0.md)
+
+## Sprint 3
+* [v3.0](changelog\v3.0.md)
+
+## Sprint 4
+* [v4.0](changelog\v4.0.md)
