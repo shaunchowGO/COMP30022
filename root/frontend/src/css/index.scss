@@ -138,6 +138,13 @@ input {
 	}
 }
 
+
+.page-container {
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("../assets/images/backgrounds/blue.svg") !important;
+}
 .loading-container {
 	display: flex;
 	align-items: center;

@@ -35,7 +35,7 @@ function TeacherProfile(props) {
 
 	if (isLoading) {
 		return (
-			<div>
+			<div className="page-container">
 				<section id="teacher">
 					<div className="loading-container">
 						<RotateLoader color="#7179e7" />

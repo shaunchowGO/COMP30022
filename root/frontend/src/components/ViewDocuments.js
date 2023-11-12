@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { downloadSubmission } from '../utils/api';
 import RotateLoader from "react-spinners/RotateLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import '../css/Modal.css';
 
 const ViewDocument = ({ subjectName, studentID, assignmentID }) => {
@@ -9,14 +11,16 @@ const ViewDocument = ({ subjectName, studentID, assignmentID }) => {
   const [fileContent, setFileContent] = useState(null);
   const [downloadUrl, setDownloadUrl] = useState(null);
 
+  Modal.setAppElement('#root');
   const openModal = async () => {
     setModalIsOpen(true);
   
     try {
       const response = await downloadSubmission(subjectName, studentID, assignmentID);
-  
+      console.log(subjectName, studentID, assignmentID)
       if (response && response.blob) {
         const textContent = await response.blob.text();
+        console.log(textContent)
         setFileContent(textContent);
         setDownloadUrl(response.downloadUrl);
       } else {
@@ -58,7 +62,7 @@ const ViewDocument = ({ subjectName, studentID, assignmentID }) => {
       </div>
         )}
 
-        <button onClick={closeModal} className="modal-close-button">X</button>
+        <button onClick={closeModal} className="modal-close-button"><FontAwesomeIcon className="close-icon" icon={faXmark} /></button>
       </Modal>
     </div>
   );

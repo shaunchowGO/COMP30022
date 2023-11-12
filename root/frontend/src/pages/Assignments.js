@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEye, faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faEye, faFile, faTrash, faUser} from '@fortawesome/free-solid-svg-icons';
 import Import from './Import.js'
 import Footer from './Footer.js'
 import Filter from './Filter.js'
@@ -83,7 +83,7 @@ function GroupProfile() {
   if (isLoading){
     return(
       <div>
-        <section id="group-spinner">
+        <section id="assignment">
         <div className="loading-container">
           <RotateLoader color="#7179e7" />
         </div>
@@ -140,23 +140,23 @@ function GroupProfile() {
               <div className="table-content">
                 {updatedStudentData.map((assignment, index) => (
                   <div className="table-row" key={index}>
-                    <Link to={`/student/${assignment.studentId}`}>
                       <div className="file-name">{assignment.Name}</div>
-                    </Link>
                     <div>{assignment.similarityScore}%</div>
                     <div>{assignment.Date}</div>
                     <div className="row-detail">
-                      <FontAwesomeIcon className="icon" icon={faEye} onClick={() => openViewDocument(assignment)}/>
-                      {/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
+                      <FontAwesomeIcon className="icon" icon={faFile} onClick={() => openViewDocument(assignment)}/>
+                      <Link to={`/student/${assignment.studentId}`}>
+                        <FontAwesomeIcon className="icon" icon={faEye} />
+                      </Link>
                     </div>
                   </div>
                 ))}
-                {selectedAssignment && (<ViewDocument
-                  subjectName={selectedAssignment.subjectName}
-                  studentID={selectedAssignment.studentId}
-                  assignmentID={selectedAssignment.assignmentID}/>
-                )}
               </div>
+              {selectedAssignment && (<ViewDocument
+                subjectName={selectedAssignment.subjectName}
+                studentID={selectedAssignment.studentId}
+                assignmentID={selectedAssignment.assignmentID}/>
+              )}
             </div>
           </div>
           {/* <Filter buttonLabels={["Student Name", "Similarity Score", "Date Added"]} hasScore={true}/> */}

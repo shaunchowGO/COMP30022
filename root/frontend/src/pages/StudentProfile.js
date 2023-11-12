@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { getStudentProfile, getStudentFiles, getAllStudentProfile } from "../utils/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
 import Import from "./Import.js";
 import RotateLoader from "react-spinners/RotateLoader";
@@ -57,8 +57,6 @@ function StudentProfile() {
 	}
 
 	if (!isLoading) {
-		console.log(studentInfo, "assignment stuff 0")
-		console.log(studentInfo[0], "assignment stuff 1")
 		const studentData = {
 			name: studentInfo[0].Name,
 			id: studentInfo[0].Id,
@@ -111,20 +109,23 @@ function StudentProfile() {
 				<div className="table-content">
 					{studentData.assignmentDetails.map((assignment, index) => (
 						<div className="table-row" key={index}>
+						{assignment.simScore >= 0 ? (
+						  <div>
 							<div className="file-name">{assignment.name}</div>
 							<div>{assignment.group}</div>
 							<div>{assignment.simScore}%</div>
 							<div>{assignment.date}</div>
-							<div className="row-detail">
-								<FontAwesomeIcon className="icon" icon={faDownload} />
-								{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
-							</div>
-						</div>
+							<div className="row-detail"></div>
+							<FontAwesomeIcon className="icon" icon={faDownload} />
+						  </div>
+						) : (
+						  <div></div>
+						)}
+					  	</div>
 					))}
 				</div>
 						</div>
 					</div>
-					{/* <Filter buttonLabels={["Assignment Name", "Subject Name", "Similarity Score", "Date Added"]} hasScore={true}/> */}
 				</section>
 				<Footer />
 			</div>

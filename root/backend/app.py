@@ -77,7 +77,7 @@ def create_student():
 
     #call create student entry query 
     query = "INSERT INTO [dbo].[student] (Name, Id) VALUES (?, ?)"
-    params = (student_data['name'], student_data['id'])
+    params = (student_data['Name'], student_data['Id'])
     run_sql_query(query, params)
 
     response = {

@@ -92,17 +92,18 @@ function Login(props) {
 				</div>
 				<div className="below-or">
 					<button className="google-sso-button">
-						<img className="google-img" src={require(`../assets/images/icons/google_icon.png`)} />
+						<img className="google-img" alt="google-icon" src={require(`../assets/images/icons/google_icon.png`)} />
 						GOOGLE
 					</button>
 					<button className="google-sso-button">
-						<img className="SSO-img" src={require(`../assets/images/icons/SSO_icon.png`)} />
+						<img className="SSO-img" alt="sso-icon" src={require(`../assets/images/icons/SSO_icon.png`)} />
 						SSO
 					</button>
 					<p className="user-text">
 						{" "}
 						New User?{" "}
 						<a
+							href=""
 							className="underline-text"
 							onClick={() => {
 								props.setLogInTrigger();

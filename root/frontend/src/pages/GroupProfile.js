@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getSubjectInfo, getSubjectPage, getSubjectStudents } from "../utils/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 import Footer from "./Footer.js";
 import AddItem from "./AddItem.js";
 import "../css/pages/Group.css";
@@ -33,7 +33,7 @@ function GroupProfile(props) {
       }
     }
     retrieveGroupInfo();
-  }, []);
+  }, [ID]);
   const [viewingAssignments, SetViewingAssignments] = React.useState(true);
   const [trigger, SetTrigger] = React.useState(false);
 
@@ -41,7 +41,7 @@ function GroupProfile(props) {
   if (isLoading){
     return(
       <div>
-        <section id="group-spinner">
+        <section id="group">
         <div className="loading-container">
           <RotateLoader color="#7179e7" />
         </div>
@@ -142,7 +142,6 @@ function GroupProfile(props) {
 													<Link to={`/assignment/${assignment.ID}`}>
 														<FontAwesomeIcon className="icon" icon={faEye} />
 													</Link>
-													{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
 												</div>
 											</div>
 										))}
@@ -159,7 +158,6 @@ function GroupProfile(props) {
                           <Link to={`/student/${student.Id}`}>
                             <FontAwesomeIcon className="icon" icon={faEye} />
                           </Link>
-													{/* <FontAwesomeIcon className="icon" icon={faTrash} /> */}
 												</div>
 											</div>
 										</div>
@@ -168,11 +166,6 @@ function GroupProfile(props) {
 							)}
 						</div>
 					</div>
-					{/* {viewingAssignments ?
-              <Filter buttonLabels={["Assignment Name"]}/>
-              :
-              <Filter buttonLabels={["ID", "Student Name"]}/>
-            } */}
 				</section>
 				<Footer />
 			</div>
