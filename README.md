@@ -10,8 +10,6 @@
 * [Setup](#setup)
 * [Deployment Guidelines](#deployment-guideline)
 * [Changelog](#changelog)
-* [Traceability Matrix](#traceability-matrix)
-
 
 
 
@@ -31,10 +29,22 @@ It is not currently up as deploying on Azure comes with costs and as such the cl
 ### Features
 
 * Sprint 1
+    * Develop a profile for a student to be used for analysis
+    * Manage Class 
 
 * Sprint 2
+    * Add and View Student Profiles to the Class
+    * Add and View Class Assignments to Class
+    * View Assignment Submissions 
 
 * Sprint 3
+    * Upload Submissions 
+    * Analyze text against a profile that is stored
+        *  View Analysis Score 
+        *  View Submitted Document
+    * Create an account 
+    * Log in and out of the interface
+
 
 
 
@@ -68,9 +78,19 @@ https://unimelbcloud-my.sharepoint.com/personal/eduardo_oliveira_unimelb_edu_au/
 
 ### Application Layers and Key Classes
 
+## Application Layers
 <p align ="center">
     <img src="docs\Architectural Diagram.jpg" width="600">
 </p>
+
+## Key Application Classes and Pages
+The key application pages and their connections can be seen below 
+<p align ="center">
+    <img src="images\application_pages.jpg" width="600">
+</p>
+To view appliation design and layout in more detail you can access the Figma:
+* [Low Fidelity Prototype](https://www.figma.com/file/qmZvg96JrZJDOzqwITEPKl/Low-Fidelity-Protoype?type=design&node-id=0%3A1&mode=design&t=1DJqkPlTPLxTafgt-1)
+* [High Fideltiy Protoype](https://www.figma.com/file/DWnINDGCW5ZfZITFtEow0p/High-Fidelity-Protoype?type=design&node-id=0%3A1&mode=design&t=9QwltwLYuzZ6Wo1A-1)
 
 ### System Requirements
 
@@ -98,20 +118,23 @@ https://unimelbcloud-my.sharepoint.com/personal/eduardo_oliveira_unimelb_edu_au/
 * Relevant dependencies and their versions can be found at [requirements.txt](requirements.txt)
 
 ### Installation Guide 
-Install dependencies by:
-* "pip install -r requirements.txt" [Found in COMP30022 directory]
-* cd "COMP30022\root\frontend"
-* npm install react-scripts --save
+* Install dependencies: 
+    * Backend:
+        * Ensure you have python and pip installed 
+        * "pip install -r requirements.txt" [Found in COMP30022 directory]
+        * curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/msodbcsql17_17.10.5.1-1_amd64.apk
+        * curl -O https://download.microsoft.com/download/e/4/e/e4e67866-dffd-428c-aac7-8d28ddafb39b/mssql-tools_17.10.1.1-1_amd64.apk
+        * sudo apk add --allow-untrusted msodbcsql17_17.10.5.1-1_amd64.apk
+        * sudo apk add --allow-untrusted mssql-tools_17.10.1.1-1_amd64.apk
+        * Download Powershell 7 and run Install-Module-name Az
+    * Frontend: 
+        1. Ensure you have NodeJS installed
+        2. cd "COMP30022\root\frontend"
+        3. npm install react-scripts --save
+        4. npm install --save @fortawesome/free-solid-svg-icons
+        5. npm install --save @fortawesome/react-fontawesome
 * Log into https://portal.azure.com/ using credentials and go into sql server instance "sql-server-capstone-project" and add your IP address into firewall settings under "networking"
-* Using VScode [or other interfaces], clone the repo https://github.com/shaunchowGO/COMP30022.git
-open 2 terminals, one to run front-end, and another to run back-end
-* For front-end run the following commands: 
-    * cd "COMP30022\root\frontend"
-    * npm start
-* For back-end run the following commands:
-    * cd "COMP30022\root\backend"
-    * python app.py
-This should automatically open a new tab your localhost path, where you can interact  with the interface.
+
 
 Credentials to access repository , storage account, server , databases
 The interface uses the following services which can be accessed through https://portal.azure.com/:
@@ -126,24 +149,30 @@ __Credentials are:__
 * Password: Mosa2012351
 
 ### Setup
-1. Download Powershell 7 and run Install-Module-name Az
-
-2. **Clone the Repository:**
+1. **Clone the Repository:**
 
    ```bash
    git clone https://github.com/shaunchowGO/COMP30022.git
-3. **Backend Setup:**
+
+2. Open 2 terminals, one to run front-end, and another to run back-end
+
+3. Install dependencies and follow instructions in [Installation Guide](#installation-guide)
+
+4. **Backend Setup:**
 
    ```bash
     cd root/backend
     pip install -r requirements.txt
     python app.py
-4. **Frontend Setup:**
+5. **Frontend Setup:**
 
     ```bash
     cd root/frontend
     npm install
+    npm install
     npm start
+
+This should automatically open a new tab your localhost path, where you can interact  with the interface.
 
 ### Deployment Guideline:
     * Log into https://portal.azure.com/:
@@ -155,7 +184,7 @@ __Credentials are:__
         * cd "COMP30022\root\frontend"
         * az webapp up [run this command  in frontend directory]
     * Run back-end by:
-        * edit the link [Ask Shaun] in file ...
+        * edit the link in file ...
         * navigate to [VM-capstone-project]  instance
     * Start it
         * Open CLI and run:
@@ -167,5 +196,3 @@ __Credentials are:__
         * Go to website "textdna.azurewebsites.net"
 
 ### Changelog 
-
-### Traceability Matrix 
