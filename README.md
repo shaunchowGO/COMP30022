@@ -26,6 +26,8 @@ The hosted website can be found at https://textdna.azurewebsites.net/
 
 It is not currently up as deploying on Azure comes with costs and as such the client has informed us to avoid deploying it unless necessary
 
+Demonstration Video: https://youtu.be/6U1lD_LM_7o
+
 ### Features
 
 * Sprint 1
